@@ -2176,16 +2176,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../api/report_manager/" class="md-nav__link">
+      <a href="../../api/csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2622,10 +2715,6 @@
 <p>All these class attributes are mandatory. If any attribute is missing, a <code>NotImplementedError</code> exception will be raised during class instantiation.</p>
 </div>
 <h4 id="instance-attributes">Instance Attributes<a class="headerlink" href="#instance-attributes" title="Permanent link">&para;</a></h4>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>You can access an instance attribute in your code using the <code>self</code> reference. E.g. you can access the test input values using <code>self.inputs</code>.</p>
-</div>
 
 
 <div class="doc doc-object doc-class">
@@ -2651,7 +2740,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.device">device</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.device.AntaDevice" href="../../api/device/#anta.device.AntaDevice">AntaDevice</a></code>
+                  <code>AntaDevice</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2662,7 +2751,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.inputs">inputs</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.models.AntaTest.Input" href="../../api/models/#anta.models.AntaTest.Input">Input</a></code>
+                  <code>Input</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2673,7 +2762,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.instance_commands">instance_commands</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="anta.models.AntaCommand" href="../../api/models/#anta.models.AntaCommand">AntaCommand</a>]</code>
+                  <code>list[AntaCommand]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2684,7 +2773,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.result">result</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.models.TestResult" href="../../api/result_manager_models/#anta.result_manager.models.TestResult">TestResult</a></code>
+                  <code>TestResult</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2695,7 +2784,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.logger">logger</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="logging.Logger" href="https://docs.python.org/3/library/logging.html#logging.Logger">Logger</a></code>
+                  <code>Logger</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2706,6 +2795,11 @@
       </tbody>
     </table>
   
+
+
+
+
+
 
   
 
@@ -2766,7 +2860,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.result_overwrite">result_overwrite</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.models.AntaTest.Input.ResultOverwrite" href="../../api/models/#anta.models.AntaTest.Input.ResultOverwrite">ResultOverwrite</a> | None</code>
+                  <code>ResultOverwrite | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2776,6 +2870,11 @@
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
   
 
@@ -2825,7 +2924,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.ResultOverwrite.description">description</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2836,7 +2935,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.ResultOverwrite.categories">categories</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                  <code>list[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2847,7 +2946,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.ResultOverwrite.custom_field">custom_field</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2857,6 +2956,11 @@
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
   
 
@@ -3101,7 +3205,7 @@ leaf04<span class="w"> </span>::<span class="w"> </span>verify_dynamic_vlan<span
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 2, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 11, 2024</span>
   </span>
 
     

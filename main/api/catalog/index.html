@@ -2250,16 +2250,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../report_manager/" class="md-nav__link">
+      <a href="../csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2722,7 +2815,10 @@
 
 
 <a href="#anta.catalog.AntaCatalog" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AntaCatalog</span><span class="p">(</span><span class="n">tests</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AntaTestDefinition</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AntaCatalog</span><span class="p">(</span>
+    <span class="n">tests</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AntaTestDefinition</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents first">
@@ -2745,9 +2841,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>tests</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="anta.catalog.AntaTestDefinition" href="#anta.catalog.AntaTestDefinition">AntaTestDefinition</a>] | None</code>
+                <code>tests</code>
+            </td>
+            <td>
+                  <code>list[AntaTestDefinition] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2759,9 +2857,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>filename</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-external" title="pathlib.Path" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a> | None</code>
+                <code>filename</code>
+            </td>
+            <td>
+                  <code>str | Path | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2774,6 +2874,11 @@
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
                     <details class="quote">
                     <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -2903,7 +3008,9 @@
 
 
 <a href="#anta.catalog.AntaCatalog.build_indexes" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">build_indexes</span><span class="p">(</span><span class="n">filtered_tests</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">build_indexes</span><span class="p">(</span>
+    <span class="n">filtered_tests</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3019,7 +3126,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalogFile" href="#anta.catalog.AntaCatalogFile">AntaCatalogFile</a></code>
+                  <code>AntaCatalogFile</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3075,7 +3182,10 @@
   </span>
 
 <a href="#anta.catalog.AntaCatalog.from_dict" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">RawCatalogInput</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaCatalog</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">from_dict</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">RawCatalogInput</span><span class="p">,</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaCatalog</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3098,9 +3208,11 @@ YAML Test Catalog file.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>data</code></td>
             <td>
-                  <code><span title="anta.catalog.RawCatalogInput">RawCatalogInput</span></code>
+                <code>data</code>
+            </td>
+            <td>
+                  <code>RawCatalogInput</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3112,9 +3224,11 @@ YAML Test Catalog file.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>filename</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-external" title="pathlib.Path" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a> | None</code>
+                <code>filename</code>
+            </td>
+            <td>
+                  <code>str | Path | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3140,7 +3254,7 @@ YAML Test Catalog file.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="#anta.catalog.AntaCatalog">AntaCatalog</a></code>
+                  <code>AntaCatalog</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3273,9 +3387,11 @@ YAML Test Catalog file.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>data</code></td>
             <td>
-                  <code><span title="anta.catalog.ListAntaTestTuples">ListAntaTestTuples</span></code>
+                <code>data</code>
+            </td>
+            <td>
+                  <code>ListAntaTestTuples</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3301,7 +3417,7 @@ YAML Test Catalog file.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="#anta.catalog.AntaCatalog">AntaCatalog</a></code>
+                  <code>AntaCatalog</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3373,7 +3489,9 @@ YAML Test Catalog file.</p>
 
 
 <a href="#anta.catalog.AntaCatalog.get_tests_by_tags" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_tests_by_tags</span><span class="p">(</span><span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestDefinition</span><span class="p">]</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_tests_by_tags</span><span class="p">(</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">*</span><span class="p">,</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestDefinition</span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3393,9 +3511,11 @@ YAML Test Catalog file.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>tags</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                <code>tags</code>
+            </td>
+            <td>
+                  <code>set[str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3407,9 +3527,11 @@ YAML Test Catalog file.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>strict</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>strict</code>
+            </td>
+            <td>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3436,7 +3558,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-internal" title="anta.catalog.AntaTestDefinition" href="#anta.catalog.AntaTestDefinition">AntaTestDefinition</a>]</code>
+                  <code>set[AntaTestDefinition]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3459,7 +3581,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a></code>
+                  <code>ValueError</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3578,9 +3700,11 @@ If False, returns tests that contain any of the specified tags (union).</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>catalog</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="#anta.catalog.AntaCatalog">AntaCatalog</a></code>
+                <code>catalog</code>
+            </td>
+            <td>
+                  <code>AntaCatalog</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3606,7 +3730,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="#anta.catalog.AntaCatalog">AntaCatalog</a></code>
+                  <code>AntaCatalog</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3704,9 +3828,11 @@ If False, returns tests that contain any of the specified tags (union).</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>catalogs</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="#anta.catalog.AntaCatalog">AntaCatalog</a>]</code>
+                <code>catalogs</code>
+            </td>
+            <td>
+                  <code>list[AntaCatalog]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3732,7 +3858,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="#anta.catalog.AntaCatalog">AntaCatalog</a></code>
+                  <code>AntaCatalog</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3794,7 +3920,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
   </span>
 
 <a href="#anta.catalog.AntaCatalog.parse" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">file_format</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;json&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;yaml&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaCatalog</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">file_format</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;yaml&#39;</span><span class="p">,</span> <span class="s1">&#39;json&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="c1">#39;yaml&amp;#39;) -&gt; AntaCatalog</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3814,9 +3940,11 @@ If False, returns tests that contain any of the specified tags (union).</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>filename</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-external" title="pathlib.Path" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></code>
+                <code>filename</code>
+            </td>
+            <td>
+                  <code>str | Path</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3828,9 +3956,11 @@ If False, returns tests that contain any of the specified tags (union).</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>file_format</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a>[&#39;yaml&#39;, &#39;json&#39;]</code>
+                <code>file_format</code>
+            </td>
+            <td>
+                  <code>Literal[&#39;yaml&#39;, &#39;json&#39;]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3856,7 +3986,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="#anta.catalog.AntaCatalog">AntaCatalog</a></code>
+                  <code>AntaCatalog</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3952,12 +4082,19 @@ If False, returns tests that contain any of the specified tags (union).</p>
 
 
 <a href="#anta.catalog.AntaTestDefinition" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AntaTestDefinition</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">AntaTest</span><span class="p">]</span> <span class="o">|</span> <span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AntaTestDefinition</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">data</span><span class="p">:</span> <span class="p">(</span>
+        <span class="nb">type</span><span class="p">[</span><span class="n">AntaTest</span><span class="p">]</span>
+        <span class="o">|</span> <span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span>
+        <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+        <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+              Bases: <code>BaseModel</code></p>
 
   
         <p>Define a test with its associated inputs.</p>
@@ -3976,7 +4113,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
           <tr class="doc-section-item">
             <td><code><span title="anta.catalog.AntaTestDefinition.test">test</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="anta.models.AntaTest" href="../models/#anta.models.AntaTest">AntaTest</a>]</code>
+                  <code>type[AntaTest]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3987,7 +4124,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
           <tr class="doc-section-item">
             <td><code><span title="anta.catalog.AntaTestDefinition.inputs">inputs</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.models.AntaTest.Input" href="../models/#anta.models.AntaTest.Input">Input</a></code>
+                  <code>Input</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3999,6 +4136,11 @@ If False, returns tests that contain any of the specified tags (union).</p>
     </table>
   
         <p><a href="https://docs.pydantic.dev/2.0/usage/validators/#using-validation-context-with-basemodel-initialization">https://docs.pydantic.dev/2.0/usage/validators/#using-validation-context-with-basemodel-initialization</a>.</p>
+
+
+
+
+
 
                     <details class="quote">
                     <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -4094,7 +4236,10 @@ If False, returns tests that contain any of the specified tags (union).</p>
   </span>
 
 <a href="#anta.catalog.AntaTestDefinition.instantiate_inputs" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">instantiate_inputs</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">ValidationInfo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">instantiate_inputs</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">info</span><span class="p">:</span> <span class="n">ValidationInfo</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4222,7 +4367,7 @@ This model validator will instantiate an Input class from the <code>test</code> 
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></code>
+                  <code>dict</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4294,7 +4439,7 @@ This model validator will instantiate an Input class from the <code>test</code> 
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="pydantic.RootModel">RootModel</span>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<span title="pydantic.types.ImportString">ImportString</span>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>], <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="anta.catalog.AntaTestDefinition" href="#anta.catalog.AntaTestDefinition">AntaTestDefinition</a>]]]</code></p>
+              Bases: <code>RootModel[dict[ImportString[Any], list[AntaTestDefinition]]]</code></p>
 
   
         <p>Represents an ANTA Test Catalog File.</p>
@@ -4308,6 +4453,11 @@ This model validator will instantiate an Input class from the <code>test</code> 
         &lt;AntaTest.Input compliant dictionary&gt;
 </code></pre></div></p>
 </details>
+
+
+
+
+
   
 
   
@@ -4443,7 +4593,9 @@ with provided value to validate test inputs.</p>
   </span>
 
 <a href="#anta.catalog.AntaCatalogFile.flatten_modules" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">flatten_modules</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">package</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ModuleType</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]]</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">flatten_modules</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">package</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ModuleType</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4575,7 +4727,7 @@ with provided value to validate test inputs.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4638,7 +4790,7 @@ with provided value to validate test inputs.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">

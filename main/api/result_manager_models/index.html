@@ -16,7 +16,7 @@
         <link rel="prev" href="../result_manager/">
       
       
-        <link rel="next" href="../report_manager/">
+        <link rel="next" href="../csv_reporter/">
       
       
       <link rel="icon" href="../../imgs/favicon.ico">
@@ -2040,16 +2040,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../report_manager/" class="md-nav__link">
+      <a href="../csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2306,7 +2399,7 @@
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+              Bases: <code>BaseModel</code></p>
 
   
         <p>Describe the result of a test from a single device.</p>
@@ -2325,7 +2418,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.result_manager.models.TestResult.name">name</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2336,7 +2429,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.result_manager.models.TestResult.test">test</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2347,7 +2440,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.result_manager.models.TestResult.categories">categories</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                  <code>list[str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2358,7 +2451,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.result_manager.models.TestResult.description">description</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2369,7 +2462,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.result_manager.models.TestResult.result">result</span></code></td>
             <td>
-                  <code><span title="anta.result_manager.models.AntaTestStatus">AntaTestStatus</span></code>
+                  <code>AntaTestStatus</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2380,7 +2473,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.result_manager.models.TestResult.messages">messages</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                  <code>list[str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2391,7 +2484,7 @@
           <tr class="doc-section-item">
             <td><code><span title="anta.result_manager.models.TestResult.custom_field">custom_field</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2401,6 +2494,11 @@
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
   
 
@@ -2444,9 +2542,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>message</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                <code>message</code>
+            </td>
+            <td>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2515,9 +2615,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>message</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                <code>message</code>
+            </td>
+            <td>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2586,9 +2688,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>message</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                <code>message</code>
+            </td>
+            <td>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2657,9 +2761,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>message</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                <code>message</code>
+            </td>
+            <td>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">

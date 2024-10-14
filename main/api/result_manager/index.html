@@ -2180,16 +2180,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../report_manager/" class="md-nav__link">
+      <a href="../csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2693,6 +2786,11 @@ table shows the updated status:</p>
 <p>If the status of the added test is error, the status is untouched and the
 error_status is set to True.</p>
 
+
+
+
+
+
                     <details class="quote">
                     <summary>Source code in <code>anta/result_manager/__init__.py</code></summary>
                     <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">71</span>
@@ -2918,9 +3016,11 @@ of the ResultManager instance is updated based on the added test status.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>result</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.models.TestResult" href="../result_manager_models/#anta.result_manager.models.TestResult">TestResult</a></code>
+                <code>result</code>
+            </td>
+            <td>
+                  <code>TestResult</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3003,9 +3103,11 @@ of the ResultManager instance is updated based on the added test status.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>hide</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<span title="anta.result_manager.models.AntaTestStatus">AntaTestStatus</span>]</code>
+                <code>hide</code>
+            </td>
+            <td>
+                  <code>set[AntaTestStatus]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3031,7 +3133,7 @@ of the ResultManager instance is updated based on the added test status.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.ResultManager" href="#anta.result_manager.ResultManager">ResultManager</a></code>
+                  <code>ResultManager</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3111,9 +3213,11 @@ of the ResultManager instance is updated based on the added test status.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>devices</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                <code>devices</code>
+            </td>
+            <td>
+                  <code>set[str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3139,7 +3243,7 @@ of the ResultManager instance is updated based on the added test status.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.ResultManager" href="#anta.result_manager.ResultManager">ResultManager</a></code>
+                  <code>ResultManager</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3217,9 +3321,11 @@ of the ResultManager instance is updated based on the added test status.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>tests</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                <code>tests</code>
+            </td>
+            <td>
+                  <code>set[str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3245,7 +3351,7 @@ of the ResultManager instance is updated based on the added test status.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.ResultManager" href="#anta.result_manager.ResultManager">ResultManager</a></code>
+                  <code>ResultManager</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3322,7 +3428,7 @@ of the ResultManager instance is updated based on the added test status.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                  <code>set[str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3366,7 +3472,10 @@ of the ResultManager instance is updated based on the added test status.</p>
 
 
 <a href="#anta.result_manager.ResultManager.get_results" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_results</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestStatus</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sort_by</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TestResult</span><span class="p">]</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_results</span><span class="p">(</span>
+    <span class="n">status</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestStatus</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">sort_by</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TestResult</span><span class="p">]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3387,9 +3496,11 @@ of the ResultManager instance is updated based on the added test status.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>status</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<span title="anta.result_manager.models.AntaTestStatus">AntaTestStatus</span>] | None</code>
+                <code>status</code>
+            </td>
+            <td>
+                  <code>set[AntaTestStatus] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3401,9 +3512,11 @@ of the ResultManager instance is updated based on the added test status.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>sort_by</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>sort_by</code>
+            </td>
+            <td>
+                  <code>list[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3429,7 +3542,7 @@ of the ResultManager instance is updated based on the added test status.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="anta.result_manager.models.TestResult" href="../result_manager_models/#anta.result_manager.models.TestResult">TestResult</a>]</code>
+                  <code>list[TestResult]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3558,7 +3671,7 @@ of the ResultManager instance is updated based on the added test status.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                  <code>set[str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3602,7 +3715,9 @@ of the ResultManager instance is updated based on the added test status.</p>
 
 
 <a href="#anta.result_manager.ResultManager.get_total_results" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_total_results</span><span class="p">(</span><span class="n">status</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestStatus</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_total_results</span><span class="p">(</span>
+    <span class="n">status</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestStatus</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3623,9 +3738,11 @@ of the ResultManager instance is updated based on the added test status.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>status</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<span title="anta.result_manager.models.AntaTestStatus">AntaTestStatus</span>] | None</code>
+                <code>status</code>
+            </td>
+            <td>
+                  <code>set[AntaTestStatus] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3651,7 +3768,7 @@ of the ResultManager instance is updated based on the added test status.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+                  <code>int</code>
             </td>
             <td>
               <div class="doc-md-description">

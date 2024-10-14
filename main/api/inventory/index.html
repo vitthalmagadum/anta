@@ -2094,16 +2094,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../report_manager/" class="md-nav__link">
+      <a href="../csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2412,10 +2505,15 @@
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-internal" title="anta.device.AntaDevice" href="../device/#anta.device.AntaDevice">AntaDevice</a>]</code></p>
+              Bases: <code>dict[str, AntaDevice]</code></p>
 
   
         <p>Inventory abstraction for ANTA framework.</p>
+
+
+
+
+
 
   
 
@@ -2516,9 +2614,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>device</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.device.AntaDevice" href="../device/#anta.device.AntaDevice">AntaDevice</a></code>
+                <code>device</code>
+            </td>
+            <td>
+                  <code>AntaDevice</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2615,7 +2715,12 @@
 
 
 <a href="#anta.inventory.AntaInventory.get_inventory" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_inventory</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">established_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">devices</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaInventory</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_inventory</span><span class="p">(</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">established_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">devices</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaInventory</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2635,9 +2740,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>established_only</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>established_only</code>
+            </td>
+            <td>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2649,9 +2756,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>tags</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>tags</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2663,9 +2772,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>devices</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>devices</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2691,7 +2802,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.inventory.AntaInventory" href="#anta.inventory.AntaInventory">AntaInventory</a></code>
+                  <code>AntaInventory</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2783,7 +2894,17 @@
   </span>
 
 <a href="#anta.inventory.AntaInventory.parse" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">enable_password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">enable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">insecure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">disable_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaInventory</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">parse</span><span class="p">(</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">enable_password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">enable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">insecure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">disable_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaInventory</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2804,9 +2925,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>filename</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-external" title="pathlib.Path" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></code>
+                <code>filename</code>
+            </td>
+            <td>
+                  <code>str | Path</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2818,9 +2941,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>username</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                <code>username</code>
+            </td>
+            <td>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2832,9 +2957,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>password</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                <code>password</code>
+            </td>
+            <td>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2846,9 +2973,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>enable_password</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                <code>enable_password</code>
+            </td>
+            <td>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2860,9 +2989,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>timeout</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a> | None</code>
+                <code>timeout</code>
+            </td>
+            <td>
+                  <code>float | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2874,9 +3005,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>enable</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>enable</code>
+            </td>
+            <td>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2888,9 +3021,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>insecure</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>insecure</code>
+            </td>
+            <td>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2902,9 +3037,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>disable_cache</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>disable_cache</code>
+            </td>
+            <td>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2930,7 +3067,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.inventory.exceptions.InventoryRootKeyError" href="#anta.inventory.exceptions.InventoryRootKeyError">InventoryRootKeyError</a></code>
+                  <code>InventoryRootKeyError</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2940,7 +3077,7 @@
           </tr>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.inventory.exceptions.InventoryIncorrectSchemaError" href="#anta.inventory.exceptions.InventoryIncorrectSchemaError">InventoryIncorrectSchemaError</a></code>
+                  <code>InventoryIncorrectSchemaError</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3159,6 +3296,11 @@
 
 
 
+
+
+
+
+
   <div class="doc doc-children">
 
 
@@ -3181,10 +3323,15 @@
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a></code></p>
+              Bases: <code>Exception</code></p>
 
   
         <p>Error when user data does not follow ANTA schema.</p>
+
+
+
+
+
 
   
 
@@ -3206,10 +3353,15 @@
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#Exception">Exception</a></code></p>
+              Bases: <code>Exception</code></p>
 
   
         <p>Error raised when inventory root key is not found.</p>
+
+
+
+
+
 
   
 

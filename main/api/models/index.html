@@ -2374,16 +2374,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../report_manager/" class="md-nav__link">
+      <a href="../csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2970,12 +3063,16 @@
 
 
 <a href="#anta.models.AntaTest" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AntaTest</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">AntaDevice</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">eos_data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AntaTest</span><span class="p">(</span>
+    <span class="n">device</span><span class="p">:</span> <span class="n">AntaDevice</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">eos_data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-external" title="abc.ABC" href="https://docs.python.org/3/library/abc.html#abc.ABC">ABC</a></code></p>
+              Bases: <code>ABC</code></p>
 
   
         <p>Abstract class defining a test in ANTA.</p>
@@ -3030,7 +3127,7 @@ writing a test as simple as possible.</p>
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.device">device</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.device.AntaDevice" href="../device/#anta.device.AntaDevice">AntaDevice</a></code>
+                  <code>AntaDevice</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3041,7 +3138,7 @@ writing a test as simple as possible.</p>
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.inputs">inputs</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.models.AntaTest.Input" href="#anta.models.AntaTest.Input">Input</a></code>
+                  <code>Input</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3052,7 +3149,7 @@ writing a test as simple as possible.</p>
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.instance_commands">instance_commands</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="anta.models.AntaCommand" href="#anta.models.AntaCommand">AntaCommand</a>]</code>
+                  <code>list[AntaCommand]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3063,7 +3160,7 @@ writing a test as simple as possible.</p>
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.result">result</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.models.TestResult" href="../result_manager_models/#anta.result_manager.models.TestResult">TestResult</a></code>
+                  <code>TestResult</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3074,7 +3171,7 @@ writing a test as simple as possible.</p>
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.logger">logger</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="logging.Logger" href="https://docs.python.org/3/library/logging.html#logging.Logger">Logger</a></code>
+                  <code>Logger</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3099,9 +3196,11 @@ writing a test as simple as possible.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>device</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.device.AntaDevice" href="../device/#anta.device.AntaDevice">AntaDevice</a></code>
+                <code>device</code>
+            </td>
+            <td>
+                  <code>AntaDevice</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3113,9 +3212,11 @@ writing a test as simple as possible.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>inputs</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | <a class="autorefs autorefs-internal" title="anta.models.AntaTest.Input" href="#anta.models.AntaTest.Input">Input</a> | None</code>
+                <code>inputs</code>
+            </td>
+            <td>
+                  <code>dict[str, Any] | Input | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3127,9 +3228,11 @@ writing a test as simple as possible.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>eos_data</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>eos_data</code>
+            </td>
+            <td>
+                  <code>list[dict[Any, Any] | str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3143,6 +3246,11 @@ This list must have the same length and order than the <code>instance_commands</
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
                     <details class="quote">
                     <summary>Source code in <code>anta/models.py</code></summary>
@@ -3327,7 +3435,7 @@ This list must have the same length and order than the <code>instance_commands</
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+              Bases: <code>BaseModel</code></p>
 
   
         <p>Class defining inputs for a test in ANTA.</p>
@@ -3360,7 +3468,7 @@ This list must have the same length and order than the <code>instance_commands</
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.result_overwrite">result_overwrite</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.models.AntaTest.Input.ResultOverwrite" href="#anta.models.AntaTest.Input.ResultOverwrite">ResultOverwrite</a> | None</code>
+                  <code>ResultOverwrite | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3370,6 +3478,11 @@ This list must have the same length and order than the <code>instance_commands</
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
   
 
@@ -3397,7 +3510,7 @@ This list must have the same length and order than the <code>instance_commands</
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+              Bases: <code>BaseModel</code></p>
 
   
         <p>Runtime filters to map tests with list of tags or devices.</p>
@@ -3416,7 +3529,7 @@ This list must have the same length and order than the <code>instance_commands</
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.Filters.tags">tags</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3426,6 +3539,11 @@ This list must have the same length and order than the <code>instance_commands</
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
   
 
@@ -3463,7 +3581,7 @@ This list must have the same length and order than the <code>instance_commands</
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+              Bases: <code>BaseModel</code></p>
 
   
         <p>Test inputs model to overwrite result fields.</p>
@@ -3482,7 +3600,7 @@ This list must have the same length and order than the <code>instance_commands</
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.ResultOverwrite.description">description</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3493,7 +3611,7 @@ This list must have the same length and order than the <code>instance_commands</
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.ResultOverwrite.categories">categories</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                  <code>list[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3504,7 +3622,7 @@ This list must have the same length and order than the <code>instance_commands</
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaTest.Input.ResultOverwrite.custom_field">custom_field</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                  <code>str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3514,6 +3632,11 @@ This list must have the same length and order than the <code>instance_commands</
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
   
 
@@ -3596,7 +3719,9 @@ This list must have the same length and order than the <code>instance_commands</
   </span>
 
 <a href="#anta.models.AntaTest.anta_test" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">anta_test</span><span class="p">(</span><span class="n">function</span><span class="p">:</span> <span class="n">F</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TestResult</span><span class="p">]]</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">anta_test</span><span class="p">(</span>
+    <span class="n">function</span><span class="p">:</span> <span class="n">F</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TestResult</span><span class="p">]]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3871,7 +3996,9 @@ no AntaTemplate for this test.</p>
 
 
 <a href="#anta.models.AntaTest.save_commands_data" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">save_commands_data</span><span class="p">(</span><span class="n">eos_data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">save_commands_data</span><span class="p">(</span>
+    <span class="n">eos_data</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4010,7 +4137,7 @@ It must set the correct status of the <code>result</code> instance attribute wit
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+              Bases: <code>BaseModel</code></p>
 
   
         <p>Class to define a command.</p>
@@ -4039,7 +4166,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.command">command</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4050,7 +4177,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.version">version</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a>[1, &#39;latest&#39;]</code>
+                  <code>Literal[1, &#39;latest&#39;]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4061,7 +4188,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.revision">revision</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.custom_types.Revision" href="../types/#anta.custom_types.Revision">Revision</a> | None</code>
+                  <code>Revision | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4072,7 +4199,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.ofmt">ofmt</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="typing.Literal" href="https://docs.python.org/3/library/typing.html#typing.Literal">Literal</a>[&#39;json&#39;, &#39;text&#39;]</code>
+                  <code>Literal[&#39;json&#39;, &#39;text&#39;]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4083,7 +4210,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.output">output</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+                  <code>dict[str, Any] | str | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4094,7 +4221,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.template">template</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.models.AntaTemplate" href="#anta.models.AntaTemplate">AntaTemplate</a> | None</code>
+                  <code>AntaTemplate | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4105,7 +4232,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.errors">errors</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                  <code>list[str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4116,7 +4243,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.params">params</span></code></td>
             <td>
-                  <code><span title="anta.models.AntaParamsBaseModel">AntaParamsBaseModel</span></code>
+                  <code>AntaParamsBaseModel</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4127,7 +4254,7 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           <tr class="doc-section-item">
             <td><code><span title="anta.models.AntaCommand.use_cache">use_cache</span></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4137,6 +4264,11 @@ translated to a specific <strong>revision</strong> for each CLI command in the R
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
   
 
@@ -4253,7 +4385,7 @@ See error property.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError">RuntimeError</a></code>
+                  <code>RuntimeError</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4300,7 +4432,7 @@ AntaDevice.collect() must be called before this property.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError">RuntimeError</a></code>
+                  <code>RuntimeError</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4392,7 +4524,7 @@ AntaDevice.collect() must be called before this property.</p>
 
 
 <a href="#anta.models.AntaTemplate" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AntaTemplate</span><span class="p">(</span><span class="n">template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;latest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;latest&#39;</span><span class="p">,</span> <span class="n">revision</span><span class="p">:</span> <span class="n">Revision</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ofmt</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">use_cache</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">AntaTemplate</span><span class="p">(</span><span class="n">template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;latest&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">&amp;</span><span class="c1">#39;latest&amp;#39;, revision: Revision | None = None, ofmt: Literal[&#39;json&#39;, &#39;text&#39;] = &amp;#39;json&amp;#39;, *, use_cache: bool = True)</span>
 </code></pre></div>
 
     <div class="doc doc-contents first">
@@ -4464,6 +4596,11 @@ AntaDevice.collect() must be called before this property.</p>
           </tr>
       </tbody>
     </table>
+
+
+
+
+
 
                     <details class="quote">
                     <summary>Source code in <code>anta/models.py</code></summary>
@@ -4594,9 +4731,11 @@ AntaDevice.collect() must be called before this property.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>params</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a> | <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>params</code>
+            </td>
+            <td>
+                  <code>str | int | bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4622,7 +4761,7 @@ AntaDevice.collect() must be called before this property.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.models.AntaCommand" href="#anta.models.AntaCommand">AntaCommand</a></code>
+                  <code>AntaCommand</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4647,7 +4786,7 @@ AntaTemplate instance.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="anta.models.AntaTemplateRenderError">AntaTemplateRenderError</span></code>
+                  <code>AntaTemplateRenderError</code>
             </td>
             <td>
               <div class="doc-md-description">

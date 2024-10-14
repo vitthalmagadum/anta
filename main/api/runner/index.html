@@ -13,7 +13,7 @@
       
       
       
-        <link rel="prev" href="../report_manager/">
+        <link rel="prev" href="../reporters/">
       
       
         <link rel="next" href="../../troubleshooting/">
@@ -1908,16 +1908,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../report_manager/" class="md-nav__link">
+      <a href="../csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2321,6 +2414,11 @@
 
 
 
+
+
+
+
+
   <div class="doc doc-children">
 
 
@@ -2360,7 +2458,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a>]</code>
+                  <code>tuple[int, int]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2434,7 +2532,12 @@
 
 
 <a href="#anta.runner.get_coroutines" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_coroutines</span><span class="p">(</span><span class="n">selected_tests</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">[</span><span class="n">AntaDevice</span><span class="p">,</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestDefinition</span><span class="p">]],</span> <span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TestResult</span><span class="p">]]</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">get_coroutines</span><span class="p">(</span>
+    <span class="n">selected_tests</span><span class="p">:</span> <span class="n">defaultdict</span><span class="p">[</span>
+        <span class="n">AntaDevice</span><span class="p">,</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestDefinition</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TestResult</span><span class="p">]]</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2454,9 +2557,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>selected_tests</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="collections.defaultdict" href="https://docs.python.org/3/library/collections.html#collections.defaultdict">defaultdict</a>[<a class="autorefs autorefs-internal" title="anta.device.AntaDevice" href="../device/#anta.device.AntaDevice">AntaDevice</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-internal" title="anta.catalog.AntaTestDefinition" href="../catalog/#anta.catalog.AntaTestDefinition">AntaTestDefinition</a>]]</code>
+                <code>selected_tests</code>
+            </td>
+            <td>
+                  <code>defaultdict[AntaDevice, set[AntaTestDefinition]]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2468,9 +2573,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>manager</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.ResultManager" href="../result_manager/#anta.result_manager.ResultManager">ResultManager</a></code>
+                <code>manager</code>
+            </td>
+            <td>
+                  <code>ResultManager</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2496,7 +2603,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" title="collections.abc.Coroutine" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Coroutine">Coroutine</a>[<a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>, <a class="autorefs autorefs-internal" title="anta.result_manager.models.TestResult" href="../result_manager_models/#anta.result_manager.models.TestResult">TestResult</a>]]</code>
+                  <code>list[Coroutine[Any, Any, TestResult]]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2608,9 +2715,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>devices</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="anta.device.AntaDevice" href="../device/#anta.device.AntaDevice">AntaDevice</a>]</code>
+                <code>devices</code>
+            </td>
+            <td>
+                  <code>list[AntaDevice]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2679,7 +2788,17 @@
   </span>
 
 <a href="#anta.runner.main" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">main</span><span class="p">(</span><span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span> <span class="n">inventory</span><span class="p">:</span> <span class="n">AntaInventory</span><span class="p">,</span> <span class="n">catalog</span><span class="p">:</span> <span class="n">AntaCatalog</span><span class="p">,</span> <span class="n">devices</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tests</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">established_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">dry_run</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">main</span><span class="p">(</span>
+    <span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span>
+    <span class="n">inventory</span><span class="p">:</span> <span class="n">AntaInventory</span><span class="p">,</span>
+    <span class="n">catalog</span><span class="p">:</span> <span class="n">AntaCatalog</span><span class="p">,</span>
+    <span class="n">devices</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tests</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">established_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">dry_run</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2701,9 +2820,11 @@ ResultManager object gets updated with the test results.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>manager</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.ResultManager" href="../result_manager/#anta.result_manager.ResultManager">ResultManager</a></code>
+                <code>manager</code>
+            </td>
+            <td>
+                  <code>ResultManager</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2715,9 +2836,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>inventory</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.inventory.AntaInventory" href="../inventory/#anta.inventory.AntaInventory">AntaInventory</a></code>
+                <code>inventory</code>
+            </td>
+            <td>
+                  <code>AntaInventory</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2729,9 +2852,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>catalog</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="../catalog/#anta.catalog.AntaCatalog">AntaCatalog</a></code>
+                <code>catalog</code>
+            </td>
+            <td>
+                  <code>AntaCatalog</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2743,9 +2868,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>devices</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>devices</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2757,9 +2884,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>tests</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>tests</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2771,9 +2900,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>tags</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>tags</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2785,9 +2916,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>established_only</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>established_only</code>
+            </td>
+            <td>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2799,9 +2932,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>dry_run</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>dry_run</code>
+            </td>
+            <td>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3004,7 +3139,14 @@ ResultManager object gets updated with the test results.</p>
 
 
 <a href="#anta.runner.prepare_tests" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">prepare_tests</span><span class="p">(</span><span class="n">inventory</span><span class="p">:</span> <span class="n">AntaInventory</span><span class="p">,</span> <span class="n">catalog</span><span class="p">:</span> <span class="n">AntaCatalog</span><span class="p">,</span> <span class="n">tests</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">defaultdict</span><span class="p">[</span><span class="n">AntaDevice</span><span class="p">,</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestDefinition</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">prepare_tests</span><span class="p">(</span>
+    <span class="n">inventory</span><span class="p">:</span> <span class="n">AntaInventory</span><span class="p">,</span>
+    <span class="n">catalog</span><span class="p">:</span> <span class="n">AntaCatalog</span><span class="p">,</span>
+    <span class="n">tests</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span>
+    <span class="n">defaultdict</span><span class="p">[</span><span class="n">AntaDevice</span><span class="p">,</span> <span class="nb">set</span><span class="p">[</span><span class="n">AntaTestDefinition</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3024,9 +3166,11 @@ ResultManager object gets updated with the test results.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>inventory</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.inventory.AntaInventory" href="../inventory/#anta.inventory.AntaInventory">AntaInventory</a></code>
+                <code>inventory</code>
+            </td>
+            <td>
+                  <code>AntaInventory</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3038,9 +3182,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>catalog</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.catalog.AntaCatalog" href="../catalog/#anta.catalog.AntaCatalog">AntaCatalog</a></code>
+                <code>catalog</code>
+            </td>
+            <td>
+                  <code>AntaCatalog</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3052,9 +3198,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>tests</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>tests</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3066,9 +3214,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>tags</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>tags</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3094,7 +3244,7 @@ ResultManager object gets updated with the test results.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" title="collections.defaultdict" href="https://docs.python.org/3/library/collections.html#collections.defaultdict">defaultdict</a>[<a class="autorefs autorefs-internal" title="anta.device.AntaDevice" href="../device/#anta.device.AntaDevice">AntaDevice</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-internal" title="anta.catalog.AntaTestDefinition" href="../catalog/#anta.catalog.AntaTestDefinition">AntaTestDefinition</a>]] | None</code>
+                  <code>defaultdict[AntaDevice, set[AntaTestDefinition]] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3220,7 +3370,13 @@ ResultManager object gets updated with the test results.</p>
   </span>
 
 <a href="#anta.runner.setup_inventory" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">setup_inventory</span><span class="p">(</span><span class="n">inventory</span><span class="p">:</span> <span class="n">AntaInventory</span><span class="p">,</span> <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">devices</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">established_only</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaInventory</span> <span class="o">|</span> <span class="kc">None</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">setup_inventory</span><span class="p">(</span>
+    <span class="n">inventory</span><span class="p">:</span> <span class="n">AntaInventory</span><span class="p">,</span>
+    <span class="n">tags</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">devices</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">established_only</span><span class="p">:</span> <span class="nb">bool</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AntaInventory</span> <span class="o">|</span> <span class="kc">None</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3240,9 +3396,11 @@ ResultManager object gets updated with the test results.</p>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>inventory</code></td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.inventory.AntaInventory" href="../inventory/#anta.inventory.AntaInventory">AntaInventory</a></code>
+                <code>inventory</code>
+            </td>
+            <td>
+                  <code>AntaInventory</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3254,9 +3412,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>tags</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>tags</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3268,9 +3428,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>devices</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#set">set</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
+                <code>devices</code>
+            </td>
+            <td>
+                  <code>set[str] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3282,9 +3444,11 @@ ResultManager object gets updated with the test results.</p>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>established_only</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                <code>established_only</code>
+            </td>
+            <td>
+                  <code>bool</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3310,7 +3474,7 @@ ResultManager object gets updated with the test results.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="anta.inventory.AntaInventory" href="../inventory/#anta.inventory.AntaInventory">AntaInventory</a> | None</code>
+                  <code>AntaInventory | None</code>
             </td>
             <td>
               <div class="doc-md-description">

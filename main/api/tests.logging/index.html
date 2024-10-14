@@ -2092,16 +2092,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../report_manager/" class="md-nav__link">
+      <a href="../csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2407,6 +2500,11 @@
 
 
 
+
+
+
+
+
   <div class="doc doc-children">
 
 
@@ -2448,6 +2546,11 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyLoggingAccounting</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
+
+
+
+
 
   
 
@@ -2564,6 +2667,11 @@
 </code></pre></div>
 </details>
 
+
+
+
+
+
   
 
   <div class="doc doc-children">
@@ -2678,6 +2786,11 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyLoggingHostname</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
+
+
+
+
 
   
 
@@ -2822,6 +2935,11 @@
 </code></pre></div>
 </details>
 
+
+
+
+
+
   
 
   <div class="doc doc-children">
@@ -2847,7 +2965,7 @@
               <tr>
                 <td><code>hosts</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" title="ipaddress.IPv4Address" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address">IPv4Address</a>]</code>
+                      <code>list[IPv4Address]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2861,7 +2979,7 @@
               <tr>
                 <td><code>vrf</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code>str</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -3015,6 +3133,11 @@
 </code></pre></div>
 </details>
 
+
+
+
+
+
   
 
   <div class="doc doc-children">
@@ -3139,6 +3262,11 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyLoggingPersistent</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
+
+
+
+
 
   
 
@@ -3271,6 +3399,11 @@
 </code></pre></div>
 </details>
 
+
+
+
+
+
   
 
   <div class="doc doc-children">
@@ -3296,7 +3429,7 @@
               <tr>
                 <td><code>interface</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code>str</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -3310,7 +3443,7 @@
               <tr>
                 <td><code>vrf</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code>str</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -3450,6 +3583,11 @@
 </code></pre></div>
 </details>
 
+
+
+
+
+
   
 
   <div class="doc doc-children">
@@ -3561,7 +3699,9 @@
 
 
 <a href="#anta.tests.logging._get_logging_states" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">_get_logging_states</span><span class="p">(</span><span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">,</span> <span class="n">command_output</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">_get_logging_states</span><span class="p">(</span>
+    <span class="n">logger</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">,</span> <span class="n">command_output</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3581,9 +3721,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>logger</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="logging.Logger" href="https://docs.python.org/3/library/logging.html#logging.Logger">Logger</a></code>
+                <code>logger</code>
+            </td>
+            <td>
+                  <code>Logger</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3595,9 +3737,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>command_output</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                <code>command_output</code>
+            </td>
+            <td>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3623,7 +3767,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">

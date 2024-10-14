@@ -2054,16 +2054,109 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reporter
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            Reporter
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../report_manager/" class="md-nav__link">
+      <a href="../csv_reporter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Report Manager
+    CSV reporter
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../md_reporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdown reporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reporters/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Other reporters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2331,6 +2424,11 @@
 
 
 
+
+
+
+
+
   <div class="doc doc-children">
 
 
@@ -2384,6 +2482,11 @@
 </code></pre></div>
 </details>
 
+
+
+
+
+
   
 
   <div class="doc doc-children">
@@ -2409,7 +2512,7 @@
               <tr>
                 <td><code>trackers</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<span title="anta.tests.flow_tracking.VerifyHardwareFlowTrackerStatus.Input.FlowTracker">FlowTracker</span>]</code>
+                      <code>list[FlowTracker]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2439,7 +2542,7 @@
               <tr>
                 <td><code>name</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code>str</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2453,7 +2556,7 @@
               <tr>
                 <td><code>record_export</code></td>
                 <td>
-                      <code><span title="anta.tests.flow_tracking.VerifyHardwareFlowTrackerStatus.Input.FlowTracker.RecordExport">RecordExport</span> | None</code>
+                      <code>RecordExport | None</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2467,7 +2570,7 @@
               <tr>
                 <td><code>exporters</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<span title="anta.tests.flow_tracking.VerifyHardwareFlowTrackerStatus.Input.FlowTracker.Exporter">Exporter</span>] | None</code>
+                      <code>list[Exporter] | None</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2497,7 +2600,7 @@
               <tr>
                 <td><code>on_inactive_timeout</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+                      <code>int</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2511,7 +2614,7 @@
               <tr>
                 <td><code>on_interval</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+                      <code>int</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2543,7 +2646,7 @@
               <tr>
                 <td><code>name</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code>str</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2557,7 +2660,7 @@
               <tr>
                 <td><code>local_interface</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                      <code>str</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2571,7 +2674,7 @@
               <tr>
                 <td><code>template_interval</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+                      <code>int</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -2853,7 +2956,10 @@
 
 
 <a href="#anta.tests.flow_tracking.validate_exporters" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">validate_exporters</span><span class="p">(</span><span class="n">exporters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span> <span class="n">tracker_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">validate_exporters</span><span class="p">(</span>
+    <span class="n">exporters</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
+    <span class="n">tracker_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2873,9 +2979,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>exporters</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]]</code>
+                <code>exporters</code>
+            </td>
+            <td>
+                  <code>list[dict[str, str]]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2887,9 +2995,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>tracker_info</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                <code>tracker_info</code>
+            </td>
+            <td>
+                  <code>dict[str, str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2915,7 +3025,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3003,7 +3113,10 @@
 
 
 <a href="#anta.tests.flow_tracking.validate_record_export" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">validate_record_export</span><span class="p">(</span><span class="n">record_export</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">tracker_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">validate_record_export</span><span class="p">(</span>
+    <span class="n">record_export</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+    <span class="n">tracker_info</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3023,9 +3136,11 @@
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code>record_export</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                <code>record_export</code>
+            </td>
+            <td>
+                  <code>dict[str, str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3037,9 +3152,11 @@
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code>tracker_info</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+                <code>tracker_info</code>
+            </td>
+            <td>
+                  <code>dict[str, str]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3065,7 +3182,7 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
