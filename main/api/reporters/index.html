@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../imgs/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -2541,7 +2541,7 @@ Data structure sent to template is:</p>
                 <code>data</code>
             </td>
             <td>
-                  <code>list[dict[str, Any]]</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2557,7 +2557,7 @@ Data structure sent to template is:</p>
                 <code>trim_blocks</code>
             </td>
             <td>
-                  <code>bool</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2573,7 +2573,7 @@ Data structure sent to template is:</p>
                 <code>lstrip_blocks</code>
             </td>
             <td>
-                  <code>bool</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2599,7 +2599,7 @@ Data structure sent to template is:</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code>str</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2755,7 +2755,16 @@ Data structure sent to template is:</p>
   </span>
 
 <a href="#anta.reporter.ReportTable.Headers" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">Headers</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="c1">#39;Device&amp;#39;, test_case: str = &amp;#39;Test Name&amp;#39;, number_of_success: str = &amp;#39;# of success&amp;#39;, number_of_failure: str = &amp;#39;# of failure&amp;#39;, number_of_skipped: str = &amp;#39;# of skipped&amp;#39;, number_of_errors: str = &amp;#39;# of errors&amp;#39;, list_of_error_nodes: str = &amp;#39;List of failed or error nodes&amp;#39;, list_of_error_tests: str = &amp;#39;List of failed or error test cases&amp;#39;)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">Headers</span><span class="p">(</span>
+    <span class="n">device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Device&quot;</span><span class="p">,</span>
+    <span class="n">test_case</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Test Name&quot;</span><span class="p">,</span>
+    <span class="n">number_of_success</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;# of success&quot;</span><span class="p">,</span>
+    <span class="n">number_of_failure</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;# of failure&quot;</span><span class="p">,</span>
+    <span class="n">number_of_skipped</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;# of skipped&quot;</span><span class="p">,</span>
+    <span class="n">number_of_errors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;# of errors&quot;</span><span class="p">,</span>
+    <span class="n">list_of_error_nodes</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;List of failed or error nodes&quot;</span><span class="p">,</span>
+    <span class="n">list_of_error_tests</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;List of failed or error test cases&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2800,7 +2809,9 @@ Data structure sent to template is:</p>
 
 
 <a href="#anta.reporter.ReportTable.report_all" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">report_all</span><span class="p">(</span><span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="c1">#39;All tests results&amp;#39;) -&gt; Table</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">report_all</span><span class="p">(</span>
+    <span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;All tests results&quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2825,7 +2836,7 @@ Data structure sent to template is:</p>
                 <code>manager</code>
             </td>
             <td>
-                  <code>ResultManager</code>
+                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.ResultManager" href="../result_manager/#anta.result_manager.ResultManager">ResultManager</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2841,7 +2852,7 @@ Data structure sent to template is:</p>
                 <code>title</code>
             </td>
             <td>
-                  <code>str</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2867,7 +2878,7 @@ Data structure sent to template is:</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code>Table</code>
+                  <code><span title="rich.table.Table">Table</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2953,7 +2964,11 @@ Data structure sent to template is:</p>
 
 
 <a href="#anta.reporter.ReportTable.report_summary_devices" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">report_summary_devices</span><span class="p">(</span><span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span> <span class="n">devices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="c1">#39;Summary per device&amp;#39;) -&gt; Table</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">report_summary_devices</span><span class="p">(</span>
+    <span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span>
+    <span class="n">devices</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Summary per device&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2978,7 +2993,7 @@ Data structure sent to template is:</p>
                 <code>manager</code>
             </td>
             <td>
-                  <code>ResultManager</code>
+                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.ResultManager" href="../result_manager/#anta.result_manager.ResultManager">ResultManager</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2994,7 +3009,7 @@ Data structure sent to template is:</p>
                 <code>devices</code>
             </td>
             <td>
-                  <code>list[str] | None</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3010,7 +3025,7 @@ Data structure sent to template is:</p>
                 <code>title</code>
             </td>
             <td>
-                  <code>str</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3036,7 +3051,7 @@ Data structure sent to template is:</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code>Table</code>
+                  <code><span title="rich.table.Table">Table</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3152,7 +3167,11 @@ Data structure sent to template is:</p>
 
 
 <a href="#anta.reporter.ReportTable.report_summary_tests" class="headerlink" title="Permanent link">&para;</a></h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">report_summary_tests</span><span class="p">(</span><span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span> <span class="n">tests</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="o">&amp;</span><span class="c1">#39;Summary per test&amp;#39;) -&gt; Table</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">report_summary_tests</span><span class="p">(</span>
+    <span class="n">manager</span><span class="p">:</span> <span class="n">ResultManager</span><span class="p">,</span>
+    <span class="n">tests</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Summary per test&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3178,7 +3197,7 @@ Test Name | # of success | # of skipped | # of failure | # of errors | List of f
                 <code>manager</code>
             </td>
             <td>
-                  <code>ResultManager</code>
+                  <code><a class="autorefs autorefs-internal" title="anta.result_manager.ResultManager" href="../result_manager/#anta.result_manager.ResultManager">ResultManager</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3194,7 +3213,7 @@ Test Name | # of success | # of skipped | # of failure | # of errors | List of f
                 <code>tests</code>
             </td>
             <td>
-                  <code>list[str] | None</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3210,7 +3229,7 @@ Test Name | # of success | # of skipped | # of failure | # of errors | List of f
                 <code>title</code>
             </td>
             <td>
-                  <code>str</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3236,7 +3255,7 @@ Test Name | # of success | # of skipped | # of failure | # of errors | List of f
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code>Table</code>
+                  <code><span title="rich.table.Table">Table</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3383,7 +3402,7 @@ Test Name | # of success | # of skipped | # of failure | # of errors | List of f
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 9, 2024</span>
   </span>
 
     
@@ -3482,7 +3501,7 @@ Test Name | # of success | # of skipped | # of failure | # of errors | List of f
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.top", "content.tabs.link", "content.code.copy", "toc.follow", "navigation.indexes", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": ["stable"], "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
