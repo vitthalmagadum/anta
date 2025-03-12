@@ -1866,6 +1866,40 @@
           
             <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
 <li class="md-nav__item">
+    <a href="#anta.tests.routing.bgp.VerifyBGPPeerTtlMultiHops" class="md-nav__link">
+      <span class="md-ellipsis">
+        VerifyBGPPeerTtlMultiHops
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+      <nav class="md-nav" aria-label="VerifyBGPPeerTtlMultiHops">
+        <ul class="md-nav__list">
+          
+          
+            <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
+<li class="md-nav__item">
+    <a href="#anta.tests.routing.bgp.VerifyBGPPeerTtlMultiHops-attributes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Inputs
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+  </li>
+          
+          
+        </ul>
+      </nav>
+    
+  </li>
+          
+          
+          
+            <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
+<li class="md-nav__item">
     <a href="#anta.tests.routing.bgp.VerifyBGPPeerUpdateErrors" class="md-nav__link">
       <span class="md-ellipsis">
         VerifyBGPPeerUpdateErrors
@@ -3680,6 +3714,40 @@
           
             <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
 <li class="md-nav__item">
+    <a href="#anta.tests.routing.bgp.VerifyBGPPeerTtlMultiHops" class="md-nav__link">
+      <span class="md-ellipsis">
+        VerifyBGPPeerTtlMultiHops
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+      <nav class="md-nav" aria-label="VerifyBGPPeerTtlMultiHops">
+        <ul class="md-nav__list">
+          
+          
+            <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
+<li class="md-nav__item">
+    <a href="#anta.tests.routing.bgp.VerifyBGPPeerTtlMultiHops-attributes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Inputs
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+  </li>
+          
+          
+        </ul>
+      </nav>
+    
+  </li>
+          
+          
+          
+            <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
+<li class="md-nav__item">
     <a href="#anta.tests.routing.bgp.VerifyBGPPeerUpdateErrors" class="md-nav__link">
       <span class="md-ellipsis">
         VerifyBGPPeerUpdateErrors
@@ -4262,6 +4330,7 @@
 
 
 
+
   <div class="doc doc-children">
 
 
@@ -4329,6 +4398,7 @@
 <span class="w">            </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -4578,6 +4648,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4810,7 +4881,7 @@
             <span class="n">is_active</span> <span class="o">=</span> <span class="n">route_paths</span><span class="p">[</span><span class="s2">&quot;active&quot;</span><span class="p">]</span>
             <span class="n">is_valid</span> <span class="o">=</span> <span class="n">route_paths</span><span class="p">[</span><span class="s2">&quot;valid&quot;</span><span class="p">]</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">is_active</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">is_valid</span><span class="p">:</span>
-                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">route_type</span><span class="si">}</span><span class="s2"> route: </span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Valid: </span><span class="si">{</span><span class="n">is_valid</span><span class="si">}</span><span class="s2">, Active: </span><span class="si">{</span><span class="n">is_active</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">route_type</span><span class="si">}</span><span class="s2"> route: </span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Valid: </span><span class="si">{</span><span class="n">is_valid</span><span class="si">}</span><span class="s2"> Active: </span><span class="si">{</span><span class="n">is_active</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="k">return</span> <span class="kc">None</span>
 
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">route_type</span><span class="si">}</span><span class="s2"> route: </span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Not found&quot;</span>
@@ -4901,6 +4972,7 @@
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv4Unicast</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -5098,7 +5170,7 @@
                     <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">capability</span><span class="si">}</span><span class="s2"> not negotiated&quot;</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="p">(</span><span class="n">received</span> <span class="o">:=</span> <span class="n">capability_status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nlrisReceived&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="p">(</span><span class="n">accepted</span> <span class="o">:=</span> <span class="n">capability_status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nlrisAccepted&quot;</span><span class="p">)):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> AFI/SAFI: </span><span class="si">{</span><span class="n">capability</span><span class="si">}</span><span class="s2"> - some NLRI were filtered or rejected - Accepted: </span><span class="si">{</span><span class="n">accepted</span><span class="si">}</span><span class="s2"> Received: </span><span class="si">{</span><span class="n">received</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> AFI/SAFI: </span><span class="si">{</span><span class="n">capability</span><span class="si">}</span><span class="s2"> - Some NLRI were filtered or rejected - Accepted: </span><span class="si">{</span><span class="n">accepted</span><span class="si">}</span><span class="s2"> Received: </span><span class="si">{</span><span class="n">received</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -5159,6 +5231,7 @@
 <span class="w">            </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -5419,6 +5492,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -5644,7 +5718,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
             <span class="c1"># Check if the count matches the expected count</span>
             <span class="k">if</span> <span class="n">address_family</span><span class="o">.</span><span class="n">num_peers</span> <span class="o">!=</span> <span class="n">peer_count</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> - Expected: </span><span class="si">{</span><span class="n">address_family</span><span class="o">.</span><span class="n">num_peers</span><span class="si">}</span><span class="s2">, Actual: </span><span class="si">{</span><span class="n">peer_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> - Peer count mismatch - Expected: </span><span class="si">{</span><span class="n">address_family</span><span class="o">.</span><span class="n">num_peers</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">peer_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -5711,6 +5785,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prefixEvpnDroppedUnsupportedRouteType</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -5975,6 +6050,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -6223,6 +6299,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -6400,7 +6477,7 @@ have successfully negotiated the specified AFI/SAFI</li>
             <span class="n">state</span> <span class="o">=</span> <span class="n">peer_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">)</span>
             <span class="n">md5_auth_enabled</span> <span class="o">=</span> <span class="n">peer_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;md5AuthEnabled&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">state</span> <span class="o">!=</span> <span class="s2">&quot;Established&quot;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Session state is not established - State: </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Incorrect session state - Expected: Established Actual: </span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">md5_auth_enabled</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Session does not have MD5 authentication enabled&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -6476,6 +6553,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ipv4MplsVpn</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -6781,6 +6859,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -6974,11 +7053,11 @@ have successfully negotiated the specified AFI/SAFI</li>
 
             <span class="c1"># Verify maximum routes</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">actual_maximum_routes</span> <span class="o">:=</span> <span class="n">peer_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;maxTotalRoutes&quot;</span><span class="p">,</span> <span class="s2">&quot;Not Found&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="n">maximum_routes</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Maximum routes mismatch - Expected: </span><span class="si">{</span><span class="n">maximum_routes</span><span class="si">}</span><span class="s2">, Actual: </span><span class="si">{</span><span class="n">actual_maximum_routes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Maximum routes mismatch - Expected: </span><span class="si">{</span><span class="n">maximum_routes</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">actual_maximum_routes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># Verify warning limit if provided. By default, EOS does not have a warning limit and `totalRoutesWarnLimit` is not present in the output.</span>
             <span class="k">if</span> <span class="n">warning_limit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">actual_warning_limit</span> <span class="o">:=</span> <span class="n">peer_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;totalRoutesWarnLimit&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">!=</span> <span class="n">warning_limit</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Maximum routes warning limit mismatch - Expected: </span><span class="si">{</span><span class="n">warning_limit</span><span class="si">}</span><span class="s2">, Actual: </span><span class="si">{</span><span class="n">actual_warning_limit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Maximum routes warning limit mismatch - Expected: </span><span class="si">{</span><span class="n">warning_limit</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">actual_warning_limit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -7039,6 +7118,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">            </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -7297,6 +7377,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -7504,7 +7585,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
             <span class="c1"># Check if the BGP session is established</span>
             <span class="k">if</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;Established&quot;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Session state is not established - State: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Incorrect session state - Expected: Established Actual: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="c1"># Check the TCP session message queues</span>
@@ -7512,7 +7593,7 @@ have successfully negotiated the specified AFI/SAFI</li>
                 <span class="n">inq</span> <span class="o">=</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;inputQueueLength&quot;</span><span class="p">]</span>
                 <span class="n">outq</span> <span class="o">=</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;outputQueueLength&quot;</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">inq</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">outq</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq</span><span class="si">}</span><span class="s2">, OutQ: </span><span class="si">{</span><span class="n">outq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq</span><span class="si">}</span><span class="s2"> OutQ: </span><span class="si">{</span><span class="n">outq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -7582,6 +7663,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">            </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEV</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -7799,7 +7881,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
             <span class="c1"># Check if the BGP session is established</span>
             <span class="k">if</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;Established&quot;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Session state is not established - State: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Incorrect session state - Expected: Established Actual: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="c1"># Check the TCP session message queues</span>
@@ -7807,7 +7889,275 @@ have successfully negotiated the specified AFI/SAFI</li>
                 <span class="n">inq_stat</span> <span class="o">=</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;inputQueueLength&quot;</span><span class="p">]</span>
                 <span class="n">outq_stat</span> <span class="o">=</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;outputQueueLength&quot;</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">inq_stat</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">outq_stat</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq_stat</span><span class="si">}</span><span class="s2">, OutQ: </span><span class="si">{</span><span class="n">outq_stat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq_stat</span><span class="si">}</span><span class="s2"> OutQ: </span><span class="si">{</span><span class="n">outq_stat</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+  </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="anta.tests.routing.bgp.VerifyBGPPeerTtlMultiHops" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">VerifyBGPPeerTtlMultiHops</span>
+
+
+<a href="#anta.tests.routing.bgp.VerifyBGPPeerTtlMultiHops" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+
+
+
+        <p>Verifies BGP TTL and max-ttl-hops count for BGP IPv4 peer(s).</p>
+<p>This test performs the following checks for each specified BGP peer:</p>
+<ol>
+<li>Verifies the specified BGP peer exists in the BGP configuration.</li>
+<li>Verifies the TTL and max-ttl-hops attribute matches the expected value.</li>
+</ol>
+
+
+<details class="expected-results" open>
+  <summary>Expected Results</summary>
+  <ul>
+<li>Success: The test will pass if all specified peers exist with TTL and max-ttl-hops attributes matching the expected values.</li>
+<li>Failure: If any of the following occur:<ul>
+<li>A specified BGP peer is not found.</li>
+<li>A TTL or max-ttl-hops attribute doesn&rsquo;t match the expected value for any peer.</li>
+</ul>
+</li>
+</ul>
+</details>
+
+
+<details class="example" open>
+  <summary>Examples</summary>
+        <div class="highlight"><pre><span></span><code><span class="nt">anta.tests.routing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">bgp</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyBGPPeerTtlMultiHops</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">bgp_peers</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">peer_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.30.11.1</span>
+<span class="w">              </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">              </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">              </span><span class="nt">max_ttl_hops</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">peer_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.30.11.2</span>
+<span class="w">              </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">              </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">              </span><span class="nt">max_ttl_hops</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+<h3 id="anta.tests.routing.bgp.VerifyBGPPeerTtlMultiHops-attributes">Inputs<a href="#anta.tests.routing.bgp.VerifyBGPPeerTtlMultiHops-attributes" class="headerlink" title="Permanent link">&para;</a></h3>  
+
+  <div class="doc doc-children">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Default</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td><code>bgp_peers</code></td>
+                <td>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="BgpPeer (anta.input_models.routing.bgp.BgpPeer)" href="#anta.input_models.routing.bgp.BgpPeer">BgpPeer</a>]</code>
+                </td>
+                <td>
+                  <div class="doc-md-description">
+                    List of IPv4 peer(s).
+                  </div>
+                </td>
+                <td>
+                    <em>-</em>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+  </div>
+
+
+
+
+
+  </div>
+  <details class="quote">
+  <summary>Source code in <code>anta/tests/routing/bgp.py</code></summary>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1898</span>
+<span class="normal">1899</span>
+<span class="normal">1900</span>
+<span class="normal">1901</span>
+<span class="normal">1902</span>
+<span class="normal">1903</span>
+<span class="normal">1904</span>
+<span class="normal">1905</span>
+<span class="normal">1906</span>
+<span class="normal">1907</span>
+<span class="normal">1908</span>
+<span class="normal">1909</span>
+<span class="normal">1910</span>
+<span class="normal">1911</span>
+<span class="normal">1912</span>
+<span class="normal">1913</span>
+<span class="normal">1914</span>
+<span class="normal">1915</span>
+<span class="normal">1916</span>
+<span class="normal">1917</span>
+<span class="normal">1918</span>
+<span class="normal">1919</span>
+<span class="normal">1920</span>
+<span class="normal">1921</span>
+<span class="normal">1922</span>
+<span class="normal">1923</span>
+<span class="normal">1924</span>
+<span class="normal">1925</span>
+<span class="normal">1926</span>
+<span class="normal">1927</span>
+<span class="normal">1928</span>
+<span class="normal">1929</span>
+<span class="normal">1930</span>
+<span class="normal">1931</span>
+<span class="normal">1932</span>
+<span class="normal">1933</span>
+<span class="normal">1934</span>
+<span class="normal">1935</span>
+<span class="normal">1936</span>
+<span class="normal">1937</span>
+<span class="normal">1938</span>
+<span class="normal">1939</span>
+<span class="normal">1940</span>
+<span class="normal">1941</span>
+<span class="normal">1942</span>
+<span class="normal">1943</span>
+<span class="normal">1944</span>
+<span class="normal">1945</span>
+<span class="normal">1946</span>
+<span class="normal">1947</span>
+<span class="normal">1948</span>
+<span class="normal">1949</span>
+<span class="normal">1950</span>
+<span class="normal">1951</span>
+<span class="normal">1952</span>
+<span class="normal">1953</span>
+<span class="normal">1954</span>
+<span class="normal">1955</span>
+<span class="normal">1956</span>
+<span class="normal">1957</span>
+<span class="normal">1958</span>
+<span class="normal">1959</span>
+<span class="normal">1960</span>
+<span class="normal">1961</span>
+<span class="normal">1962</span>
+<span class="normal">1963</span>
+<span class="normal">1964</span>
+<span class="normal">1965</span>
+<span class="normal">1966</span>
+<span class="normal">1967</span>
+<span class="normal">1968</span>
+<span class="normal">1969</span>
+<span class="normal">1970</span>
+<span class="normal">1971</span>
+<span class="normal">1972</span>
+<span class="normal">1973</span>
+<span class="normal">1974</span>
+<span class="normal">1975</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyBGPPeerTtlMultiHops</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verifies BGP TTL and max-ttl-hops count for BGP IPv4 peer(s).</span>
+
+<span class="sd">    This test performs the following checks for each specified BGP peer:</span>
+
+<span class="sd">      1. Verifies the specified BGP peer exists in the BGP configuration.</span>
+<span class="sd">      2. Verifies the TTL and max-ttl-hops attribute matches the expected value.</span>
+
+<span class="sd">    Expected Results</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    * Success: The test will pass if all specified peers exist with TTL and max-ttl-hops attributes matching the expected values.</span>
+<span class="sd">    * Failure: If any of the following occur:</span>
+<span class="sd">        - A specified BGP peer is not found.</span>
+<span class="sd">        - A TTL or max-ttl-hops attribute doesn&#39;t match the expected value for any peer.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    ```yaml</span>
+<span class="sd">    anta.tests.routing:</span>
+<span class="sd">      bgp:</span>
+<span class="sd">        - VerifyBGPPeerTtlMultiHops:</span>
+<span class="sd">            bgp_peers:</span>
+<span class="sd">                - peer_address: 172.30.11.1</span>
+<span class="sd">                  vrf: default</span>
+<span class="sd">                  ttl: 3</span>
+<span class="sd">                  max_ttl_hops: 3</span>
+<span class="sd">                - peer_address: 172.30.11.2</span>
+<span class="sd">                  vrf: test</span>
+<span class="sd">                  ttl: 30</span>
+<span class="sd">                  max_ttl_hops: 30</span>
+<span class="sd">    ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">categories</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bgp&quot;</span><span class="p">]</span>
+    <span class="n">commands</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">AntaCommand</span> <span class="o">|</span> <span class="n">AntaTemplate</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">AntaCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">&quot;show ip bgp neighbors vrf all&quot;</span><span class="p">,</span> <span class="n">revision</span><span class="o">=</span><span class="mi">2</span><span class="p">)]</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Input</span><span class="p">(</span><span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Input model for the VerifyBGPPeerTtlMultiHops test.&quot;&quot;&quot;</span>
+
+        <span class="n">bgp_peers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BgpPeer</span><span class="p">]</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of IPv4 peer(s).&quot;&quot;&quot;</span>
+
+        <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">&quot;bgp_peers&quot;</span><span class="p">)</span>
+        <span class="nd">@classmethod</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">validate_bgp_peers</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">bgp_peers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BgpPeer</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">BgpPeer</span><span class="p">]:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Validate that &#39;ttl&#39; and &#39;max_ttl_hops&#39; field is provided in each BGP peer.&quot;&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">peer</span> <span class="ow">in</span> <span class="n">bgp_peers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">peer</span><span class="o">.</span><span class="n">ttl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> &#39;ttl&#39; field missing in the input&quot;</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">peer</span><span class="o">.</span><span class="n">max_ttl_hops</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> &#39;max_ttl_hops&#39; field missing in the input&quot;</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">bgp_peers</span>
+
+    <span class="nd">@AntaTest</span><span class="o">.</span><span class="n">anta_test</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Main test function for VerifyBGPPeerTtlMultiHops.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_success</span><span class="p">()</span>
+        <span class="n">command_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance_commands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">json_output</span>
+
+        <span class="k">for</span> <span class="n">peer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">bgp_peers</span><span class="p">:</span>
+            <span class="n">peer_ip</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">peer</span><span class="o">.</span><span class="n">peer_address</span><span class="p">)</span>
+            <span class="n">peer_list</span> <span class="o">=</span> <span class="n">get_value</span><span class="p">(</span><span class="n">command_output</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;vrfs.</span><span class="si">{</span><span class="n">peer</span><span class="o">.</span><span class="n">vrf</span><span class="si">}</span><span class="s2">.peerList&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="p">[])</span>
+
+            <span class="c1"># Check if the peer is found</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">peer_details</span> <span class="o">:=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">peer_list</span><span class="p">,</span> <span class="s2">&quot;peerAddress&quot;</span><span class="p">,</span> <span class="n">peer_ip</span><span class="p">))</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Not found&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Verify if the TTL duration matches the expected value.</span>
+            <span class="k">if</span> <span class="n">peer_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ttl&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">peer</span><span class="o">.</span><span class="n">ttl</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - TTL mismatch - Expected: </span><span class="si">{</span><span class="n">peer</span><span class="o">.</span><span class="n">ttl</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">peer_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ttl&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Verify if the max-ttl-hops time matches the expected value.</span>
+            <span class="k">if</span> <span class="n">peer_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;maxTtlHops&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">peer</span><span class="o">.</span><span class="n">max_ttl_hops</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Max TTL Hops mismatch - Expected: </span><span class="si">{</span><span class="n">peer</span><span class="o">.</span><span class="n">max_ttl_hops</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">peer_details</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;maxTtlHops&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -7874,6 +8224,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inUpdErrWithdraw</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -8151,6 +8502,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -8363,7 +8715,7 @@ have successfully negotiated the specified AFI/SAFI</li>
             <span class="k">for</span> <span class="n">peer</span> <span class="ow">in</span> <span class="n">relevant_peers</span><span class="p">:</span>
                 <span class="c1"># Check if the BGP session is established</span>
                 <span class="k">if</span> <span class="n">peer</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;Established&quot;</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> Peer: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;peerAddress&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - Session state is not established - State: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> Peer: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;peerAddress&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - Incorrect session state - Expected: Established Actual: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                     <span class="k">continue</span>
 
                 <span class="c1"># Check if the AFI/SAFI state is negotiated</span>
@@ -8376,7 +8728,7 @@ have successfully negotiated the specified AFI/SAFI</li>
                     <span class="n">inq</span> <span class="o">=</span> <span class="n">peer</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;inputQueueLength&quot;</span><span class="p">]</span>
                     <span class="n">outq</span> <span class="o">=</span> <span class="n">peer</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;outputQueueLength&quot;</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">inq</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">outq</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> Peer: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;peerAddress&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq</span><span class="si">}</span><span class="s2">, OutQ: </span><span class="si">{</span><span class="n">outq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> Peer: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;peerAddress&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq</span><span class="si">}</span><span class="s2"> OutQ: </span><span class="si">{</span><span class="n">outq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -8430,6 +8782,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">        </span><span class="nt">check_tcp_queues</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -8590,14 +8943,14 @@ have successfully negotiated the specified AFI/SAFI</li>
             <span class="k">for</span> <span class="n">peer</span> <span class="ow">in</span> <span class="n">peer_list</span><span class="p">:</span>
                 <span class="c1"># Check if the BGP session is established</span>
                 <span class="k">if</span> <span class="n">peer</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;Established&quot;</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peer: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;peerAddress&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> VRF: </span><span class="si">{</span><span class="n">vrf</span><span class="si">}</span><span class="s2"> - Session state is not established - State: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peer: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;peerAddress&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> VRF: </span><span class="si">{</span><span class="n">vrf</span><span class="si">}</span><span class="s2"> - Incorrect session state - Expected: Established Actual: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                     <span class="k">continue</span>
 
                 <span class="c1"># Check the TCP session message queues</span>
                 <span class="n">inq</span> <span class="o">=</span> <span class="n">peer</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;inputQueueLength&quot;</span><span class="p">]</span>
                 <span class="n">outq</span> <span class="o">=</span> <span class="n">peer</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;outputQueueLength&quot;</span><span class="p">]</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">check_tcp_queues</span> <span class="ow">and</span> <span class="p">(</span><span class="n">inq</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">outq</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peer: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;peerAddress&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> VRF: </span><span class="si">{</span><span class="n">vrf</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq</span><span class="si">}</span><span class="s2">, OutQ: </span><span class="si">{</span><span class="n">outq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peer: </span><span class="si">{</span><span class="n">peer</span><span class="p">[</span><span class="s1">&#39;peerAddress&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> VRF: </span><span class="si">{</span><span class="n">vrf</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq</span><span class="si">}</span><span class="s2"> OutQ: </span><span class="si">{</span><span class="n">outq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -8670,6 +9023,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">                    </span><span class="nt">route_map</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RM-CONN-2-BGP</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -8971,6 +9325,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -9169,14 +9524,14 @@ have successfully negotiated the specified AFI/SAFI</li>
         <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">route_entries</span><span class="p">:</span>
             <span class="c1"># Verify if the prefix exists in BGP table.</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">bgp_route_entry</span> <span class="o">:=</span> <span class="n">get_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instance_commands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">json_output</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;vrfs..</span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">vrf</span><span class="si">}</span><span class="s2">..bgpRouteEntries..</span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;..&quot;</span><span class="p">)):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - prefix not found in BGP table&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Prefix not found in BGP table&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="n">route_paths</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">bgp_route_entry</span><span class="p">[</span><span class="s2">&quot;bgpRoutePaths&quot;</span><span class="p">])</span>
             <span class="n">head</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">route_paths</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="c1"># Verify if the active ECMP head exists.</span>
             <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">head</span><span class="p">[</span><span class="s2">&quot;routeType&quot;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;ecmpHead&quot;</span><span class="p">]):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - valid and active ECMP head not found&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Valid and active ECMP head not found&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="n">bgp_nexthops</span> <span class="o">=</span> <span class="p">{</span><span class="n">head</span><span class="p">[</span><span class="s2">&quot;nextHop&quot;</span><span class="p">]}</span>
@@ -9184,17 +9539,17 @@ have successfully negotiated the specified AFI/SAFI</li>
 
             <span class="c1"># Verify ECMP count is correct.</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bgp_nexthops</span><span class="p">)</span> <span class="o">!=</span> <span class="n">route</span><span class="o">.</span><span class="n">ecmp_count</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - ECMP count mismatch - Expected: </span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">ecmp_count</span><span class="si">}</span><span class="s2">, Actual: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bgp_nexthops</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - ECMP count mismatch - Expected: </span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">ecmp_count</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bgp_nexthops</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="c1"># Verify if the prefix exists in routing table.</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">route_entry</span> <span class="o">:=</span> <span class="n">get_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instance_commands</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">json_output</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;vrfs..</span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">vrf</span><span class="si">}</span><span class="s2">..routes..</span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;..&quot;</span><span class="p">)):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - prefix not found in routing table&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Prefix not found in routing table&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="c1"># Verify BGP and RIB nexthops are same.</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bgp_nexthops</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">route_entry</span><span class="p">[</span><span class="s2">&quot;vias&quot;</span><span class="p">]):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Nexthops count mismatch - BGP: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bgp_nexthops</span><span class="p">)</span><span class="si">}</span><span class="s2">, RIB: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">route_entry</span><span class="p">[</span><span class="s1">&#39;vias&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Nexthops count mismatch - BGP: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bgp_nexthops</span><span class="p">)</span><span class="si">}</span><span class="s2"> RIB: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">route_entry</span><span class="p">[</span><span class="s1">&#39;vias&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -9258,6 +9613,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">                  </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Incomplete</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -9447,7 +9803,7 @@ have successfully negotiated the specified AFI/SAFI</li>
         <span class="k">for</span> <span class="n">route</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">route_entries</span><span class="p">:</span>
             <span class="c1"># Verify if the prefix exists in BGP table</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">bgp_routes</span> <span class="o">:=</span> <span class="n">get_value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instance_commands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">json_output</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;vrfs..</span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">vrf</span><span class="si">}</span><span class="s2">..bgpRouteEntries..</span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;..&quot;</span><span class="p">)):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - prefix not found&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> - Prefix not found&quot;</span><span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="c1"># Iterating over each path.</span>
@@ -9455,7 +9811,7 @@ have successfully negotiated the specified AFI/SAFI</li>
                 <span class="n">nexthop</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">nexthop</span><span class="p">)</span>
                 <span class="n">origin</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">origin</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">route_path</span> <span class="o">:=</span> <span class="n">get_item</span><span class="p">(</span><span class="n">bgp_routes</span><span class="p">[</span><span class="s2">&quot;bgpRoutePaths&quot;</span><span class="p">],</span> <span class="s2">&quot;nextHop&quot;</span><span class="p">,</span> <span class="n">nexthop</span><span class="p">)):</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> - path not found&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">route</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> - Path not found&quot;</span><span class="p">)</span>
                     <span class="k">continue</span>
 
                 <span class="k">if</span> <span class="p">(</span><span class="n">actual_origin</span> <span class="o">:=</span> <span class="n">get_value</span><span class="p">(</span><span class="n">route_path</span><span class="p">,</span> <span class="s2">&quot;routeType.origin&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="n">origin</span><span class="p">:</span>
@@ -9532,6 +9888,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.1.255.4</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -9775,7 +10132,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
                 <span class="c1"># Check if the BGP session is established</span>
                 <span class="k">if</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;Established&quot;</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> Peer: </span><span class="si">{</span><span class="n">peer_ip</span><span class="si">}</span><span class="s2"> - Session state is not established - State: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> Peer: </span><span class="si">{</span><span class="n">peer_ip</span><span class="si">}</span><span class="s2"> - Incorrect session state - Expected: Established Actual: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
                     <span class="k">continue</span>
 
                 <span class="c1"># Check if the AFI/SAFI state is negotiated</span>
@@ -9791,7 +10148,7 @@ have successfully negotiated the specified AFI/SAFI</li>
                     <span class="n">inq</span> <span class="o">=</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;inputQueueLength&quot;</span><span class="p">]</span>
                     <span class="n">outq</span> <span class="o">=</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;peerTcpInfo&quot;</span><span class="p">][</span><span class="s2">&quot;outputQueueLength&quot;</span><span class="p">]</span>
                     <span class="k">if</span> <span class="n">inq</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">outq</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> Peer: </span><span class="si">{</span><span class="n">peer_ip</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq</span><span class="si">}</span><span class="s2">, OutQ: </span><span class="si">{</span><span class="n">outq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">address_family</span><span class="si">}</span><span class="s2"> Peer: </span><span class="si">{</span><span class="n">peer_ip</span><span class="si">}</span><span class="s2"> - Session has non-empty message queues - InQ: </span><span class="si">{</span><span class="n">inq</span><span class="si">}</span><span class="s2"> OutQ: </span><span class="si">{</span><span class="n">outq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -9855,6 +10212,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">            </span><span class="nt">keep_alive_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -10056,9 +10414,9 @@ have successfully negotiated the specified AFI/SAFI</li>
 
             <span class="c1"># Check BGP peer timers</span>
             <span class="k">if</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;holdTime&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">peer</span><span class="o">.</span><span class="n">hold_time</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Hold time mismatch - Expected: </span><span class="si">{</span><span class="n">peer</span><span class="o">.</span><span class="n">hold_time</span><span class="si">}</span><span class="s2">, Actual: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;holdTime&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Hold time mismatch - Expected: </span><span class="si">{</span><span class="n">peer</span><span class="o">.</span><span class="n">hold_time</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;holdTime&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">peer_data</span><span class="p">[</span><span class="s2">&quot;keepaliveTime&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">peer</span><span class="o">.</span><span class="n">keep_alive_time</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Keepalive time mismatch - Expected: </span><span class="si">{</span><span class="n">peer</span><span class="o">.</span><span class="n">keep_alive_time</span><span class="si">}</span><span class="s2">, Actual: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;keepaliveTime&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Keepalive time mismatch - Expected: </span><span class="si">{</span><span class="n">peer</span><span class="o">.</span><span class="n">keep_alive_time</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">peer_data</span><span class="p">[</span><span class="s1">&#39;keepaliveTime&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -10118,6 +10476,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">            </span><span class="nt">outbound_route_map</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RM-MLAG-PEER-OUT</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -10317,11 +10676,11 @@ have successfully negotiated the specified AFI/SAFI</li>
 
             <span class="c1"># Verify Inbound route-map</span>
             <span class="k">if</span> <span class="n">inbound_route_map</span> <span class="ow">and</span> <span class="p">(</span><span class="n">inbound_map</span> <span class="o">:=</span> <span class="n">peer_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;routeMapInbound&quot;</span><span class="p">,</span> <span class="s2">&quot;Not Configured&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="n">inbound_route_map</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Inbound route-map mismatch - Expected: </span><span class="si">{</span><span class="n">inbound_route_map</span><span class="si">}</span><span class="s2">, Actual: </span><span class="si">{</span><span class="n">inbound_map</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Inbound route-map mismatch - Expected: </span><span class="si">{</span><span class="n">inbound_route_map</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">inbound_map</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="c1"># Verify Outbound route-map</span>
             <span class="k">if</span> <span class="n">outbound_route_map</span> <span class="ow">and</span> <span class="p">(</span><span class="n">outbound_map</span> <span class="o">:=</span> <span class="n">peer_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;routeMapOutbound&quot;</span><span class="p">,</span> <span class="s2">&quot;Not Configured&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="n">outbound_route_map</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Outbound route-map mismatch - Expected: </span><span class="si">{</span><span class="n">outbound_route_map</span><span class="si">}</span><span class="s2">, Actual: </span><span class="si">{</span><span class="n">outbound_map</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peer</span><span class="si">}</span><span class="s2"> - Outbound route-map mismatch - Expected: </span><span class="si">{</span><span class="n">outbound_route_map</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">outbound_map</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -10381,6 +10740,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="w">            </span><span class="nt">vni</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10010</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -10599,6 +10959,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
 
+
   <div class="doc doc-children">
 
 
@@ -10625,6 +10986,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
         <p>Model representing a BGP address family configuration.</p>
+
 
 
 
@@ -10698,11 +11060,7 @@ have successfully negotiated the specified AFI/SAFI</li>
   </div>
   <details class="quote">
   <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">311</span>
-<span class="normal">312</span>
-<span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">315</span>
 <span class="normal">316</span>
 <span class="normal">317</span>
 <span class="normal">318</span>
@@ -10714,7 +11072,11 @@ have successfully negotiated the specified AFI/SAFI</li>
 <span class="normal">324</span>
 <span class="normal">325</span>
 <span class="normal">326</span>
-<span class="normal">327</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AddressFamilyConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AddressFamilyConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Model representing a BGP address family configuration.&quot;&quot;&quot;</span>
 
     <span class="n">afi_safi</span><span class="p">:</span> <span class="n">RedistributedAfiSafi</span>
@@ -10754,6 +11116,7 @@ have successfully negotiated the specified AFI/SAFI</li>
 
 
         <p>Model for a BGP address family.</p>
+
 
 
 
@@ -10921,6 +11284,7 @@ Can be enabled in the `VerifyBGPPeerCount` tests.
         <p>Validate the inputs provided to the BgpAddressFamily class.</p>
 <p>If <code>afi</code> is either <code>ipv4</code> or <code>ipv6</code>, <code>safi</code> must be provided.</p>
 <p>If <code>afi</code> is not <code>ipv4</code> or <code>ipv6</code>, <code>safi</code> must NOT be provided and <code>vrf</code> must be <code>default</code>.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
@@ -11141,6 +11505,7 @@ Can be enabled in the `VerifyBGPPeerCount` tests.
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -11158,11 +11523,7 @@ Can be enabled in the `VerifyBGPPeerCount` tests.
   </div>
   <details class="quote">
   <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
 <span class="normal">191</span>
@@ -11173,7 +11534,11 @@ Can be enabled in the `VerifyBGPPeerCount` tests.
 <span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
-<span class="normal">199</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpNeighbor</span><span class="p">(</span><span class="n">BgpPeer</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpNeighbor</span><span class="p">(</span><span class="n">BgpPeer</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Alias for the BgpPeer model to maintain backward compatibility.</span>
 
 <span class="sd">    When initialised, it will emit a deprecation warning and call the BgpPeer model.</span>
@@ -11213,6 +11578,7 @@ Can be enabled in the `VerifyBGPPeerCount` tests.
 
         <p>Model for a BGP peer.</p>
 <p>Only IPv4 peers are supported for now.</p>
+
 
 
 
@@ -11474,6 +11840,34 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
                       <code><span title="pydantic.Field">Field</span>(<span title="pydantic.Field(default)">default</span>=None, <span title="pydantic.Field(ge)">ge</span>=0, <span title="pydantic.Field(le)">le</span>=4294967294)</code>
                 </td>
               </tr>
+              <tr>
+                <td><code>ttl</code></td>
+                <td>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a> | None</code>
+                </td>
+                <td>
+                  <div class="doc-md-description">
+                    The Time-To-Live (TTL). Required field in the `VerifyBGPPeerTtlMultiHops` test.
+                  </div>
+                </td>
+                <td>
+                      <code><span title="pydantic.Field">Field</span>(<span title="pydantic.Field(default)">default</span>=None, <span title="pydantic.Field(ge)">ge</span>=1, <span title="pydantic.Field(le)">le</span>=255)</code>
+                </td>
+              </tr>
+              <tr>
+                <td><code>max_ttl_hops</code></td>
+                <td>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a> | None</code>
+                </td>
+                <td>
+                  <div class="doc-md-description">
+                    The Max TTL hops. Required field in the `VerifyBGPPeerTtlMultiHops` test.
+                  </div>
+                </td>
+                <td>
+                      <code><span title="pydantic.Field">Field</span>(<span title="pydantic.Field(default)">default</span>=None, <span title="pydantic.Field(ge)">ge</span>=1, <span title="pydantic.Field(le)">le</span>=255)</code>
+                </td>
+              </tr>
           </tbody>
         </table>
   </div>
@@ -11534,7 +11928,11 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 <span class="normal">178</span>
 <span class="normal">179</span>
 <span class="normal">180</span>
-<span class="normal">181</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpPeer</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpPeer</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Model for a BGP peer.</span>
 
 <span class="sd">    Only IPv4 peers are supported for now.</span>
@@ -11579,6 +11977,10 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The warning limit for the maximum routes. `0` means no warning.</span>
 
 <span class="sd">    Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test will not verify the warning limit.&quot;&quot;&quot;</span>
+    <span class="n">ttl</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Time-To-Live (TTL). Required field in the `VerifyBGPPeerTtlMultiHops` test.&quot;&quot;&quot;</span>
+    <span class="n">max_ttl_hops</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Max TTL hops. Required field in the `VerifyBGPPeerTtlMultiHops` test.&quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a human-readable string representation of the BgpPeer for reporting.&quot;&quot;&quot;</span>
@@ -11607,6 +12009,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 
         <p>Model representing BGP routes.</p>
 <p>Only IPv4 prefixes are supported for now.</p>
+
 
 
 
@@ -11703,11 +12106,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
   </div>
   <details class="quote">
   <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
 <span class="normal">222</span>
@@ -11726,7 +12125,11 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 <span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
-<span class="normal">238</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpRoute</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpRoute</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Model representing BGP routes.</span>
 
 <span class="sd">    Only IPv4 prefixes are supported for now.</span>
@@ -11773,6 +12176,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 
 
         <p>Model representing a BGP route path.</p>
+
 
 
 
@@ -11841,11 +12245,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
   </div>
   <details class="quote">
   <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">245</span>
 <span class="normal">246</span>
 <span class="normal">247</span>
 <span class="normal">248</span>
@@ -11857,7 +12257,11 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 <span class="normal">254</span>
 <span class="normal">255</span>
 <span class="normal">256</span>
-<span class="normal">257</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpRoutePath</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpRoutePath</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Model representing a BGP route path.&quot;&quot;&quot;</span>
 
     <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">&quot;forbid&quot;</span><span class="p">)</span>
@@ -11897,6 +12301,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 
 
         <p>Model representing a VRF in a BGP instance.</p>
+
 
 
 
@@ -11965,11 +12370,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
   </div>
   <details class="quote">
   <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">264</span>
 <span class="normal">265</span>
 <span class="normal">266</span>
 <span class="normal">267</span>
@@ -11980,7 +12381,11 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 <span class="normal">272</span>
 <span class="normal">273</span>
 <span class="normal">274</span>
-<span class="normal">275</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpVrf</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BgpVrf</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Model representing a VRF in a BGP instance.&quot;&quot;&quot;</span>
 
     <span class="n">vrf</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
@@ -12019,6 +12424,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 
 
         <p>Model representing a BGP redistributed route configuration.</p>
+
 
 
 
@@ -12116,15 +12522,16 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 
         <p>Validate that &lsquo;include_leaked&rsquo; is not set when the redistributed protocol is AttachedHost, User, Dynamic, or RIP.</p>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">288</span>
-<span class="normal">289</span>
-<span class="normal">290</span>
-<span class="normal">291</span>
-<span class="normal">292</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">292</span>
 <span class="normal">293</span>
-<span class="normal">294</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">)</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">validate_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate that &#39;include_leaked&#39; is not set when the redistributed protocol is AttachedHost, User, Dynamic, or RIP.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">include_leaked</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">proto</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;AttachedHost&quot;</span><span class="p">,</span> <span class="s2">&quot;EOS SDK&quot;</span><span class="p">,</span> <span class="s2">&quot;Dynamic&quot;</span><span class="p">,</span> <span class="s2">&quot;RIP&quot;</span><span class="p">]:</span>
@@ -12142,11 +12549,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
   </div>
   <details class="quote">
   <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">282</span>
 <span class="normal">283</span>
 <span class="normal">284</span>
 <span class="normal">285</span>
@@ -12172,7 +12575,11 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 <span class="normal">305</span>
 <span class="normal">306</span>
 <span class="normal">307</span>
-<span class="normal">308</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RedistributedRouteConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RedistributedRouteConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Model representing a BGP redistributed route configuration.&quot;&quot;&quot;</span>
 
     <span class="n">proto</span><span class="p">:</span> <span class="n">RedistributedProtocol</span>
@@ -12226,6 +12633,7 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
 
 
         <p>Model for a VXLAN endpoint.</p>
+
 
 
 
@@ -12299,17 +12707,17 @@ Optional field in the `VerifyBGPPeerRouteLimit` test. If not provided, the test 
   </div>
   <details class="quote">
   <summary>Source code in <code>anta/input_models/routing/bgp.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
 <span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
-<span class="normal">212</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VxlanEndpoint</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VxlanEndpoint</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Model for a VXLAN endpoint.&quot;&quot;&quot;</span>
 
     <span class="n">address</span><span class="p">:</span> <span class="n">IPv4Address</span> <span class="o">|</span> <span class="n">MacAddress</span>

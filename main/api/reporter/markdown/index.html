@@ -3048,6 +3048,7 @@
 
 
 
+
   <div class="doc doc-children">
 
 
@@ -3084,6 +3085,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3110,6 +3112,7 @@
     <div class="doc doc-contents ">
 
         <p>Generate the <code># ANTA Report</code> section of the markdown report.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -3214,6 +3217,7 @@ to generate and write content to the provided markdown file.</p>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3272,6 +3276,7 @@ to generate and write content to the provided markdown file.</p>
 <li><code>TestResultsSummary</code> will become <code>Test Results Summary</code>.</li>
 </ul>
 </details>
+
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">104</span>
@@ -3339,6 +3344,7 @@ to generate and write content to the provided markdown file.</p>
         <p>Generate the rows of a markdown table for a specific report section.</p>
 <p>Subclasses can implement this method to generate the content of the table rows.</p>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 96</span>
@@ -3379,6 +3385,7 @@ to generate and write content to the provided markdown file.</p>
 
         <p>Abstract method to generate a specific section of the markdown report.</p>
 <p>Must be implemented by subclasses.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -3471,6 +3478,7 @@ to generate and write content to the provided markdown file.</p>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -3575,6 +3583,7 @@ to generate and write content to the provided markdown file.</p>
   <summary>Example</summary>
   <p><code>## Test Results Summary</code></p>
 </details>
+
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">143</span>
@@ -3684,6 +3693,7 @@ to generate and write content to the provided markdown file.</p>
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">127</span>
@@ -3751,6 +3761,7 @@ to generate and write content to the provided markdown file.</p>
 and sequentially generates their content into a markdown file.</p>
 <p>The <code>generate</code> class method will loop over all the section subclasses and call their <code>generate_section</code> method.
 The final report will be generated in the same order as the <code>sections</code> list of the method.</p>
+
 
 
 
@@ -3835,6 +3846,7 @@ The final report will be generated in the same order as the <code>sections</code
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -3933,6 +3945,7 @@ The final report will be generated in the same order as the <code>sections</code
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3959,6 +3972,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the rows of the summary totals table.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -3999,6 +4013,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the <code>### Summary Totals</code> section of the markdown report.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -4053,6 +4068,7 @@ The final report will be generated in the same order as the <code>sections</code
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4079,6 +4095,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the rows of the summary totals device under test table.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -4121,6 +4138,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the <code>### Summary Totals Devices Under Tests</code> section of the markdown report.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -4175,6 +4193,7 @@ The final report will be generated in the same order as the <code>sections</code
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4201,6 +4220,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the rows of the summary totals per category table.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -4241,6 +4261,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the <code>### Summary Totals Per Category</code> section of the markdown report.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -4293,6 +4314,7 @@ The final report will be generated in the same order as the <code>sections</code
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4319,6 +4341,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the rows of the all test results table.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -4359,6 +4382,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the <code>## Test Results</code> section of the markdown report.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>
@@ -4411,6 +4435,7 @@ The final report will be generated in the same order as the <code>sections</code
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4437,6 +4462,7 @@ The final report will be generated in the same order as the <code>sections</code
     <div class="doc doc-contents ">
 
         <p>Generate the <code>## Test Results Summary</code> section of the markdown report.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/reporter/md_reporter.py</code></summary>

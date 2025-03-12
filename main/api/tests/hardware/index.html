@@ -2570,6 +2570,7 @@
 
 
 
+
   <div class="doc doc-children">
 
 
@@ -2613,6 +2614,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyAdverseDrops</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -2690,7 +2692,7 @@
         <span class="n">command_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance_commands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">json_output</span>
         <span class="n">total_adverse_drop</span> <span class="o">=</span> <span class="n">command_output</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;totalAdverseDrops&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">total_adverse_drop</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Non-zero total adverse drops counter - Actual: </span><span class="si">{</span><span class="n">total_adverse_drop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Incorrect total adverse drops counter - Expected: 0 Actual: </span><span class="si">{</span><span class="n">total_adverse_drop</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -2733,6 +2735,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ok</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -2927,6 +2930,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3093,6 +3097,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3205,6 +3210,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyTemperature</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3327,6 +3333,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Arastra, Inc.</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3507,6 +3514,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3584,7 +3592,7 @@
             <span class="k">if</span> <span class="n">sensor</span><span class="p">[</span><span class="s2">&quot;hwStatus&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ok&quot;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sensor: </span><span class="si">{</span><span class="n">sensor</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - Invalid hardware state - Expected: ok Actual: </span><span class="si">{</span><span class="n">sensor</span><span class="p">[</span><span class="s1">&#39;hwStatus&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">sensor</span><span class="p">[</span><span class="s2">&quot;alertCount&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sensor: </span><span class="si">{</span><span class="n">sensor</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - Non-zero alert counter - Actual: </span><span class="si">{</span><span class="n">sensor</span><span class="p">[</span><span class="s1">&#39;alertCount&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sensor: </span><span class="si">{</span><span class="n">sensor</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - Incorrect alert counter - Expected: 0 Actual: </span><span class="si">{</span><span class="n">sensor</span><span class="p">[</span><span class="s1">&#39;alertCount&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>

@@ -2880,6 +2880,7 @@ This list must have the same length and order than the <code>instance_commands</
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -2909,6 +2910,7 @@ This list must have the same length and order than the <code>instance_commands</
     <div class="doc doc-contents ">
 
         <p>Check if CLI commands contain a blocked keyword.</p>
+
     </div>
 
 </div>
@@ -2932,6 +2934,7 @@ This list must have the same length and order than the <code>instance_commands</
     <div class="doc doc-contents ">
 
         <p>Return True if all commands for this test have been collected.</p>
+
     </div>
 
 </div>
@@ -2955,6 +2958,7 @@ This list must have the same length and order than the <code>instance_commands</
     <div class="doc doc-contents ">
 
         <p>Return a list of all the commands that have failed.</p>
+
     </div>
 
 </div>
@@ -2978,6 +2982,7 @@ This list must have the same length and order than the <code>instance_commands</
     <div class="doc doc-contents ">
 
         <p>Return the Python module in which this AntaTest class is defined.</p>
+
     </div>
 
 </div>
@@ -3048,6 +3053,7 @@ This list must have the same length and order than the <code>instance_commands</
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3103,6 +3109,7 @@ This list must have the same length and order than the <code>instance_commands</
           </tr>
       </tbody>
     </table>
+
 
 
 
@@ -3204,6 +3211,7 @@ This list must have the same length and order than the <code>instance_commands</
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3263,6 +3271,7 @@ This list must have the same length and order than the <code>instance_commands</
 <li>Run the <code>test()</code> method</li>
 <li>Catches any exception in <code>test()</code> user code and set the <code>result</code> instance attribute</li>
 </ol>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/models.py</code></summary>
@@ -3434,6 +3443,7 @@ This list must have the same length and order than the <code>instance_commands</
 
         <p>Collect outputs of all commands of this test class from the device of this test instance.</p>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/models.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">589</span>
@@ -3482,6 +3492,7 @@ This list must have the same length and order than the <code>instance_commands</
 <p>This is not an abstract method because it does not need to be implemented if there is
 no AntaTemplate for this test.</p>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/models.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">563</span>
@@ -3523,6 +3534,7 @@ no AntaTemplate for this test.</p>
     <div class="doc doc-contents ">
 
         <p>Populate output of all AntaCommand instances in <code>instance_commands</code>.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/models.py</code></summary>
@@ -3585,6 +3597,7 @@ It must set the correct status of the <code>result</code> instance attribute wit
             <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="s2">&quot;Failure reason&quot;</span><span class="p">)</span>
 </code></pre></div></p>
 </details>
+
             <details class="quote">
               <summary>Source code in <code>anta/models.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">701</span>
@@ -3650,6 +3663,7 @@ It must set the correct status of the <code>result</code> instance attribute wit
     <div class="doc doc-contents ">
 
         <p>Update progress bar for all AntaTest objects if it exists.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/models.py</code></summary>

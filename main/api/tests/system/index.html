@@ -2743,6 +2743,7 @@
 
 
 
+
   <div class="doc doc-children">
 
 
@@ -2786,6 +2787,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyAgentLogs</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -2912,6 +2914,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3029,6 +3032,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyCoredump</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3165,6 +3169,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3275,6 +3280,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyMaintenance</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3435,6 +3441,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3545,6 +3552,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyNTP</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3673,6 +3681,7 @@ if any other NTP server does not have the condition &lsquo;candidate&rsquo;.</li
 <span class="w">          </span><span class="nt">stratum</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3900,6 +3909,7 @@ if any other NTP server does not have the condition &lsquo;candidate&rsquo;.</li
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4037,6 +4047,7 @@ if any other NTP server does not have the condition &lsquo;candidate&rsquo;.</li
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4153,7 +4164,7 @@ if any other NTP server does not have the condition &lsquo;candidate&rsquo;.</li
         <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_success</span><span class="p">()</span>
         <span class="n">command_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance_commands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">json_output</span>
         <span class="k">if</span> <span class="n">command_output</span><span class="p">[</span><span class="s2">&quot;upTime&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">minimum</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Device uptime is incorrect - Expected: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">minimum</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">command_output</span><span class="p">[</span><span class="s1">&#39;upTime&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Device uptime is incorrect - Expected: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">minimum</span><span class="si">}</span><span class="s2">s Actual: </span><span class="si">{</span><span class="n">command_output</span><span class="p">[</span><span class="s1">&#39;upTime&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -4178,6 +4189,7 @@ if any other NTP server does not have the condition &lsquo;candidate&rsquo;.</li
     <div class="doc doc-contents first">
 
         <p>Module containing input models for system tests.</p>
+
 
 
 
@@ -4212,6 +4224,7 @@ if any other NTP server does not have the condition &lsquo;candidate&rsquo;.</li
 
 
         <p>Model for a NTP server.</p>
+
 
 
 

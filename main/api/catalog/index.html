@@ -2955,6 +2955,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -2984,6 +2985,7 @@
     <div class="doc doc-contents ">
 
         <p>Path of the file used to create this AntaCatalog instance.</p>
+
     </div>
 
 </div>
@@ -3008,6 +3010,7 @@
     <div class="doc doc-contents ">
 
         <p>List of AntaTestDefinition in this catalog.</p>
+
     </div>
 
 </div>
@@ -3033,6 +3036,7 @@
 <p>If a <code>filtered_tests</code> set is provided, only the tests in this set will be indexed.</p>
 <p>This method populates the tag_to_tests attribute, which is a dictionary mapping tags to sets of tests.</p>
 <p>Once the indexes are built, the <code>indexes_built</code> attribute is set to True.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -3100,6 +3104,7 @@
 
         <p>Clear this AntaCatalog instance indexes.</p>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">498</span>
@@ -3150,6 +3155,7 @@
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -3278,6 +3284,7 @@ YAML Test Catalog file.</p>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -3441,6 +3448,7 @@ YAML Test Catalog file.</p>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -3606,6 +3614,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">502</span>
@@ -3759,6 +3768,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">443</span>
@@ -3872,6 +3882,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -4003,6 +4014,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -4147,6 +4159,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4174,6 +4187,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
 
         <p>Check the <code>inputs</code> field typing.</p>
 <p>The <code>inputs</code> class attribute needs to be an instance of the AntaTest.Input subclass defined in the class <code>test</code>.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -4226,6 +4240,7 @@ If False, returns tests that contain any of the specified tags (union).</p>
 <p>If the test has no inputs, allow the user to omit providing the <code>inputs</code> field.
 If the test has inputs, allow the user to provide a valid dictionary of the input fields.
 This model validator will instantiate an Input class from the <code>test</code> class field.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -4356,6 +4371,7 @@ This model validator will instantiate an Input class from the <code>test</code> 
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">61</span>
@@ -4439,6 +4455,7 @@ This model validator will instantiate an Input class from the <code>test</code> 
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4472,6 +4489,7 @@ This model validator will instantiate an Input class from the <code>test</code> 
 <p>This validator will try to flatten and import Python modules, check if the tests classes
 are actually defined in their respective Python module and instantiate Input instances
 with provided value to validate test inputs.</p>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
@@ -4588,6 +4606,7 @@ with provided value to validate test inputs.</p>
 </code></pre></div>
 <code>anta.tests.routing.generic</code> and <code>anta.tests.routing.bgp</code> are importable Python modules.</p>
 </details>
+
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">159</span>
@@ -4713,6 +4732,7 @@ with provided value to validate test inputs.</p>
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>
               <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
@@ -4775,6 +4795,7 @@ with provided value to validate test inputs.</p>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/catalog.py</code></summary>

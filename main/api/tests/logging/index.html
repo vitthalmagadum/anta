@@ -2723,6 +2723,7 @@
 
 
 
+
   <div class="doc doc-children">
 
 
@@ -2766,6 +2767,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyLoggingAccounting</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -2884,6 +2886,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyLoggingErrors</span><span class="p">:</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3015,6 +3018,7 @@
 <span class="w">      </span><span class="nt">severity_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">informational</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3244,6 +3248,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3446,6 +3451,7 @@
 <span class="w">      </span><span class="nt">severity_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">informational</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3655,6 +3661,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -3783,6 +3790,7 @@
 <span class="w">      </span><span class="nt">vrf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -3924,7 +3932,7 @@
         <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">_get_logging_states</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">output</span><span class="p">)):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_success</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Source-interface &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">interface</span><span class="si">}</span><span class="s2">&#39; is not configured in VRF </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">vrf</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Source-interface: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">interface</span><span class="si">}</span><span class="s2"> VRF: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">vrf</span><span class="si">}</span><span class="s2"> - Not configured&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -3981,6 +3989,7 @@
 <span class="w">      </span><span class="nt">severity_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">informational</span>
 </code></pre></div>
 </details>
+
 
 
 
@@ -4204,6 +4213,7 @@
 
 
 
+
   
 
   <div class="doc doc-children">
@@ -4273,7 +4283,7 @@
         <span class="n">log_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance_commands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text_output</span>
 
         <span class="k">if</span> <span class="s2">&quot;Syslog logging: enabled&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_get_logging_states</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span> <span class="n">log_output</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="s2">&quot;Syslog logging is disabled.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="s2">&quot;Syslog logging is disabled&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
   </details>
     </div>
@@ -4367,6 +4377,7 @@
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>anta/tests/logging.py</code></summary>
