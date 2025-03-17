@@ -67,7 +67,7 @@ def run_tests(ctx: click.Context) -> None:
 
 def _get_result_manager(ctx: click.Context) -> ResultManager:
     """Get a ResultManager instance based on Click context."""
-    return ctx.obj["result_manager"].filter(ctx.obj.get("hide")) if ctx.obj.get("hide") is not None else ctx.obj["result_manager"]
+    return {"manager": ctx.obj["result_manager"], "filtered_manager": ctx.obj["result_manager"].filter(ctx.obj.get("hide")) if ctx.obj.get("hide") is not None else None}
 
 
 def print_settings(
@@ -84,7 +84,8 @@ def print_table(ctx: click.Context, group_by: Literal["device", "test"] | None =
     """Print result in a table."""
     reporter = ReportTable()
     console.print()
-    results = _get_result_manager(ctx)
+    
+    results = _get_result_manager(ctx)["filtered_manager"] if ctx.obj.get("hide") is not None else _get_result_manager(ctx)["manager"]
 
     if group_by == "device":
         console.print(reporter.report_summary_devices(results))
@@ -96,7 +97,7 @@ def print_table(ctx: click.Context, group_by: Literal["device", "test"] | None =
 
 def print_json(ctx: click.Context, output: pathlib.Path | None = None) -> None:
     """Print results as JSON. If output is provided, save to file instead."""
-    results = _get_result_manager(ctx)
+    results = _get_result_manager(ctx)["filtered_manager"] if ctx.obj.get("hide") is not None else _get_result_manager(ctx)["manager"]
 
     if output is None:
         console.print()
@@ -115,7 +116,8 @@ def print_json(ctx: click.Context, output: pathlib.Path | None = None) -> None:
 def print_text(ctx: click.Context) -> None:
     """Print results as simple text."""
     console.print()
-    for test in _get_result_manager(ctx).results:
+    results = _get_result_manager(ctx)["filtered_manager"] if ctx.obj.get("hide") is not None else _get_result_manager(ctx)["manager"]
+    for test in results.results:
         if len(test.messages) <= 1:
             message = test.messages[0] if len(test.messages) == 1 else ""
             console.print(f"{test.name} :: {test.test} :: [{test.result}]{test.result.upper()}[/{test.result}]({message})", highlight=False)
@@ -139,7 +141,8 @@ def print_jinja(results: ResultManager, template: pathlib.Path, output: pathlib.
 def save_to_csv(ctx: click.Context, csv_file: pathlib.Path) -> None:
     """Save results to a CSV file."""
     try:
-        ReportCsv.generate(results=_get_result_manager(ctx), csv_filename=csv_file)
+        results = _get_result_manager(ctx)["filtered_manager"] if ctx.obj.get("hide") is not None else _get_result_manager(ctx)["manager"]
+        ReportCsv.generate(results=results, csv_filename=csv_file)
         console.print(f"CSV report saved to {csv_file} ✅", style="cyan")
     except OSError:
         console.print(f"Failed to save CSV report to {csv_file} ❌", style="cyan")
@@ -157,7 +160,8 @@ def save_markdown_report(ctx: click.Context, md_output: pathlib.Path) -> None:
         Path to save the markdown report.
     """
     try:
-        MDReportGenerator.generate(results=_get_result_manager(ctx).sort(["name", "categories", "test"]), md_filename=md_output)
+        results = _get_result_manager(ctx)
+        MDReportGenerator.generate(results=results, md_filename=md_output)
         console.print(f"Markdown report saved to {md_output} ✅", style="cyan")
     except OSError:
         console.print(f"Failed to save Markdown report to {md_output} ❌", style="cyan")

@@ -47,14 +47,19 @@ class MDReportGenerator:
             The path to the markdown file to write the report into.
         """
         try:
+            manager = results["manager"].sort(["name", "categories", "test"])
+            filtered_manager = None
+            if results["filtered_manager"]:
+                filtered_manager = results["filtered_manager"].sort(["name", "categories", "test"])
             with md_filename.open("w", encoding="utf-8") as mdfile:
                 sections: list[MDReportBase] = [
-                    ANTAReport(mdfile, results),
-                    TestResultsSummary(mdfile, results),
-                    SummaryTotals(mdfile, results),
-                    SummaryTotalsDeviceUnderTest(mdfile, results),
-                    SummaryTotalsPerCategory(mdfile, results),
-                    TestResults(mdfile, results),
+                    ANTAReport(mdfile, manager),
+                    TestResultsSummary(mdfile, manager),
+                    SummaryTotals(mdfile, manager),
+                    SummaryTotalsDeviceUnderTest(mdfile, manager),
+                    SummaryTotalsPerCategory(mdfile, manager),
+                    TestResults(mdfile, filtered_manager if filtered_manager else manager),
+                    FailedTestResultsSummary(mdfile, manager.filter(hide={AntaTestStatus.SUCCESS, AntaTestStatus.SKIPPED})),
                 ]
                 for section in sections:
                     section.generate_section()
@@ -297,3 +302,30 @@ class TestResults(MDReportBase):
         """Generate the `## Test Results` section of the markdown report."""
         self.write_heading(heading_level=2)
         self.write_table(table_heading=self.TABLE_HEADING, last_table=True)
+
+
+class FailedTestResultsSummary(MDReportBase):
+    """Generate the `## Failed Test Results Summary` section of the markdown report."""
+    TABLE_HEADING: ClassVar[list[str]] = [
+        "| Device Under Test | Categories | Test | Description | Custom Field  | Result | Messages |",
+        "| ----------------- | ---------- | ---- | ----------- | --------------| -------| -------- |",
+    ]
+
+    def generate_rows(self) -> Generator[str, None, None]:
+        """Generate the rows of the failed test results table."""
+        self.results.results = sorted(self.results.results, key=lambda result: [getattr(result, field) for field in ["name", "result"]])
+        for result in self.results.results:
+            messages = self.safe_markdown(result.messages[0]) if len(result.messages) == 1 else self.safe_markdown("<br>".join(result.messages))
+            categories = ", ".join(sorted(convert_categories(result.categories)))
+            yield (
+                f"| {result.name or '-'} | {categories or '-'} | {result.test or '-'} "
+                f"| {result.description or '-'} | {self.safe_markdown(result.custom_field) or '-'} | {result.result or '-'} | {messages or '-'} |\n"
+            )
+    def generate_section(self) -> None:
+        """Generate the `## Failed Test Results Summary` section of the markdown report."""
+        if self.results.results:
+            self.write_heading(heading_level=2)
+            self.write_table(table_heading=self.TABLE_HEADING)
+        else:
+            self.write_heading(heading_level=2)
+            self.mdfile.write("No failures detected in the test suite execution.\n\n")

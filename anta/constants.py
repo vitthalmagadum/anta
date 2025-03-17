@@ -34,7 +34,8 @@ MD_REPORT_TOC = """**Table of Contents:**
     - [Summary Totals](#summary-totals)
     - [Summary Totals Device Under Test](#summary-totals-device-under-test)
     - [Summary Totals Per Category](#summary-totals-per-category)
-  - [Test Results](#test-results)"""
+  - [Test Results](#test-results)
+  - [FailedTestResultsSummary](#failed-test-results-summary)"""
 """Table of Contents for the Markdown report."""
 
 KNOWN_EOS_ERRORS = [

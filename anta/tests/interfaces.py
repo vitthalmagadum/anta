@@ -585,6 +585,7 @@ class VerifyL2MTU(AntaTest):
             catch_interface = re.findall(r"^[e,p][a-zA-Z]+[-,a-zA-Z]*\d+\/*\d*", interface, re.IGNORECASE)
             if catch_interface and catch_interface not in self.inputs.ignored_interfaces and details["forwardingModel"] == "bridged":
                 if interface in specific_interfaces:
+                    breakpoint()
                     if (mtu := specific_interfaces[interface]) != (act_mtu := details["mtu"]):
                         self.result.is_failure(f"Interface: {interface} - Incorrect MTU configured - Expected: {mtu} Actual: {act_mtu}")
 
