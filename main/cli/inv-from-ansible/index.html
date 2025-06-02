@@ -2466,8 +2466,8 @@ Options:
 <span class="w">                            </span><span class="o">[</span>required<span class="o">]</span>
 <span class="w">  </span>--help<span class="w">                    </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<blockquote>
+<p>[!WARNING]</p>
 <ul>
 <li>
 <p><code>anta get from-ansible</code> does not support inline vaulted variables, comment them out to generate your inventory.</p>
@@ -2479,7 +2479,7 @@ Options:
 <p>The current implementation only considers devices directly attached to a specific Ansible group and does not support inheritance when using the <code>--ansible-group</code> option.</p>
 </li>
 </ul>
-</div>
+</blockquote>
 <p>By default, if user does not provide <code>--output</code> file, anta will save output to configured anta inventory (<code>anta --inventory</code>). If the output file has content, anta will ask user to overwrite when running in interactive console. This mechanism can be controlled by triggers in case of CI usage: <code>--overwrite</code> to force anta to overwrite file. If not set, anta will exit</p>
 <h3 id="command-output">Command output<a class="headerlink" href="#command-output" title="Permanent link">&para;</a></h3>
 <p><code>host</code> value is coming from the <code>ansible_host</code> key in your inventory while <code>name</code> is the name you defined for your host. Below is an ansible inventory example used to generate previous inventory:</p>

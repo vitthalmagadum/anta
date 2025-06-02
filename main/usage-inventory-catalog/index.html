@@ -2755,10 +2755,10 @@ The file must comply with the following structure:</p>
 <li><code>ranges</code>: scan a range for devices accessible via eAPI</li>
 </ul>
 <p>A full description of the inventory model is available in <a href="../api/inventory/">API documentation</a></p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Caching can be disabled per device, network or range by setting the <code>disable_cache</code> key to <code>True</code> in the inventory file. For more details about how caching is implemented in ANTA, please refer to <a href="../advanced_usages/caching/">Caching in ANTA</a>.</p>
-</div>
+<blockquote>
+<p>[!INFO]
+Caching can be disabled per device, network or range by setting the <code>disable_cache</code> key to <code>True</code> in the inventory file. For more details about how caching is implemented in ANTA, please refer to <a href="../advanced_usages/caching/">Caching in ANTA</a>.</p>
+</blockquote>
 <h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="nt">anta_inventory</span><span class="p">:</span>
@@ -2882,10 +2882,10 @@ The file must comply with the following structure:</p>
 <span class="w">      </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;leaf&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>When using the CLI, you can filter the NRFU execution using tags. Refer to <a href="../cli/tag-management/">this section</a> of the CLI documentation.</p>
-</div>
+<blockquote>
+<p>[!INFO]
+When using the CLI, you can filter the NRFU execution using tags. Refer to <a href="../cli/tag-management/">this section</a> of the CLI documentation.</p>
+</blockquote>
 <h4 id="tests-available-in-anta">Tests available in ANTA<a class="headerlink" href="#tests-available-in-anta" title="Permanent link">&para;</a></h4>
 <p>All tests available as part of the ANTA framework are defined under the <code>anta.tests</code> Python module and are categorised per family (Python submodule).
 The complete list of the tests and their respective inputs is available at the <a href="../api/tests/">tests section</a> of this website.</p>
@@ -2944,11 +2944,11 @@ So for instance, if my custom tests are defined in the <code>custom.tests.system
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyPlatform</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;cEOS-LAB&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>How to create custom tests</strong></p>
+<blockquote>
+<p>[!TIP]
+<strong>How to create custom tests</strong></p>
 <p>To create your custom tests, you should refer to this <a href="../advanced_usages/custom-tests/">documentation</a></p>
-</div>
+</blockquote>
 <h4 id="customize-test-description-and-categories">Customize test description and categories<a class="headerlink" href="#customize-test-description-and-categories" title="Permanent link">&para;</a></h4>
 <p>It might be interesting to use your own categories and customized test description to build a better report for your environment. ANTA comes with a handy feature to define your own <code>categories</code> and <code>description</code> in the report.</p>
 <p>In your test catalog, use <code>result_overwrite</code> dictionary with <code>categories</code> and <code>description</code> to just overwrite this values in your report:</p>

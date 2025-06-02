@@ -2862,10 +2862,10 @@
   ~ that can be found in the LICENSE file.
   -->
 
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>This documentation applies for both creating tests in ANTA or creating your own test package.</p>
-</div>
+<blockquote>
+<p>[!INFO]
+This documentation applies for both creating tests in ANTA or creating your own test package.</p>
+</blockquote>
 <p>ANTA is not only a Python library with a CLI and a collection of built-in tests, it is also a framework you can extend by building your own tests.</p>
 <h3 id="generic-approach">Generic approach<a class="headerlink" href="#generic-approach" title="Permanent link">&para;</a></h3>
 <p>A test is a Python class where a test function is defined and will be run by the framework.</p>
@@ -2914,10 +2914,10 @@
 <li><code>categories</code> (<code>list[str]</code>): A list of categories in which the test belongs.</li>
 <li><code>commands</code> (<code>[list[AntaCommand | AntaTemplate]]</code>): A list of command to collect from devices. This list <strong>must</strong> be a list of <a href="../../api/commands/#anta.models.AntaCommand">AntaCommand</a> or <a href="../../api/commands/#anta.models.AntaTemplate">AntaTemplate</a> instances. Rendering <a href="../../api/commands/#anta.models.AntaTemplate">AntaTemplate</a> instances will be discussed later.</li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>All these class attributes are mandatory. If any attribute is missing, a <code>NotImplementedError</code> exception will be raised during class instantiation.</p>
-</div>
+<blockquote>
+<p>[!INFO]
+All these class attributes are mandatory. If any attribute is missing, a <code>NotImplementedError</code> exception will be raised during class instantiation.</p>
+</blockquote>
 <h4 id="instance-attributes">Instance Attributes<a class="headerlink" href="#instance-attributes" title="Permanent link">&para;</a></h4>
 
 
@@ -3028,8 +3028,8 @@
 
     </div>
 
-</div><div class="admonition note">
-<p class="admonition-title">Note</p>
+</div><blockquote>
+<p>[!NOTE]</p>
 <ul>
 <li>
 <p><strong>Logger object</strong></p>
@@ -3040,7 +3040,7 @@
 <p>Even if <code>device</code> is not a private attribute, you should not need to access this object in your code.</p>
 </li>
 </ul>
-</div>
+</blockquote>
 <h4 id="test-inputs">Test Inputs<a class="headerlink" href="#test-inputs" title="Permanent link">&para;</a></h4>
 <p><a href="../../api/tests/anta_test/#anta.models.AntaTest.Input">AntaTest.Input</a> is a <a href="https://docs.pydantic.dev/latest/usage/models/">pydantic model</a> that allow test developers to define their test inputs. <a href="https://docs.pydantic.dev/latest/">pydantic</a> provides out of the box <a href="https://docs.pydantic.dev/latest/usage/models/#error-handling">error handling</a> for test input validation based on the type hints defined by the test developer.</p>
 <p>The base definition of <a href="../../api/tests/anta_test/#anta.models.AntaTest.Input">AntaTest.Input</a> provides common test inputs for all <a href="../../api/tests/anta_test/#anta.models.AntaTest">AntaTest</a> instances:</p>
@@ -3198,10 +3198,10 @@
 
     </div>
 
-</div><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The pydantic model is configured using the <a href="https://docs.pydantic.dev/latest/usage/model_config/#extra-attributes"><code>extra=forbid</code></a> that will fail input validation if extra fields are provided.</p>
-</div>
+</div><blockquote>
+<p>[!NOTE]
+The pydantic model is configured using the <a href="https://docs.pydantic.dev/latest/usage/model_config/#extra-attributes"><code>extra=forbid</code></a> that will fail input validation if extra fields are provided.</p>
+</blockquote>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <ul>
 <li><a href="../../api/tests/anta_test/#anta.models.AntaTest.test">test(self) -&gt; None</a>: This is an abstract method that <strong>must</strong> be implemented. It contains the test logic that can access the collected command outputs using the <code>instance_commands</code> instance attribute, access the test inputs using the <code>inputs</code> instance attribute and <strong>must</strong> set the <code>result</code> instance attribute accordingly. It must be implemented using the <code>AntaTest.anta_test</code> decorator that provides logging and will collect commands before executing the <code>test()</code> method.</li>
@@ -3231,10 +3231,10 @@
 <h4 id="class-definition">Class definition<a class="headerlink" href="#class-definition" title="Permanent link">&para;</a></h4>
 <p>Import <a href="../../api/tests/anta_test/#anta.models.AntaTest">anta.models.AntaTest</a> and define your own class.
 Define the mandatory class attributes using <a href="../../api/commands/#anta.models.AntaCommand">anta.models.AntaCommand</a>, <a href="../../api/commands/#anta.models.AntaTemplate">anta.models.AntaTemplate</a> or both.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Caching can be disabled per <code>AntaCommand</code> or <code>AntaTemplate</code> by setting the <code>use_cache</code> argument to <code>False</code>. For more details about how caching is implemented in ANTA, please refer to <a href="../caching/">Caching in ANTA</a>.</p>
-</div>
+<blockquote>
+<p>[!NOTE]
+Caching can be disabled per <code>AntaCommand</code> or <code>AntaTemplate</code> by setting the <code>use_cache</code> argument to <code>False</code>. For more details about how caching is implemented in ANTA, please refer to <a href="../caching/">Caching in ANTA</a>.</p>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">anta.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AntaTest</span><span class="p">,</span> <span class="n">AntaCommand</span><span class="p">,</span> <span class="n">AntaTemplate</span>
 
 
@@ -3263,9 +3263,9 @@ Define the mandatory class attributes using <a href="../../api/commands/#anta.mo
         <span class="p">)</span>
     <span class="p">]</span>
 </code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>Command revision and version</strong></p>
+<blockquote>
+<p>[!TIP]
+<strong>Command revision and version</strong></p>
 <ul>
 <li>Most of EOS commands return a JSON structure according to a model (some commands may not be modeled hence the necessity to use <code>text</code> outformat sometimes.</li>
 <li>The model can change across time (adding feature, &hellip; ) and when the model is changed in a non backward-compatible way, the <strong>revision</strong> number is bumped. The initial model starts with <strong>revision</strong> 1.</li>
@@ -3278,7 +3278,7 @@ Define the mandatory class attributes using <a href="../../api/commands/#anta.mo
 <div class="highlight"><pre><span></span><code><span class="c1"># revision 1 as later revision introduce additional nesting for type</span>
 <span class="n">commands</span> <span class="o">=</span> <span class="p">[</span><span class="n">AntaCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">&quot;show bfd peers&quot;</span><span class="p">,</span> <span class="n">revision</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
 </code></pre></div>
-</div>
+</blockquote>
 <h4 id="inputs-definition">Inputs definition<a class="headerlink" href="#inputs-definition" title="Permanent link">&para;</a></h4>
 <p>If the user needs to provide inputs for your test, you need to define a <a href="https://docs.pydantic.dev/latest/usage/models/">pydantic model</a> that defines the schema of the test inputs:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="err">&lt;</span><span class="nc">YourTestName</span><span class="o">&gt;</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
@@ -3306,10 +3306,10 @@ Define the mandatory class attributes using <a href="../../api/commands/#anta.mo
 <p>To define an input field type, refer to the <a href="https://docs.pydantic.dev/latest/usage/types/types/">pydantic documentation</a> about types.
 You can also leverage <a href="../../api/tests/types/">anta.custom_types</a> that provides reusable types defined in ANTA tests.</p>
 <p>Regarding required, optional and nullable fields, refer to this <a href="https://docs.pydantic.dev/latest/migration/#required-optional-and-nullable-fields">documentation</a> on how to define them.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All the <code>pydantic</code> features are supported. For instance you can define <a href="https://docs.pydantic.dev/latest/usage/validators/">validators</a> for complex input validation.</p>
-</div>
+<blockquote>
+<p>[!NOTE]
+All the <code>pydantic</code> features are supported. For instance you can define <a href="https://docs.pydantic.dev/latest/usage/validators/">validators</a> for complex input validation.</p>
+</blockquote>
 <h4 id="template-rendering">Template rendering<a class="headerlink" href="#template-rendering" title="Permanent link">&para;</a></h4>
 <p>Define the <code>render()</code> method if you have <a href="../../api/commands/#anta.models.AntaTemplate">AntaTemplate</a> instances in your <code>commands</code> class attribute:</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="err">&lt;</span><span class="nc">YourTestName</span><span class="o">&gt;</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
@@ -3382,10 +3382,10 @@ You can also leverage <a href="../../api/tests/types/">anta.custom_types</a> tha
         <span class="k">pass</span>
 </code></pre></div>
 <h3 id="access-your-custom-tests-in-the-test-catalog">Access your custom tests in the test catalog<a class="headerlink" href="#access-your-custom-tests-in-the-test-catalog" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This section is required only if you are not merging your development into ANTA. Otherwise, just follow <a href="../../contribution/">contribution guide</a>.</p>
-</div>
+<blockquote>
+<p>[!WARNING]
+This section is required only if you are not merging your development into ANTA. Otherwise, just follow <a href="../../contribution/">contribution guide</a>.</p>
+</blockquote>
 <p>For that, you need to create your own Python package as described in this <a href="https://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/">hitchhiker&rsquo;s guide</a> to package Python code. We assume it is well known and we won&rsquo;t focus on this aspect. Thus, your package must be importable by ANTA hence available in the module search path <code>sys.path</code> (you can use <code>PYTHONPATH</code> for example).</p>
 <p>It is very similar to what is documented in <a href="../../usage-inventory-catalog/">catalog section</a> but you have to use your own package name.2</p>
 <p>Let say the custom Python package is <code>anta_custom</code> and the test is defined in <code>anta_custom.dc_project</code> Python module, the test catalog would look like:</p>

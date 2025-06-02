@@ -2487,10 +2487,10 @@ Options:
 <span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod2</span>
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The current implementation only considers devices directly attached to a specific container when using the <code>--cvp-container</code> option.</p>
-</div>
+<blockquote>
+<p>[!WARNING]
+The current implementation only considers devices directly attached to a specific container when using the <code>--cvp-container</code> option.</p>
+</blockquote>
 <h3 id="creating-an-inventory-from-multiple-containers">Creating an inventory from multiple containers<a class="headerlink" href="#creating-an-inventory-from-multiple-containers" title="Permanent link">&para;</a></h3>
 <p>If you need to create an inventory from multiple containers, you can use a bash command and then manually concatenate files to create a single inventory file:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>container<span class="w"> </span><span class="k">in</span><span class="w"> </span>pod01<span class="w"> </span>pod02<span class="w"> </span>spines<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>anta<span class="w"> </span>get<span class="w"> </span>from-cvp<span class="w"> </span>-ip<span class="w"> </span>&lt;cvp-ip&gt;<span class="w"> </span>-u<span class="w"> </span>cvpadmin<span class="w"> </span>-p<span class="w"> </span>cvpadmin<span class="w"> </span>-c<span class="w"> </span><span class="nv">$container</span><span class="w"> </span>-d<span class="w"> </span>test-inventory<span class="p">;</span><span class="w"> </span><span class="k">done</span>
