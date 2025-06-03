@@ -2631,10 +2631,10 @@ Python<span class="w"> </span><span class="m">3</span>.11.8
 <h4 id="install-library-from-pypi-server">Install library from Pypi server<a class="headerlink" href="#install-library-from-pypi-server" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>anta
 </code></pre></div>
-<blockquote>
-<p>[!WARNING]
-This command alone <strong>will not</strong> install the ANTA CLI requirements.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This command alone <strong>will not</strong> install the ANTA CLI requirements.</p>
+</div>
 <h4 id="install-anta-cli-as-an-application-with-pipx">Install ANTA CLI as an application with <code>pipx</code><a class="headerlink" href="#install-anta-cli-as-an-application-with-pipx" title="Permanent link">&para;</a></h4>
 <p><a href="https://pipx.pypa.io/stable/"><code>pipx</code></a> is a tool to install and run python applications in isolated environments. If you plan to use ANTA only as a CLI tool you can use <code>pipx</code> to install it. <code>pipx</code> installs ANTA in an isolated python environment and makes it available globally.</p>
 <div class="highlight"><pre><span></span><code>pipx<span class="w"> </span>install<span class="w"> </span>anta<span class="o">[</span>cli<span class="o">]</span>
@@ -2671,10 +2671,10 @@ pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><
 which<span class="w"> </span>anta
 /home/tom/.pyenv/shims/anta
 </code></pre></div>
-<blockquote>
-<p>[!WARNING]
-Before running the <code>anta --version</code> command, please be aware that some users have reported issues related to the <code>urllib3</code> package. If you encounter an error at this step, please refer to our <a href="../faq/">FAQ</a> page for guidance on resolving it.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before running the <code>anta --version</code> command, please be aware that some users have reported issues related to the <code>urllib3</code> package. If you encounter an error at this step, please refer to our <a href="../faq/">FAQ</a> page for guidance on resolving it.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check ANTA version</span>
 anta<span class="w"> </span>--version
 anta,<span class="w"> </span>version<span class="w"> </span>v1.4.0

@@ -2659,10 +2659,10 @@ Options:
 <span class="w">  </span>-c,<span class="w"> </span>--command<span class="w"> </span>TEXT<span class="w">        </span>Command<span class="w"> </span>to<span class="w"> </span>run<span class="w">  </span><span class="o">[</span>required<span class="o">]</span>
 <span class="w">  </span>--help<span class="w">                    </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.
 </code></pre></div>
-<blockquote>
-<p>[!TIP]
-<code>username</code>, <code>password</code>, <code>enable-password</code>, <code>enable</code>, <code>timeout</code> and <code>insecure</code> values are the same for all devices</p>
-</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code>username</code>, <code>password</code>, <code>enable-password</code>, <code>enable</code>, <code>timeout</code> and <code>insecure</code> values are the same for all devices</p>
+</div>
 <h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
 <p>This example illustrates how to run the <code>show interfaces description</code> command with a <code>JSON</code> format (default):</p>
 <div class="highlight"><pre><span></span><code>anta<span class="w"> </span>debug<span class="w"> </span>run-cmd<span class="w"> </span>--command<span class="w"> </span><span class="s2">&quot;show interfaces description&quot;</span><span class="w"> </span>--device<span class="w"> </span>DC1-SPINE1
@@ -2749,10 +2749,10 @@ Run<span class="w"> </span>templated<span class="w"> </span><span class="nb">com
 <span class="o">}</span>
 </code></pre></div>
 <h4 id="example-of-multiple-arguments">Example of multiple arguments<a class="headerlink" href="#example-of-multiple-arguments" title="Permanent link">&para;</a></h4>
-<blockquote>
-<p>[!WARNING]
-If multiple arguments of the same key are provided, only the last argument value will be kept in the template parameters.</p>
-</blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If multiple arguments of the same key are provided, only the last argument value will be kept in the template parameters.</p>
+</div>
 <div class="highlight"><pre><span></span><code>anta<span class="w"> </span>-log<span class="w"> </span>DEBUG<span class="w"> </span>debug<span class="w"> </span>run-template<span class="w"> </span>--template<span class="w"> </span><span class="s2">&quot;ping {dst} source {src}&quot;</span><span class="w"> </span>dst<span class="w"> </span><span class="s2">&quot;8.8.8.8&quot;</span><span class="w"> </span>src<span class="w"> </span>Loopback0<span class="w"> </span>--device<span class="w"> </span>DC1-SPINE1<span class="w">    </span>
 &gt;<span class="w"> </span><span class="o">{</span><span class="s1">&#39;dst&#39;</span>:<span class="w"> </span><span class="s1">&#39;8.8.8.8&#39;</span>,<span class="w"> </span><span class="s1">&#39;src&#39;</span>:<span class="w"> </span><span class="s1">&#39;Loopback0&#39;</span><span class="o">}</span>
 
