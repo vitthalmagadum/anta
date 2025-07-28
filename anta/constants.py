@@ -57,6 +57,7 @@ KNOWN_EOS_ERRORS = [
     r"No source interface .*",
     r".*controller\snot\sready.*",
     r"could not run command",
+    r"^'nslookup",
 ]
 """List of known EOS errors.
 

@@ -7,6 +7,7 @@ from __future__ import annotations
 
 # Mypy does not understand AntaTest.Input typing
 # mypy: disable-error-code=attr-defined
+from ipaddress import IPv4Address, IPv6Address
 from typing import ClassVar
 
 from anta.input_models.services import DnsServer, ErrDisableReason, ErrdisableRecovery
@@ -94,6 +95,7 @@ class VerifyDNSLookup(AntaTest):
         for command in self.instance_commands:
             domain = command.params.domain
             output = command.json_output["messages"][0]
+            breakpoint()
             if f"Can't find {domain}: No answer" in output:
                 failed_domains.append(domain)
         if failed_domains:
@@ -236,3 +238,51 @@ class VerifyErrdisableRecovery(AntaTest):
                 ]
             ):
                 self.result.is_failure(f"{error_reason} - Incorrect configuration - Status: {act_status} Interval: {act_interval}")
+
+
+class VerifyDNSResolution(AntaTest):
+    """Verifies both forward and reverse DNS resolution.
+
+    This test checks two aspects of DNS:
+      1. Forward Lookup: Ensures a given domain name resolves to an IP address.
+      2. Reverse Lookup: Ensures a given IP address resolves to its corresponding domain name.
+
+    Expected Results
+    ----------------
+    * Success: The test passes based on
+      1. For a forward lookup, if the provided domain name resolves to an IP address.
+      2. For a reverse lookup, if the provided IP address resolves to a domain name.
+    * Failure: The test fails if the requested lookup cannot be completed. This applies if the name or IP does not exist in DNS, or if the provided input is invalid.
+
+    Examples
+    --------
+    ```yaml
+    anta.tests.services:
+      - VerifyDNSResolution:
+          dns_lookups:
+            - arista.com
+            - 10.10.15.15
+    ```
+    """
+
+    categories: ClassVar[list[str]] = ["services"]
+    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="bash timeout 10 nslookup {dns_lookup}", revision=1)]
+
+    class Input(AntaTest.Input):
+        """Input model for the VerifyDNSResolution test."""
+
+        dns_lookups: list[str | IPv4Address | IPv6Address]
+        """A list of domain names and/or IP addresses to be used for DNS lookups."""
+
+    @AntaTest.anta_test
+    def test(self) -> None:
+        """Main test function for VerifyDNSResolution."""
+        self.result.is_success()
+        failed_domains = []
+        for command in self.instance_commands:
+            domain = command.params.domain
+            output = command.json_output["messages"][0]
+            if f"Can't find {domain}: No answer" in output:
+                failed_domains.append(domain)
+        if failed_domains:
+            self.result.is_failure(f"The following domain(s) are not resolved to an IP address: {', '.join(failed_domains)}")
