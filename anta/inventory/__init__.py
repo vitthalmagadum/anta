@@ -15,6 +15,7 @@ from typing import Any, ClassVar, Literal
 from pydantic import ValidationError
 from yaml import YAMLError, safe_load
 
+from anta.cvp_device import CVPDevice
 from anta.device import AntaDevice, AsyncEOSDevice
 from anta.inventory.exceptions import InventoryIncorrectSchemaError, InventoryRootKeyError
 from anta.inventory.models import AntaInventoryHost, AntaInventoryInput
@@ -80,13 +81,24 @@ class AntaInventory(dict[str, AntaDevice]):
 
         for host in inventory_input.hosts:
             updated_kwargs = AntaInventory._update_disable_cache(kwargs, inventory_disable_cache=host.disable_cache)
-            device = AsyncEOSDevice(
-                name=host.name,
-                host=str(host.host),
-                port=host.port,
-                tags=host.tags,
-                **updated_kwargs,
-            )
+            if updated_kwargs.get("test_source") == "cvp":
+                # TODO: this is where you would instantiate your CVP client
+                # cvp_client = CVPClient(...)
+                cvp_client = None
+                device = CVPDevice(
+                    name=host.name,
+                    cvp_client=cvp_client,
+                    tags=host.tags,
+                    **updated_kwargs,
+                )
+            else:
+                device = AsyncEOSDevice(
+                    name=host.name,
+                    host=str(host.host),
+                    port=host.port,
+                    tags=host.tags,
+                    **updated_kwargs,
+                )
             inventory.add_device(device)
 
     @staticmethod
@@ -119,6 +131,8 @@ class AntaInventory(dict[str, AntaDevice]):
             for network in inventory_input.networks:
                 updated_kwargs = AntaInventory._update_disable_cache(kwargs, inventory_disable_cache=network.disable_cache)
                 for host_ip in ip_network(str(network.network)):
+                    if updated_kwargs.get("test_source") == "cvp":
+                        raise InventoryIncorrectSchemaError("Networks are not supported when using 'cvp' as test_source")
                     device = AsyncEOSDevice(host=str(host_ip), tags=network.tags, **updated_kwargs)
                     inventory.add_device(device)
         except ValueError as e:
@@ -160,6 +174,8 @@ class AntaInventory(dict[str, AntaDevice]):
                 while range_increment <= range_stop:  # type: ignore[operator]
                     # mypy raise an issue about comparing IPv4Address and IPv6Address
                     # but this is handled by the ipaddress module natively by raising a TypeError
+                    if updated_kwargs.get("test_source") == "cvp":
+                        raise InventoryIncorrectSchemaError("Ranges are not supported when using 'cvp' as test_source")
                     device = AsyncEOSDevice(host=str(range_increment), tags=range_def.tags, **updated_kwargs)
                     inventory.add_device(device)
                     range_increment += 1
