@@ -129,9 +129,17 @@ class AntaDevice(ABC):
         This does **not** affect the actual device configuration. None if not available.
     """
 
-    def __init__(self, name: str, tags: set[str] | None = None, *, disable_cache: bool = False) -> None:
+    def __init__(
+        self,
+        name: str,
+        tags: set[str] | None = None,
+        *,
+        disable_cache: bool = False,
+        test_source: Literal["eapi", "cvp"] = "eapi",
+        token: Path | None = None,
+        crt_file: Path | None = None,
+    ) -> None:
         """Initialize an AntaDevice.
-
         Parameters
         ----------
         name
@@ -140,11 +148,19 @@ class AntaDevice(ABC):
             Tags for this device.
         disable_cache
             Disable caching for all commands for this device.
-
+        test_source
+            The source of the test, either "eapi" or "cvp".
+        token
+            The path to the token file.
+        crt_file
+            The path to the certificate file.
         """
         self.name: str = name
         self.hw_model: str | None = None
         self.tags: set[str] = tags if tags is not None else set()
+        self.test_source = test_source
+        self.token = token
+        self.crt_file = crt_file
         # A device always has its own name as tag
         self.tags.add(self.name)
         self.is_online: bool = False

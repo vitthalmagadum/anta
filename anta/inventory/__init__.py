@@ -184,6 +184,9 @@ class AntaInventory(dict[str, AntaDevice]):
         enable: bool = False,
         insecure: bool = False,
         disable_cache: bool = False,
+        test_source: Literal["eapi", "cvp"] = "eapi",
+        token: Path | None = None,
+        crt_file: Path | None = None,
     ) -> AntaInventory:
         """Create an AntaInventory instance from an inventory file.
 
@@ -231,6 +234,9 @@ class AntaInventory(dict[str, AntaDevice]):
             "timeout": timeout,
             "insecure": insecure,
             "disable_cache": disable_cache,
+            "test_source": test_source,
+            "token": token,
+            "crt_file": crt_file,
         }
 
         try:
