@@ -13,7 +13,7 @@ from pydantic import field_validator
 
 from anta.custom_types import PositiveInteger, SnmpErrorCounter, SnmpPdu
 from anta.input_models.snmp import SnmpGroup, SnmpHost, SnmpSourceInterface, SnmpUser
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 from anta.tools import get_value
 
 if TYPE_CHECKING:
@@ -38,7 +38,7 @@ class VerifySnmpStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpStatus test."""
@@ -74,7 +74,7 @@ class VerifySnmpIPv4Acl(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp ipv4 access-list summary", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp ipv4 access-list summary", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpIPv4Acl test."""
@@ -120,7 +120,7 @@ class VerifySnmpIPv6Acl(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp ipv6 access-list summary", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp ipv6 access-list summary", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpIPv6Acl test."""
@@ -165,7 +165,7 @@ class VerifySnmpLocation(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpLocation test."""
@@ -205,7 +205,7 @@ class VerifySnmpContact(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpContact test."""
@@ -250,7 +250,7 @@ class VerifySnmpPDUCounters(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpPDUCounters test."""
@@ -304,7 +304,7 @@ class VerifySnmpErrorCounters(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpErrorCounters test."""
@@ -369,7 +369,7 @@ class VerifySnmpHostLogging(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpHostLogging test."""
@@ -442,7 +442,7 @@ class VerifySnmpUser(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp user", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp user", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpUser test."""
@@ -531,7 +531,7 @@ class VerifySnmpNotificationHost(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp notification host", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp notification host", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpNotificationHost test."""
@@ -631,7 +631,7 @@ class VerifySnmpSourceInterface(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpSourceInterface test."""
@@ -692,7 +692,7 @@ class VerifySnmpGroup(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["snmp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show snmp group", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show snmp group", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySnmpGroup test."""

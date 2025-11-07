@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar
 
 from anta.decorators import skip_on_platforms
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -34,7 +34,7 @@ class VerifyPtpModeStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["ptp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ptp", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ptp", revision=2)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test
@@ -79,7 +79,7 @@ class VerifyPtpGMStatus(AntaTest):
         """Identifier of the Grandmaster to which the device should be locked."""
 
     categories: ClassVar[list[str]] = ["ptp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ptp", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ptp", revision=2)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test
@@ -114,7 +114,7 @@ class VerifyPtpLockStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["ptp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ptp", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ptp", revision=2)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test
@@ -153,7 +153,7 @@ class VerifyPtpOffset(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["ptp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ptp monitor", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ptp monitor", revision=1)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test
@@ -194,7 +194,7 @@ class VerifyPtpPortModeStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["ptp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ptp", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ptp", revision=2)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test

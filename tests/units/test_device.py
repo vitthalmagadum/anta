@@ -19,7 +19,7 @@ from httpx import ConnectError, ConnectTimeout, HTTPError, TimeoutException
 from rich import print as rprint
 
 from anta.device import AntaDevice, AsyncEOSDevice
-from anta.models import AntaCommand
+from anta.models import AntaEAPICommand
 from asynceapi import EapiCommandError
 from tests.units.conftest import COMMAND_OUTPUT
 

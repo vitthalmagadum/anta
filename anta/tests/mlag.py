@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar
 
 from anta.custom_types import MlagPriority, PositiveInteger
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 from anta.tools import get_value
 
 if TYPE_CHECKING:
@@ -35,7 +35,7 @@ class VerifyMlagStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["mlag"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show mlag", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show mlag", revision=2)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -79,7 +79,7 @@ class VerifyMlagInterfaces(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["mlag"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show mlag", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show mlag", revision=2)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -118,7 +118,7 @@ class VerifyMlagConfigSanity(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["mlag"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show mlag config-sanity", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show mlag config-sanity", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -160,7 +160,7 @@ class VerifyMlagReloadDelay(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["mlag"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show mlag", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show mlag", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyMlagReloadDelay test."""
@@ -213,7 +213,7 @@ class VerifyMlagDualPrimary(AntaTest):
 
     description = "Verifies the MLAG dual-primary detection parameters."
     categories: ClassVar[list[str]] = ["mlag"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show mlag detail", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show mlag detail", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyMlagDualPrimary test."""
@@ -283,7 +283,7 @@ class VerifyMlagPrimaryPriority(AntaTest):
 
     description = "Verifies the configuration of the MLAG primary priority."
     categories: ClassVar[list[str]] = ["mlag"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show mlag detail", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show mlag detail", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyMlagPrimaryPriority test."""

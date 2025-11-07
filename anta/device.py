@@ -20,7 +20,7 @@ from httpx import ConnectError, HTTPError, TimeoutException
 import asynceapi
 from anta import __DEBUG__
 from anta.logger import anta_log_exception, exc_to_str
-from anta.models import AntaCommand
+from anta.models import AntaDataRequest, AntaEAPICommand
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
@@ -213,18 +213,18 @@ class AntaDevice(ABC):
         )
 
     @abstractmethod
-    async def _collect(self, command: AntaCommand, *, collection_id: str | None = None) -> None:
+    async def _collect(self, command: AntaDataRequest, *, collection_id: str | None = None) -> None:
         """Collect device command output.
 
         This abstract coroutine can be used to implement any command collection method
         for a device in ANTA.
 
         The `_collect()` implementation needs to populate the `output` attribute
-        of the `AntaCommand` object passed as argument.
+        of the `AntaDataRequest` object passed as argument.
 
         If a failure occurs, the `_collect()` implementation is expected to catch the
         exception and implement proper logging, the `output` attribute of the
-        `AntaCommand` object passed as argument would be `None` in this case.
+        `AntaDataRequest` object passed as argument would be `None` in this case.
 
         Parameters
         ----------
@@ -234,7 +234,7 @@ class AntaDevice(ABC):
             An identifier used to build the eAPI request ID.
         """
 
-    async def collect(self, command: AntaCommand, *, collection_id: str | None = None) -> None:
+    async def collect(self, command: AntaDataRequest, *, collection_id: str | None = None) -> None:
         """Collect the output for a specified command.
 
         When caching is activated on both the device and the command,
@@ -265,7 +265,7 @@ class AntaDevice(ABC):
         else:
             await self._collect(command=command, collection_id=collection_id)
 
-    async def collect_commands(self, commands: list[AntaCommand], *, collection_id: str | None = None) -> None:
+    async def collect_commands(self, commands: list[AntaDataRequest], *, collection_id: str | None = None) -> None:
         """Collect multiple commands.
 
         Parameters
@@ -454,7 +454,7 @@ class AsyncEOSDevice(AntaDevice):
         except AttributeError:
             return None
 
-    async def _collect(self, command: AntaCommand, *, collection_id: str | None = None) -> None:
+    async def _collect(self, command: AntaDataRequest, *, collection_id: str | None = None) -> None:
         """Collect device command output from EOS using aio-eapi.
 
         Supports outformat `json` and `text` as output structure.
@@ -469,6 +469,9 @@ class AsyncEOSDevice(AntaDevice):
             An identifier used to build the eAPI request ID.
         """
         async with self._command_semaphore:
+            if not isinstance(command, AntaEAPICommand):
+                logger.error(f"Unsupported command type: {type(command)}")
+                return
             commands: list[EapiComplexCommand | EapiSimpleCommand] = []
             if self.enable and self._enable_password is not None:
                 commands.append(
@@ -524,7 +527,7 @@ class AsyncEOSDevice(AntaDevice):
                 anta_log_exception(e, f"An error occurred while issuing an eAPI request to {self.name}", logger)
             logger.debug("%s: %s", self.name, command)
 
-    def _handle_eapi_command_error(self, command: AntaCommand, e: asynceapi.EapiCommandError) -> None:
+    def _handle_eapi_command_error(self, command: AntaEAPICommand, e: asynceapi.EapiCommandError) -> None:
         """Handle and appropriately log an EapiCommandError exception."""
         # Filter out empty strings from the list of errors
         error_details = [err for err in e.errors if err]
@@ -570,7 +573,7 @@ class AsyncEOSDevice(AntaDevice):
             logger.warning("An error occurred while attempting to connect to device %s: %s", self.name, exc_to_str(e))
             return
 
-        show_version = AntaCommand(command="show version")
+        show_version = AntaEAPICommand(command="show version")
         await self._collect(show_version)
         if not show_version.collected:
             self.established = False

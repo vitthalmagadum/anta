@@ -117,6 +117,7 @@ class TestResult(BaseTestResult):
     result: AntaTestStatus = AntaTestStatus.UNSET
     messages: list[str] = []
     custom_field: str | None = None
+    data_source: str | None = None
 
     @override
     def __str__(self) -> str:

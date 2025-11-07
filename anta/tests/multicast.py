@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar
 
 from anta.custom_types import VlanId
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -36,7 +36,7 @@ class VerifyIGMPSnoopingVlans(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["multicast"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip igmp snooping", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip igmp snooping", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyIGMPSnoopingVlans test."""
@@ -77,7 +77,7 @@ class VerifyIGMPSnoopingGlobal(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["multicast"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip igmp snooping", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip igmp snooping", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyIGMPSnoopingGlobal test."""

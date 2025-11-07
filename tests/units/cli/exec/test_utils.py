@@ -14,14 +14,14 @@ import pytest
 import respx
 
 from anta.cli.exec.utils import clear_counters, collect_commands
-from anta.models import AntaCommand
+from anta.models import AntaEAPICommand
 from anta.tools import safe_command
 
 # collect_scheduled_show_tech
 
 if TYPE_CHECKING:
     from anta.device import AntaDevice
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
 
 
 # TODO: complete test cases
@@ -77,7 +77,7 @@ if TYPE_CHECKING:
 )
 async def test_clear_counters(
     caplog: pytest.LogCaptureFixture,
-    inventory: AntaInventory,
+    inventory: AntaInventoryHost,
     inventory_state: dict[str, Any],
     per_device_command_output: dict[str, Any],
     tags: set[str] | None,
@@ -99,7 +99,7 @@ async def test_clear_counters(
     with (
         patch("anta.device.AsyncEOSDevice.collect", side_effect=collect, autospec=True) as mocked_collect,
         patch(
-            "anta.inventory.AntaInventory.connect_inventory",
+            "anta.inventory.AntaInventoryHost.connect_inventory",
             side_effect=mock_connect_inventory,
         ) as mocked_connect_inventory,
     ):
@@ -228,7 +228,7 @@ async def test_clear_counters(
 async def test_collect_commands(
     caplog: pytest.LogCaptureFixture,
     tmp_path: Path,
-    inventory: AntaInventory,
+    inventory: AntaInventoryHost,
     inventory_state: dict[str, Any],
     commands: dict[str, list[str]],
     tags: set[str] | None,
@@ -250,7 +250,7 @@ async def test_collect_commands(
     with (
         respx.mock,
         patch(
-            "anta.inventory.AntaInventory.connect_inventory",
+            "anta.inventory.AntaInventoryHost.connect_inventory",
             side_effect=mock_connect_inventory,
         ) as mocked_connect_inventory,
     ):

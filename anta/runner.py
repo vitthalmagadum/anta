@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 
     from anta.catalog import AntaCatalog, AntaTestDefinition
     from anta.device import AntaDevice
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
     from anta.result_manager import ResultManager
     from anta.result_manager.models import TestResult
 
@@ -86,13 +86,13 @@ def log_cache_statistics(devices: list[AntaDevice]) -> None:
 
 
 @deprecated("This function is deprecated and will be removed in ANTA v2.0.0. Use AntaRunner class instead.", category=DeprecationWarning)
-async def setup_inventory(inventory: AntaInventory, tags: set[str] | None, devices: set[str] | None, *, established_only: bool) -> AntaInventory | None:
+async def setup_inventory(inventory: AntaInventoryHost, tags: set[str] | None, devices: set[str] | None, *, established_only: bool) -> AntaInventoryHost | None:
     """Set up the inventory for the ANTA run.
 
     Parameters
     ----------
     inventory
-        AntaInventory object that includes the device(s).
+        AntaInventoryHost object that includes the device(s).
     tags
         Tags to filter devices from the inventory.
     devices
@@ -102,7 +102,7 @@ async def setup_inventory(inventory: AntaInventory, tags: set[str] | None, devic
 
     Returns
     -------
-    AntaInventory | None
+    AntaInventoryHost | None
         The filtered inventory or None if there are no devices to run tests on.
     """
     if len(inventory) == 0:
@@ -130,14 +130,14 @@ async def setup_inventory(inventory: AntaInventory, tags: set[str] | None, devic
 
 @deprecated("This function is deprecated and will be removed in ANTA v2.0.0. Use AntaRunner class instead.", category=DeprecationWarning)
 def prepare_tests(
-    inventory: AntaInventory, catalog: AntaCatalog, tests: set[str] | None, tags: set[str] | None
+    inventory: AntaInventoryHost, catalog: AntaCatalog, tests: set[str] | None, tags: set[str] | None
 ) -> defaultdict[AntaDevice, set[AntaTestDefinition]] | None:
     """Prepare the tests to run.
 
     Parameters
     ----------
     inventory
-        AntaInventory object that includes the device(s).
+        AntaInventoryHost object that includes the device(s).
     catalog
         AntaCatalog object that includes the list of tests.
     tests
@@ -225,7 +225,7 @@ def get_coroutines(selected_tests: defaultdict[AntaDevice, set[AntaTestDefinitio
 @cprofile()
 async def main(
     manager: ResultManager,
-    inventory: AntaInventory,
+    inventory: AntaInventoryHost,
     catalog: AntaCatalog,
     devices: set[str] | None = None,
     tests: set[str] | None = None,
@@ -244,7 +244,7 @@ async def main(
     manager
         ResultManager object to populate with the test results.
     inventory
-        AntaInventory object that includes the device(s).
+        AntaInventoryHost object that includes the device(s).
     catalog
         AntaCatalog object that includes the list of tests.
     devices

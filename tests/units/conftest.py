@@ -19,7 +19,7 @@ from anta.device import AntaDevice, AsyncEOSDevice
 if TYPE_CHECKING:
     from collections.abc import Generator, Iterator
 
-    from anta.models import AntaCommand
+    from anta.models import AntaEAPICommand
 
 DEVICE_HW_MODEL = "pytest"
 DEVICE_NAME = "pytest"

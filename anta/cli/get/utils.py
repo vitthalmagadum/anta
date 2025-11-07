@@ -28,9 +28,9 @@ from typing_extensions import deprecated
 
 from anta.cli.console import console
 from anta.cli.utils import ExitCode
-from anta.inventory import AntaInventory
-from anta.inventory.models import AntaInventoryHost, AntaInventoryInput
-from anta.models import AntaCommand, AntaTest
+from anta.inventory import AntaInventoryHost
+from anta.inventory.models import AntaInventoryHost, AntaInventoryHostInput
+from anta.models import AntaEAPICommand, AntaTest
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -146,10 +146,10 @@ def write_inventory_to_file(hosts: list[AntaInventoryHost], output: Path) -> Non
     OSError
         When anything goes wrong while writing the file.
     """
-    i = AntaInventoryInput(hosts=hosts)
+    i = AntaInventoryHostInput(hosts=hosts)
     try:
         with output.open(mode="w", encoding="UTF-8") as out_fd:
-            _ = out_fd.write(yaml.dump({AntaInventory.INVENTORY_ROOT_KEY: yaml.safe_load(i.yaml())}))
+            _ = out_fd.write(yaml.dump({AntaInventoryHost.INVENTORY_ROOT_KEY: yaml.safe_load(i.yaml())}))
         logger.info("ANTA inventory file has been created: '%s'", output)
     except OSError as exc:
         msg = f"Could not write inventory to path '{output}'."
@@ -439,7 +439,7 @@ def _print_commands(tests: list[type[AntaTest]]) -> None:
         for test in module_tests:
             console.print(f"  - {test.name}:")
             for command in test.commands:
-                if isinstance(command, AntaCommand):
+                if isinstance(command, AntaEAPICommand):
                     console.print(f"    - {command.command}")
                 else:  # isinstance(command, AntaTemplate):
                     console.print(f"    - {command.template}")
@@ -462,7 +462,7 @@ def _get_unique_commands(tests: list[type[AntaTest]]) -> set[str]:
 
     for test in tests:
         for command in test.commands:
-            if isinstance(command, AntaCommand):
+            if isinstance(command, AntaEAPICommand):
                 result.add(command.command)
             else:  # isinstance(command, AntaTemplate):
                 result.add(command.template)

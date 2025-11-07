@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar
 
 from anta.decorators import skip_on_platforms
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -36,7 +36,7 @@ class VerifyFieldNotice44Resolution(AntaTest):
 
     description = "Verifies that the device is using the correct Aboot version per FN0044."
     categories: ClassVar[list[str]] = ["field notices"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show version detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show version detail", revision=1)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test
@@ -140,7 +140,7 @@ class VerifyFieldNotice72Resolution(AntaTest):
 
     description = "Verifies if the device is exposed to FN0072, and if the issue has been mitigated."
     categories: ClassVar[list[str]] = ["field notices"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show version detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show version detail", revision=1)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test

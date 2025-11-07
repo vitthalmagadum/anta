@@ -26,7 +26,8 @@ if TYPE_CHECKING:
 
     from rich.progress import Progress, TaskID
 
-    from anta.device import AntaDevice
+    from anta.device import AntaDevice, AsyncEOSDevice
+    from anta.cloudvision import CloudVisionDevice
 
 F = TypeVar("F", bound=Callable[..., Any])
 # Proper way to type input class - revisit this later if we get any issue @gmuloc
@@ -95,8 +96,8 @@ class AntaTemplate:
         """
         return " ".join(f"{a}={v!r}" for a, v in vars(self).items() if a != "params_schema")
 
-    def render(self, **params: str | int | bool) -> AntaCommand:
-        """Render an AntaCommand from an AntaTemplate instance.
+    def render(self, **params: str | int | bool) -> AntaEAPICommand:
+        """Render an AntaEAPICommand from an AntaTemplate instance.
 
         Keep the parameters used in the AntaTemplate instance.
 
@@ -107,9 +108,9 @@ class AntaTemplate:
 
         Returns
         -------
-        AntaCommand
-            The rendered AntaCommand.
-            This AntaCommand instance have a template attribute that references this
+        AntaEAPICommand
+            The rendered AntaEAPICommand.
+            This AntaEAPICommand instance have a template attribute that references this
             AntaTemplate instance.
 
         Raises
@@ -121,7 +122,7 @@ class AntaTemplate:
             command = self.template.format(**params)
         except (KeyError, SyntaxError) as e:
             raise AntaTemplateRenderError(self, e.args[0]) from e
-        return AntaCommand(
+        return AntaEAPICommand(
             command=command,
             ofmt=self.ofmt,
             version=self.version,
@@ -132,7 +133,39 @@ class AntaTemplate:
         )
 
 
-class AntaCommand(BaseModel):
+class AntaDataRequest(ABC, BaseModel):
+    """Abstract class to define a data request in ANTA.
+
+    The goal of this class is to handle the heavy lifting and make
+    writing a data request as simple as possible.
+    """
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+
+    output: dict[str, Any] | str | None = None
+    errors: list[str] = []
+
+    @property
+    @abstractmethod
+    def uid(self) -> str:
+        """Generate a unique identifier for this data request."""
+
+    @property
+    def error(self) -> bool:
+        """Return True if the data request returned an error, False otherwise."""
+        return len(self.errors) > 0
+
+    @property
+    def collected(self) -> bool:
+        """Return True if the data request has been collected, False otherwise.
+
+        A data request that has not been collected could have returned an error.
+        See error property.
+        """
+        return not self.error and self.output is not None
+
+
+class AntaEAPICommand(AntaDataRequest):
     """Class to define a command.
 
     !!! info
@@ -165,19 +198,15 @@ class AntaCommand(BaseModel):
     params
         Pydantic Model containing the variables values used to render the template.
     use_cache
-        Enable or disable caching for this AntaCommand if the AntaDevice supports it.
+        Enable or disable caching for this AntaEAPICommand if the AntaDevice supports it.
 
     """
-
-    model_config = ConfigDict(arbitrary_types_allowed=True)
 
     command: str
     version: Literal[1, "latest"] = "latest"
     revision: Revision | None = None
     ofmt: Literal["json", "text"] = "json"
-    output: dict[str, Any] | str | None = None
     template: AntaTemplate | None = None
-    errors: list[str] = []
     params: AntaParamsBaseModel = AntaParamsBaseModel()
     use_cache: bool = True
 
@@ -210,19 +239,6 @@ class AntaCommand(BaseModel):
             raise RuntimeError(msg)
         return str(self.output)
 
-    @property
-    def error(self) -> bool:
-        """Return True if the command returned an error, False otherwise."""
-        return len(self.errors) > 0
-
-    @property
-    def collected(self) -> bool:
-        """Return True if the command has been collected, False otherwise.
-
-        A command that has not been collected could have returned an error.
-        See error property.
-        """
-        return not self.error and self.output is not None
 
     @property
     def requires_privileges(self) -> bool:
@@ -294,6 +310,19 @@ class AntaTemplateRenderError(RuntimeError):
         super().__init__(f"'{self.key}' was not provided for template '{self.template.template}'")
 
 
+class AntaCVPQuery(AntaDataRequest):
+    """Class to define a CVP query."""
+
+    query: dict[str, Any]
+
+    @property
+    def uid(self) -> str:
+        """Generate a unique identifier for this data request."""
+        uid_str = json.dumps(self.query, sort_keys=True)
+        # Ignoring S324 probable use of insecure hash function - sha1 is enough for our needs.
+        return hashlib.sha1(uid_str.encode()).hexdigest()  # noqa: S324
+
+
 class AntaTest(ABC):
     """Abstract class defining a test in ANTA.
 
@@ -316,7 +345,7 @@ class AntaTest(ABC):
                         src: IPv4Address
                         vrf: str = "default"
 
-                def render(self, template: AntaTemplate) -> list[AntaCommand]:
+                def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
                     return [template.render(dst=host.dst, src=host.src, vrf=host.vrf) for host in self.inputs.hosts]
 
                 @AntaTest.anta_test
@@ -339,7 +368,7 @@ class AntaTest(ABC):
     inputs
         AntaTest.Input instance carrying the test inputs.
     instance_commands
-        List of AntaCommand instances of this test.
+        List of AntaDataRequest instances of this test.
     result
         TestResult instance representing the result of this test.
     logger
@@ -348,7 +377,8 @@ class AntaTest(ABC):
 
     # Mandatory class variables (enforced at runtime by __init_subclass__)
     categories: ClassVar[list[str]]
-    commands: ClassVar[list[AntaTemplate | AntaCommand]]
+    commands: ClassVar[list[AntaTemplate | AntaEAPICommand | AntaCVPQuery]]
+    supported_sources: ClassVar[list[type["AntaDevice"]]] = ["AsyncEOSDevice"]
 
     # Optional class variables (auto-populated if not set)
     name: ClassVar[str]
@@ -364,7 +394,7 @@ class AntaTest(ABC):
     # Instance attributes
     device: AntaDevice
     inputs: AntaTest.Input
-    instance_commands: list[AntaCommand]
+    instance_commands: list[AntaDataRequest]
     result: TestResult
     logger: logging.Logger
 
@@ -459,7 +489,13 @@ class AntaTest(ABC):
         self.logger = logging.getLogger(f"{self.module}.{self.__class__.__name__}")
         self.device = device
         self.instance_commands = []
-        self.result = TestResult(name=device.name, test=self.name, categories=self.categories, description=self.description)
+        self.result = TestResult(
+            name=device.name,
+            test=self.name,
+            categories=self.categories,
+            description=self.description,
+            data_source=type(device).__name__,
+        )
         self._init_inputs(inputs)
         if hasattr(self, "inputs"):
             self._init_commands(eos_data)
@@ -491,7 +527,7 @@ class AntaTest(ABC):
     def _init_commands(self, eos_data: list[dict[str, Any] | str] | None) -> None:
         """Instantiate the `instance_commands` instance attribute from the `commands` class attribute.
 
-        - Copy of the `AntaCommand` instances
+        - Copy of the `AntaEAPICommand` instances
         - Render all `AntaTemplate` instances using the `render()` method.
 
         Any template rendering error will set this test result status as 'error'.
@@ -501,7 +537,7 @@ class AntaTest(ABC):
             return
 
         for cmd in self.__class__.commands:
-            if isinstance(cmd, AntaCommand):
+            if isinstance(cmd, (AntaEAPICommand, AntaCVPQuery)):
                 self.instance_commands.append(cmd.model_copy())
                 continue
 
@@ -528,7 +564,7 @@ class AntaTest(ABC):
             self.save_commands_data(eos_data)
 
     def save_commands_data(self, eos_data: list[dict[str, Any] | str]) -> None:
-        """Populate output of all AntaCommand instances in `instance_commands`."""
+        """Populate output of all AntaDataRequest instances in `instance_commands`."""
         if len(eos_data) > len(self.instance_commands):
             self.result.is_error(message="Test initialization error: Trying to save more data than there are commands for the test")
             return
@@ -564,11 +600,11 @@ class AntaTest(ABC):
         return all(command.collected for command in self.instance_commands)
 
     @property
-    def failed_commands(self) -> list[AntaCommand]:
+    def failed_commands(self) -> list[AntaDataRequest]:
         """Return a list of all the commands that have failed."""
         return [command for command in self.instance_commands if command.error]
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render an AntaTemplate instance of this AntaTest using the provided AntaTest.Input instance at self.inputs.
 
         This is not an abstract method because it does not need to be implemented if there is
@@ -578,20 +614,28 @@ class AntaTest(ABC):
         msg = f"AntaTemplate are provided but render() method has not been implemented for {self.module}.{self.__class__.__name__}"
         raise NotImplementedError(msg)
 
+    def translate_cvp_data(self, cvp_data: dict[str, Any]) -> dict[str, Any]:
+        """Translate CVP data into a format that the test can understand.
+
+        This method should be implemented by the test if it supports CloudVisionDevice.
+        """
+        return cvp_data
+
     @property
     def blocked(self) -> bool:
         """Check if CLI commands contain a blocked keyword."""
         state = False
         for command in self.instance_commands:
-            for pattern in EOS_BLACKLIST_CMDS:
-                if re.match(pattern, command.command):
-                    self.logger.error(
-                        "Command <%s> is blocked for security reason matching %s",
-                        command.command,
-                        EOS_BLACKLIST_CMDS,
-                    )
-                    self.result.is_error(f"<{command.command}> is blocked for security reason")
-                    state = True
+            if isinstance(command, AntaEAPICommand):
+                for pattern in EOS_BLACKLIST_CMDS:
+                    if re.match(pattern, command.command):
+                        self.logger.error(
+                            "Command <%s> is blocked for security reason matching %s",
+                            command.command,
+                            EOS_BLACKLIST_CMDS,
+                        )
+                        self.result.is_error(f"<{command.command}> is blocked for security reason")
+                        state = True
         return state
 
     async def collect(self) -> None:
@@ -683,16 +727,24 @@ class AntaTest(ABC):
         * unknown failure which set the test status to 'error'
         """
         cmds = self.failed_commands
-        unsupported_commands = [f"'{c.command}' is not supported on {self.device.hw_model}" for c in cmds if not c.supported]
+        unsupported_commands = [f"'{c.command}' is not supported on {self.device.hw_model}" for c in cmds if isinstance(c, AntaEAPICommand) and not c.supported]
         if unsupported_commands:
             self.result.is_skipped("\n".join(unsupported_commands))
             return
-        returned_known_eos_error = [f"'{c.command}' failed on {self.device.name}: {', '.join(c.errors)}" for c in cmds if c.returned_known_eos_error]
+        returned_known_eos_error = [
+            f"'{c.command}' failed on {self.device.name}: {', '.join(c.errors)}" for c in cmds if isinstance(c, AntaEAPICommand) and c.returned_known_eos_error
+        ]
         if returned_known_eos_error:
             self.result.is_failure("\n".join(returned_known_eos_error))
             return
 
-        self.result.is_error(message="\n".join([f"{c.command} has failed: {', '.join(c.errors)}" for c in cmds]))
+        error_messages = []
+        for c in cmds:
+            if isinstance(c, AntaEAPICommand):
+                error_messages.append(f"Command '{c.command}' has failed: {', '.join(c.errors)}")
+            else:
+                error_messages.append(f"Data request {c.uid} has failed: {', '.join(c.errors)}")
+        self.result.is_error(message="\n".join(error_messages))
 
     @classmethod
     def update_progress(cls: type[AntaTest]) -> None:

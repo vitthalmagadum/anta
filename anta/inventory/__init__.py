@@ -17,13 +17,13 @@ from yaml import YAMLError, safe_load
 
 from anta.device import AntaDevice, AsyncEOSDevice
 from anta.inventory.exceptions import InventoryIncorrectSchemaError, InventoryRootKeyError
-from anta.inventory.models import AntaInventoryHost, AntaInventoryInput
+from anta.inventory.models import AntaInventoryHost, AntaInventoryHostInput
 from anta.logger import anta_log_exception
 
 logger = logging.getLogger(__name__)
 
 
-class AntaInventory(dict[str, AntaDevice]):
+class AntaInventoryHost(dict[str, AntaDevice]):
     """Inventory abstraction for ANTA framework."""
 
     # Root key of inventory part of the inventory file
@@ -59,18 +59,18 @@ class AntaInventory(dict[str, AntaDevice]):
 
     @staticmethod
     def _parse_hosts(
-        inventory_input: AntaInventoryInput,
-        inventory: AntaInventory,
+        inventory_input: AntaInventoryHostInput,
+        inventory: AntaInventoryHost,
         **kwargs: Any,  # noqa: ANN401
     ) -> None:
-        """Parse the host section of an AntaInventoryInput and add the devices to the inventory.
+        """Parse the host section of an AntaInventoryHostInput and add the devices to the inventory.
 
         Parameters
         ----------
         inventory_input
-            AntaInventoryInput used to parse the devices.
+            AntaInventoryHostInput used to parse the devices.
         inventory
-            AntaInventory to add the parsed devices to.
+            AntaInventoryHost to add the parsed devices to.
         **kwargs
             Additional keyword arguments to pass to the device constructor.
 
@@ -79,7 +79,7 @@ class AntaInventory(dict[str, AntaDevice]):
             return
 
         for host in inventory_input.hosts:
-            updated_kwargs = AntaInventory._update_disable_cache(kwargs, inventory_disable_cache=host.disable_cache)
+            updated_kwargs = AntaInventoryHost._update_disable_cache(kwargs, inventory_disable_cache=host.disable_cache)
             device = AsyncEOSDevice(
                 name=host.name,
                 host=str(host.host),
@@ -91,25 +91,25 @@ class AntaInventory(dict[str, AntaDevice]):
 
     @staticmethod
     def _parse_networks(
-        inventory_input: AntaInventoryInput,
-        inventory: AntaInventory,
+        inventory_input: AntaInventoryHostInput,
+        inventory: AntaInventoryHost,
         **kwargs: Any,  # noqa: ANN401
     ) -> None:
-        """Parse the network section of an AntaInventoryInput and add the devices to the inventory.
+        """Parse the network section of an AntaInventoryHostInput and add the devices to the inventory.
 
         Parameters
         ----------
         inventory_input
-            AntaInventoryInput used to parse the devices.
+            AntaInventoryHostInput used to parse the devices.
         inventory
-            AntaInventory to add the parsed devices to.
+            AntaInventoryHost to add the parsed devices to.
         **kwargs
            Additional keyword arguments to pass to the device constructor.
 
         Raises
         ------
         InventoryIncorrectSchemaError
-            Inventory file is not following AntaInventory Schema.
+            Inventory file is not following AntaInventoryHost Schema.
 
         """
         if inventory_input.networks is None:
@@ -117,7 +117,7 @@ class AntaInventory(dict[str, AntaDevice]):
 
         try:
             for network in inventory_input.networks:
-                updated_kwargs = AntaInventory._update_disable_cache(kwargs, inventory_disable_cache=network.disable_cache)
+                updated_kwargs = AntaInventoryHost._update_disable_cache(kwargs, inventory_disable_cache=network.disable_cache)
                 for host_ip in ip_network(str(network.network)):
                     device = AsyncEOSDevice(host=str(host_ip), tags=network.tags, **updated_kwargs)
                     inventory.add_device(device)
@@ -128,25 +128,25 @@ class AntaInventory(dict[str, AntaDevice]):
 
     @staticmethod
     def _parse_ranges(
-        inventory_input: AntaInventoryInput,
-        inventory: AntaInventory,
+        inventory_input: AntaInventoryHostInput,
+        inventory: AntaInventoryHost,
         **kwargs: Any,  # noqa: ANN401
     ) -> None:
-        """Parse the range section of an AntaInventoryInput and add the devices to the inventory.
+        """Parse the range section of an AntaInventoryHostInput and add the devices to the inventory.
 
         Parameters
         ----------
         inventory_input
-            AntaInventoryInput used to parse the devices.
+            AntaInventoryHostInput used to parse the devices.
         inventory
-            AntaInventory to add the parsed devices to.
+            AntaInventoryHost to add the parsed devices to.
         **kwargs
             Additional keyword arguments to pass to the device constructor.
 
         Raises
         ------
         InventoryIncorrectSchemaError
-            Inventory file is not following AntaInventory Schema.
+            Inventory file is not following AntaInventoryHost Schema.
 
         """
         if inventory_input.ranges is None:
@@ -154,7 +154,7 @@ class AntaInventory(dict[str, AntaDevice]):
 
         try:
             for range_def in inventory_input.ranges:
-                updated_kwargs = AntaInventory._update_disable_cache(kwargs, inventory_disable_cache=range_def.disable_cache)
+                updated_kwargs = AntaInventoryHost._update_disable_cache(kwargs, inventory_disable_cache=range_def.disable_cache)
                 range_increment = ip_address(str(range_def.start))
                 range_stop = ip_address(str(range_def.end))
                 while range_increment <= range_stop:  # type: ignore[operator]
@@ -184,8 +184,8 @@ class AntaInventory(dict[str, AntaDevice]):
         enable: bool = False,
         insecure: bool = False,
         disable_cache: bool = False,
-    ) -> AntaInventory:
-        """Create an AntaInventory instance from an inventory file.
+    ) -> AntaInventoryHost:
+        """Create an AntaInventoryHost instance from an inventory file.
 
         The inventory devices are AsyncEOSDevice instances.
 
@@ -215,14 +215,14 @@ class AntaInventory(dict[str, AntaDevice]):
         InventoryRootKeyError
             Root key of inventory is missing.
         InventoryIncorrectSchemaError
-            Inventory file is not following AntaInventory Schema.
+            Inventory file is not following AntaInventoryHost Schema.
 
         """
         if file_format not in ["yaml", "json"]:
-            message = f"'{file_format}' is not a valid format for an AntaInventory file. Only 'yaml' and 'json' are supported."
+            message = f"'{file_format}' is not a valid format for an AntaInventoryHost file. Only 'yaml' and 'json' are supported."
             raise ValueError(message)
 
-        inventory = AntaInventory()
+        inventory = AntaInventoryHost()
         kwargs: dict[str, Any] = {
             "username": username,
             "password": password,
@@ -242,21 +242,21 @@ class AntaInventory(dict[str, AntaDevice]):
             anta_log_exception(e, message, logger)
             raise
 
-        if AntaInventory.INVENTORY_ROOT_KEY not in data:
-            exc = InventoryRootKeyError(f"Inventory root key ({AntaInventory.INVENTORY_ROOT_KEY}) is not defined in your inventory")
+        if AntaInventoryHost.INVENTORY_ROOT_KEY not in data:
+            exc = InventoryRootKeyError(f"Inventory root key ({AntaInventoryHost.INVENTORY_ROOT_KEY}) is not defined in your inventory")
             anta_log_exception(exc, f"Device inventory is invalid! (from {filename})", logger)
             raise exc
 
         try:
-            inventory_input = AntaInventoryInput(**data[AntaInventory.INVENTORY_ROOT_KEY])
+            inventory_input = AntaInventoryHostInput(**data[AntaInventoryHost.INVENTORY_ROOT_KEY])
         except ValidationError as e:
             anta_log_exception(e, f"Device inventory is invalid! (from {filename})", logger)
             raise
 
         # Read data from input
-        AntaInventory._parse_hosts(inventory_input, inventory, **kwargs)
-        AntaInventory._parse_networks(inventory_input, inventory, **kwargs)
-        AntaInventory._parse_ranges(inventory_input, inventory, **kwargs)
+        AntaInventoryHost._parse_hosts(inventory_input, inventory, **kwargs)
+        AntaInventoryHost._parse_networks(inventory_input, inventory, **kwargs)
+        AntaInventoryHost._parse_ranges(inventory_input, inventory, **kwargs)
 
         return inventory
 
@@ -278,7 +278,7 @@ class AntaInventory(dict[str, AntaDevice]):
     # GET methods
     ###########################################################################
 
-    def get_inventory(self, *, established_only: bool = False, tags: set[str] | None = None, devices: set[str] | None = None) -> AntaInventory:
+    def get_inventory(self, *, established_only: bool = False, tags: set[str] | None = None, devices: set[str] | None = None) -> AntaInventoryHost:
         """Return a filtered inventory.
 
         Parameters
@@ -292,7 +292,7 @@ class AntaInventory(dict[str, AntaDevice]):
 
         Returns
         -------
-        AntaInventory
+        AntaInventoryHost
             An inventory with filtered AntaDevice objects.
         """
 
@@ -305,7 +305,7 @@ class AntaInventory(dict[str, AntaDevice]):
             return False
 
         filtered_devices: list[AntaDevice] = list(filter(_filter_devices, self.values()))
-        result = AntaInventory()
+        result = AntaInventoryHost()
         for device in filtered_devices:
             result.add_device(device)
         return result
@@ -340,7 +340,7 @@ class AntaInventory(dict[str, AntaDevice]):
     def __setitem__(self, key: str, value: AntaDevice) -> None:
         """Set a device in the inventory."""
         if key != value.name:
-            msg = f"The key must be the device name for device '{value.name}'. Use AntaInventory.add_device()."
+            msg = f"The key must be the device name for device '{value.name}'. Use AntaInventoryHost.add_device()."
             raise RuntimeError(msg)
         return super().__setitem__(key, value)
 
@@ -371,8 +371,8 @@ class AntaInventory(dict[str, AntaDevice]):
                 message = "Error when refreshing inventory"
                 anta_log_exception(r, message, logger)
 
-    def dump(self) -> AntaInventoryInput:
-        """Dump the AntaInventory to an AntaInventoryInput.
+    def dump(self) -> AntaInventoryHostInput:
+        """Dump the AntaInventoryHost to an AntaInventoryHostInput.
 
         Each hosts is dumped individually.
         """
@@ -386,4 +386,4 @@ class AntaInventory(dict[str, AntaDevice]):
             )
             for device in self.devices
         ]
-        return AntaInventoryInput(hosts=hosts)
+        return AntaInventoryHostInput(hosts=hosts)

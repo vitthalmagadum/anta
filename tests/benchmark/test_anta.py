@@ -13,7 +13,7 @@ import respx
 from pytest_codspeed import BenchmarkFixture
 
 from anta.catalog import AntaCatalog
-from anta.inventory import AntaInventory
+from anta.inventory import AntaInventoryHost
 from anta.result_manager import ResultManager
 from anta.result_manager.models import AntaTestStatus
 from anta.runner import main
@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 def test_anta_dry_run(
     benchmark: BenchmarkFixture,
     catalog: AntaCatalog,
-    inventory: AntaInventory,
+    inventory: AntaInventoryHost,
     request: pytest.FixtureRequest,
     session_results: defaultdict[str, ResultManager],
 ) -> None:
@@ -58,7 +58,7 @@ def test_anta_dry_run(
 def test_anta(
     benchmark: BenchmarkFixture,
     catalog: AntaCatalog,
-    inventory: AntaInventory,
+    inventory: AntaInventoryHost,
     request: pytest.FixtureRequest,
     session_results: defaultdict[str, ResultManager],
 ) -> None:

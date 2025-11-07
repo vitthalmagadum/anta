@@ -34,7 +34,7 @@ from .utils import (
 
 if TYPE_CHECKING:
     from anta.catalog import AntaCatalog
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
 
 logger = logging.getLogger(__name__)
 
@@ -122,7 +122,7 @@ def from_ansible(ctx: click.Context, output: Path, ansible_group: str, ansible_i
 @click.command
 @inventory_options
 @click.option("--connected/--not-connected", help="Display inventory after connection has been created", default=False, required=False)
-def inventory(inventory: AntaInventory, tags: set[str] | None, *, connected: bool) -> None:
+def inventory(inventory: AntaInventoryHost, tags: set[str] | None, *, connected: bool) -> None:
     """Show inventory loaded in ANTA."""
     logger.debug("Requesting devices for tags: %s", tags)
     console.print("Current inventory content is:", style="white on blue")
@@ -136,7 +136,7 @@ def inventory(inventory: AntaInventory, tags: set[str] | None, *, connected: boo
 
 @click.command
 @inventory_options
-def tags(inventory: AntaInventory, **_kwargs: Any) -> None:  # noqa: ANN401
+def tags(inventory: AntaInventoryHost, **_kwargs: Any) -> None:  # noqa: ANN401
     """Get list of configured tags in user inventory."""
     tags: set[str] = set()
     for device in inventory.values():

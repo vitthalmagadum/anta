@@ -16,7 +16,7 @@ from pydantic import Field, model_validator
 from anta.custom_types import Hostname, Percent, PositiveInteger, ReloadCause
 from anta.decorators import skip_on_platforms
 from anta.input_models.system import NTPPool, NTPServer
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_item, get_value
 
 if TYPE_CHECKING:
@@ -51,7 +51,7 @@ class VerifyUptime(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show uptime", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show uptime", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyUptime test."""
@@ -100,7 +100,7 @@ class VerifyReloadCause(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show reload cause", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show reload cause", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyReloadCause test."""
@@ -147,7 +147,7 @@ class VerifyCoredump(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show system coredump", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show system coredump", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -179,7 +179,7 @@ class VerifyAgentLogs(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show agent logs crash", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show agent logs crash", ofmt="text")]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -210,7 +210,7 @@ class VerifyCPUUtilization(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show processes top once", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show processes top once", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -239,7 +239,7 @@ class VerifyMemoryUtilization(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show version", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show version", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -268,7 +268,7 @@ class VerifyFileSystemUtilization(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="bash timeout 10 df -h", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="bash timeout 10 df -h", ofmt="text")]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -297,7 +297,7 @@ class VerifyNTP(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ntp status", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ntp status", ofmt="text")]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -350,7 +350,7 @@ class VerifyNTPAssociations(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ntp associations")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ntp associations")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyNTPAssociations test."""
@@ -471,7 +471,7 @@ class VerifyMaintenance(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show maintenance", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show maintenance", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -521,7 +521,7 @@ class VerifyFlashUtilization(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="{command}", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="{command}", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyFlashUtilization test."""
@@ -531,7 +531,7 @@ class VerifyFlashUtilization(AntaTest):
         check_peer_supervisor: bool = False
         """If True, also verifies the peer supervisor flash drive on dual-supervisor systems."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for peer supervisor."""
         if self.inputs.check_peer_supervisor:
             return [
@@ -598,7 +598,7 @@ class VerifyFilePresence(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["system"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="dir {flash_memory}", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="dir {flash_memory}", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyFilePresence test."""
@@ -608,7 +608,7 @@ class VerifyFilePresence(AntaTest):
         check_peer_supervisor: bool = False
         """If True, also verifies the peer supervisor flash drive on dual-supervisor systems."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template as per the input."""
         if self.inputs.check_peer_supervisor:
             return [template.render(flash_memory="flash:/"), template.render(flash_memory="supervisor-peer:/mnt/flash")]

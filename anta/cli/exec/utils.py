@@ -18,14 +18,14 @@ from click.exceptions import UsageError
 from httpx import ConnectError, HTTPError
 
 from anta.device import AntaDevice, AsyncEOSDevice
-from anta.models import AntaCommand
+from anta.models import AntaEAPICommand
 from anta.tools import safe_command
 from asynceapi import EapiCommandError
 
 if TYPE_CHECKING:
     from collections.abc import Coroutine
 
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
     from asynceapi._types import EapiComplexCommand, EapiSimpleCommand
 
 EOS_SCHEDULED_TECH_SUPPORT = "/mnt/flash/schedule/tech-support"
@@ -33,13 +33,13 @@ INVALID_CHAR = "`~!@#$/"
 logger = logging.getLogger(__name__)
 
 
-async def clear_counters(anta_inventory: AntaInventory, tags: set[str] | None = None) -> None:
+async def clear_counters(anta_inventory: AntaInventoryHost, tags: set[str] | None = None) -> None:
     """Clear counters."""
 
     async def clear(dev: AntaDevice) -> None:
-        commands = [AntaCommand(command="clear counters")]
+        commands = [AntaEAPICommand(command="clear counters")]
         if dev.hw_model not in ["cEOSLab", "vEOS-lab"]:
-            commands.append(AntaCommand(command="clear hardware counter drop"))
+            commands.append(AntaEAPICommand(command="clear hardware counter drop"))
         await dev.collect_commands(commands=commands)
         for command in commands:
             if not command.collected:
@@ -54,7 +54,7 @@ async def clear_counters(anta_inventory: AntaInventory, tags: set[str] | None = 
 
 
 async def collect_commands(
-    inv: AntaInventory,
+    inv: AntaInventoryHost,
     commands: dict[str, list[str]],
     root_dir: Path,
     tags: set[str] | None = None,
@@ -64,7 +64,7 @@ async def collect_commands(
     async def collect(dev: AntaDevice, command: str, outformat: Literal["json", "text"]) -> None:
         outdir = Path() / root_dir / dev.name / outformat
         outdir.mkdir(parents=True, exist_ok=True)
-        c = AntaCommand(command=command, ofmt=outformat)
+        c = AntaEAPICommand(command=command, ofmt=outformat)
         await dev.collect(c)
         if not c.collected:
             logger.error("Could not collect commands on device %s: %s", dev.name, c.errors)
@@ -100,7 +100,7 @@ async def collect_commands(
             logger.error("Error when collecting commands: %s", str(r))
 
 
-async def collect_show_tech(inv: AntaInventory, root_dir: Path, *, configure: bool, tags: set[str] | None = None, latest: int | None = None) -> None:  # noqa: C901
+async def collect_show_tech(inv: AntaInventoryHost, root_dir: Path, *, configure: bool, tags: set[str] | None = None, latest: int | None = None) -> None:  # noqa: C901
     """Collect scheduled show-tech on devices."""
 
     async def collect(device: AntaDevice) -> None:
@@ -110,7 +110,7 @@ async def collect_show_tech(inv: AntaInventory, root_dir: Path, *, configure: bo
             cmd = f"bash timeout 10 ls -1t {EOS_SCHEDULED_TECH_SUPPORT}"
             if latest:
                 cmd += f" | head -{latest}"
-            command = AntaCommand(command=cmd, ofmt="text")
+            command = AntaEAPICommand(command=cmd, ofmt="text")
             await device.collect(command=command)
             if not (command.collected and command.text_output):
                 logger.error("Unable to get tech-support filenames on %s: verify that %s is not empty", device.name, EOS_SCHEDULED_TECH_SUPPORT)
@@ -123,7 +123,7 @@ async def collect_show_tech(inv: AntaInventory, root_dir: Path, *, configure: bo
             outdir.mkdir(parents=True, exist_ok=True)
 
             # Check if 'aaa authorization exec default local' is present in the running-config
-            command = AntaCommand(command="show running-config | include aaa authorization exec default", ofmt="text")
+            command = AntaEAPICommand(command="show running-config | include aaa authorization exec default", ofmt="text")
             await device.collect(command=command)
 
             if command.collected and not command.text_output:
@@ -139,7 +139,7 @@ async def collect_show_tech(inv: AntaInventory, root_dir: Path, *, configure: bo
                 )
                 logger.warning(msg)
 
-                # TODO: @mtache - add `config` field to `AntaCommand` object to handle this use case.
+                # TODO: @mtache - add `config` field to `AntaEAPICommand` object to handle this use case.
                 # Otherwise mypy complains about enable as it is only implemented for AsyncEOSDevice
                 # TODO: Should enable be also included in AntaDevice?
                 if not isinstance(device, AsyncEOSDevice):
@@ -157,7 +157,7 @@ async def collect_show_tech(inv: AntaInventory, root_dir: Path, *, configure: bo
                     ],
                 )
                 logger.warning("Configuring 'aaa authorization exec default local' on device %s", device.name)
-                command = AntaCommand(command="show running-config | include aaa authorization exec default local", ofmt="text")
+                command = AntaEAPICommand(command="show running-config | include aaa authorization exec default local", ofmt="text")
                 await device._session.cli(commands=commands)
                 logger.info("Configured 'aaa authorization exec default local' on device %s", device.name)
 

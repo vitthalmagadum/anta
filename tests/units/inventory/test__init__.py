@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING
 import pytest
 from pydantic import ValidationError
 
-from anta.inventory import AntaInventory
+from anta.inventory import AntaInventoryHost
 from anta.inventory.exceptions import InventoryIncorrectSchemaError, InventoryRootKeyError
 
 if TYPE_CHECKING:
@@ -65,34 +65,34 @@ INIT_INVALID_PARAMS = [
 ]
 
 
-class TestAntaInventory:
-    """Tests for anta.inventory.AntaInventory."""
+class TestAntaInventoryHost:
+    """Tests for anta.inventory.AntaInventoryHost."""
 
     @pytest.mark.parametrize("yaml_file", INIT_VALID_PARAMS, indirect=["yaml_file"])
     def test_parse_valid(self, yaml_file: Path) -> None:
         """Parse valid YAML file to create ANTA inventory."""
-        AntaInventory.parse(filename=yaml_file, username="arista", password="arista123")
+        AntaInventoryHost.parse(filename=yaml_file, username="arista", password="arista123")
 
     @pytest.mark.parametrize("yaml_file", INIT_INVALID_PARAMS, indirect=["yaml_file"])
     def test_parse_invalid(self, yaml_file: Path) -> None:
         """Parse invalid YAML file to create ANTA inventory."""
         with pytest.raises((InventoryIncorrectSchemaError, InventoryRootKeyError, ValidationError)):
-            AntaInventory.parse(filename=yaml_file, username="arista", password="arista123")
+            AntaInventoryHost.parse(filename=yaml_file, username="arista", password="arista123")
 
     def test_parse_wrong_format(self) -> None:
         """Use wrong file format to parse the ANTA inventory."""
-        with pytest.raises(ValueError, match=r" is not a valid format for an AntaInventory file. Only 'yaml' and 'json' are supported."):
-            AntaInventory.parse(filename="dummy.yml", username="arista", password="arista123", file_format="wrong")  # type: ignore[arg-type]
+        with pytest.raises(ValueError, match=r" is not a valid format for an AntaInventoryHost file. Only 'yaml' and 'json' are supported."):
+            AntaInventoryHost.parse(filename="dummy.yml", username="arista", password="arista123", file_format="wrong")  # type: ignore[arg-type]
 
     def test_parse_os_error(self, caplog: pytest.LogCaptureFixture) -> None:
         """Use wrong file name to parse the ANTA inventory."""
         caplog.set_level(logging.INFO)
         with pytest.raises(OSError, match=r"No such file or directory"):
-            _ = AntaInventory.parse(filename="dummy.yml", username="arista", password="arista123")
+            _ = AntaInventoryHost.parse(filename="dummy.yml", username="arista", password="arista123")
         assert "Unable to parse ANTA Device Inventory file" in caplog.records[0].message
 
     @pytest.mark.parametrize(("inventory"), [{"count": 3}], indirect=True)
-    def test_max_potential_connections(self, inventory: AntaInventory) -> None:
+    def test_max_potential_connections(self, inventory: AntaInventoryHost) -> None:
         """Test max_potential_connections property with regular AsyncEOSDevice objects in the inventory."""
         # Each AsyncEOSDevice has a max_connections of 100
         assert inventory.max_potential_connections == 300
@@ -102,7 +102,7 @@ class TestAntaInventory:
         """Test max_potential_connections property with an AntaDevice with no max_connections in the inventory."""
         caplog.set_level(logging.DEBUG)
 
-        inventory = AntaInventory()
+        inventory = AntaInventoryHost()
         inventory.add_device(async_device)
         inventory.add_device(device)
 

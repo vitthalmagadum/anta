@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar
 
 from anta.decorators import skip_on_platforms
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -32,7 +32,7 @@ class VerifyLANZ(AntaTest):
 
     description = "Verifies if LANZ is enabled."
     categories: ClassVar[list[str]] = ["lanz"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show queue-monitor length status", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show queue-monitor length status", revision=1)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test

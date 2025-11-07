@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Any, ClassVar, Literal
 
 from anta.custom_types import PositiveInteger
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 from anta.tools import get_value
 
 if TYPE_CHECKING:
@@ -35,7 +35,7 @@ class VerifyMcsClientMounts(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["cvx"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management cvx mounts", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management cvx mounts", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -74,7 +74,7 @@ class VerifyManagementCVX(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["cvx"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management cvx", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management cvx", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyManagementCVX test."""
@@ -115,7 +115,7 @@ class VerifyMcsServerMounts(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["cvx"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show cvx mounts", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show cvx mounts", revision=1)]
 
     mcs_path_types: ClassVar[list[str]] = ["Mcs::ApiConfigRedundancyStatus", "Mcs::ActiveFlows", "Mcs::Client::Status"]
     """The list of expected MCS path types to verify."""
@@ -192,7 +192,7 @@ class VerifyActiveCVXConnections(AntaTest):
 
     categories: ClassVar[list[str]] = ["cvx"]
     # TODO: @gmuloc - cover "% Unavailable command (controller not ready)"
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show cvx connections brief", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show cvx connections brief", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyActiveCVXConnections test."""
@@ -243,7 +243,7 @@ class VerifyCVXClusterStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["cvx"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show cvx", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show cvx", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyCVXClusterStatus test."""

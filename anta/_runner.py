@@ -16,7 +16,7 @@ from typing import TYPE_CHECKING, Any
 from pydantic import BaseModel, ConfigDict
 
 from anta import GITHUB_SUGGESTION
-from anta.inventory import AntaInventory
+from anta.inventory import AntaInventoryHost
 from anta.logger import anta_log_exception
 from anta.models import AntaTest
 from anta.result_manager import ResultManager
@@ -71,7 +71,7 @@ class AntaRunContext:
 
     Attributes
     ----------
-    inventory: AntaInventory
+    inventory: AntaInventoryHost
         Initial inventory of devices provided to the run.
     catalog: AntaCatalog
         Initial catalog of tests provided to the run.
@@ -79,7 +79,7 @@ class AntaRunContext:
         Manager with the final test results.
     filters: AntaRunFilters
         Provided filters to the run.
-    selected_inventory: AntaInventory
+    selected_inventory: AntaInventoryHost
         The final inventory of devices selected for testing.
     selected_tests: defaultdict[AntaDevice, set[AntaTestDefinition]]
         A mapping containing the final tests to be run per device.
@@ -95,14 +95,14 @@ class AntaRunContext:
         End time of the run. None if not set yet.
     """
 
-    inventory: AntaInventory
+    inventory: AntaInventoryHost
     catalog: AntaCatalog
     manager: ResultManager
     filters: AntaRunFilters
     dry_run: bool = False
 
     # State populated during the run
-    selected_inventory: AntaInventory = field(default_factory=AntaInventory)
+    selected_inventory: AntaInventoryHost = field(default_factory=AntaInventoryHost)
     selected_tests: defaultdict[AntaDevice, set[AntaTestDefinition]] = field(default_factory=lambda: defaultdict(set))
     devices_filtered_at_setup: list[str] = field(default_factory=list)
     devices_unreachable_at_setup: list[str] = field(default_factory=list)
@@ -172,9 +172,9 @@ class AntaRunner:
 
     from anta._runner import AntaRunner, AntaRunFilters
     from anta.catalog import AntaCatalog
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
 
-    inventory = AntaInventory.parse(
+    inventory = AntaInventoryHost.parse(
         filename="anta_inventory.yml",
         username="arista",
         password="arista",
@@ -199,7 +199,7 @@ class AntaRunner:
 
     async def run(
         self,
-        inventory: AntaInventory,
+        inventory: AntaInventoryHost,
         catalog: AntaCatalog,
         result_manager: ResultManager | None = None,
         filters: AntaRunFilters | None = None,
@@ -364,19 +364,26 @@ class AntaRunner:
 
         # Create the device to tests mapping from the tags
         for device in ctx.selected_inventory.devices:
+            device_type_name = type(device).__name__
+            tests_to_run: set[AntaTestDefinition] = set()
+
             if ctx.filters.tags:
                 # If there are CLI tags, execute tests with matching tags for this device
                 if not (matching_tags := ctx.filters.tags.intersection(device.tags)):
                     # The device does not have any selected tag, skipping
                     # This should not never happen because the device will already be filtered by `_setup_inventory`
                     continue
-                ctx.selected_tests[device].update(ctx.catalog.get_tests_by_tags(matching_tags))
+                tests_to_run.update(ctx.catalog.get_tests_by_tags(matching_tags))
             else:
                 # If there is no CLI tags, execute all tests that do not have any tags
-                ctx.selected_tests[device].update(ctx.catalog.tag_to_tests[None])
+                tests_to_run.update(ctx.catalog.tag_to_tests[None])
 
                 # Then add the tests with matching tags from device tags
-                ctx.selected_tests[device].update(ctx.catalog.get_tests_by_tags(device.tags))
+                tests_to_run.update(ctx.catalog.get_tests_by_tags(device.tags))
+
+            for test_definition in tests_to_run:
+                if device_type_name in test_definition.test.supported_sources:
+                    ctx.selected_tests[device].add(test_definition)
 
         if ctx.total_tests_scheduled == 0:
             msg_parts = ["No tests scheduled to run after filtering by tags/tests."]

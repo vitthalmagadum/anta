@@ -11,7 +11,7 @@ from typing import ClassVar
 
 from anta.decorators import skip_on_platforms
 from anta.input_models.path_selection import DpsPath
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_value
 
 
@@ -36,7 +36,7 @@ class VerifyPathsHealth(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["path-selection"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show path-selection paths", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show path-selection paths", revision=1)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab"])
     @AntaTest.anta_test
@@ -101,7 +101,7 @@ class VerifySpecificPath(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["path-selection"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show path-selection paths", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show path-selection paths", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySpecificPath test."""

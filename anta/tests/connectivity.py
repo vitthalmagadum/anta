@@ -13,7 +13,7 @@ from typing import ClassVar, TypeVar
 from pydantic import field_validator
 
 from anta.input_models.connectivity import Host, LLDPNeighbor, Neighbor
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 
 # Using a TypeVar for the Host model since mypy thinks it's a ClassVar and not a valid type when used in field validators
 T = TypeVar("T", bound=Host)
@@ -54,7 +54,7 @@ class VerifyReachability(AntaTest):
 
     categories: ClassVar[list[str]] = ["connectivity"]
     # Template uses '{size}{df_bit}' without space since df_bit includes leading space when enabled
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
         AntaTemplate(template="ping vrf {vrf} {destination}{source} size {size}{df_bit} repeat {repeat}", revision=1)
     ]
 
@@ -76,7 +76,7 @@ class VerifyReachability(AntaTest):
                     raise ValueError(msg)
             return hosts
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each host in the input list."""
         return [
             template.render(
@@ -171,7 +171,7 @@ class VerifyLLDPNeighbors(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["connectivity"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show lldp neighbors detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show lldp neighbors detail", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyLLDPNeighbors test."""

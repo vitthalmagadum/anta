@@ -17,8 +17,8 @@ from pydantic import ValidationError
 
 from anta._runner import AntaRunContext, AntaRunFilters, AntaRunner
 from anta.catalog import AntaCatalog, AntaTestDefinition
-from anta.inventory import AntaInventory
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.inventory import AntaInventoryHost
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.result_manager import ResultManager
 from anta.result_manager.models import TestResult as AntaTestResult
 from anta.settings import DEFAULT_MAX_CONCURRENCY, DEFAULT_NOFILE, AntaRunnerSettings
@@ -66,7 +66,7 @@ class TestAntaRunner:
         """Test AntaRunner.run() in dry-run."""
         caplog.set_level(logging.INFO)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         runner = AntaRunner()
         ctx = await runner.run(inventory, catalog, dry_run=True)
@@ -152,7 +152,7 @@ class TestAntaRunner:
         """Test AntaRunner.run() with different filters."""
         caplog.set_level(logging.WARNING)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         runner = AntaRunner()
         ctx = await runner.run(inventory, catalog, filters=filters, dry_run=True)
@@ -183,7 +183,7 @@ class TestAntaRunner:
 
     async def test_run_invalid_filters(self) -> None:
         """Test AntaRunner.run() with invalid filters."""
-        inventory = AntaInventory()
+        inventory = AntaInventoryHost()
         catalog = AntaCatalog()
         runner = AntaRunner()
 
@@ -192,7 +192,7 @@ class TestAntaRunner:
 
     async def test_run_provided_manager(self) -> None:
         """Test AntaRunner.run() with a provided ResultManager instance."""
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         manager = ResultManager()
         runner = AntaRunner()
@@ -206,7 +206,7 @@ class TestAntaRunner:
         """Test AntaRunner.run() with a provided non-empty ResultManager instance."""
         caplog.set_level(logging.WARNING)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         manager = ResultManager()
         test = AntaTestResult(name="DC1-LEAF1A", test="VerifyNTP", categories=["system"], description="NTP Test")
@@ -229,7 +229,7 @@ class TestAntaRunner:
         """Test AntaRunner.run() with an empty AntaCatalog."""
         caplog.set_level(logging.WARNING)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog()
         runner = AntaRunner()
 
@@ -240,10 +240,10 @@ class TestAntaRunner:
         assert warning_msg in caplog.messages
 
     async def test_run_empty_inventory(self, caplog: pytest.LogCaptureFixture) -> None:
-        """Test AntaRunner.run() with an empty AntaInventory."""
+        """Test AntaRunner.run() with an empty AntaInventoryHost."""
         caplog.set_level(logging.WARNING)
 
-        inventory = AntaInventory()
+        inventory = AntaInventoryHost()
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         runner = AntaRunner()
 
@@ -254,8 +254,8 @@ class TestAntaRunner:
         assert warning_msg in caplog.messages
 
     @pytest.mark.parametrize("inventory", [{"reachable": False}], indirect=True)
-    async def test_run_no_reachable_devices(self, caplog: pytest.LogCaptureFixture, inventory: AntaInventory) -> None:
-        """Test AntaRunner.run() with an empty AntaInventory."""
+    async def test_run_no_reachable_devices(self, caplog: pytest.LogCaptureFixture, inventory: AntaInventoryHost) -> None:
+        """Test AntaRunner.run() with an empty AntaInventoryHost."""
         caplog.set_level(logging.WARNING)
 
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
@@ -284,7 +284,7 @@ class TestAntaRunner:
                 msg = "Test not implemented"
                 raise NotImplementedError(msg)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         test_definition = AntaTestDefinition(test=InvalidTest, inputs=None)
         catalog = AntaCatalog(tests=[test_definition])
         runner = AntaRunner()
@@ -304,7 +304,7 @@ class TestAntaRunner:
         """Test AntaRunner._log_run_information with default settings."""
         caplog.set_level(logging.INFO)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         runner = AntaRunner()
         await runner.run(inventory, catalog, dry_run=True)
@@ -321,7 +321,7 @@ class TestAntaRunner:
         """Test AntaRunner._log_run_information with filters."""
         caplog.set_level(logging.INFO)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         runner = AntaRunner()
         filters = AntaRunFilters(devices={"spine1"})
@@ -340,7 +340,7 @@ class TestAntaRunner:
         """Test AntaRunner._log_run_information with higher tests count than concurrency limit."""
         caplog.set_level(logging.WARNING)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         runner_settings = AntaRunnerSettings(max_concurrency=20)
         runner = AntaRunner(settings=runner_settings)
@@ -356,7 +356,7 @@ class TestAntaRunner:
         """Test AntaRunner._log_run_information with higher connections count than file descriptor limit."""
         caplog.set_level(logging.WARNING)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         runner_settings = AntaRunnerSettings(nofile=128)
         runner = AntaRunner(settings=runner_settings)
@@ -371,7 +371,7 @@ class TestAntaRunner:
         """Test AntaRunner._log_run_information from a fake context."""
         caplog.set_level(logging.INFO)
 
-        inventory = AntaInventory.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
+        inventory = AntaInventoryHost.parse(filename=DATA_DIR / "test_inventory_with_tags.yml", username="anta", password="anta")
         catalog = AntaCatalog.parse(filename=DATA_DIR / "test_catalog_with_tags.yml")
         manager = ResultManager()
         filters = AntaRunFilters()
@@ -399,7 +399,7 @@ class TestAntaRunner:
 
     @pytest.mark.parametrize(("inventory"), [{"count": 3}], indirect=True)
     @respx.mock
-    async def test_run(self, inventory: AntaInventory) -> None:
+    async def test_run(self, inventory: AntaInventoryHost) -> None:
         """Test AntaRunner.run()."""
         # Mock the eAPI requests
         respx.post(path="/command-api", headers={"Content-Type": "application/json-rpc"}, json__params__cmds__0__cmd="show ip route vrf default").respond(
@@ -425,7 +425,7 @@ class TestAntaRunContext:
 
     def test_init(self) -> None:
         """Test initialization."""
-        inventory = AntaInventory()
+        inventory = AntaInventoryHost()
         catalog = AntaCatalog()
         manager = ResultManager()
         filters = AntaRunFilters()
@@ -439,7 +439,7 @@ class TestAntaRunContext:
         assert ctx.filters is filters
         assert not ctx.dry_run
 
-        assert isinstance(ctx.selected_inventory, AntaInventory)
+        assert isinstance(ctx.selected_inventory, AntaInventoryHost)
         assert len(ctx.selected_inventory) == 0
         assert isinstance(ctx.selected_tests, defaultdict)
         assert len(ctx.selected_tests) == 0

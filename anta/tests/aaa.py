@@ -11,7 +11,7 @@ from ipaddress import IPv4Address
 from typing import TYPE_CHECKING, ClassVar, Literal
 
 from anta.custom_types import AAAAuthMethod
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 from anta.tools import get_value
 
 if TYPE_CHECKING:
@@ -37,7 +37,7 @@ class VerifyTacacsSourceIntf(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["aaa"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show tacacs", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show tacacs", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyTacacsSourceIntf test."""
@@ -81,7 +81,7 @@ class VerifyTacacsServers(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["aaa"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show tacacs", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show tacacs", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyTacacsServers test."""
@@ -133,7 +133,7 @@ class VerifyTacacsServerGroups(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["aaa"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show tacacs", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show tacacs", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyTacacsServerGroups test."""
@@ -181,7 +181,7 @@ class VerifyAuthenMethods(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["aaa"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show aaa methods authentication", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show aaa methods authentication", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyAuthenMethods test."""
@@ -240,7 +240,7 @@ class VerifyAuthzMethods(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["aaa"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show aaa methods authorization", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show aaa methods authorization", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyAuthzMethods test."""
@@ -294,7 +294,7 @@ class VerifyAcctDefaultMethods(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["aaa"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show aaa methods accounting", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show aaa methods accounting", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyAcctDefaultMethods test."""
@@ -355,7 +355,7 @@ class VerifyAcctConsoleMethods(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["aaa"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show aaa methods accounting", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show aaa methods accounting", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyAcctConsoleMethods test."""

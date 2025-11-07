@@ -19,7 +19,7 @@ from anta.runner import prepare_tests
 from .test_models import FakeTest
 
 if TYPE_CHECKING:
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
 
 if os.name == "posix":
     # The function is not defined on non-POSIX system
@@ -152,7 +152,7 @@ def test_adjust_rlimit_nofile_value_error(caplog: pytest.LogCaptureFixture) -> N
     indirect=["inventory"],
 )
 async def test_prepare_tests(
-    caplog: pytest.LogCaptureFixture, inventory: AntaInventory, tags: set[str], tests: set[str], devices_count: int, tests_count: int
+    caplog: pytest.LogCaptureFixture, inventory: AntaInventoryHost, tags: set[str], tests: set[str], devices_count: int, tests_count: int
 ) -> None:
     """Test the runner prepare_tests function with specific tests."""
     caplog.set_level(logging.WARNING)

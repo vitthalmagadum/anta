@@ -13,7 +13,7 @@ import pytest
 from pydantic import ValidationError
 from yaml import safe_load
 
-from anta.inventory.models import AntaInventoryHost, AntaInventoryInput, AntaInventoryNetwork, AntaInventoryRange
+from anta.inventory.models import AntaInventoryHost, AntaInventoryHostInput, AntaInventoryHostNetwork, AntaInventoryHostRange
 
 if TYPE_CHECKING:
     from _pytest.mark.structures import ParameterSet
@@ -120,8 +120,8 @@ class TestAntaInventoryHost:
             AntaInventoryHost.model_validate({"name": name, "host": host, "port": port, "tags": tags, "disable_cache": disable_cache})
 
 
-class TestAntaInventoryNetwork:
-    """Test anta.inventory.models.AntaInventoryNetwork."""
+class TestAntaInventoryHostNetwork:
+    """Test anta.inventory.models.AntaInventoryHostNetwork."""
 
     @pytest.mark.parametrize(("network", "tags", "disable_cache"), INVENTORY_NETWORK_VALID_PARAMS)
     def test_valid(self, network: str, tags: set[str], disable_cache: bool | None) -> None:
@@ -129,7 +129,7 @@ class TestAntaInventoryNetwork:
         params: dict[str, Any] = {"network": network, "tags": tags}
         if disable_cache is not None:
             params = params | {"disable_cache": disable_cache}
-        inventory_network = AntaInventoryNetwork.model_validate(params)
+        inventory_network = AntaInventoryHostNetwork.model_validate(params)
         assert network == str(inventory_network.network)
         assert tags == inventory_network.tags
         if disable_cache is None:
@@ -142,11 +142,11 @@ class TestAntaInventoryNetwork:
     def test_invalid(self, network: str, tags: set[str], disable_cache: bool | None) -> None:
         """Invalid model parameters."""
         with pytest.raises(ValidationError):
-            AntaInventoryNetwork.model_validate({"network": network, "tags": tags, "disable_cache": disable_cache})
+            AntaInventoryHostNetwork.model_validate({"network": network, "tags": tags, "disable_cache": disable_cache})
 
 
-class TestAntaInventoryRange:
-    """Test anta.inventory.models.AntaInventoryRange."""
+class TestAntaInventoryHostRange:
+    """Test anta.inventory.models.AntaInventoryHostRange."""
 
     @pytest.mark.parametrize(("start", "end", "tags", "disable_cache"), INVENTORY_RANGE_VALID_PARAMS)
     def test_valid(self, start: str, end: str, tags: set[str], disable_cache: bool | None) -> None:
@@ -154,7 +154,7 @@ class TestAntaInventoryRange:
         params: dict[str, Any] = {"start": start, "end": end, "tags": tags}
         if disable_cache is not None:
             params = params | {"disable_cache": disable_cache}
-        inventory_range = AntaInventoryRange.model_validate(params)
+        inventory_range = AntaInventoryHostRange.model_validate(params)
         assert start == str(inventory_range.start)
         assert end == str(inventory_range.end)
         assert tags == inventory_range.tags
@@ -168,11 +168,11 @@ class TestAntaInventoryRange:
     def test_invalid(self, start: str, end: str, tags: set[str], disable_cache: bool | None) -> None:
         """Invalid model parameters."""
         with pytest.raises(ValidationError):
-            AntaInventoryRange.model_validate({"start": start, "end": end, "tags": tags, "disable_cache": disable_cache})
+            AntaInventoryHostRange.model_validate({"start": start, "end": end, "tags": tags, "disable_cache": disable_cache})
 
 
-class TestAntaInventoryInputs:
-    """Test anta.inventory.models.AntaInventoryInputs."""
+class TestAntaInventoryHostInputs:
+    """Test anta.inventory.models.AntaInventoryHostInputs."""
 
     def test_dump_to_json(self) -> None:
         """Load a YAML file, dump it to JSON and verify it works."""
@@ -180,7 +180,7 @@ class TestAntaInventoryInputs:
         expected_json_path = FILE_DIR / "test_inventory_with_tags.json"
         with input_yml_path.open("r") as f:
             data = safe_load(f)
-        anta_inventory_input = AntaInventoryInput(**data["anta_inventory"])
+        anta_inventory_input = AntaInventoryHostInput(**data["anta_inventory"])
 
         with expected_json_path.open("r") as f:
             expected_data = json.load(f)
@@ -193,7 +193,7 @@ class TestAntaInventoryInputs:
         expected_yml_path = FILE_DIR / "test_inventory_medium.yml"
         with input_json_path.open("r") as f:
             data = json.load(f)
-        anta_inventory_input = AntaInventoryInput(**data["anta_inventory"])
+        anta_inventory_input = AntaInventoryHostInput(**data["anta_inventory"])
 
         with expected_yml_path.open("r") as f:
             expected_data = safe_load(f)

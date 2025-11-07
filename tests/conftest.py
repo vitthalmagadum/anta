@@ -10,13 +10,13 @@ import pytest
 import respx
 
 from anta.device import AsyncEOSDevice
-from anta.inventory import AntaInventory
+from anta.inventory import AntaInventoryHost
 
 DATA_DIR: Path = Path(__file__).parent.resolve() / "data"
 
 
 @pytest.fixture
-def inventory(request: pytest.FixtureRequest) -> Iterator[AntaInventory]:
+def inventory(request: pytest.FixtureRequest) -> Iterator[AntaInventoryHost]:
     """Generate an ANTA inventory."""
     user = "admin"
     password = "password"  # noqa: S105
@@ -25,9 +25,9 @@ def inventory(request: pytest.FixtureRequest) -> Iterator[AntaInventory]:
     disable_cache = params.get("disable_cache", True)
     reachable = params.get("reachable", True)
     if "filename" in params:
-        inv = AntaInventory.parse(DATA_DIR / params["filename"], username=user, password=password, disable_cache=disable_cache)
+        inv = AntaInventoryHost.parse(DATA_DIR / params["filename"], username=user, password=password, disable_cache=disable_cache)
     else:
-        inv = AntaInventory()
+        inv = AntaInventoryHost()
         for i in range(count):
             inv.add_device(
                 AsyncEOSDevice(

@@ -14,8 +14,8 @@ import pytest
 import requests
 
 from anta.cli.get.utils import create_inventory_from_ansible, create_inventory_from_cvp, extract_examples, find_tests_in_module, get_cv_token, print_test
-from anta.inventory import AntaInventory
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.inventory import AntaInventoryHost
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 
 DATA_DIR: Path = Path(__file__).parents[3].resolve() / "data"
 
@@ -84,7 +84,7 @@ def test_create_inventory_from_cvp(tmp_path: Path, inventory: list[dict[str, Any
 
     assert output.exists()
     # This validate the file structure ;)
-    inv = AntaInventory.parse(str(output), "user", "pass")
+    inv = AntaInventoryHost.parse(str(output), "user", "pass")
     assert len(inv) == len(inventory)
 
 
@@ -155,7 +155,7 @@ def test_create_inventory_from_ansible(
             create_inventory_from_ansible(inventory_file_path, target_file)
 
         assert target_file.exists()
-        inv = AntaInventory().parse(str(target_file), "user", "pass")
+        inv = AntaInventoryHost().parse(str(target_file), "user", "pass")
         assert len(inv) == expected_inv_length
     if not isinstance(expected_raise, nullcontext):
         assert not target_file.exists()

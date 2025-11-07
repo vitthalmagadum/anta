@@ -5,11 +5,11 @@
 
 import asyncio
 
-from anta.inventory import AntaInventory
+from anta.inventory import AntaInventoryHost
 
 
-async def main(inv: AntaInventory) -> None:
-    """Read an AntaInventory and try to connect to every device in the inventory.
+async def main(inv: AntaInventoryHost) -> None:
+    """Read an AntaInventoryHost and try to connect to every device in the inventory.
 
     Print a message for every device connection status
     """
@@ -23,8 +23,8 @@ async def main(inv: AntaInventory) -> None:
 
 
 if __name__ == "__main__":
-    # Create the AntaInventory instance
-    inventory = AntaInventory.parse(
+    # Create the AntaInventoryHost instance
+    inventory = AntaInventoryHost.parse(
         filename="inventory.yaml",
         username="arista",
         password="@rista123",

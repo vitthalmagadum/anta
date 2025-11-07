@@ -7,7 +7,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, ClassVar
 
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -32,7 +32,7 @@ class VerifyGreenTCounters(AntaTest):
 
     description = "Verifies if the GreenT counters are incremented."
     categories: ClassVar[list[str]] = ["greent"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show monitor telemetry postcard counters", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show monitor telemetry postcard counters", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -64,7 +64,7 @@ class VerifyGreenT(AntaTest):
 
     description = "Verifies if a GreenT policy other than the default is created."
     categories: ClassVar[list[str]] = ["greent"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show monitor telemetry postcard policy profile", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show monitor telemetry postcard policy profile", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:

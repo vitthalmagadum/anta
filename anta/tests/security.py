@@ -12,7 +12,7 @@ from typing import ClassVar
 
 from anta.custom_types import PositiveInteger
 from anta.input_models.security import ACL, APISSLCertificate, IPSecPeer, IPSecPeers
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_item, get_value
 
 
@@ -33,7 +33,7 @@ class VerifySSHStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management ssh", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management ssh", ofmt="text")]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -73,7 +73,7 @@ class VerifySSHIPv4Acl(AntaTest):
 
     description = "Verifies if the SSHD agent has IPv4 ACL(s) configured."
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management ssh ip access-list summary", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management ssh ip access-list summary", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySSHIPv4Acl test."""
@@ -120,7 +120,7 @@ class VerifySSHIPv6Acl(AntaTest):
 
     description = "Verifies if the SSHD agent has IPv6 ACL(s) configured."
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management ssh ipv6 access-list summary", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management ssh ipv6 access-list summary", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySSHIPv6Acl test."""
@@ -164,7 +164,7 @@ class VerifyTelnetStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management telnet", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management telnet", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -193,7 +193,7 @@ class VerifyAPIHttpStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management api http-commands", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management api http-commands", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -223,7 +223,7 @@ class VerifyAPIHttpsSSL(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management api http-commands", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management api http-commands", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyAPIHttpsSSL test."""
@@ -264,7 +264,7 @@ class VerifyAPIIPv4Acl(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management api http-commands ip access-list summary", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management api http-commands ip access-list summary", revision=1)]
 
     class Input(AntaTest.Input):
         """Input parameters for the VerifyAPIIPv4Acl test."""
@@ -312,7 +312,7 @@ class VerifyAPIIPv6Acl(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management api http-commands ipv6 access-list summary", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management api http-commands ipv6 access-list summary", revision=1)]
 
     class Input(AntaTest.Input):
         """Input parameters for the VerifyAPIIPv6Acl test."""
@@ -383,9 +383,9 @@ class VerifyAPISSLCertificate(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show management security ssl certificate", revision=1),
-        AntaCommand(command="show clock", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show management security ssl certificate", revision=1),
+        AntaEAPICommand(command="show clock", revision=1),
     ]
 
     class Input(AntaTest.Input):
@@ -461,7 +461,7 @@ class VerifyBannerLogin(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show banner login", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show banner login", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBannerLogin test."""
@@ -504,7 +504,7 @@ class VerifyBannerMotd(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show banner motd", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show banner motd", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBannerMotd test."""
@@ -568,7 +568,7 @@ class VerifyIPv4ACL(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip access-lists", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip access-lists", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyIPv4ACL test."""
@@ -618,7 +618,7 @@ class VerifyIPSecConnHealth(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip security connection vrf all")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip security connection vrf all")]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -677,7 +677,7 @@ class VerifySpecificIPSecConn(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show ip security connection vrf {vrf} path peer {peer}", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show ip security connection vrf {vrf} path peer {peer}", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySpecificIPSecConn test."""
@@ -687,7 +687,7 @@ class VerifySpecificIPSecConn(AntaTest):
         IPSecPeers: ClassVar[type[IPSecPeers]] = IPSecPeers
         """To maintain backward compatibility."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each input IP Sec connection."""
         return [template.render(peer=conn.peer, vrf=conn.vrf) for conn in self.inputs.ip_security_connections]
 
@@ -751,7 +751,7 @@ class VerifyHardwareEntropy(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["security"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show management security")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show management security")]
 
     @AntaTest.anta_test
     def test(self) -> None:

@@ -9,7 +9,7 @@ from __future__ import annotations
 from typing import Any, ClassVar
 
 from anta.input_models.evpn import EVPNPath, EVPNRoute, EVPNType5Prefix
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 
 
 class VerifyEVPNType5Routes(AntaTest):
@@ -82,7 +82,7 @@ class VerifyEVPNType5Routes(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show bgp evpn route-type ip-prefix {address} vni {vni}", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show bgp evpn route-type ip-prefix {address} vni {vni}", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyEVPNType5Routes test."""
@@ -90,7 +90,7 @@ class VerifyEVPNType5Routes(AntaTest):
         prefixes: list[EVPNType5Prefix]
         """List of EVPN Type-5 prefixes to verify."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each EVPN Type-5 prefix in the input list."""
         return [template.render(address=str(prefix.address), vni=prefix.vni) for prefix in self.inputs.prefixes]
 

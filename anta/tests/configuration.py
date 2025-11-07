@@ -11,7 +11,7 @@ import re
 from typing import TYPE_CHECKING, ClassVar
 
 from anta.custom_types import RegexString
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -34,7 +34,7 @@ class VerifyZeroTouch(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["configuration"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show zerotouch", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show zerotouch", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -63,7 +63,7 @@ class VerifyRunningConfigDiffs(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["configuration"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show running-config diffs", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show running-config diffs", ofmt="text")]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -102,7 +102,7 @@ class VerifyRunningConfigLines(AntaTest):
 
     description = "Search the Running-Config for the given RegEx patterns."
     categories: ClassVar[list[str]] = ["configuration"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show running-config", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show running-config", ofmt="text")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyRunningConfigLines test."""

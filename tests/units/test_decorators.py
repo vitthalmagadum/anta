@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING, ClassVar
 import pytest
 
 from anta.decorators import deprecated_test_class, skip_on_platforms
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 
 if TYPE_CHECKING:
     from anta.device import AntaDevice

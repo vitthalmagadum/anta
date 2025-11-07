@@ -16,8 +16,8 @@ from anta.custom_types import Hostname, Port
 logger = logging.getLogger(__name__)
 
 
-class AntaInventoryBaseModel(BaseModel):
-    """Pydantic BaseModel for AntaInventory objects."""
+class AntaInventoryHostBaseModel(BaseModel):
+    """Pydantic BaseModel for AntaInventoryHost objects."""
 
     model_config = ConfigDict(extra="forbid")
 
@@ -28,8 +28,8 @@ class AntaInventoryBaseModel(BaseModel):
         return sorted(tags)
 
 
-class AntaInventoryHost(AntaInventoryBaseModel):
-    """Host entry of AntaInventoryInput.
+class AntaInventoryHost(AntaInventoryHostBaseModel):
+    """Host entry of AntaInventoryHostInput.
 
     Attributes
     ----------
@@ -53,8 +53,8 @@ class AntaInventoryHost(AntaInventoryBaseModel):
     disable_cache: bool = False
 
 
-class AntaInventoryNetwork(AntaInventoryBaseModel):
-    """Network entry of AntaInventoryInput.
+class AntaInventoryHostNetwork(AntaInventoryHostBaseModel):
+    """Network entry of AntaInventoryHostInput.
 
     Attributes
     ----------
@@ -72,8 +72,8 @@ class AntaInventoryNetwork(AntaInventoryBaseModel):
     disable_cache: bool = False
 
 
-class AntaInventoryRange(AntaInventoryBaseModel):
-    """IP Range entry of AntaInventoryInput.
+class AntaInventoryHostRange(AntaInventoryHostBaseModel):
+    """IP Range entry of AntaInventoryHostInput.
 
     Attributes
     ----------
@@ -94,14 +94,14 @@ class AntaInventoryRange(AntaInventoryBaseModel):
     disable_cache: bool = False
 
 
-class AntaInventoryInput(BaseModel):
+class AntaInventoryHostInput(BaseModel):
     """Device inventory input model."""
 
     model_config = ConfigDict(extra="forbid")
 
-    networks: list[AntaInventoryNetwork] | None = None
+    networks: list[AntaInventoryHostNetwork] | None = None
     hosts: list[AntaInventoryHost] | None = None
-    ranges: list[AntaInventoryRange] | None = None
+    ranges: list[AntaInventoryHostRange] | None = None
 
     def yaml(self) -> str:
         """Return a YAML representation string of this model.

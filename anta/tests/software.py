@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, ClassVar
 
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -35,7 +35,7 @@ class VerifyEOSVersion(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["software"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show version", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show version", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyEOSVersion test."""
@@ -72,7 +72,7 @@ class VerifyTerminAttrVersion(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["software"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show version detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show version detail", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyTerminAttrVersion test."""
@@ -107,9 +107,9 @@ class VerifyEOSExtensions(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["software"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show extensions", revision=2),
-        AntaCommand(command="show boot-extensions", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show extensions", revision=2),
+        AntaEAPICommand(command="show boot-extensions", revision=1),
     ]
 
     @AntaTest.anta_test

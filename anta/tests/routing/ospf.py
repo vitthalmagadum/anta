@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar
 
 from anta.input_models.routing.ospf import OSPFNeighbor
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 from anta.tools import get_value
 
 if TYPE_CHECKING:
@@ -36,7 +36,7 @@ class VerifyOSPFNeighborState(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["ospf"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip ospf neighbor", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip ospf neighbor", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -86,7 +86,7 @@ class VerifyOSPFNeighborCount(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["ospf"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip ospf neighbor", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip ospf neighbor", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyOSPFNeighborCount test."""
@@ -142,7 +142,7 @@ class VerifyOSPFMaxLSA(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["ospf"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip ospf", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip ospf", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -194,7 +194,7 @@ class VerifyOSPFSpecificNeighbors(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["ospf"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip ospf neighbor", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip ospf neighbor", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyOSPFSpecificNeighbors test."""

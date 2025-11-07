@@ -12,7 +12,7 @@ from typing import ClassVar, Literal
 from pydantic import Field
 
 from anta.custom_types import Interface, InterfaceType, VlanId
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_value, is_interface_ignored
 
 
@@ -37,7 +37,7 @@ class VerifySTPMode(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["stp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show spanning-tree vlan {vlan}", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show spanning-tree vlan {vlan}", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySTPMode test."""
@@ -47,7 +47,7 @@ class VerifySTPMode(AntaTest):
         vlans: list[VlanId]
         """List of VLAN on which to verify STP mode."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each VLAN in the input list."""
         return [template.render(vlan=vlan) for vlan in self.inputs.vlans]
 
@@ -85,7 +85,7 @@ class VerifySTPBlockedPorts(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["stp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show spanning-tree blockedports", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show spanning-tree blockedports", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -122,7 +122,7 @@ class VerifySTPCounters(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["stp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show spanning-tree counters", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show spanning-tree counters", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySTPCounters test."""
@@ -176,7 +176,7 @@ class VerifySTPForwardingPorts(AntaTest):
 
     description = "Verifies that all interfaces are forwarding for a provided list of VLAN(s)."
     categories: ClassVar[list[str]] = ["stp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show spanning-tree topology vlan {vlan} status", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show spanning-tree topology vlan {vlan} status", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySTPForwardingPorts test."""
@@ -184,7 +184,7 @@ class VerifySTPForwardingPorts(AntaTest):
         vlans: list[VlanId]
         """List of VLAN on which to verify forwarding states."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each VLAN in the input list."""
         return [template.render(vlan=vlan) for vlan in self.inputs.vlans]
 
@@ -230,7 +230,7 @@ class VerifySTPRootPriority(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["stp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show spanning-tree root detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show spanning-tree root detail", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySTPRootPriority test."""
@@ -285,7 +285,7 @@ class VerifyStpTopologyChanges(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["stp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show spanning-tree topology status detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show spanning-tree topology status detail", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyStpTopologyChanges test."""
@@ -350,7 +350,7 @@ class VerifySTPDisabledVlans(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["stp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show spanning-tree vlan detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show spanning-tree vlan detail", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySTPDisabledVlans test."""

@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Any, ClassVar
 import pytest
 
 from anta.decorators import deprecated_test, skip_on_platforms
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.result_manager.models import AntaTestStatus
 from tests.units.conftest import DEVICE_HW_MODEL
 
@@ -26,7 +26,7 @@ class FakeTest(AntaTest):
     """ANTA test that always succeed."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -38,7 +38,7 @@ class FakeTestWithFailedCommand(AntaTest):
     """ANTA test with a command that failed."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show version", errors=["failed command"])]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show version", errors=["failed command"])]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -50,8 +50,8 @@ class FakeTestWithUnsupportedCommand(AntaTest):
     """ANTA test with an unsupported command."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(
             command="show hardware counter drop",
             errors=["Unavailable command (not supported on this hardware platform) (at token 2: 'counter')"],
         )
@@ -67,8 +67,8 @@ class FakeTestWithKnownEOSError(AntaTest):
     """ANTA test triggering a known EOS Error that should translate to failure of the test."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(
             command="show bgp evpn route-type mac-ip aa:c1:ab:de:50:ad vni 10010",
             errors=["BGP inactive"],
         )
@@ -84,7 +84,7 @@ class FakeTestWithInput(AntaTest):
     """ANTA test with inputs that always succeed."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
     class Input(AntaTest.Input):
         """Inputs for FakeTestWithInput test."""
@@ -101,14 +101,14 @@ class FakeTestWithTemplate(AntaTest):
     """ANTA test with template that always succeed."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
 
     class Input(AntaTest.Input):
         """Inputs for FakeTestWithTemplate test."""
 
         interface: str
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render function."""
         return [template.render(interface=self.inputs.interface)]
 
@@ -122,7 +122,7 @@ class FakeTestWithTemplateNoRender(AntaTest):
     """ANTA test with template that miss the render() method."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
 
     class Input(AntaTest.Input):
         """Inputs for FakeTestWithTemplateNoRender test."""
@@ -139,14 +139,14 @@ class FakeTestWithTemplateBadRender1(AntaTest):
     """ANTA test with template that raises a AntaTemplateRenderError exception."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
 
     class Input(AntaTest.Input):
         """Inputs for FakeTestWithTemplateBadRender1 test."""
 
         interface: str
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render function."""
         return [template.render(wrong_template_param=self.inputs.interface)]
 
@@ -160,14 +160,14 @@ class FakeTestWithTemplateBadRender2(AntaTest):
     """ANTA test with template that raises an arbitrary exception in render()."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
 
     class Input(AntaTest.Input):
         """Inputs for FakeTestWithTemplateBadRender2 test."""
 
         interface: str
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render function."""
         raise RuntimeError(template)
 
@@ -181,14 +181,14 @@ class FakeTestWithTemplateBadRender3(AntaTest):
     """ANTA test with template that gives extra template parameters in render()."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
 
     class Input(AntaTest.Input):
         """Inputs for FakeTestWithTemplateBadRender3 test."""
 
         interface: str
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render function."""
         return [template.render(interface=self.inputs.interface, extra="blah")]
 
@@ -202,14 +202,14 @@ class FakeTestWithTemplateBadTest(AntaTest):
     """ANTA test with template that tries to access an undefined template parameter in test()."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show interface {interface}")]
 
     class Input(AntaTest.Input):
         """Inputs for FakeTestWithTemplateBadTest test."""
 
         interface: str
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render function."""
         return [template.render(interface=self.inputs.interface)]
 
@@ -224,7 +224,7 @@ class SkipOnPlatformTest(AntaTest):
     """ANTA test that is skipped."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
     @skip_on_platforms([DEVICE_HW_MODEL])
     @AntaTest.anta_test
@@ -237,7 +237,7 @@ class UnSkipOnPlatformTest(AntaTest):
     """ANTA test that is skipped."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
     @skip_on_platforms(["dummy"])
     @AntaTest.anta_test
@@ -250,7 +250,7 @@ class SkipOnPlatformTestWithInput(AntaTest):
     """ANTA test skipped on platforms but with Input."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
     class Input(AntaTest.Input):
         """Inputs for SkipOnPlatformTestWithInput test."""
@@ -268,7 +268,7 @@ class DeprecatedTestWithoutNewTest(AntaTest):
     """ANTA test that is deprecated without new test."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
     @deprecated_test()
     @AntaTest.anta_test
@@ -281,7 +281,7 @@ class DeprecatedTestWithNewTest(AntaTest):
     """ANTA test that is deprecated with new test."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
     @deprecated_test(new_tests=["NewTest"])
     @AntaTest.anta_test
@@ -294,7 +294,7 @@ class FakeTestWithMissingTest(AntaTest):
     """ANTA test with missing test() method implementation."""
 
     categories: ClassVar[list[str]] = []
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
 
 ANTATEST_DATA: dict[tuple[type[AntaTest], str], Any] = {
@@ -405,7 +405,7 @@ class TestAntaTest:
             class _WrongTestNoCategories(AntaTest):
                 """ANTA test that is missing categories."""
 
-                commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+                commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
 
                 @AntaTest.anta_test
                 def test(self) -> None:
@@ -434,7 +434,7 @@ class TestAntaTest:
             class _WrongTestNoDescription(AntaTest):
                 # ANTA test that is missing a description and does not have a doctstring.
 
-                commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+                commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
                 categories: ClassVar[list[str]] = []
 
                 @AntaTest.anta_test
@@ -446,7 +446,7 @@ class TestAntaTest:
 
             name: ClassVar[str] = "CustomName"
             description: ClassVar[str] = "Custom description"
-            commands: ClassVar[list[AntaCommand | AntaTemplate]] = []
+            commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = []
             categories: ClassVar[list[str]] = []
 
             @AntaTest.anta_test
@@ -503,7 +503,7 @@ class TestAntaTest:
             """Fake Test for blacklist."""
 
             categories: ClassVar[list[str]] = []
-            commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command=command)]
+            commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command=command)]
 
             @AntaTest.anta_test
             def test(self) -> None:
@@ -548,8 +548,8 @@ class TestAntaCommand:
 
     def test_empty_output_access(self) -> None:
         """Test for both json and text ofmt."""
-        json_cmd = AntaCommand(command="show dummy")
-        text_cmd = AntaCommand(command="show dummy", ofmt="text")
+        json_cmd = AntaEAPICommand(command="show dummy")
+        text_cmd = AntaEAPICommand(command="show dummy", ofmt="text")
         msg = "There is no output for command 'show dummy'"
         with pytest.raises(RuntimeError, match=msg):
             json_cmd.json_output
@@ -558,10 +558,10 @@ class TestAntaCommand:
 
     def test_wrong_format_output_access(self) -> None:
         """Test for both json and text ofmt."""
-        json_cmd = AntaCommand(command="show dummy", output={})
-        json_cmd_2 = AntaCommand(command="show dummy", output="not_json")
-        text_cmd = AntaCommand(command="show dummy", ofmt="text", output="blah")
-        text_cmd_2 = AntaCommand(command="show dummy", ofmt="text", output={"not_a": "string"})
+        json_cmd = AntaEAPICommand(command="show dummy", output={})
+        json_cmd_2 = AntaEAPICommand(command="show dummy", output="not_json")
+        text_cmd = AntaEAPICommand(command="show dummy", ofmt="text", output="blah")
+        text_cmd_2 = AntaEAPICommand(command="show dummy", ofmt="text", output={"not_a": "string"})
         msg = "Output of command 'show dummy' is invalid"
         with pytest.raises(RuntimeError, match=msg):
             json_cmd.text_output
@@ -574,22 +574,22 @@ class TestAntaCommand:
 
     def test_supported(self) -> None:
         """Test the supported property."""
-        command = AntaCommand(command="show hardware counter drop", errors=["Unavailable command (not supported on this hardware platform) (at token 2: 'counter')"])
+        command = AntaEAPICommand(command="show hardware counter drop", errors=["Unavailable command (not supported on this hardware platform) (at token 2: 'counter')"])
         assert command.supported is False
-        command = AntaCommand(
+        command = AntaEAPICommand(
             command="show hardware counter drop", output={"totalAdverseDrops": 0, "totalCongestionDrops": 0, "totalPacketProcessorDrops": 0, "dropEvents": {}}
         )
         assert command.supported is True
-        command = AntaCommand(command="show hardware counter drop")
+        command = AntaEAPICommand(command="show hardware counter drop")
         with pytest.raises(RuntimeError) as exec_info:
             command.supported
         assert exec_info.value.args[0] == "Command 'show hardware counter drop' has not been collected and has not returned an error. Call AntaDevice.collect()."
 
     def test_requires_privileges(self) -> None:
         """Test the requires_privileges property."""
-        command = AntaCommand(command="show aaa methods accounting", errors=["Invalid input (privileged mode required)"])
+        command = AntaEAPICommand(command="show aaa methods accounting", errors=["Invalid input (privileged mode required)"])
         assert command.requires_privileges is True
-        command = AntaCommand(
+        command = AntaEAPICommand(
             command="show aaa methods accounting",
             output={
                 "commandsAcctMethods": {"privilege0-15": {"defaultMethods": [], "consoleMethods": []}},
@@ -599,7 +599,7 @@ class TestAntaCommand:
             },
         )
         assert command.requires_privileges is False
-        command = AntaCommand(command="show aaa methods accounting")
+        command = AntaEAPICommand(command="show aaa methods accounting")
         with pytest.raises(
             RuntimeError, match=r"Command 'show aaa methods accounting' has not been collected and has not returned an error. Call AntaDevice.collect()."
         ):
@@ -619,12 +619,12 @@ class TestAntaCommand:
     def test_returned_known_eos_error(self, command_str: str, error: str | None, is_known: bool) -> None:
         """Test the returned_known_eos_error property."""
         # Adding fake output when no error is present to mimic that the command has been collected
-        command = AntaCommand(command=command_str, errors=[error] if error else [], output=None if error else "{}")
+        command = AntaEAPICommand(command=command_str, errors=[error] if error else [], output=None if error else "{}")
         assert command.returned_known_eos_error is is_known
 
     def test_returned_known_eos_error_failure(self) -> None:
         """Test the returned_known_eos_error property unset."""
-        command = AntaCommand(command="show ip interface Ethernet1")
+        command = AntaEAPICommand(command="show ip interface Ethernet1")
         with pytest.raises(
             RuntimeError, match=r"Command 'show ip interface Ethernet1' has not been collected and has not returned an error. Call AntaDevice.collect()."
         ):

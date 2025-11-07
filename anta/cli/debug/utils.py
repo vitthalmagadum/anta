@@ -16,7 +16,7 @@ from anta.cli.utils import ExitCode, core_options
 if TYPE_CHECKING:
     from collections.abc import Callable
 
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +46,7 @@ def debug_options(f: Callable[..., R]) -> Callable[..., R]:
     @functools.wraps(f)
     def wrapper(
         ctx: click.Context,
-        inventory: AntaInventory,
+        inventory: AntaInventoryHost,
         device: str,
         **kwargs: Any,  # noqa: ANN401
     ) -> R:

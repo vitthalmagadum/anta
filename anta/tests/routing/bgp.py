@@ -12,7 +12,7 @@ from typing import Any, ClassVar, TypeVar
 from pydantic import PositiveInt, field_validator
 
 from anta.input_models.routing.bgp import BgpAddressFamily, BgpAfi, BgpNeighbor, BgpPeer, BgpRoute, BgpVrf, VxlanEndpoint
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import format_data, get_item, get_value
 
 # Using a TypeVar for the BgpPeer model since mypy thinks it's a ClassVar and not a valid type when used in field validators
@@ -113,7 +113,7 @@ class VerifyBGPPeerCount(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp summary vrf all", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp summary vrf all", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerCount test."""
@@ -206,7 +206,7 @@ class VerifyBGPPeersHealth(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeersHealth test."""
@@ -309,7 +309,7 @@ class VerifyBGPSpecificPeers(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPSpecificPeers test."""
@@ -426,7 +426,7 @@ class VerifyBGPPeerSession(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerSession test."""
@@ -510,7 +510,7 @@ class VerifyBGPExchangedRoutes(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
         AntaTemplate(template="show bgp neighbors {peer} advertised-routes vrf {vrf}", revision=3),
         AntaTemplate(template="show bgp neighbors {peer} routes vrf {vrf}", revision=3),
     ]
@@ -534,7 +534,7 @@ class VerifyBGPExchangedRoutes(AntaTest):
                     raise ValueError(msg)
             return bgp_peers
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each BGP peer in the input list."""
         return [template.render(peer=str(bgp_peer.peer_address), vrf=bgp_peer.vrf) for bgp_peer in self.inputs.bgp_peers]
 
@@ -643,7 +643,7 @@ class VerifyBGPPeerMPCaps(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerMPCaps test."""
@@ -734,7 +734,7 @@ class VerifyBGPPeerASNCap(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerASNCap test."""
@@ -804,7 +804,7 @@ class VerifyBGPPeerRouteRefreshCap(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerRouteRefreshCap test."""
@@ -876,7 +876,7 @@ class VerifyBGPPeerMD5Auth(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerMD5Auth test."""
@@ -939,7 +939,7 @@ class VerifyEVPNType2Route(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show bgp evpn route-type mac-ip {address} vni {vni}", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show bgp evpn route-type mac-ip {address} vni {vni}", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyEVPNType2Route test."""
@@ -948,7 +948,7 @@ class VerifyEVPNType2Route(AntaTest):
         """List of VXLAN endpoints to verify."""
         VxlanEndpoint: ClassVar[type[VxlanEndpoint]] = VxlanEndpoint
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each VXLAN endpoint in the input list."""
         return [template.render(address=str(endpoint.address), vni=endpoint.vni) for endpoint in self.inputs.vxlan_endpoints]
 
@@ -1015,7 +1015,7 @@ class VerifyBGPAdvCommunities(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPAdvCommunities test."""
@@ -1087,7 +1087,7 @@ class VerifyBGPTimers(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPTimers test."""
@@ -1174,7 +1174,7 @@ class VerifyBGPPeerDropStats(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerDropStats test."""
@@ -1257,7 +1257,7 @@ class VerifyBGPPeerUpdateErrors(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerUpdateErrors test."""
@@ -1334,7 +1334,7 @@ class VerifyBgpRouteMaps(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBgpRouteMaps test."""
@@ -1419,7 +1419,7 @@ class VerifyBGPPeerRouteLimit(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerRouteLimit test."""
@@ -1501,7 +1501,7 @@ class VerifyBGPPeerGroup(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp neighbors vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp neighbors vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerGroup test."""
@@ -1583,7 +1583,7 @@ class VerifyBGPPeerSessionRibd(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip bgp neighbors vrf all", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip bgp neighbors vrf all", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerSessionRibd test."""
@@ -1655,7 +1655,7 @@ class VerifyBGPPeersHealthRibd(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip bgp neighbors vrf all", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip bgp neighbors vrf all", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeersHealthRibd test."""
@@ -1729,9 +1729,9 @@ class VerifyBGPNlriAcceptance(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show bgp summary vrf all", revision=1),
-        AntaCommand(command="show bgp neighbors vrf all", revision=3),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show bgp summary vrf all", revision=1),
+        AntaEAPICommand(command="show bgp neighbors vrf all", revision=3),
     ]
 
     class Input(AntaTest.Input):
@@ -1847,7 +1847,7 @@ class VerifyBGPRoutePaths(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip bgp vrf all", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip bgp vrf all", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPRoutePaths test."""
@@ -1922,9 +1922,9 @@ class VerifyBGPRouteECMP(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show ip bgp vrf all", revision=3),
-        AntaCommand(command="show ip route vrf all bgp", revision=4),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show ip bgp vrf all", revision=3),
+        AntaEAPICommand(command="show ip route vrf all bgp", revision=4),
     ]
 
     class Input(AntaTest.Input):
@@ -2025,7 +2025,7 @@ class VerifyBGPRedistribution(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bgp instance vrf all", revision=4)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bgp instance vrf all", revision=4)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPRedistribution test."""
@@ -2116,7 +2116,7 @@ class VerifyBGPPeerTtlMultiHops(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["bgp"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip bgp neighbors vrf all", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip bgp neighbors vrf all", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyBGPPeerTtlMultiHops test."""

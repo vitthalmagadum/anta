@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import ClassVar
 
 from anta.input_models.services import DnsServer, ErrDisableReason, ErrdisableRecovery
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_dict_superset, get_item
 
 
@@ -32,7 +32,7 @@ class VerifyHostname(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["services"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show hostname", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show hostname", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyHostname test."""
@@ -74,7 +74,7 @@ class VerifyDNSLookup(AntaTest):
 
     description = "Verifies the DNS name to IP address resolution."
     categories: ClassVar[list[str]] = ["services"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="bash timeout 10 nslookup {domain}", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="bash timeout 10 nslookup {domain}", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyDNSLookup test."""
@@ -82,7 +82,7 @@ class VerifyDNSLookup(AntaTest):
         domain_names: list[str]
         """List of domain names."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each domain name in the input list."""
         return [template.render(domain=domain_name) for domain_name in self.inputs.domain_names]
 
@@ -131,7 +131,7 @@ class VerifyDNSServers(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["services"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip name-server", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip name-server", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyDNSServers test."""
@@ -199,7 +199,7 @@ class VerifyErrdisableRecovery(AntaTest):
 
     categories: ClassVar[list[str]] = ["services"]
     # NOTE: Only `text` output format is supported for this command
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show errdisable recovery", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show errdisable recovery", ofmt="text")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyErrdisableRecovery test."""

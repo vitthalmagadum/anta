@@ -15,7 +15,7 @@ import click
 from anta.cli.console import console
 from anta.cli.debug.utils import debug_options
 from anta.cli.utils import ExitCode
-from anta.models import AntaCommand, AntaTemplate
+from anta.models import AntaEAPICommand, AntaTemplate
 
 if TYPE_CHECKING:
     from anta.device import AntaDevice
@@ -41,7 +41,7 @@ def run_cmd(
     console.print(f"Run command [green]{command}[/green] on [red]{device.name}[/red]")
     # I do not assume the following line, but click make me do it
     v: Literal[1, "latest"] = version if version == "latest" else 1
-    c = AntaCommand(command=command, ofmt=ofmt, version=v, revision=revision)
+    c = AntaEAPICommand(command=command, ofmt=ofmt, version=v, revision=revision)
     asyncio.run(device.collect(c))
     if not c.collected:
         console.print(f"[bold red] Command '{c.command}' failed to execute!")

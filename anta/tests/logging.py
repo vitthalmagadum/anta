@@ -18,7 +18,7 @@ from pydantic import Field
 
 from anta.custom_types import LogSeverityLevel
 from anta.input_models.logging import LoggingQuery
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 
 if TYPE_CHECKING:
     import logging
@@ -62,7 +62,7 @@ class VerifySyslogLogging(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show logging", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show logging", ofmt="text")]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -91,9 +91,9 @@ class VerifyLoggingPersistent(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show logging", ofmt="text"),
-        AntaCommand(command="dir flash:/persist/messages", ofmt="text"),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show logging", ofmt="text"),
+        AntaEAPICommand(command="dir flash:/persist/messages", ofmt="text"),
     ]
 
     @AntaTest.anta_test
@@ -130,7 +130,7 @@ class VerifyLoggingSourceIntf(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show logging", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show logging", ofmt="text")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyLoggingSourceIntf test."""
@@ -172,7 +172,7 @@ class VerifyLoggingHosts(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show logging", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show logging", ofmt="text")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyLoggingHosts test."""
@@ -225,7 +225,7 @@ class VerifyLoggingLogsGeneration(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
         AntaTemplate(template="send log level {severity_level} message ANTA VerifyLoggingLogsGeneration validation", ofmt="text"),
         AntaTemplate(template="show logging {severity_level} last 30 seconds | grep ANTA", ofmt="text", use_cache=False),
     ]
@@ -236,7 +236,7 @@ class VerifyLoggingLogsGeneration(AntaTest):
         severity_level: LogSeverityLevel = "informational"
         """Log severity level. Defaults to informational."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for log severity level in the input."""
         return [template.render(severity_level=self.inputs.severity_level)]
 
@@ -281,8 +281,8 @@ class VerifyLoggingHostname(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show hostname", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show hostname", revision=1),
         AntaTemplate(template="send log level {severity_level} message ANTA VerifyLoggingHostname validation", ofmt="text"),
         AntaTemplate(template="show logging {severity_level} last 30 seconds | grep ANTA", ofmt="text", use_cache=False),
     ]
@@ -293,7 +293,7 @@ class VerifyLoggingHostname(AntaTest):
         severity_level: LogSeverityLevel = "informational"
         """Log severity level. Defaults to informational."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for log severity level in the input."""
         return [template.render(severity_level=self.inputs.severity_level)]
 
@@ -345,7 +345,7 @@ class VerifyLoggingTimestamp(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
         AntaTemplate(template="send log level {severity_level} message ANTA VerifyLoggingTimestamp validation", ofmt="text"),
         AntaTemplate(template="show logging {severity_level} last 30 seconds | grep ANTA", ofmt="text", use_cache=False),
     ]
@@ -356,7 +356,7 @@ class VerifyLoggingTimestamp(AntaTest):
         severity_level: LogSeverityLevel = "informational"
         """Log severity level. Defaults to informational."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for log severity level in the input."""
         return [template.render(severity_level=self.inputs.severity_level)]
 
@@ -395,7 +395,7 @@ class VerifyLoggingAccounting(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show aaa accounting logs | tail", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show aaa accounting logs | tail", ofmt="text")]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -427,7 +427,7 @@ class VerifyLoggingErrors(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show logging threshold errors {log_history_depth}", ofmt="text")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show logging threshold errors {log_history_depth}", ofmt="text")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyLoggingErrors test."""
@@ -439,9 +439,9 @@ class VerifyLoggingErrors(AntaTest):
         time_unit: Literal["days", "hours", "minutes", "seconds"] = "days"
         """Unit of time to be used with `last_number_time_units`."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for log history depth in the input."""
-        commands: list[AntaCommand] = []
+        commands: list[AntaEAPICommand] = []
         log_history_depth: str = ""
 
         if self.inputs.last_number_time_units:
@@ -494,7 +494,7 @@ class VerifyLoggingEntries(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["logging"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show logging {log_history_depth} {severity_level}", ofmt="text", use_cache=False)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show logging {log_history_depth} {severity_level}", ofmt="text", use_cache=False)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyLoggingEntries test."""
@@ -502,9 +502,9 @@ class VerifyLoggingEntries(AntaTest):
         logging_entries: list[LoggingQuery]
         """List of logging entries and regex match."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for log history depth and log severity level in the input."""
-        commands: list[AntaCommand] = []
+        commands: list[AntaEAPICommand] = []
         for entry in self.inputs.logging_entries:
             log_history_depth: str | int = ""
             if entry.last_number_messages:

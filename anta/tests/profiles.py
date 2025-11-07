@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, ClassVar, Literal
 
 from anta.decorators import skip_on_platforms
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -35,7 +35,7 @@ class VerifyUnifiedForwardingTableMode(AntaTest):
 
     description = "Verifies the device is using the expected UFT mode."
     categories: ClassVar[list[str]] = ["profiles"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show platform trident forwarding-table partition", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show platform trident forwarding-table partition", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyUnifiedForwardingTableMode test."""
@@ -76,7 +76,7 @@ class VerifyTcamProfile(AntaTest):
 
     description = "Verifies the device TCAM profile."
     categories: ClassVar[list[str]] = ["profiles"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show hardware tcam profile", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show hardware tcam profile", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyTcamProfile test."""

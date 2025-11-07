@@ -21,13 +21,13 @@ if TYPE_CHECKING:
 
     from anta.catalog import AntaCatalog, AntaTestDefinition
     from anta.device import AntaDevice
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
     from anta.result_manager.models import TestResult
 
 
 # TODO: Remove this in ANTA v2.0.0
 @pytest.mark.filterwarnings("ignore::DeprecationWarning")
-def test_prepare_tests(benchmark: BenchmarkFixture, catalog: AntaCatalog, inventory: AntaInventory) -> None:
+def test_prepare_tests(benchmark: BenchmarkFixture, catalog: AntaCatalog, inventory: AntaInventoryHost) -> None:
     """Benchmark `anta.runner.prepare_tests`."""
 
     def _() -> defaultdict[AntaDevice, set[AntaTestDefinition]] | None:
@@ -43,7 +43,7 @@ def test_prepare_tests(benchmark: BenchmarkFixture, catalog: AntaCatalog, invent
 
 # TODO: Remove this in ANTA v2.0.0
 @pytest.mark.filterwarnings("ignore::DeprecationWarning")
-def test_get_coroutines(benchmark: BenchmarkFixture, catalog: AntaCatalog, inventory: AntaInventory) -> None:
+def test_get_coroutines(benchmark: BenchmarkFixture, catalog: AntaCatalog, inventory: AntaInventoryHost) -> None:
     """Benchmark `anta.runner.get_coroutines`."""
     selected_tests = prepare_tests(inventory=inventory, catalog=catalog, tests=None, tags=None)
 
@@ -61,7 +61,7 @@ def test_get_coroutines(benchmark: BenchmarkFixture, catalog: AntaCatalog, inven
     assert count == len(coroutines)
 
 
-def test__setup_tests(benchmark: BenchmarkFixture, catalog: AntaCatalog, inventory: AntaInventory) -> None:
+def test__setup_tests(benchmark: BenchmarkFixture, catalog: AntaCatalog, inventory: AntaInventoryHost) -> None:
     """Benchmark `anta._runner.AntaRunner._setup_tests`."""
     runner = AntaRunner()
     ctx = AntaRunContext(inventory=inventory, catalog=catalog, manager=ResultManager(), filters=AntaRunFilters(), selected_inventory=inventory)
@@ -77,7 +77,7 @@ def test__setup_tests(benchmark: BenchmarkFixture, catalog: AntaCatalog, invento
     assert ctx.total_tests_scheduled == len(inventory) * len(catalog.tests)
 
 
-def test__get_test_coroutines(benchmark: BenchmarkFixture, catalog: AntaCatalog, inventory: AntaInventory) -> None:
+def test__get_test_coroutines(benchmark: BenchmarkFixture, catalog: AntaCatalog, inventory: AntaInventoryHost) -> None:
     """Benchmark `anta._runner.AntaRunner._get_test_coroutines`."""
     runner = AntaRunner()
     ctx = AntaRunContext(inventory=inventory, catalog=catalog, manager=ResultManager(), filters=AntaRunFilters(), selected_inventory=inventory)

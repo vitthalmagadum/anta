@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Any, ClassVar, TypeVar
 from pydantic import Field, field_validator
 
 from anta.input_models.bfd import BFDPeer
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 from anta.tools import get_value
 
 if TYPE_CHECKING:
@@ -77,7 +77,7 @@ class VerifyBFDSpecificPeers(AntaTest):
 
     categories: ClassVar[list[str]] = ["bfd"]
     # Using revision 1 as latest revision introduces additional nesting for type
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bfd peers", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bfd peers", revision=1)]
     inputs: VerifyBFDSpecificPeers.Input
 
     class Input(AntaTest.Input):
@@ -156,7 +156,7 @@ class VerifyBFDPeersIntervals(AntaTest):
 
     categories: ClassVar[list[str]] = ["bfd"]
     # Using revision 1 as latest revision introduces additional nesting for type
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bfd peers detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bfd peers detail", revision=1)]
     inputs: VerifyBFDPeersIntervals.Input
 
     class Input(AntaTest.Input):
@@ -239,9 +239,9 @@ class VerifyBFDPeersHealth(AntaTest):
 
     categories: ClassVar[list[str]] = ["bfd"]
     # Using revision 1 as latest revision introduces additional nesting for type
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show bfd peers", revision=1),
-        AntaCommand(command="show clock", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show bfd peers", revision=1),
+        AntaEAPICommand(command="show clock", revision=1),
     ]
     inputs: VerifyBFDPeersHealth.Input
 
@@ -328,7 +328,7 @@ class VerifyBFDPeersRegProtocols(AntaTest):
 
     categories: ClassVar[list[str]] = ["bfd"]
     # Using revision 1 as latest revision introduces additional nesting for type
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show bfd peers detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show bfd peers detail", revision=1)]
     inputs: VerifyBFDPeersRegProtocols.Input
 
     class Input(AntaTest.Input):

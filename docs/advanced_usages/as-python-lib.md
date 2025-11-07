@@ -15,7 +15,7 @@ A device is represented in ANTA as a instance of a subclass of the [AntaDevice](
 There are few abstract methods that needs to be implemented by child classes:
 
 - The [collect()](../api/device.md#anta.device.AntaDevice.collect) coroutine is in charge of collecting outputs of [AntaCommand](../api/commands.md#anta.models.AntaCommand) instances.
-- The [refresh()](../api/device.md#anta.device.AntaDevice.refresh) coroutine is in charge of updating attributes of the [AntaDevice](../api/device.md#anta.device.AntaDevice) instance. These attributes are used by [AntaInventory](../api/inventory.md#anta.inventory.AntaInventory) to filter out unreachable devices or by [AntaTest](../api/tests/anta_test.md#anta.models.AntaTest) to skip devices based on their hardware models.
+- The [refresh()](../api/device.md#anta.device.AntaDevice.refresh) coroutine is in charge of updating attributes of the [AntaDevice](../api/device.md#anta.device.AntaDevice) instance. These attributes are used by [AntaInventoryHost](../api/inventory.md#anta.inventory.AntaInventoryHost) to filter out unreachable devices or by [AntaTest](../api/tests/anta_test.md#anta.models.AntaTest) to skip devices based on their hardware models.
 
 The [copy()](../api/device.md#anta.device.AntaDevice.copy) coroutine is used to copy files to and from the device. It does not need to be implemented if tests are not using it.
 
@@ -28,16 +28,16 @@ It uses the [aio-eapi](https://github.com/jeremyschulman/aio-eapi) eAPI client a
 - The [refresh()](../api/device.md#anta.device.AsyncEOSDevice.refresh) coroutine tries to open a TCP connection on the eAPI port and update the `is_online` attribute accordingly. If the TCP connection succeeds, it sends a `show version` command to gather the hardware model of the device and updates the `established` and `hw_model` attributes.
 - The [copy()](../api/device.md#anta.device.AsyncEOSDevice.copy) coroutine copies files to and from the device using the SCP protocol.
 
-## [AntaInventory](../api/inventory.md#anta.inventory.AntaInventory) Class
+## [AntaInventoryHost](../api/inventory.md#anta.inventory.AntaInventoryHost) Class
 
-The [AntaInventory](../api/inventory.md#anta.inventory.AntaInventory) class is a subclass of the standard Python type [dict](https://docs.python.org/3/library/stdtypes.html#dict). The keys of this dictionary are the device names, the values are [AntaDevice](../api/device.md#anta.device.AntaDevice) instances.
+The [AntaInventoryHost](../api/inventory.md#anta.inventory.AntaInventoryHost) class is a subclass of the standard Python type [dict](https://docs.python.org/3/library/stdtypes.html#dict). The keys of this dictionary are the device names, the values are [AntaDevice](../api/device.md#anta.device.AntaDevice) instances.
 
-[AntaInventory](../api/inventory.md#anta.inventory.AntaInventory) provides methods to interact with the ANTA inventory:
+[AntaInventoryHost](../api/inventory.md#anta.inventory.AntaInventoryHost) provides methods to interact with the ANTA inventory:
 
-- The [add_device()](../api/inventory.md#anta.inventory.AntaInventory.add_device) method adds an [AntaDevice](../api/device.md#anta.device.AntaDevice) instance to the inventory. Adding an entry to [AntaInventory](../api/inventory.md#anta.inventory.AntaInventory) with a key different from the device name is not allowed.
-- The [get_inventory()](../api/inventory.md#anta.inventory.AntaInventory.get_inventory) returns a new [AntaInventory](../api/inventory.md#anta.inventory.AntaInventory) instance with filtered out devices based on the method inputs.
-- The [connect_inventory()](../api/inventory.md#anta.inventory.AntaInventory.connect_inventory) coroutine will execute the [refresh()](../api/device.md#anta.device.AntaDevice.refresh) coroutines of all the devices in the inventory.
-- The [parse()](../api/inventory.md#anta.inventory.AntaInventory.parse) static method creates an [AntaInventory](../api/inventory.md#anta.inventory.AntaInventory) instance from a YAML file and returns it. The devices are [AsyncEOSDevice](../api/device.md#anta.device.AsyncEOSDevice) instances.
+- The [add_device()](../api/inventory.md#anta.inventory.AntaInventoryHost.add_device) method adds an [AntaDevice](../api/device.md#anta.device.AntaDevice) instance to the inventory. Adding an entry to [AntaInventoryHost](../api/inventory.md#anta.inventory.AntaInventoryHost) with a key different from the device name is not allowed.
+- The [get_inventory()](../api/inventory.md#anta.inventory.AntaInventoryHost.get_inventory) returns a new [AntaInventoryHost](../api/inventory.md#anta.inventory.AntaInventoryHost) instance with filtered out devices based on the method inputs.
+- The [connect_inventory()](../api/inventory.md#anta.inventory.AntaInventoryHost.connect_inventory) coroutine will execute the [refresh()](../api/device.md#anta.device.AntaDevice.refresh) coroutines of all the devices in the inventory.
+- The [parse()](../api/inventory.md#anta.inventory.AntaInventoryHost.parse) static method creates an [AntaInventoryHost](../api/inventory.md#anta.inventory.AntaInventoryHost) instance from a YAML file and returns it. The devices are [AsyncEOSDevice](../api/device.md#anta.device.AsyncEOSDevice) instances.
 
 ## Examples
 

@@ -16,7 +16,7 @@ import click
 from yaml import YAMLError
 
 from anta.catalog import AntaCatalog
-from anta.inventory import AntaInventory
+from anta.inventory import AntaInventoryHost
 from anta.inventory.exceptions import InventoryIncorrectSchemaError, InventoryRootKeyError
 from anta.logger import anta_log_exception
 
@@ -251,7 +251,7 @@ def core_options(f: Callable[..., R]) -> Callable[..., R]:
             msg = "Providing a password to access EOS Privileged EXEC mode requires '--enable' option."
             raise click.BadParameter(msg)
         try:
-            i = AntaInventory.parse(
+            i = AntaInventoryHost.parse(
                 filename=inventory,
                 username=username,
                 password=password,

@@ -11,7 +11,7 @@ from typing import ClassVar
 
 from anta.decorators import skip_on_platforms
 from anta.input_models.flow_tracking import FlowTracker
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_value
 
 
@@ -92,7 +92,7 @@ class VerifyHardwareFlowTrackerStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["flow tracking"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show flow tracking hardware", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show flow tracking hardware", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyHardwareFlowTrackerStatus test."""

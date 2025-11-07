@@ -9,14 +9,14 @@ from __future__ import annotations
 import asyncio
 from pprint import pprint
 
-from anta.inventory import AntaInventory
+from anta.inventory import AntaInventoryHost
 from anta.models import AntaCommand
 
 
-async def main(inv: AntaInventory, commands: list[str]) -> dict[str, list[AntaCommand]]:
+async def main(inv: AntaInventoryHost, commands: list[str]) -> dict[str, list[AntaCommand]]:
     """Run a list of commands against each valid device in the inventory.
 
-    Take an AntaInventory and a list of commands as string
+    Take an AntaInventoryHost and a list of commands as string
     1. try to connect to every device in the inventory
     2. collect the results of the commands from each device
 
@@ -43,8 +43,8 @@ async def main(inv: AntaInventory, commands: list[str]) -> dict[str, list[AntaCo
 
 
 if __name__ == "__main__":
-    # Create the AntaInventory instance
-    inventory = AntaInventory.parse(
+    # Create the AntaInventoryHost instance
+    inventory = AntaInventoryHost.parse(
         filename="inventory.yaml",
         username="arista",
         password="@rista123",

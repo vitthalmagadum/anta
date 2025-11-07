@@ -18,10 +18,14 @@ from anta import __version__ as anta_version
 from anta._runner import AntaRunContext, AntaRunFilters, AntaRunner
 from anta.cli.console import console
 from anta.cli.utils import ExitCode
+from anta.inventory.models import AntaInventoryHost
 from anta.models import AntaTest
 from anta.reporter import ReportJinja, ReportTable
 from anta.reporter.csv_reporter import ReportCsv
 from anta.reporter.md_reporter import MDReportGenerator
+from anta.device import AsyncEOSDevice
+from anta.cloudvision import CloudVisionDevice
+from cvprac.cvp_client import CvpClient
 
 if TYPE_CHECKING:
     import pathlib
@@ -29,7 +33,7 @@ if TYPE_CHECKING:
     import click
 
     from anta.catalog import AntaCatalog
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
     from anta.result_manager import ResultManager
 
 logger = logging.getLogger(__name__)
@@ -45,9 +49,56 @@ def run_tests(ctx: click.Context) -> AntaRunContext:
     device = nrfu_ctx_params["device"] or None
     test = nrfu_ctx_params["test"] or None
     dry_run = nrfu_ctx_params["dry_run"]
+    source = nrfu_ctx_params["source"]
 
     catalog: AntaCatalog = ctx.obj["catalog"]
-    inventory: AntaInventory = ctx.obj["inventory"]
+
+    if source == "cvp":
+        cvp_host = nrfu_ctx_params.get("cvp_host")
+        cvp_port = nrfu_ctx_params.get("cvp_port")
+        cvp_user = nrfu_ctx_params.get("cvp_user")
+        cvp_password = nrfu_ctx_params.get("cvp_password")
+        cvp_token = nrfu_ctx_params.get("cvp_token")
+
+        if not cvp_host:
+            console.print("CVP host is required when using --source cvp", style="red")
+            ctx.exit(ExitCode.USAGE_ERROR)
+
+        cvp_client = CvpClient()
+        if cvp_user and cvp_password:
+            cvp_client.connect(
+                nodes=[cvp_host],
+                username=cvp_user,
+                password=cvp_password,
+                port=cvp_port,
+            )
+        elif cvp_token:
+            cvp_client.connect(
+                nodes=[cvp_host],
+                api_token=cvp_token,
+                port=cvp_port,
+            )
+        else:
+            console.print("CVP credentials are required when using --source cvp", style="red")
+            ctx.exit(ExitCode.USAGE_ERROR)
+
+        devices = cvp_client.api.get_inventory()
+        inventory = AntaInventoryHost(
+            devices=[
+                CloudVisionDevice(
+                    host=cvp_host,
+                    port=cvp_port,
+                    name=d["serialNumber"],
+                    username=cvp_user,
+                    password=cvp_password,
+                    token=cvp_token,
+                    tags=d.get("tags", []),
+                )
+                for d in devices
+            ]
+        )
+    else:
+        inventory: AntaInventoryHost = ctx.obj["inventory"]
 
     print_settings(inventory, catalog)
     with anta_progress_bar() as AntaTest.progress:
@@ -73,7 +124,7 @@ def _get_result_manager(ctx: click.Context, *, apply_hide_filter: bool = True) -
 
 
 def print_settings(
-    inventory: AntaInventory,
+    inventory: AntaInventoryHost,
     catalog: AntaCatalog,
 ) -> None:
     """Print ANTA settings before running tests."""

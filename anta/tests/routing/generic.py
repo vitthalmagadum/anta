@@ -15,7 +15,7 @@ from pydantic import field_validator, model_validator
 
 from anta.custom_types import PositiveInteger
 from anta.input_models.routing.generic import IPv4Routes
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_item, get_value
 
 if TYPE_CHECKING:
@@ -46,7 +46,7 @@ class VerifyRoutingProtocolModel(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip route summary", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip route summary", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyRoutingProtocolModel test."""
@@ -86,7 +86,7 @@ class VerifyRoutingTableSize(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip route summary", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip route summary", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyRoutingTableSize test."""
@@ -139,7 +139,7 @@ class VerifyRoutingTableEntry(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
         AntaTemplate(template="show ip route vrf {vrf} {route}", revision=4),
         AntaTemplate(template="show ip route vrf {vrf}", revision=4),
     ]
@@ -154,7 +154,7 @@ class VerifyRoutingTableEntry(AntaTest):
         collect: Literal["one", "all"] = "one"
         """Route collect behavior: one=one route per command, all=all routes in vrf per command. Defaults to `one`"""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for the input vrf."""
         if template == VerifyRoutingTableEntry.commands[0] and self.inputs.collect == "one":
             return [template.render(vrf=self.inputs.vrf, route=route) for route in self.inputs.routes]
@@ -227,7 +227,7 @@ class VerifyIPv4RouteType(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip route vrf all", revision=4)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip route vrf all", revision=4)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyIPv4RouteType test."""
@@ -306,7 +306,7 @@ class VerifyIPv4RouteNextHops(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip route vrf all", revision=4)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip route vrf all", revision=4)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyIPv4RouteNextHops test."""
@@ -371,7 +371,7 @@ class VerifyRoutingStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyRoutingStatus test."""

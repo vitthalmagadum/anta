@@ -17,7 +17,7 @@ from pathlib import Path
 
 from anta.catalog import AntaCatalog
 from anta.cli.nrfu.utils import anta_progress_bar
-from anta.inventory import AntaInventory
+from anta.inventory import AntaInventoryHost
 from anta.logger import Log, setup_logging
 from anta.models import AntaTest
 from anta.result_manager import ResultManager
@@ -45,7 +45,7 @@ LOGGER.info("%s Catalog loaded!", SCRIPT_LOG_PREFIX)
 
 # Load inventory
 try:
-    inventory = AntaInventory.parse(INVENTORY_PATH, username=USERNAME, password=PASSWORD)
+    inventory = AntaInventoryHost.parse(INVENTORY_PATH, username=USERNAME, password=PASSWORD)
 except Exception:
     LOGGER.exception("%s Inventory failed to load!", SCRIPT_LOG_PREFIX)
     sys.exit(1)

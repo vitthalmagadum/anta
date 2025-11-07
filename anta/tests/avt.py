@@ -11,7 +11,7 @@ from typing import ClassVar
 
 from anta.decorators import skip_on_platforms
 from anta.input_models.avt import AVTPath
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_value
 
 
@@ -33,7 +33,7 @@ class VerifyAVTPathHealth(AntaTest):
 
     description = "Verifies the status of all AVT paths for all VRFs."
     categories: ClassVar[list[str]] = ["avt"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show adaptive-virtual-topology path")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show adaptive-virtual-topology path")]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab"])
     @AntaTest.anta_test
@@ -101,7 +101,7 @@ class VerifyAVTSpecificPath(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["avt"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show adaptive-virtual-topology path", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show adaptive-virtual-topology path", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyAVTSpecificPath test."""
@@ -172,7 +172,7 @@ class VerifyAVTRole(AntaTest):
 
     description = "Verifies the AVT role of a device."
     categories: ClassVar[list[str]] = ["avt"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show adaptive-virtual-topology path")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show adaptive-virtual-topology path")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyAVTRole test."""

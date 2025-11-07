@@ -15,7 +15,7 @@ from pydantic import Field
 from anta.custom_types import ModuleStatus, Percent, PositiveInteger, PowerSupplyFanStatus, PowerSupplyStatus
 from anta.decorators import skip_on_platforms
 from anta.input_models.hardware import AdverseDropThresholds, HardwareInventory, PCIeThresholds
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 
 if TYPE_CHECKING:
     from collections.abc import Callable
@@ -42,7 +42,7 @@ class VerifyTransceiversManufacturers(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show inventory", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show inventory", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyTransceiversManufacturers test."""
@@ -85,7 +85,7 @@ class VerifyTemperature(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show system environment temperature", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show system environment temperature", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyTemperature test."""
@@ -156,7 +156,7 @@ class VerifyTransceiversTemperature(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show system environment temperature transceiver", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show system environment temperature transceiver", revision=1)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test
@@ -190,7 +190,7 @@ class VerifyEnvironmentSystemCooling(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show system environment cooling", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show system environment cooling", revision=1)]
 
     @skip_on_platforms(["cEOSLab", "vEOS-lab", "cEOSCloudLab", "vEOS"])
     @AntaTest.anta_test
@@ -224,7 +224,7 @@ class VerifyEnvironmentCooling(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show system environment cooling", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show system environment cooling", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyEnvironmentCooling test."""
@@ -290,7 +290,7 @@ class VerifyEnvironmentPower(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show system environment power", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show system environment power", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyEnvironmentPower test."""
@@ -349,10 +349,10 @@ class VerifyAdverseDrops(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show hardware counter drop rates", revision=1),
-        AntaCommand(command="show platform fap mapping", revision=5),
-        AntaCommand(command="show interfaces counters errors", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show hardware counter drop rates", revision=1),
+        AntaEAPICommand(command="show platform fap mapping", revision=5),
+        AntaEAPICommand(command="show interfaces counters errors", revision=1),
     ]
 
     class Input(AntaTest.Input):
@@ -451,7 +451,7 @@ class VerifySupervisorRedundancy(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show redundancy status", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show redundancy status", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifySupervisorRedundancy test."""
@@ -505,7 +505,7 @@ class VerifyPCIeErrors(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show pci", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show pci", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyPCIeErrors test."""
@@ -552,7 +552,7 @@ class VerifyAbsenceOfLinecards(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show inventory", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show inventory", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyAbsenceOfLinecards test."""
@@ -593,7 +593,7 @@ class VerifyChassisHealth(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show platform sand health", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show platform sand health", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyChassisHealth test."""
@@ -655,7 +655,7 @@ class VerifyInventory(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show inventory", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show inventory", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInventory test."""
@@ -810,8 +810,8 @@ class VerifyHardwareCapacityUtilization(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show hardware capacity alert threshold", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show hardware capacity alert threshold", revision=1),
         AntaTemplate(template="show hardware capacity utilization percent exceed {capacity_utilization_threshold}", revision=1),
     ]
 
@@ -823,7 +823,7 @@ class VerifyHardwareCapacityUtilization(AntaTest):
         strict_mode: bool = False
         """If True, check all tables. If False (default), only check tables with a configured threshold alert."""
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for the capacity utilization threshold."""
         return [template.render(capacity_utilization_threshold=int(self.inputs.capacity_utilization_threshold))]
 
@@ -899,9 +899,9 @@ class VerifyModuleStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show module", revision=1),
-        AntaCommand(command="show module power", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show module", revision=1),
+        AntaEAPICommand(command="show module power", revision=1),
     ]
 
     class Input(AntaTest.Input):

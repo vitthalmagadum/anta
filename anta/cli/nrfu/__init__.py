@@ -17,7 +17,7 @@ from anta.result_manager.models import AntaTestStatus
 
 if TYPE_CHECKING:
     from anta.catalog import AntaCatalog
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
 
 if sys.version_info >= (3, 12):
     from typing import override
@@ -64,6 +64,19 @@ HIDE_STATUS.remove("unset")
 @click.group(invoke_without_command=True, cls=IgnoreRequiredWithHelp)
 @inventory_options
 @catalog_options()
+@click.option(
+    "--source",
+    help="Data source to use.",
+    type=click.Choice(["eapi", "cvp"], case_sensitive=False),
+    default="eapi",
+    show_default=True,
+    required=False,
+)
+@click.option("--cvp-host", help="CVP host.", type=str, required=False)
+@click.option("--cvp-port", help="CVP port.", type=int, required=False)
+@click.option("--cvp-user", help="CVP user.", type=str, required=False)
+@click.option("--cvp-password", help="CVP password.", type=str, required=False)
+@click.option("--cvp-token", help="CVP token.", type=str, required=False)
 @click.option(
     "--device",
     "-d",
@@ -113,12 +126,18 @@ HIDE_STATUS.remove("unset")
 @click.pass_context
 def nrfu(
     ctx: click.Context,
-    inventory: AntaInventory,
+    inventory: AntaInventoryHost,
     tags: set[str] | None,
     catalog: AntaCatalog,
     device: tuple[str],
     test: tuple[str],
     hide: tuple[str],
+    source: Literal["eapi", "cvp"],
+    cvp_host: str | None,
+    cvp_port: int | None,
+    cvp_user: str | None,
+    cvp_password: str | None,
+    cvp_token: str | None,
     *,
     ignore_status: bool,
     ignore_error: bool,
@@ -143,6 +162,12 @@ def nrfu(
     ctx.obj["device"] = device
     ctx.obj["test"] = test
     ctx.obj["dry_run"] = dry_run
+    ctx.obj["source"] = source
+    ctx.obj["cvp_host"] = cvp_host
+    ctx.obj["cvp_port"] = cvp_port
+    ctx.obj["cvp_user"] = cvp_user
+    ctx.obj["cvp_password"] = cvp_password
+    ctx.obj["cvp_token"] = cvp_token
 
     # Invoke `anta nrfu table` if no command is passed
     if not ctx.invoked_subcommand:

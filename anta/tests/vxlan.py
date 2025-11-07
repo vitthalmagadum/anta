@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, ClassVar
 from pydantic import Field
 
 from anta.custom_types import VlanId, Vni, VxlanSrcIntf
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 from anta.tools import get_value
 
 if TYPE_CHECKING:
@@ -42,7 +42,7 @@ class VerifyVxlan1Interface(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["vxlan"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces description", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces description", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -81,7 +81,7 @@ class VerifyVxlanConfigSanity(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["vxlan"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show vxlan config-sanity", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show vxlan config-sanity", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -123,7 +123,7 @@ class VerifyVxlanVniBinding(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["vxlan"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show vxlan vni", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show vxlan vni", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyVxlanVniBinding test."""
@@ -182,7 +182,7 @@ class VerifyVxlanVtep(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["vxlan"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show vxlan vtep", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show vxlan vtep", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyVxlanVtep test."""
@@ -231,7 +231,7 @@ class VerifyVxlan1ConnSettings(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["vxlan"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyVxlan1ConnSettings test."""

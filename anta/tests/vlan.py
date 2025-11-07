@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING, ClassVar, Literal
 
 from anta.custom_types import DynamicVlanSource, VlanId
 from anta.input_models.vlan import Vlan
-from anta.models import AntaCommand, AntaTest
+from anta.models import AntaEAPICommand, AntaTest
 from anta.tools import get_value
 
 if TYPE_CHECKING:
@@ -41,7 +41,7 @@ class VerifyVlanInternalPolicy(AntaTest):
 
     description = "Verifies the VLAN internal allocation policy and the range of VLANs."
     categories: ClassVar[list[str]] = ["vlan"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show vlan internal allocation policy", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show vlan internal allocation policy", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyVlanInternalPolicy test."""
@@ -107,7 +107,7 @@ class VerifyDynamicVlanSource(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["vlan"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show vlan dynamic", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show vlan dynamic", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyDynamicVlanSource test."""
@@ -170,7 +170,7 @@ class VerifyVlanStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["vlan"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show vlan", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show vlan", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyVlanStatus test."""

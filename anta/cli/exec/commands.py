@@ -20,14 +20,14 @@ from anta.cli.exec import utils
 from anta.cli.utils import inventory_options
 
 if TYPE_CHECKING:
-    from anta.inventory import AntaInventory
+    from anta.inventory import AntaInventoryHost
 
 logger = logging.getLogger(__name__)
 
 
 @click.command
 @inventory_options
-def clear_counters(inventory: AntaInventory, tags: set[str] | None) -> None:
+def clear_counters(inventory: AntaInventoryHost, tags: set[str] | None) -> None:
     """Clear counter statistics on EOS devices."""
     asyncio.run(utils.clear_counters(inventory, tags=tags))
 
@@ -51,7 +51,7 @@ def clear_counters(inventory: AntaInventory, tags: set[str] | None) -> None:
     default=f"anta_snapshot_{datetime.now(tz=timezone.utc).astimezone().strftime('%Y-%m-%d_%H_%M_%S')}",
     show_default=True,
 )
-def snapshot(inventory: AntaInventory, tags: set[str] | None, commands_list: Path, output: Path) -> None:
+def snapshot(inventory: AntaInventoryHost, tags: set[str] | None, commands_list: Path, output: Path) -> None:
     """Collect commands output from devices in inventory."""
     console.print(f"Collecting data for {commands_list}")
     console.print(f"Output directory is {output}")
@@ -94,7 +94,7 @@ def snapshot(inventory: AntaInventory, tags: set[str] | None, commands_list: Pat
     show_default=True,
 )
 def collect_tech_support(
-    inventory: AntaInventory,
+    inventory: AntaInventoryHost,
     tags: set[str] | None,
     output: Path,
     latest: int | None,

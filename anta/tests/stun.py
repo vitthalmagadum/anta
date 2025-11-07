@@ -11,7 +11,7 @@ from typing import ClassVar
 
 from anta.decorators import deprecated_test_class
 from anta.input_models.stun import StunClientTranslation
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_value
 
 
@@ -50,7 +50,7 @@ class VerifyStunClientTranslation(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["stun"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaTemplate(template="show stun client translations {source_address} {source_port}", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaTemplate(template="show stun client translations {source_address} {source_port}", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyStunClientTranslation test."""
@@ -59,7 +59,7 @@ class VerifyStunClientTranslation(AntaTest):
         """List of STUN clients."""
         StunClientTranslation: ClassVar[type[StunClientTranslation]] = StunClientTranslation
 
-    def render(self, template: AntaTemplate) -> list[AntaCommand]:
+    def render(self, template: AntaTemplate) -> list[AntaEAPICommand]:
         """Render the template for each STUN translation."""
         return [template.render(source_address=client.source_address, source_port=client.source_port) for client in self.inputs.stun_clients]
 
@@ -135,7 +135,7 @@ class VerifyStunServer(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["stun"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show stun server status", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show stun server status", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:

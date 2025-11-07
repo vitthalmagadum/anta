@@ -17,7 +17,7 @@ from pydantic_extra_types.mac_address import MacAddress
 from anta.custom_types import DropPrecedence, EthernetInterface, Interface, InterfaceType, ManagementInterface, Percent, PortChannelInterface, PositiveInteger
 from anta.decorators import skip_on_platforms
 from anta.input_models.interfaces import InterfaceDetail, InterfaceState
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import custom_division, get_item, get_value, get_value_by_range_key, is_interface_ignored, time_ago
 
 if TYPE_CHECKING:
@@ -63,9 +63,9 @@ class VerifyInterfaceUtilization(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show interfaces counters rates", revision=1),
-        AntaCommand(command="show interfaces status", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show interfaces counters rates", revision=1),
+        AntaEAPICommand(command="show interfaces status", revision=1),
     ]
 
     class Input(AntaTest.Input):
@@ -140,7 +140,7 @@ class VerifyInterfaceErrors(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces counters errors", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces counters errors", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfaceErrors test."""
@@ -194,7 +194,7 @@ class VerifyInterfaceDiscards(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces counters discards", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces counters discards", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfaceDiscards test."""
@@ -243,7 +243,7 @@ class VerifyInterfaceErrDisabled(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces status errdisabled", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces status errdisabled", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -295,7 +295,7 @@ class VerifyInterfacesStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces description", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces description", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfacesStatus test."""
@@ -365,7 +365,7 @@ class VerifyStormControlDrops(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show storm-control", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show storm-control", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyStormControlDrops test."""
@@ -422,7 +422,7 @@ class VerifyPortChannels(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show port-channel", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show port-channel", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyPortChannels test."""
@@ -477,7 +477,7 @@ class VerifyIllegalLACP(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show lacp counters all-ports", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show lacp counters all-ports", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyIllegalLACP test."""
@@ -529,7 +529,7 @@ class VerifyLoopbackCount(AntaTest):
 
     description = "Verifies the number of loopback interfaces and their status."
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip interface brief", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip interface brief", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyLoopbackCount test."""
@@ -573,7 +573,7 @@ class VerifySVI(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip interface brief", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip interface brief", revision=1)]
 
     @AntaTest.anta_test
     def test(self) -> None:
@@ -613,7 +613,7 @@ class VerifyL3MTU(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyL3MTU test."""
@@ -666,7 +666,7 @@ class VerifyIPProxyARP(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip interface", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip interface", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyIPProxyARP test."""
@@ -714,7 +714,7 @@ class VerifyL2MTU(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyL2MTU test."""
@@ -770,7 +770,7 @@ class VerifyInterfaceIPv4(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip interface", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip interface", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfaceIPv4 test."""
@@ -843,7 +843,7 @@ class VerifyIpVirtualRouterMac(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show ip virtual-router", revision=2)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show ip virtual-router", revision=2)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyIpVirtualRouterMac test."""
@@ -891,7 +891,7 @@ class VerifyInterfacesSpeed(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces")]
 
     class Input(AntaTest.Input):
         """Inputs for the VerifyInterfacesSpeed test."""
@@ -976,7 +976,7 @@ class VerifyLACPInterfacesStatus(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show lacp interface detailed", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show lacp interface detailed", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyLACPInterfacesStatus test."""
@@ -1090,7 +1090,7 @@ class VerifyInterfacesVoqAndEgressQueueDrops(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces counters queue drops", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces counters queue drops", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfacesVoqAndEgressQueueDrops test."""
@@ -1175,7 +1175,7 @@ class VerifyInterfacesTridentCounters(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["hardware"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show platform trident counters", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show platform trident counters", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfacesTridentCounters test."""
@@ -1237,7 +1237,7 @@ class VerifyInterfacesCounterDetails(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfacesCounterDetails test."""
@@ -1368,9 +1368,9 @@ class VerifyInterfacesBER(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show interfaces phy detail", revision=2),
-        AntaCommand(command="show interfaces description", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show interfaces phy detail", revision=2),
+        AntaEAPICommand(command="show interfaces description", revision=1),
     ]
 
     class Input(AntaTest.Input):
@@ -1482,9 +1482,9 @@ class VerifyInterfacesOpticsReceivePower(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [
-        AntaCommand(command="show interfaces transceiver dom thresholds", revision=1),
-        AntaCommand(command="show interfaces description", revision=1),
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [
+        AntaEAPICommand(command="show interfaces transceiver dom thresholds", revision=1),
+        AntaEAPICommand(command="show interfaces description", revision=1),
     ]
 
     class Input(AntaTest.Input):
@@ -1590,7 +1590,7 @@ class VerifyInterfacesEgressQueueDrops(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces counters queue detail", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces counters queue detail", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfacesEgressQueueDrops test."""
@@ -1711,7 +1711,7 @@ class VerifyInterfacesOpticsTemperature(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show interfaces transceiver dom thresholds", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show interfaces transceiver dom thresholds", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfacesOpticsTemperature test."""
@@ -1804,7 +1804,7 @@ class VerifyInterfacesPFCCounters(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show priority-flow-control counters", revision=3)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show priority-flow-control counters", revision=3)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfacesPFCCounters test."""
@@ -1892,7 +1892,7 @@ class VerifyInterfacesECNCounters(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["interfaces"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show qos interfaces ecn counters queue", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show qos interfaces ecn counters queue", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyInterfacesECNCounters test."""

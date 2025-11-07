@@ -138,12 +138,12 @@ class AntaCatalog {
     instantiate_inputs(data: AntaTest.Input | dict[str, Any] | None, info: ValidationInfo) AntaTest.Input
     serialize_model() dict[str, AntaTest.Input]
   }
-  class AntaInventory {
+  class AntaInventoryHost {
     devices : list[AntaDevice]
-    parse(filename: str | Path, username: str, password: str, enable_password: str | None, timeout: float | None) AntaInventory$
+    parse(filename: str | Path, username: str, password: str, enable_password: str | None, timeout: float | None) AntaInventoryHost$
     add_device(device: AntaDevice) None
     connect_inventory() None
-    get_inventory() AntaInventory
+    get_inventory() AntaInventoryHost
   }
   class AntaInventoryHost:::pydantic {
     disable_cache : bool
@@ -152,18 +152,18 @@ class AntaCatalog {
     port : Port | None
     tags : set[str] | None
   }
-  class AntaInventoryInput:::pydantic {
+  class AntaInventoryHostInput:::pydantic {
     hosts : list[AntaInventoryHost] | None
-    networks : list[AntaInventoryNetwork] | None
-    ranges : list[AntaInventoryRange] | None
+    networks : list[AntaInventoryHostNetwork] | None
+    ranges : list[AntaInventoryHostRange] | None
     yaml() str
   }
-  class AntaInventoryNetwork:::pydantic {
+  class AntaInventoryHostNetwork:::pydantic {
     disable_cache : bool
     network : IPvAnyNetwork, str
     tags : set[str] | None
   }
-  class AntaInventoryRange:::pydantic {
+  class AntaInventoryHostRange:::pydantic {
     disable_cache : bool
     end : IPvAnyAddress, str
     start : IPvAnyAddress, str
@@ -180,10 +180,10 @@ class AntaCatalog {
   AntaCommand --o AntaTest : commands
   AntaTemplate ..> AntaCommand : render()
   AntaTemplate --o AntaTest : commands
-  AntaDevice --o AntaInventory : devices
+  AntaDevice --o AntaInventoryHost : devices
   AntaCatalog ..> AntaCatalogFile
-  AntaInventory ..> AntaInventoryInput
-  AntaInventoryInput ..> AntaInventoryHost
-  AntaInventoryInput ..> AntaInventoryNetwork
-  AntaInventoryInput ..> AntaInventoryRange
+  AntaInventoryHost ..> AntaInventoryHostInput
+  AntaInventoryHostInput ..> AntaInventoryHost
+  AntaInventoryHostInput ..> AntaInventoryHostNetwork
+  AntaInventoryHostInput ..> AntaInventoryHostRange
   classDef pydantic fill:#D63965

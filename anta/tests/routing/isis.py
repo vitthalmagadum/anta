@@ -12,7 +12,7 @@ from typing import Any, ClassVar
 from pydantic import field_validator
 
 from anta.input_models.routing.isis import Entry, InterfaceCount, InterfaceState, ISISInstance, IsisInstance, ISISInterface, Tunnel, TunnelPath
-from anta.models import AntaCommand, AntaTemplate, AntaTest
+from anta.models import AntaEAPICommand, AntaTemplate, AntaTest
 from anta.tools import get_item, get_value
 
 
@@ -36,7 +36,7 @@ class VerifyISISNeighborState(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["isis"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show isis neighbors vrf all", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show isis neighbors vrf all", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyISISNeighborState test."""
@@ -103,7 +103,7 @@ class VerifyISISNeighborCount(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["isis"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show isis interface brief vrf all", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show isis interface brief vrf all", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyISISNeighborCount test."""
@@ -167,7 +167,7 @@ class VerifyISISInterfaceMode(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["isis"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show isis interface brief vrf all", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show isis interface brief vrf all", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyISISInterfaceMode test."""
@@ -240,7 +240,7 @@ class VerifyISISSegmentRoutingAdjacencySegments(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["isis", "segment-routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show isis segment-routing adjacency-segments", ofmt="json")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show isis segment-routing adjacency-segments", ofmt="json")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyISISSegmentRoutingAdjacencySegments test."""
@@ -316,7 +316,7 @@ class VerifyISISSegmentRoutingDataplane(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["isis", "segment-routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show isis segment-routing", ofmt="json")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show isis segment-routing", ofmt="json")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyISISSegmentRoutingDataplane test."""
@@ -386,7 +386,7 @@ class VerifyISISSegmentRoutingTunnels(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["isis", "segment-routing"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show isis segment-routing tunnel", ofmt="json")]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show isis segment-routing tunnel", ofmt="json")]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyISISSegmentRoutingTunnels test."""
@@ -485,7 +485,7 @@ class VerifyISISGracefulRestart(AntaTest):
     """
 
     categories: ClassVar[list[str]] = ["isis"]
-    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show isis graceful-restart vrf all", revision=1)]
+    commands: ClassVar[list[AntaEAPICommand | AntaTemplate]] = [AntaEAPICommand(command="show isis graceful-restart vrf all", revision=1)]
 
     class Input(AntaTest.Input):
         """Input model for the VerifyISISGracefulRestart test."""
