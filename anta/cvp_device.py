@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 from typing import Any
 
+from anta.logger import anta_log_exception, exc_to_str
 from anta.device import AntaDevice
 from anta.models import AntaCommand
 from cvprac.cvp_client import CvpClient
@@ -17,7 +19,7 @@ class CVPDevice(AntaDevice):
     Implementation of AntaDevice for a device connected to CloudVision.
     """
 
-    def __init__(self, name: str, cvp_client: Any, tags: set[str] | None = None, *, disable_cache: bool = False) -> None:
+    def __init__(self, name: str, cvp_client: Any, tags: set[str] | None = None, *, disable_cache: bool = False, **kwargs) -> None:
         """
         Instantiate a CVPDevice.
 
@@ -26,33 +28,37 @@ class CVPDevice(AntaDevice):
             cvp_client: An initialized CVP client.
             tags: Tags for this device.
             disable_cache: Disable caching for all commands for this device.
+            **kwargs: Catch all additional keyword arguments.
         """
-        super().__init__(name, tags, disable_cache=disable_cache, test_source="cvp")
+        super().__init__(name, tags, disable_cache=disable_cache)
         self.cvp_client = cvp_client
+        
         # Statically set host
-        host = "vitthal.com"
+        host = "vitthal"
+        self.crt_file = Path("cvp-anta.crt")
+        self.token = Path("token.txt")
         self.grpc_client = GRPCClient(f"{host}:443", token=self.token, ca=self.crt_file)
 
-    @property
-    def is_online(self) -> bool:
-        """
-        Always return True for a CVPDevice.
-        """
-        return True
+    # @property
+    # def is_online(self) -> bool:
+    #     """
+    #     Always return True for a CVPDevice.
+    #     """
+    #     return True
 
-    @property
-    def established(self) -> bool:
-        """
-        Always return True for a CVPDevice.
-        """
-        return True
+    # @property
+    # def established(self) -> bool:
+    #     """
+    #     Always return True for a CVPDevice.
+    #     """
+    #     return True
 
-    @property
-    def hw_model(self) -> str:
-        """
-        Always return "CVP" for a CVPDevice.
-        """
-        return "CVP"
+    # @property
+    # def hw_model(self) -> str:
+    #     """
+    #     Always return "CVP" for a CVPDevice.
+    #     """
+    #     return "CVP"
 
     @property
     def _keys(self) -> tuple[Any, ...]:
@@ -71,6 +77,7 @@ class CVPDevice(AntaDevice):
         query = [
             create_query([(pathElts, [])], "analytics")
         ]
+        
         for batch in self.grpc_client.get(query):
             for notif in batch["notifications"]:
                 if self.name in notif["updates"]:
@@ -81,7 +88,7 @@ class CVPDevice(AntaDevice):
         """
         Collect device command output from CVP.
         """
-        logger.debug(f"Collecting command '{command.command}' for device {self.name} from CVP")
+        logger.info(f"Collecting command '{command.command}' for device {self.name} from CVP")
 
         try:
             if command.command == "show version":
