@@ -194,6 +194,7 @@ def core_options(f: Callable[..., R]) -> Callable[..., R]:
         default=False,
     )
     @click.option("--test-source", type=click.Choice(["eapi", "cvp"]), default="eapi", help="Source of test execution, either eapi or cvp")
+    @click.option("--cvp-host", help="cvp host")
     @click.option("--token", "-t", help="Path to CVP token file", type=click.Path(file_okay=True, dir_okay=False, exists=True, readable=True, path_type=Path))
     @click.option("--crt-file", help="Path to certificate file for CVP", type=click.Path(file_okay=True, dir_okay=False, exists=True, readable=True, path_type=Path))
     @click.option(
@@ -229,6 +230,7 @@ def core_options(f: Callable[..., R]) -> Callable[..., R]:
         disable_cache: bool,
         inventory_format: Literal["json", "yaml"],
         test_source: Literal["eapi", "cvp"],
+        cvp_host: str | None,
         token: Path | None,
         crt_file: Path | None,
         **kwargs: Any,  # noqa: ANN401
@@ -268,6 +270,7 @@ def core_options(f: Callable[..., R]) -> Callable[..., R]:
                 disable_cache=disable_cache,
                 file_format=inventory_format,
                 test_source=test_source,
+                cvp_host=cvp_host,
                 token=token,
                 crt_file=crt_file,
             )

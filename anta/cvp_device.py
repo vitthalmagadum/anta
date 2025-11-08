@@ -19,7 +19,7 @@ class CVPDevice(AntaDevice):
     Implementation of AntaDevice for a device connected to CloudVision.
     """
 
-    def __init__(self, name: str, cvp_client: Any, tags: set[str] | None = None, *, disable_cache: bool = False, **kwargs) -> None:
+    def __init__(self, name: str, **kwargs) -> None:
         """
         Instantiate a CVPDevice.
 
@@ -30,14 +30,13 @@ class CVPDevice(AntaDevice):
             disable_cache: Disable caching for all commands for this device.
             **kwargs: Catch all additional keyword arguments.
         """
-        super().__init__(name, tags, disable_cache=disable_cache)
-        self.cvp_client = cvp_client
-        
-        # Statically set host
-        host = "vitthal"
-        self.crt_file = Path("cvp-anta.crt")
-        self.token = Path("token.txt")
-        self.grpc_client = GRPCClient(f"{host}:443", token=self.token, ca=self.crt_file)
+        test_source=kwargs["test_source"]
+        token=kwargs["token"]
+        crt_file=kwargs["crt_file"]
+        super().__init__(name=name, test_source=test_source, token=token, crt_file=crt_file)
+
+        host = kwargs["cvp_host"]
+        self.grpc_client = GRPCClient(f"{host}:443", token=token, ca=crt_file)
 
     # @property
     # def is_online(self) -> bool:
@@ -53,20 +52,9 @@ class CVPDevice(AntaDevice):
     #     """
     #     return True
 
-    # @property
-    # def hw_model(self) -> str:
-    #     """
-    #     Always return "CVP" for a CVPDevice.
-    #     """
-    #     return "CVP"
-
     @property
     def _keys(self) -> tuple[Any, ...]:
-        """
-        Keys to implement hashing and equality for CVPDevice.
-        A CVPDevice is unique by its name.
-        """
-        return (self.name,)
+        """Read-only property to implement hashing and equality for CVPDevice classes."""
 
     def _get_device_version(self) -> dict[str, str] | None:
         """Fetches the EOS version for a specific device."""

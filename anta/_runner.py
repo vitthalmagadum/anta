@@ -343,15 +343,14 @@ class AntaRunner:
             await filtered_inventory.connect_inventory()
 
         # Remove devices that are unreachable if required
-        ctx.selected_inventory = filtered_inventory
-        # .get_inventory(established_only=True) if ctx.filters.established_only else filtered_inventory
-        # selected_device_names = set(ctx.selected_inventory.keys())
-        # ctx.devices_unreachable_at_setup = sorted(filtered_device_names - selected_device_names)
+        ctx.selected_inventory = filtered_inventory.get_inventory(established_only=True) if ctx.filters.established_only else filtered_inventory
+        selected_device_names = set(ctx.selected_inventory.keys())
+        ctx.devices_unreachable_at_setup = sorted(filtered_device_names - selected_device_names)
 
-        # if not selected_device_names:
-        #     msg = "No reachable devices found for testing after connectivity checks. Exiting ..."
-        #     self._log_warning_msg(msg=msg, ctx=ctx)
-        #     return False
+        if not selected_device_names:
+            msg = "No reachable devices found for testing after connectivity checks. Exiting ..."
+            self._log_warning_msg(msg=msg, ctx=ctx)
+            return False
 
         return True
 

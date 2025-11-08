@@ -359,9 +359,6 @@ class AsyncEOSDevice(AntaDevice):
         enable: bool = False,
         insecure: bool = False,
         disable_cache: bool = False,
-        test_source: Literal["eapi", "cvp"] = "eapi",
-        token: Path | None = None,
-        crt_file: Path | None = None,
     ) -> None:
         """Instantiate an AsyncEOSDevice.
 
@@ -400,7 +397,7 @@ class AsyncEOSDevice(AntaDevice):
             raise ValueError(message)
         if name is None:
             name = f"{host}{f':{port}' if port else ''}"
-        super().__init__(name, tags, disable_cache=disable_cache, test_source=test_source, token=token, crt_file=crt_file)
+        super().__init__(name, tags, disable_cache=disable_cache)
         if username is None:
             message = f"'username' is required to instantiate device '{self.name}'"
             logger.error(message)
