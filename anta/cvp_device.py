@@ -1,3 +1,8 @@
+# Copyright (c) 2025 Arista Networks, Inc.
+# Use of this source code is governed by the Apache License 2.0
+# that can be found in the LICENSE file.
+"""ANTA CVP Device Module."""
+
 from __future__ import annotations
 
 import logging
@@ -10,7 +15,7 @@ from anta.logger import anta_log_exception, exc_to_str
 from anta.device import AntaDevice
 from anta.models import AntaCommand
 
-from cvp import CvpDeviceConnection
+from cvp import CvpClient
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +44,7 @@ class CVPDevice(AntaDevice):
         super().__init__(name=name, test_source=test_source, token=token, crt_file=crt_file)
 
         host = kwargs["cvp_host"]
-        self.cvp_client = CvpDeviceConnection(host=host, token_file=token, ca_file=crt_file)
+        self.cvp_client = CvpClient(host=host, token_file=token, ca_file=crt_file)
 
     def is_online(self) -> bool:
         """

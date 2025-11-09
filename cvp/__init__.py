@@ -5,6 +5,6 @@
 
 """Arista CVP connection client."""
 
-from .cvpdeviceconnection import CvpDeviceConnection
+from .cvp_connection import CvpClient
 
-__all__ = ["CvpDeviceConnection"]
+__all__ = ["CvpClient"]

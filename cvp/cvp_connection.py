@@ -13,11 +13,11 @@ from cloudvision.Connector.grpc_client import GRPCClient, create_query
 from cloudvision.Connector.codec import Wildcard
 from .cvp_eapi_mapping import cvp_eapi_mapping
 
-__all__ = ["CvpDeviceConnection"]
+__all__ = ["CvpClient"]
 
-class CvpDeviceConnection:
+class CvpClient:
     """
-    CvpDeviceConnection provides a client to connect to a CloudVision instance
+    CvpClient provides a client to connect to a CloudVision instance
     and run queries against its datasets.
     """
 
@@ -29,7 +29,7 @@ class CvpDeviceConnection:
         ca_file: str | None = None,
     ):
         """
-        Initialize the CvpDeviceConnection.
+        Initialize the CvpClient.
 
         Args:
             host: The CloudVision host.
