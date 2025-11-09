@@ -11,6 +11,7 @@ import yaml
 # Import the inventory models and services
 from cloudvision.Connector.grpc_client import GRPCClient, create_query
 from cloudvision.Connector.codec import Wildcard
+from .cvp_eapi_mapping import cvp_eapi_mapping
 
 __all__ = ["CvpDeviceConnection"]
 
@@ -42,6 +43,7 @@ class CvpDeviceConnection:
         self.ca_file = ca_file
         self.ca_cert = Path(ca_file).read_bytes() if ca_file else None
         self.grpc_client = self.get_grpc_client()
+        self.cvp_eapi_mapping = cvp_eapi_mapping
 
     def get_grpc_client(self):
         return GRPCClient(self.server_addr, token=self.token_file, ca=self.ca_file)
@@ -118,55 +120,3 @@ class CvpDeviceConnection:
             }
         }
         return op
-
-# def run_apis(hostname: str | None, device_id: str | None) -> None:
-#     """Fetch device info using the CvpDeviceConnection class."""
-#     if not hostname and not device_id:
-#         print("Please provide a hostname or device_id as an argument.")
-#         return
-
-#     host = "www.cv-staging.corp.arista.io"
-#     token_file = "/home/vitthal/work-anta/anta/token.txt"
-#     ca_cert_file = "/home/vitthal/work-anta/anta/cvp-anta.crt"
-
-#     try:
-#         # We instantiate the class but don't enter the context, as the methods
-#         # will create their own clients.
-#         cvp_conn = CvpDeviceConnection(host=host, token_file=token_file, ca_file=ca_cert_file)
-
-#         if hostname:
-#             print(f"Looking up version for device: {hostname}")
-#             version = cvp_conn.get_device_version(hostname)
-#             if version:
-#                 output_file = Path(f"{hostname}_version.json")
-#                 output_file.write_text(str({"version": version}), encoding="utf-8")
-#                 print(f"✅ Found version '{version}'. Saved to {output_file}")
-#             else:
-#                 print(f"Could not find version for device '{hostname}'.")
-
-#         if device_id:
-#             print(f"Fetching LLDP neighbors for device: {device_id}")
-#             lldp_data = cvp_conn.get_lldp_neighbors(device_id)
-#             if lldp_data:
-#                 output_file = Path(f"{device_id}_lldp.json")
-#                 # A proper JSON serialization would be needed here.
-#                 output_file.write_text(str(lldp_data), encoding="utf-8")
-#                 print(f"✅ Found LLDP data. Saved to {output_file}")
-#             else:
-#                 print(f"No LLDP data found for device '{device_id}'.")
-
-#     except Exception as e:
-#         print(f"An unexpected error occurred: {e}")
-
-
-# if __name__ == "__main__":
-#     import sys
-#     target_hostname = None
-#     target_device_id = None
-#     if len(sys.argv) > 1:
-#         if sys.argv[1] == '--hostname' and len(sys.argv) > 2:
-#             target_hostname = sys.argv[2]
-#         elif sys.argv[1] == '--device_id' and len(sys.argv) > 2:
-#             target_device_id = sys.argv[2]
-
-#     run_apis(target_hostname, target_device_id)

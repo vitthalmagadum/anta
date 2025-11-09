@@ -10,10 +10,6 @@ from anta.logger import anta_log_exception, exc_to_str
 from anta.device import AntaDevice
 from anta.models import AntaCommand
 
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from cvp import CvpDeviceConnection
 
 logger = logging.getLogger(__name__)
@@ -61,13 +57,6 @@ class CVPDevice(AntaDevice):
     def _keys(self) -> tuple[Any, ...]:
         """Read-only property to implement hashing and equality for CVPDevice classes."""
 
-    @property
-    def api_mapping(self) -> dict[str, str]:
-        """Load API mapping"""
-        with open("./examples/eos-api-mapping.yaml", "r") as f:
-            data = yaml.safe_load(f)
-        return data
-
     async def _collect(self, command: AntaCommand, *, collection_id: str | None = None) -> None:
         """
         Collect command output from CVP.
@@ -75,12 +64,9 @@ class CVPDevice(AntaDevice):
         logger.info(f"Collecting command '{command.command}' for device {self.name} from CVP")
 
         try:
-            mapping = self.api_mapping
-            def run_mapped_method(obj, key, mapping):
-                method_name = mapping.get(key)
-                method = getattr(obj, method_name)
-                return method
-            command.output = run_mapped_method(self.cvp_client, command.command, mapping)(hostname=self.name)
+            method_name = self.cvp_client.cvp_eapi_mapping.get(command.command)
+            method = getattr(self.cvp_client, method_name)
+            command.output = method(hostname=self.name)
 
         except Exception as e:
             logger.error(f"Failed to collect command '{command.command}' for device {self.name} from CVP: {e}")
@@ -91,4 +77,3 @@ class CVPDevice(AntaDevice):
         Refresh is not implemented for CVPDevice.
         """
         pass
-
