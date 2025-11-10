@@ -36,8 +36,8 @@ class CvpClient:
             ca_file: Path to the CA certificate file for a secure connection.
         """
         self.server_addr = f"{host}:{port}"
-        self.token_file = token_file.read_text().strip()
-        self.ca_cert = ca_file.read_bytes()
+        self.token_file = token_file
+        self.ca_cert = ca_file
         self.grpc_client = self.get_grpc_client()
         self.cvp_eapi_mapping = cvp_eapi_mapping
     

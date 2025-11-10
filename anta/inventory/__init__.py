@@ -15,6 +15,7 @@ from typing import Any, ClassVar, Literal
 from pydantic import ValidationError
 from yaml import YAMLError, safe_load
 
+from anta.cvp_device import CVPDevice
 from anta.device import AntaDevice, AsyncEOSDevice
 from anta.inventory.exceptions import InventoryIncorrectSchemaError, InventoryRootKeyError
 from anta.inventory.models import AntaInventoryHost, AntaInventoryInput
@@ -79,14 +80,26 @@ class AntaInventory(dict[str, AntaDevice]):
             return
 
         for host in inventory_input.hosts:
-            updated_kwargs = AntaInventory._update_disable_cache(kwargs, inventory_disable_cache=host.disable_cache)
-            device = AsyncEOSDevice(
-                name=host.name,
-                host=str(host.host),
-                port=host.port,
-                tags=host.tags,
-                **updated_kwargs,
-            )
+            if kwargs.get("test_source") == "cvp":
+                device = CVPDevice(
+                    cvp_host=kwargs["cvp_host"],
+                    token_file=kwargs["token_file"],
+                    crt_file=kwargs["crt_file"],
+                    name=host.name,
+                    test_source=kwargs["test_source"]
+                )
+            else:
+                # TODO: need to check for better way. Removing the kwargs related to cvp to avoid unnecessary init args to AsyncEOSDevice
+                for k in ["test_source", "token_file", "crt_file", "cvp_host"]:
+                    kwargs.pop(k, None)
+                updated_kwargs = AntaInventory._update_disable_cache(kwargs, inventory_disable_cache=host.disable_cache)
+                device = AsyncEOSDevice(
+                    name=host.name,
+                    host=str(host.host),
+                    port=host.port,
+                    tags=host.tags,
+                    **updated_kwargs,
+                )
             inventory.add_device(device)
 
     @staticmethod
@@ -119,6 +132,8 @@ class AntaInventory(dict[str, AntaDevice]):
             for network in inventory_input.networks:
                 updated_kwargs = AntaInventory._update_disable_cache(kwargs, inventory_disable_cache=network.disable_cache)
                 for host_ip in ip_network(str(network.network)):
+                    if updated_kwargs.get("test_source") == "cvp":
+                        raise InventoryIncorrectSchemaError("Networks are not supported when using 'cvp' as test_source")
                     device = AsyncEOSDevice(host=str(host_ip), tags=network.tags, **updated_kwargs)
                     inventory.add_device(device)
         except ValueError as e:
@@ -160,6 +175,8 @@ class AntaInventory(dict[str, AntaDevice]):
                 while range_increment <= range_stop:  # type: ignore[operator]
                     # mypy raise an issue about comparing IPv4Address and IPv6Address
                     # but this is handled by the ipaddress module natively by raising a TypeError
+                    if updated_kwargs.get("test_source") == "cvp":
+                        raise InventoryIncorrectSchemaError("Ranges are not supported when using 'cvp' as test_source")
                     device = AsyncEOSDevice(host=str(range_increment), tags=range_def.tags, **updated_kwargs)
                     inventory.add_device(device)
                     range_increment += 1
@@ -184,6 +201,10 @@ class AntaInventory(dict[str, AntaDevice]):
         enable: bool = False,
         insecure: bool = False,
         disable_cache: bool = False,
+        test_source: Literal["eapi", "cvp"] = "eapi",
+        cvp_host: str | None, 
+        token_file: Path | None = None,
+        crt_file: Path | None = None,
     ) -> AntaInventory:
         """Create an AntaInventory instance from an inventory file.
 
@@ -231,6 +252,10 @@ class AntaInventory(dict[str, AntaDevice]):
             "timeout": timeout,
             "insecure": insecure,
             "disable_cache": disable_cache,
+            "test_source": test_source,
+            "cvp_host": cvp_host,
+            "token_file": token_file,
+            "crt_file": crt_file,
         }
 
         try:
@@ -298,6 +323,9 @@ class AntaInventory(dict[str, AntaDevice]):
 
         def _filter_devices(device: AntaDevice) -> bool:
             """Select the devices based on the inputs `tags`, `devices` and `established_only`."""
+            # TODO: need to check better
+            if device.test_source == "cvp":
+                return True
             if tags is not None and all(tag not in tags for tag in device.tags):
                 return False
             if devices is None or device.name in devices:
@@ -361,15 +389,17 @@ class AntaInventory(dict[str, AntaDevice]):
 
     async def connect_inventory(self) -> None:
         """Run `refresh()` coroutines for all AntaDevice objects in this inventory."""
-        logger.debug("Refreshing devices...")
-        results = await asyncio.gather(
-            *(device.refresh() for device in self.values()),
-            return_exceptions=True,
-        )
-        for r in results:
-            if isinstance(r, Exception):
-                message = "Error when refreshing inventory"
-                anta_log_exception(r, message, logger)
+        # TODO: Here checking weather the devices has test_source as eapi only. We need to check for better way
+        devices = [device for device in self.values() if device.test_source == "eapi"]
+        if devices:
+            results = await asyncio.gather(
+                *(device.refresh() for device in self.values()),
+                return_exceptions=True,
+            )
+            for r in results:
+                if isinstance(r, Exception):
+                    message = "Error when refreshing inventory"
+                    anta_log_exception(r, message, logger)
 
     def dump(self) -> AntaInventoryInput:
         """Dump the AntaInventory to an AntaInventoryInput.
