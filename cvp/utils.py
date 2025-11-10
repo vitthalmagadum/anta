@@ -4,59 +4,39 @@
 # Initially written by Jeremy Schulman at https://github.com/jeremyschulman/aio-eapi
 
 from cloudvision.Connector.grpc_client import create_query
-from cloudvision.Connector.codec.custom_types import FrozenDict
 from cloudvision.Connector.codec import Wildcard
 # ruff: noqa
 
-def get(client, hostname, pathElts):
+def get(client, hostname, path_elts):
     """Returns a query on a path element"""
     result = {}
-    query = [create_query([(pathElts, [])], hostname)]
+    query = [create_query([(path_elts, [])], hostname)]
 
     for batch in client.get(query):
         for notif in batch["notifications"]:
             result.update(notif["updates"])
     return result
 
-
-def unfreeze(o):
-    """Used to unfreeze Frozen dictionaries"""
-    if isinstance(o, (dict, FrozenDict)):
-        return dict({k: unfreeze(v) for k, v in o.items()})
-
-    if isinstance(o, (str)):
-        return o
-
-    try:
-        return [unfreeze(i) for i in o]
-    except TypeError:
-        pass
-
-    return o
-
-def deviceType(client, hostname):
+def device_type(client, hostname):
     """Returns the type of the device: modular/fixed"""
-    pathElts = ["Sysdb", "hardware", "entmib"]
-    query = get(client, hostname, pathElts)
-    query = unfreeze(query)
-    if query["fixedSystem"] is None:
-        dType = "modular"
+    path_elts = ["Sysdb", "hardware", "entmib"]
+    query = get(client, hostname, path_elts)
+    if query.get("fixedSystem") is None:
+        device_type = "modular"
     else:
-        dType = "fixedSystem"
-    return dType
+        device_type = "fixedSystem"
+    return device_type
 
-def getIntfStatusChassis(client, hostname):
+def get_intf_status_chassis(client, hostname):
     """Returns the interfaces report for a modular device."""
     # Fetch the list of slices/linecards
-    pathElts = ["Sysdb", "interface", "status", "eth", "phy", "slice"]
-    query = get(client, hostname, pathElts)
-    queryLC = unfreeze(query).keys()
-    intfStatusChassis = {}
+    path_elts = ["Sysdb", "interface", "status", "eth", "phy", "slice"]
+    query = get(client, hostname, path_elts)
     result = {}
 
     # Go through each linecard and get the state of all interfaces
-    for lc in queryLC:
-        pathElts = [
+    for lc in query.keys():
+        path_elts = [
             "Sysdb",
             "interface",
             "status",
@@ -68,8 +48,8 @@ def getIntfStatusChassis(client, hostname):
             Wildcard(),
         ]
 
-        query = [create_query([(pathElts, [])], hostname)]
-        for batch in client.get(query):
+        query_result = [create_query([(path_elts, [])], hostname)]
+        for batch in client.get(query_result):
             for notif in batch["notifications"]:
                 if not notif["updates"]:
                     continue
@@ -78,23 +58,19 @@ def getIntfStatusChassis(client, hostname):
                 intf_val = result.get(intf_key, {})
                 intf_val.update(notif["updates"])
                 result[intf_key] = intf_val
-    for interface in result:
-        # TODO: Need to check interfaceStatus --> linkStatus and lineProtocolStatus --> operStatus are same.
-        intfStatusChassis.update(
-            {
-                interface["path_elements"][-1]:
-                    {
-                        "interfaceStatus": "up" if interface["updates"]["linkStatus"]["Name"] == "linkUp" else interface["updates"]["linkStatus"]["Name"],
-                        "lineProtocolStatus": "up" if interface["updates"]["operStatus"]["Name"] == "intfOperUp" else interface["updates"]["operStatus"]["Name"],
-                    }
-            }
-        )
-    return {"interfaceDescriptions": intfStatusChassis}
+    intf_status_chassis = {
+        interface: {
+            "interfaceStatus": "up" if result[interface]["linkStatus"]["Name"] == "linkUp" else result[interface]["linkStatus"]["Name"],
+            "lineProtocolStatus": "up" if result[interface]["operStatus"]["Name"] == "intfOperUp" else result[interface]["operStatus"]["Name"],
+        }
+        for interface in result
+    }
+    return {"interfaceDescriptions": intf_status_chassis}
 
 
-def getIntfStatusFixed(client, hostname):
+def get_intf_status_fixed(client, hostname):
     """Returns the interfaces report for a fixed system device."""
-    pathElts = [
+    path_elts = [
         "Sysdb",
         "interface",
         "status",
@@ -105,10 +81,8 @@ def getIntfStatusFixed(client, hostname):
         "intfStatus",
         Wildcard(),
     ]
-    query = [create_query([(pathElts, [])], hostname)]
-    query = unfreeze(query)
+    query = [create_query([(path_elts, [])], hostname)]
     result = {}
-    intfStatusFixed = {}
     for batch in client.get(query):
         for notif in batch["notifications"]:
             if not notif["updates"]:
@@ -119,15 +93,11 @@ def getIntfStatusFixed(client, hostname):
             intf_val.update(notif["updates"])
             result[intf_key] = intf_val
 
-    for interface in result:
-        # TODO: Need to check interfaceStatus --> linkStatus and lineProtocolStatus --> operStatus are same.
-        intfStatusFixed.update(
-            {
-                interface:
-                    {
-                        "interfaceStatus": "up" if result[interface]["linkStatus"]["Name"] == "linkUp" else result[interface]["linkStatus"]["Name"],
-                        "lineProtocolStatus": "up" if result[interface]["operStatus"]["Name"] == "intfOperUp" else result[interface]["operStatus"]["Name"],
-                    },
-            }
-        )
-    return {"interfaceDescriptions": intfStatusFixed}
+    intf_status_fixed = {
+        interface: {
+            "interfaceStatus": "up" if result[interface]["linkStatus"]["Name"] == "linkUp" else result[interface]["linkStatus"]["Name"],
+            "lineProtocolStatus": "up" if result[interface]["operStatus"]["Name"] == "intfOperUp" else result[interface]["operStatus"]["Name"],
+        }
+        for interface in result
+    }
+    return {"interfaceDescriptions": intf_status_fixed}

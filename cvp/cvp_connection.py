@@ -9,7 +9,7 @@ from pathlib import Path
 # Import the inventory models and services
 from cloudvision.Connector.grpc_client import GRPCClient, create_query
 from cloudvision.Connector.codec import Wildcard
-from .utils import getIntfStatusChassis, getIntfStatusFixed, deviceType
+from .utils import get_intf_status_chassis, get_intf_status_fixed, device_type
 from .cvp_eapi_mapping import cvp_eapi_mapping
 
 __all__ = ["CvpClient"]
@@ -42,15 +42,33 @@ class CvpClient:
         self.cvp_eapi_mapping = cvp_eapi_mapping
     
     def get_grpc_client(self):
-        return GRPCClient(self.server_addr, token=self.token_file, ca=self.ca_cert)
+        """
+        Creates and returns a GRPCClient instance.
+
+        This method initializes a GRPCClient with the server address, token file,
+        and CA certificate specified during the CvpClient's initialization.
+
+        Returns:
+            A GRPCClient instance configured for communication with CloudVision.
+        """
+        return GRPCClient(self.server_addr, token=str(self.token_file), ca=str(self.ca_cert))
     
     def get_interface_status(self, hostname) -> dict:
+        """
+        Get the interface status for a device.
+
+        Args:
+            hostname: The hostname of the device.
+
+        Returns:
+            A dictionary containing the interface status.
+        """
         interfaceDescriptions = {}
-        entmibType = deviceType(self.grpc_client, hostname)
+        entmibType = device_type(self.grpc_client, hostname)
         if entmibType == "modular":
-            interfaceDescriptions.update(getIntfStatusChassis(self.grpc_client, hostname))
+            interfaceDescriptions.update(get_intf_status_chassis(self.grpc_client, hostname))
         else:
-            interfaceDescriptions.update(getIntfStatusFixed(self.grpc_client, hostname))
+            interfaceDescriptions.update(get_intf_status_fixed(self.grpc_client, hostname))
 
         return(interfaceDescriptions)
 
@@ -67,12 +85,12 @@ class CvpClient:
             A dictionary containing the 'version' of the device if found,
             otherwise None.
         """
-        pathElts = [
+        path_elts = [
             "DatasetInfo",
             "Devices"
         ]
         query = [
-            create_query([(pathElts, [])], "analytics")
+            create_query([(path_elts, [])], "analytics")
         ]
         for batch in self.grpc_client.get(query):
             for notif in batch["notifications"]:
