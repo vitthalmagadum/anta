@@ -20,6 +20,7 @@ description = "Arista Network Test Automation (ANTA) Framework"
 dependencies = [
   "asyncssh>=2.16",
   "cvprac>=1.3.1",
+  "cloudvision>=1.25.3",
   "httpx>=0.27.0",
   "Jinja2>=3.1.2",
   "pydantic>=2.7",
