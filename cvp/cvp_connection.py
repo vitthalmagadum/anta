@@ -10,6 +10,7 @@ from pathlib import Path
 from cloudvision.Connector.grpc_client import GRPCClient, create_query
 from cloudvision.Connector.codec import Wildcard
 from .utils import getIntfStatusChassis, getIntfStatusFixed, deviceType
+from .cvp_eapi_mapping import cvp_eapi_mapping
 
 __all__ = ["CvpClient"]
 
@@ -21,9 +22,9 @@ class CvpClient:
     def __init__(
         self,
         host: str,
+        token_file: Path,
+        ca_file: Path,
         port: int = 443,
-        token_file: str = "token.txt",
-        ca_file: str | None = None,
     ):
         """
         Initialize the CvpClient.
@@ -35,16 +36,15 @@ class CvpClient:
             ca_file: Path to the CA certificate file for a secure connection.
         """
         self.server_addr = f"{host}:{port}"
-        self.token = Path(token_file).read_text().strip()
-        self.token_file = token_file
-        self.ca_file = ca_file
-        self.ca_cert = Path(ca_file).read_bytes() if ca_file else None
+        self.token_file = token_file.read_text().strip()
+        self.ca_cert = ca_file.read_bytes()
         self.grpc_client = self.get_grpc_client()
+        self.cvp_eapi_mapping = cvp_eapi_mapping
     
     def get_grpc_client(self):
-        return GRPCClient(self.server_addr, token=self.token_file, ca=self.ca_file)
+        return GRPCClient(self.server_addr, token=self.token_file, ca=self.ca_cert)
     
-    def get_interface_status(self, hostname):
+    def get_interface_status(self, hostname) -> dict:
         interfaceDescriptions = {}
         entmibType = deviceType(self.grpc_client, hostname)
         if entmibType == "modular":
