@@ -1,14 +1,16 @@
 # Copyright (c) 2025 Arista Networks, Inc.
 # Use of this source code is governed by the Apache License 2.0
 # that can be found in the LICENSE file.
+# ruff: noqa
 """ANTA CVP Device Module."""
 
 from __future__ import annotations
 
 import logging
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Literal
 
 from anta.device import AntaDevice
+from cvp import CvpClient
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -33,7 +35,7 @@ class CVPDevice(AntaDevice):
         Device name.
     """
 
-    def __init__(self, cvp_host: str, token_file: Path, crt_file: Path, name: str, test_source: str) -> None:
+    def __init__(self, cvp_host: str, token_file: Path, crt_file: Path, name: str, test_source: Literal["eapi", "cvp"]) -> None:
         """Instantiate a CVPDevice.
 
         Args:
@@ -49,6 +51,7 @@ class CVPDevice(AntaDevice):
         self.test_source = test_source
         # Initialize the AntaDevice
         super().__init__(name=self.name, test_source=self.test_source)
+        self.cvp_client = CvpClient(host=cvp_host, token_file=token_file, ca_file=crt_file)
 
     @property
     def _keys(self) -> tuple[Any, ...]:
@@ -70,8 +73,9 @@ class CVPDevice(AntaDevice):
         logger.info(msg)
 
         try:
-            # Placeholder for CVPClient
-            pass
+            method_name = self.cvp_client.cvp_eapi_mapping.get(command.command)
+            method = getattr(self.cvp_client, method_name)
+            command.output = method(hostname=self.name)
 
         except Exception as e:  # noqa: BLE001
             msg = f"Failed to collect command '{command.command}' for device '{self.name}' from CVP: {e}"
