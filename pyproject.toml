@@ -112,7 +112,7 @@ Contributing = "https://anta.arista.com/main/contribution/"
 anta = "anta.cli:cli"
 
 [tool.setuptools.packages.find]
-include = ["anta*", "asynceapi*"]
+include = ["anta*", "asynceapi*", "cvp*"]
 namespaces = false
 
 [tool.setuptools.package-data]
