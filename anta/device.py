@@ -129,7 +129,7 @@ class AntaDevice(ABC):
         This does **not** affect the actual device configuration. None if not available.
     """
 
-    def __init__(self, name: str, tags: set[str] | None = None, *, disable_cache: bool = False) -> None:
+    def __init__(self, name: str, tags: set[str] | None = None, *, disable_cache: bool = False, test_source: Literal["eapi", "cvp"] = "eapi") -> None:
         """Initialize an AntaDevice.
 
         Parameters
@@ -140,7 +140,8 @@ class AntaDevice(ABC):
             Tags for this device.
         disable_cache
             Disable caching for all commands for this device.
-
+        test_source:
+            Test source to collect the device state, configuration.
         """
         self.name: str = name
         self.hw_model: str | None = None
@@ -152,6 +153,7 @@ class AntaDevice(ABC):
         self.cache: AntaCache | None = None
         # Keeping cache_locks for backward compatibility.
         self.cache_locks: defaultdict[str, asyncio.Lock] | None = None
+        self.test_source = test_source
 
         # Initialize cache if not disabled
         if not disable_cache:
