@@ -8,10 +8,10 @@ from cloudvision.Connector.codec.custom_types import FrozenDict
 from cloudvision.Connector.codec import Wildcard
 # ruff: noqa
 
-def get(client, dataset, pathElts):
+def get(client, hostname, pathElts):
     """Returns a query on a path element"""
     result = {}
-    query = [create_query([(pathElts, [])], dataset)]
+    query = [create_query([(pathElts, [])], hostname)]
 
     for batch in client.get(query):
         for notif in batch["notifications"]:
@@ -34,11 +34,10 @@ def unfreeze(o):
 
     return o
 
-def deviceType(client, dId):
+def deviceType(client, hostname):
     """Returns the type of the device: modular/fixed"""
     pathElts = ["Sysdb", "hardware", "entmib"]
-    dataset = dId
-    query = get(client, dataset, pathElts)
+    query = get(client, hostname, pathElts)
     query = unfreeze(query)
     if query["fixedSystem"] is None:
         dType = "modular"
@@ -46,12 +45,11 @@ def deviceType(client, dId):
         dType = "fixedSystem"
     return dType
 
-def getIntfStatusChassis(client, dId):
+def getIntfStatusChassis(client, hostname):
     """Returns the interfaces report for a modular device."""
     # Fetch the list of slices/linecards
     pathElts = ["Sysdb", "interface", "status", "eth", "phy", "slice"]
-    dataset = dId
-    query = get(client, dataset, pathElts)
+    query = get(client, hostname, pathElts)
     queryLC = unfreeze(query).keys()
     intfStatusChassis = {}
     result = {}
@@ -70,7 +68,7 @@ def getIntfStatusChassis(client, dId):
             Wildcard(),
         ]
 
-        query = [create_query([(pathElts, [])], dataset)]
+        query = [create_query([(pathElts, [])], hostname)]
         for batch in client.get(query):
             for notif in batch["notifications"]:
                 if not notif["updates"]:
@@ -81,6 +79,7 @@ def getIntfStatusChassis(client, dId):
                 intf_val.update(notif["updates"])
                 result[intf_key] = intf_val
     for interface in result:
+        # TODO: Need to check interfaceStatus --> linkStatus and lineProtocolStatus --> operStatus are same.
         intfStatusChassis.update(
             {
                 interface["path_elements"][-1]:
@@ -93,7 +92,7 @@ def getIntfStatusChassis(client, dId):
     return {"interfaceDescriptions": intfStatusChassis}
 
 
-def getIntfStatusFixed(client, dId):
+def getIntfStatusFixed(client, hostname):
     """Returns the interfaces report for a fixed system device."""
     pathElts = [
         "Sysdb",
@@ -106,7 +105,7 @@ def getIntfStatusFixed(client, dId):
         "intfStatus",
         Wildcard(),
     ]
-    query = [create_query([(pathElts, [])], dId)]
+    query = [create_query([(pathElts, [])], hostname)]
     query = unfreeze(query)
     result = {}
     intfStatusFixed = {}
@@ -121,6 +120,7 @@ def getIntfStatusFixed(client, dId):
             result[intf_key] = intf_val
 
     for interface in result:
+        # TODO: Need to check interfaceStatus --> linkStatus and lineProtocolStatus --> operStatus are same.
         intfStatusFixed.update(
             {
                 interface:
