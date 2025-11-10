@@ -74,6 +74,10 @@ class CVPDevice(AntaDevice):
 
         try:
             method_name = self.cvp_client.cvp_eapi_mapping.get(command.command)
+            if method_name is None:
+                msg = f"Command '{command.command}' is not supported by CVPClient"
+                logger.error(msg)
+                raise ValueError(msg)
             method = getattr(self.cvp_client, method_name)
             command.output = method(hostname=self.name)
 

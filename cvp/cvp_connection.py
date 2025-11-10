@@ -4,6 +4,7 @@
 # ruff: noqa
 
 from __future__ import annotations
+import logging
 from pathlib import Path
 
 # Import the inventory models and services
@@ -51,7 +52,12 @@ class CvpClient:
         Returns:
             A GRPCClient instance configured for communication with CloudVision.
         """
-        return GRPCClient(self.server_addr, token=str(self.token_file), ca=str(self.ca_cert))
+        try:
+            return GRPCClient(self.server_addr, token=str(self.token_file), ca=str(self.ca_cert))
+        except Exception as e:
+            msg = f"Failed to create GRPCClient: {e}"
+            logging.error(msg)
+            raise ConnectionAbortedError(msg)
     
     def get_interface_status(self, hostname) -> dict:
         """
