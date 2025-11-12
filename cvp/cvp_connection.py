@@ -91,17 +91,14 @@ class CvpClient:
             A dictionary containing the 'version' of the device if found,
             otherwise None.
         """
-        path_elts = [
-            "DatasetInfo",
-            "Devices"
-        ]
+        path_elts = ["Eos", "image"]
         query = [
-            create_query([(path_elts, [])], "analytics")
+            create_query([(path_elts, [])], hostname)
         ]
         for batch in self.grpc_client.get(query):
             for notif in batch["notifications"]:
-                if hostname in notif["updates"]:
-                    return {"version": notif["updates"][hostname]["eosVersion"]}
+                if "displayVersion" in notif["updates"]:
+                    return {"version": notif["updates"]["displayVersion"]}
 
         return None
     
