@@ -1,14 +1,15 @@
 ---
-name: Run benchmarks manually
+name: Run benchmarks
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   benchmarks:
     name: Benchmark ANTA for Python 3.12
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
@@ -19,5 +20,5 @@ jobs:
         uses: CodSpeedHQ/action@v4
         with:
           token: ${{ secrets.CODSPEED_TOKEN }}
-          mode: instrumentation
+          mode: simulation
           run: pytest --codspeed --no-cov --log-cli-level INFO tests/benchmark

@@ -1,4 +1,4 @@
-# Copyright (c) 2023-2025 Arista Networks, Inc.
+# Copyright (c) 2023-2026 Arista Networks, Inc.
 # Use of this source code is governed by the Apache License 2.0
 # that can be found in the LICENSE file.
 """Test anta.report.__init__.py."""
@@ -89,7 +89,7 @@ class TestReportTable:
         result_manager_factory: ResultManagerFactoryProtocol,
         results_size: int,
     ) -> None:
-        """Test report table."""
+        """Test generate."""
         manager = result_manager_factory(size=results_size)
 
         report = ReportTable()
@@ -97,6 +97,29 @@ class TestReportTable:
 
         assert isinstance(res, Table)
         assert res.row_count == results_size
+
+    @pytest.mark.parametrize(
+        ("results_size", "atomic_results_size"),
+        [
+            pytest.param(5, 0, id="5 results no atomic"),
+            pytest.param(0, 0, id="no results"),
+            pytest.param(5, 5, id="5 results 5 atomic"),
+        ],
+    )
+    def test_generate_expanded(
+        self,
+        result_manager_factory: ResultManagerFactoryProtocol,
+        results_size: int,
+        atomic_results_size: int,
+    ) -> None:
+        """Test generate_expanded, verifying the atomic results are rendered."""
+        manager = result_manager_factory(size=results_size, atomic_results_status=[AntaTestStatus.UNSET] * atomic_results_size)
+
+        report = ReportTable()
+        res = report.generate_expanded(manager)
+
+        assert isinstance(res, Table)
+        assert res.row_count == results_size + results_size * atomic_results_size
 
     @pytest.mark.parametrize(
         ("results_size", "expected_length", "distinct", "tests_filter"),
@@ -148,6 +171,7 @@ class TestReportTable:
         ("field", "function"),
         [
             pytest.param("all", "generate", id="generate()"),
+            pytest.param("all", "generate_expanded", id="generate_expanded()"),
         ],
     )
     @pytest.mark.parametrize(

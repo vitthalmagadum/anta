@@ -1,4 +1,4 @@
-# Copyright (c) 2023-2025 Arista Networks, Inc.
+# Copyright (c) 2023-2026 Arista Networks, Inc.
 # Use of this source code is governed by the Apache License 2.0
 # that can be found in the LICENSE file.
 """Test inputs for anta.tests.interfaces."""
@@ -99,7 +99,39 @@ DATA: AntaUnitTestData = {
             ),
         ],
         "inputs": {"threshold": 15.0},  # All utilizations are <= 15%
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet2/1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet3/1/1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Port-Channel1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Management0",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet1.100",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Port-Channel1.200",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceUtilization, "success-ignored-interfaces"): {
         "eos_data": [
@@ -114,7 +146,15 @@ DATA: AntaUnitTestData = {
             ),
         ],
         "inputs": {"threshold": 10.0, "ignored_interfaces": ["Ethernet1", "Port-Channel1", "Management"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet2",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceUtilization, "success-user-provided-interfaces"): {
         "eos_data": [
@@ -126,7 +166,19 @@ DATA: AntaUnitTestData = {
             create_status_data(("Ethernet1/1", "duplexFull", 1e9), ("Port-Channel10", "duplexFull", 2e9), ("Ethernet2.100", "duplexFull", 1e9)),
         ],
         "inputs": {"threshold": 5.0, "interfaces": ["Port-Channel10", "Ethernet2.100"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel10",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet2.100",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceUtilization, "success-not-connected-interfaces"): {
         "eos_data": [
@@ -138,14 +190,30 @@ DATA: AntaUnitTestData = {
             create_status_data(("Ethernet1/1", "duplexUnknown", 0.0), ("Port-Channel10", "duplexFull", 2e9), ("Ethernet2.100", "duplexFull", 1e9)),
         ],
         "inputs": {"threshold": 5.0},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1/1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Port-Channel10",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet2.100",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceUtilization, "failure-utilization-exceeded"): {
         "eos_data": [
             create_rate_data(
                 ("Ethernet1", 100e6, 50e6),  # OK
-                ("Port-Channel5", 800e6, 150e6),  # Ingress 800Mbps/2Gbps = 40%. Egress 150Mbps/2Gbps = 7.5%
-            ),  # Fails on Ingress
+                ("Port-Channel5", 800e6, 800e6),  # Ingress 800Mbps/2Gbps = 40%. Egress 800Mbps/2Gbps = 40%
+            ),  # Fails on Ingress and Egress
             create_status_data(
                 ("Ethernet1", "duplexFull", 1e9),
                 ("Port-Channel5", "duplexFull", 2e9),  # Example: 2x1G LACP
@@ -154,7 +222,24 @@ DATA: AntaUnitTestData = {
         "inputs": {"threshold": 30.0},
         "expected": {
             "result": AntaTestStatus.FAILURE,
-            "messages": ["Interface: Port-Channel5 BPS Rate: inBpsRate - Usage above threshold - Expected: <= 30.0% Actual: 40.0%"],
+            "messages": [
+                "Interface: Port-Channel5 - Ingress traffic rate (BPS) exceeds threshold - Expected: <= 30.0% Actual: 40.0%",
+                "Interface: Port-Channel5 - Egress traffic rate (BPS) exceeds threshold - Expected: <= 30.0% Actual: 40.0%",
+            ],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Port-Channel5",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": [
+                        "Ingress traffic rate (BPS) exceeds threshold - Expected: <= 30.0% Actual: 40.0%",
+                        "Egress traffic rate (BPS) exceeds threshold - Expected: <= 30.0% Actual: 40.0%",
+                    ],
+                },
+            ],
         },
     },
     (VerifyInterfaceUtilization, "failure-ethernet-duplex-half"): {
@@ -166,6 +251,13 @@ DATA: AntaUnitTestData = {
         "expected": {
             "result": AntaTestStatus.FAILURE,
             "messages": ["Interface: Ethernet1/1 - Test not implemented for non-full-duplex interfaces - Expected: duplexFull Actual: duplexHalf"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1/1",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Test not implemented for non-full-duplex interfaces - Expected: duplexFull Actual: duplexHalf"],
+                },
+            ],
         },
     },
     (VerifyInterfaceUtilization, "failure-port-channel-subinterface-duplex-half"): {
@@ -183,6 +275,17 @@ DATA: AntaUnitTestData = {
         "expected": {
             "result": AntaTestStatus.FAILURE,
             "messages": ["Interface: Port-Channel10.50 - Test not implemented for non-full-duplex interfaces - Expected: duplexFull Actual: duplexHalf"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel10",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Port-Channel10.50",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Test not implemented for non-full-duplex interfaces - Expected: duplexFull Actual: duplexHalf"],
+                },
+            ],
         },
     },
     (VerifyInterfaceUtilization, "failure-management0-duplex-half"): {
@@ -194,6 +297,13 @@ DATA: AntaUnitTestData = {
         "expected": {
             "result": AntaTestStatus.FAILURE,
             "messages": ["Interface: Management0 - Test not implemented for non-full-duplex interfaces - Expected: duplexFull Actual: duplexHalf"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Management0",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Test not implemented for non-full-duplex interfaces - Expected: duplexFull Actual: duplexHalf"],
+                },
+            ],
         },
     },
     (VerifyInterfaceUtilization, "failure-specific-interface-not-found"): {
@@ -205,6 +315,17 @@ DATA: AntaUnitTestData = {
         "expected": {
             "result": AntaTestStatus.FAILURE,
             "messages": ["Interface: Ethernet99 - Not found"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet99",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Not found"],
+                },
+            ],
         },
     },
     (VerifyInterfaceUtilization, "failure-specific-interface-null-bandwidth"): {
@@ -219,6 +340,17 @@ DATA: AntaUnitTestData = {
         "expected": {
             "result": AntaTestStatus.FAILURE,
             "messages": ["Interface: Port-Channel1 - Cannot get interface utilization due to null bandwidth value"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1/1/1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Port-Channel1",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Cannot get interface utilization due to null bandwidth value"],
+                },
+            ],
         },
     },
     (VerifyInterfaceUtilization, "success-null-bandwidth-general-scan-skipped"): {
@@ -239,7 +371,22 @@ DATA: AntaUnitTestData = {
         "inputs": {"threshold": 70.0},  # Po1 inBpsRate (800Mbps/1Gbps = 80%) will cause failure
         "expected": {
             "result": AntaTestStatus.FAILURE,  # Failure due to Port-Channel1, not Ethernet2/1
-            "messages": ["Interface: Port-Channel1 BPS Rate: inBpsRate - Usage above threshold - Expected: <= 70.0% Actual: 80.0%"],
+            "messages": ["Interface: Port-Channel1 - Ingress traffic rate (BPS) exceeds threshold - Expected: <= 70.0% Actual: 80.0%"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet2/1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Port-Channel1",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Ingress traffic rate (BPS) exceeds threshold - Expected: <= 70.0% Actual: 80.0%"],
+                },
+            ],
         },
     },
     (VerifyInterfaceUtilization, "success-all-interfaces-one-null-bw-others-ok"): {
@@ -259,6 +406,20 @@ DATA: AntaUnitTestData = {
         "inputs": {"threshold": 70.0},
         "expected": {
             "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet2/1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Port-Channel1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
         },
     },
     (VerifyInterfaceErrors, "success"): {
@@ -270,7 +431,19 @@ DATA: AntaUnitTestData = {
                 }
             }
         ],
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet6",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceErrors, "success-ignore-interface"): {
         "eos_data": [
@@ -283,14 +456,22 @@ DATA: AntaUnitTestData = {
                         "outErrors": 0,
                         "frameTooShorts": 0,
                         "fcsErrors": 0,
-                        "alignmentErrors": 666,
+                        "alignmentErrors": 0,
                         "symbolErrors": 0,
                     },
                 }
             }
         ],
-        "inputs": {"ignored_interfaces": ["Ethernet", "Management0"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "inputs": {"ignored_interfaces": ["Ethernet"]},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Management0",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceErrors, "failure-ignore-interface"): {
         "eos_data": [
@@ -311,7 +492,17 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"ignored_interfaces": ["Ethernet1", "Management0"]},
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Interface: Ethernet10 - Non-zero error counter(s) - inErrors: 42"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet10 - Non-zero error counter(s) - inErrors: 42"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet10",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Non-zero error counter(s) - inErrors: 42"],
+                }
+            ],
+        },
     },
     (VerifyInterfaceErrors, "failure-multiple-intfs"): {
         "eos_data": [
@@ -327,6 +518,18 @@ DATA: AntaUnitTestData = {
             "messages": [
                 "Interface: Ethernet1 - Non-zero error counter(s) - inErrors: 42",
                 "Interface: Ethernet6 - Non-zero error counter(s) - alignmentErrors: 666",
+            ],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Non-zero error counter(s) - inErrors: 42"],
+                },
+                {
+                    "description": "Interface: Ethernet6",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Non-zero error counter(s) - alignmentErrors: 666"],
+                },
             ],
         },
     },
@@ -345,6 +548,18 @@ DATA: AntaUnitTestData = {
                 "Interface: Ethernet1 - Non-zero error counter(s) - inErrors: 42, outErrors: 10",
                 "Interface: Ethernet6 - Non-zero error counter(s) - alignmentErrors: 6, symbolErrors: 10",
             ],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Non-zero error counter(s) - inErrors: 42, outErrors: 10"],
+                },
+                {
+                    "description": "Interface: Ethernet6",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Non-zero error counter(s) - alignmentErrors: 6, symbolErrors: 10"],
+                },
+            ],
         },
     },
     (VerifyInterfaceErrors, "failure-single-intf-multiple-errors"): {
@@ -355,7 +570,17 @@ DATA: AntaUnitTestData = {
                 }
             }
         ],
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Interface: Ethernet1 - Non-zero error counter(s) - inErrors: 42, outErrors: 2"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet1 - Non-zero error counter(s) - inErrors: 42, outErrors: 2"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Non-zero error counter(s) - inErrors: 42, outErrors: 2"],
+                },
+            ],
+        },
     },
     (VerifyInterfaceErrors, "success-specific-interface"): {
         "eos_data": [
@@ -375,7 +600,15 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": ["Etherne1"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceErrors, "failure-specific-interface-not-found"): {
         "eos_data": [
@@ -395,7 +628,17 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": ["Etherne10"]},
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Interface: Ethernet10 - Not found"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet10 - Not found"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet10",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Not found"],
+                },
+            ],
+        },
     },
     (VerifyInterfaceDiscards, "success"): {
         "eos_data": [
@@ -405,7 +648,19 @@ DATA: AntaUnitTestData = {
                 "outDiscardsTotal": 0,
             }
         ],
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet2",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceDiscards, "success-ignored-interface"): {
         "eos_data": [
@@ -422,7 +677,15 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"ignored_interfaces": ["Port-Channel1", "Ethernet"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel2",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceDiscards, "failure"): {
         "eos_data": [
@@ -438,16 +701,11 @@ DATA: AntaUnitTestData = {
                 "Interface: Ethernet2 - Non-zero discard counter(s): outDiscards: 42",
                 "Interface: Ethernet1 - Non-zero discard counter(s): inDiscards: 42",
             ],
+            "atomic_results": [
+                {"description": "Interface: Ethernet2", "result": AntaTestStatus.FAILURE, "messages": ["Non-zero discard counter(s): outDiscards: 42"]},
+                {"description": "Interface: Ethernet1", "result": AntaTestStatus.FAILURE, "messages": ["Non-zero discard counter(s): inDiscards: 42"]},
+            ],
         },
-    },
-    (VerifyInterfaceErrDisabled, "success"): {"eos_data": [{"interfaceStatuses": {}}], "expected": {"result": AntaTestStatus.SUCCESS}},
-    (VerifyInterfaceErrDisabled, "failure"): {
-        "eos_data": [{"interfaceStatuses": {"Ethernet2": {"description": "", "status": "errdisabled", "causes": ["bpduguard"]}}}],
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Interface: Ethernet2 - Error disabled - Causes: bpduguard"]},
-    },
-    (VerifyInterfaceErrDisabled, "failure-no-cause"): {
-        "eos_data": [{"interfaceStatuses": {"Ethernet2": {"description": "", "status": "errdisabled"}}}],
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Interface: Ethernet2 - Error disabled"]},
     },
     (VerifyInterfaceDiscards, "success-specific-interface"): {
         "eos_data": [
@@ -464,7 +722,23 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": ["Port-Channel1", "Ethernet3", "Ethernet2"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel1",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet3",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+                {
+                    "description": "Interface: Ethernet2",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
     },
     (VerifyInterfaceDiscards, "failure-specific-interface-not-found"): {
         "eos_data": [
@@ -484,6 +758,72 @@ DATA: AntaUnitTestData = {
         "expected": {
             "result": AntaTestStatus.FAILURE,
             "messages": ["Interface: Port-Channel10 - Not found", "Interface: Ethernet3 - Non-zero discard counter(s): outDiscards: 40"],
+            "atomic_results": [
+                {"description": "Interface: Port-Channel10", "result": AntaTestStatus.FAILURE, "messages": ["Not found"]},
+                {"description": "Interface: Ethernet3", "result": AntaTestStatus.FAILURE, "messages": ["Non-zero discard counter(s): outDiscards: 40"]},
+                {
+                    "description": "Interface: Ethernet2",
+                    "result": AntaTestStatus.SUCCESS,
+                },
+            ],
+        },
+    },
+    (VerifyInterfaceErrDisabled, "success"): {
+        "eos_data": [{"interfaceStatuses": {}}],
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [],
+        },
+    },
+    (VerifyInterfaceErrDisabled, "success-ignored-interfaces"): {
+        "eos_data": [
+            {
+                "interfaceStatuses": {
+                    "Ethernet1/2": {"description": "", "status": "errdisabled", "causes": ["speed-misconfigured"]},
+                    "Ethernet1/3": {"description": "", "status": "errdisabled", "causes": ["speed-misconfigured"]},
+                }
+            }
+        ],
+        "inputs": {"interfaces": ["Ethernet1/1"], "ignored_interfaces": ["Ethernet1/2", "Ethernet1/3"]},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet1/1",
+                }
+            ],
+        },
+    },
+    (VerifyInterfaceErrDisabled, "success-only-ignored-interfaces"): {
+        "eos_data": [
+            {
+                "interfaceStatuses": {
+                    "Ethernet1/2": {"description": "", "status": "errdisabled", "causes": ["speed-misconfigured"]},
+                    "Ethernet1/3": {"description": "", "status": "errdisabled", "causes": ["speed-misconfigured"]},
+                }
+            }
+        ],
+        "inputs": {"ignored_interfaces": ["Ethernet1/2", "Ethernet1/3"]},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [],
+        },
+    },
+    (VerifyInterfaceErrDisabled, "failure"): {
+        "eos_data": [{"interfaceStatuses": {"Ethernet2": {"description": "", "status": "errdisabled", "causes": ["bpduguard"]}}}],
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet2 - Error disabled - Causes: bpduguard"],
+            "atomic_results": [{"result": AntaTestStatus.FAILURE, "description": "Interface: Ethernet2", "messages": ["Error disabled - Causes: bpduguard"]}],
+        },
+    },
+    (VerifyInterfaceErrDisabled, "failure-no-cause"): {
+        "eos_data": [{"interfaceStatuses": {"Ethernet2": {"description": "", "status": "errdisabled"}}}],
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet2 - Error disabled"],
+            "atomic_results": [{"result": AntaTestStatus.FAILURE, "description": "Interface: Ethernet2", "messages": ["Error disabled"]}],
         },
     },
     (VerifyInterfacesStatus, "success"): {
@@ -497,12 +837,36 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": [{"name": "Ethernet2", "status": "adminDown"}, {"name": "Ethernet8", "status": "up"}, {"name": "Ethernet3", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet2",
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet8",
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet3",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-up-with-line-protocol-status"): {
         "eos_data": [{"interfaceDescriptions": {"Ethernet8": {"interfaceStatus": "up", "description": "", "lineProtocolStatus": "down"}}}],
         "inputs": {"interfaces": [{"name": "Ethernet8", "status": "up", "line_protocol_status": "down"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet8",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-with-line-protocol-status"): {
         "eos_data": [
@@ -521,7 +885,23 @@ DATA: AntaUnitTestData = {
                 {"name": "Ethernet3.10", "status": "down", "line_protocol_status": "dormant"},
             ]
         },
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet2",
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet8",
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet3.10",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-lower"): {
         "eos_data": [
@@ -534,7 +914,23 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": [{"name": "ethernet2", "status": "adminDown"}, {"name": "ethernet8", "status": "up"}, {"name": "ethernet3", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet2",
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet8",
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet3",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-eth-name"): {
         "eos_data": [
@@ -547,32 +943,88 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": [{"name": "eth2", "status": "adminDown"}, {"name": "et8", "status": "up"}, {"name": "et3", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet2",
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet8",
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet3",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-po-name"): {
         "eos_data": [{"interfaceDescriptions": {"Port-Channel100": {"interfaceStatus": "up", "description": "", "lineProtocolStatus": "up"}}}],
         "inputs": {"interfaces": [{"name": "po100", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Port-Channel100",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-sub-interfaces"): {
         "eos_data": [{"interfaceDescriptions": {"Ethernet52/1.1963": {"interfaceStatus": "up", "description": "", "lineProtocolStatus": "up"}}}],
         "inputs": {"interfaces": [{"name": "Ethernet52/1.1963", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet52/1.1963",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-transceiver-down"): {
         "eos_data": [{"interfaceDescriptions": {"Ethernet49/1": {"interfaceStatus": "adminDown", "description": "", "lineProtocolStatus": "notPresent"}}}],
         "inputs": {"interfaces": [{"name": "Ethernet49/1", "status": "adminDown"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet49/1",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-po-down"): {
         "eos_data": [{"interfaceDescriptions": {"Port-Channel100": {"interfaceStatus": "adminDown", "description": "", "lineProtocolStatus": "lowerLayerDown"}}}],
         "inputs": {"interfaces": [{"name": "PortChannel100", "status": "adminDown"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Port-Channel100",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "success-po-lowerlayerdown"): {
         "eos_data": [{"interfaceDescriptions": {"Port-Channel100": {"interfaceStatus": "adminDown", "description": "", "lineProtocolStatus": "lowerLayerDown"}}}],
         "inputs": {"interfaces": [{"name": "Port-Channel100", "status": "adminDown", "line_protocol_status": "lowerLayerDown"}]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Port-Channel100",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "failure-not-configured"): {
         "eos_data": [
@@ -584,7 +1036,25 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": [{"name": "Ethernet2", "status": "up"}, {"name": "Ethernet8", "status": "up"}, {"name": "Ethernet3", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Ethernet8 - Not configured"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet8 - Not configured"],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet2",
+                },
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet8",
+                    "messages": ["Not configured"],
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet3",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "failure-status-down"): {
         "eos_data": [
@@ -597,7 +1067,52 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": [{"name": "Ethernet2", "status": "up"}, {"name": "Ethernet8", "status": "up"}, {"name": "Ethernet3", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Ethernet8 - Status mismatch - Expected: up/up, Actual: down/down"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet8 - Status mismatch - Expected: up/up, Actual: down/down"],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet2",
+                },
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet8",
+                    "messages": ["Status mismatch - Expected: up/up, Actual: down/down"],
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet3",
+                },
+            ],
+        },
+    },
+    (VerifyInterfacesStatus, "failure-with-description"): {
+        "eos_data": [
+            {
+                "interfaceDescriptions": {
+                    "Ethernet8": {"interfaceStatus": "down", "description": "", "lineProtocolStatus": "down"},
+                    "Ethernet2": {"interfaceStatus": "up", "description": "", "lineProtocolStatus": "up"},
+                    "Ethernet3": {"interfaceStatus": "up", "description": "", "lineProtocolStatus": "up"},
+                }
+            }
+        ],
+        "inputs": {"interfaces": [{"name": "Ethernet2", "status": "up"}, {"name": "Ethernet8", "status": "up", "description": "P2P_LINK_TO_DC1-SPINE4_Ethernet22"}]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet8 (P2P_LINK_TO_DC1-SPINE4_Ethernet22) - Status mismatch - Expected: up/up, Actual: down/down"],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet2",
+                },
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet8 (P2P_LINK_TO_DC1-SPINE4_Ethernet22)",
+                    "messages": ["Status mismatch - Expected: up/up, Actual: down/down"],
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "failure-proto-down"): {
         "eos_data": [
@@ -610,12 +1125,40 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": [{"name": "Ethernet2", "status": "up"}, {"name": "Ethernet8", "status": "up"}, {"name": "Ethernet3", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Ethernet8 - Status mismatch - Expected: up/up, Actual: up/down"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet8 - Status mismatch - Expected: up/up, Actual: up/down"],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet2",
+                },
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet8",
+                    "messages": ["Status mismatch - Expected: up/up, Actual: up/down"],
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet3",
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "failure-po-status-down"): {
         "eos_data": [{"interfaceDescriptions": {"Port-Channel100": {"interfaceStatus": "down", "description": "", "lineProtocolStatus": "lowerLayerDown"}}}],
         "inputs": {"interfaces": [{"name": "PortChannel100", "status": "up"}]},
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Port-Channel100 - Status mismatch - Expected: up/up, Actual: down/lowerLayerDown"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Port-Channel100 - Status mismatch - Expected: up/up, Actual: down/lowerLayerDown"],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Port-Channel100",
+                    "messages": ["Status mismatch - Expected: up/up, Actual: down/lowerLayerDown"],
+                },
+            ],
+        },
     },
     (VerifyInterfacesStatus, "failure-proto-unknown"): {
         "eos_data": [
@@ -636,7 +1179,26 @@ DATA: AntaUnitTestData = {
         },
         "expected": {
             "result": AntaTestStatus.FAILURE,
-            "messages": ["Ethernet2 - Status mismatch - Expected: up/down, Actual: up/unknown", "Ethernet8 - Status mismatch - Expected: up/up, Actual: up/down"],
+            "messages": [
+                "Interface: Ethernet2 - Status mismatch - Expected: up/down, Actual: up/unknown",
+                "Interface: Ethernet8 - Status mismatch - Expected: up/up, Actual: up/down",
+            ],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet2",
+                    "messages": ["Status mismatch - Expected: up/down, Actual: up/unknown"],
+                },
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet8",
+                    "messages": ["Status mismatch - Expected: up/up, Actual: up/down"],
+                },
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Ethernet3",
+                },
+            ],
         },
     },
     (VerifyInterfacesStatus, "failure-interface-status-down"): {
@@ -653,9 +1215,26 @@ DATA: AntaUnitTestData = {
         "expected": {
             "result": AntaTestStatus.FAILURE,
             "messages": [
-                "Ethernet2 - Status mismatch - Expected: down, Actual: up",
-                "Ethernet8 - Status mismatch - Expected: down, Actual: up",
-                "Ethernet3 - Status mismatch - Expected: down, Actual: up",
+                "Interface: Ethernet2 - Status mismatch - Expected: down, Actual: up",
+                "Interface: Ethernet8 - Status mismatch - Expected: down, Actual: up",
+                "Interface: Ethernet3 - Status mismatch - Expected: down, Actual: up",
+            ],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet2",
+                    "messages": ["Status mismatch - Expected: down, Actual: up"],
+                },
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet8",
+                    "messages": ["Status mismatch - Expected: down, Actual: up"],
+                },
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Ethernet3",
+                    "messages": ["Status mismatch - Expected: down, Actual: up"],
+                },
             ],
         },
     },
@@ -673,7 +1252,15 @@ DATA: AntaUnitTestData = {
                 },
             }
         ],
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                }
+            ],
+        },
     },
     (VerifyStormControlDrops, "failure"): {
         "eos_data": [
@@ -689,7 +1276,13 @@ DATA: AntaUnitTestData = {
                 },
             }
         ],
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Interface: Ethernet1 - Non-zero storm-control drop counter(s) - broadcast: 666"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Ethernet1 - Non-zero storm-control drop counter(s) - broadcast: 666"],
+            "atomic_results": [
+                {"description": "Interface: Ethernet1", "result": AntaTestStatus.FAILURE, "messages": ["Non-zero storm-control drop counter(s) - broadcast: 666"]}
+            ],
+        },
     },
     (VerifyStormControlDrops, "success-ignore-interfface"): {
         "eos_data": [
@@ -712,7 +1305,15 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"ignored_interfaces": ["Ethernet10"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                }
+            ],
+        },
     },
     (VerifyStormControlDrops, "success-specific-interfface"): {
         "eos_data": [
@@ -735,7 +1336,15 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": ["Ethernet1"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Ethernet1",
+                    "result": AntaTestStatus.SUCCESS,
+                }
+            ],
+        },
     },
     (VerifyStormControlDrops, "failure-specific-interfface-not-found"): {
         "eos_data": [
@@ -771,6 +1380,11 @@ DATA: AntaUnitTestData = {
                 "Interface: Ethernet10 - Non-zero storm-control drop counter(s) - broadcast: 40",
                 "Interface: Ethernet20 - Non-zero storm-control drop counter(s) - broadcast: 40",
             ],
+            "atomic_results": [
+                {"description": "Interface: Ethernet13", "result": AntaTestStatus.FAILURE, "messages": ["Not found"]},
+                {"description": "Interface: Ethernet10", "result": AntaTestStatus.FAILURE, "messages": ["Non-zero storm-control drop counter(s) - broadcast: 40"]},
+                {"description": "Interface: Ethernet20", "result": AntaTestStatus.FAILURE, "messages": ["Non-zero storm-control drop counter(s) - broadcast: 40"]},
+            ],
         },
     },
     (VerifyPortChannels, "success"): {
@@ -791,7 +1405,15 @@ DATA: AntaUnitTestData = {
                 }
             }
         ],
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Port-Channel42",
+                },
+            ],
+        },
     },
     (VerifyPortChannels, "success-ignored-interface"): {
         "eos_data": [
@@ -823,7 +1445,15 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"ignored_interfaces": ["Port-Channel5"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Port-Channel1",
+                },
+            ],
+        },
     },
     (VerifyPortChannels, "success-ignored-all-interface"): {
         "eos_data": [
@@ -855,7 +1485,15 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"ignored_interfaces": ["Port-Channel5"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Port-Channel1",
+                },
+            ],
+        },
     },
     (VerifyPortChannels, "failure"): {
         "eos_data": [
@@ -875,7 +1513,17 @@ DATA: AntaUnitTestData = {
                 }
             }
         ],
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Port-Channel42 - Inactive port(s) - Ethernet8"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Port-Channel42 - Inactive port(s) - Ethernet8"],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Port-Channel42",
+                    "messages": ["Inactive port(s) - Ethernet8"],
+                },
+            ],
+        },
     },
     (VerifyPortChannels, "success-specified-interface"): {
         "eos_data": [
@@ -907,7 +1555,15 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": ["Port-Channel1"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.SUCCESS,
+                    "description": "Interface: Port-Channel1",
+                },
+            ],
+        },
     },
     (VerifyPortChannels, "failure-specified-interface-not-found"): {
         "eos_data": [
@@ -939,7 +1595,22 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": ["Port-Channel10", "Port-Channel5"]},
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Interface: Port-Channel10 - Not found", "Port-Channel5 - Inactive port(s) - Ethernet8"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": ["Interface: Port-Channel10 - Not found", "Interface: Port-Channel5 - Inactive port(s) - Ethernet8"],
+            "atomic_results": [
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Port-Channel10",
+                    "messages": ["Not found"],
+                },
+                {
+                    "result": AntaTestStatus.FAILURE,
+                    "description": "Interface: Port-Channel5",
+                    "messages": ["Inactive port(s) - Ethernet8"],
+                },
+            ],
+        },
     },
     (VerifyIllegalLACP, "success"): {
         "eos_data": [
@@ -963,7 +1634,15 @@ DATA: AntaUnitTestData = {
                 "orphanPorts": {},
             }
         ],
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel42",
+                    "result": AntaTestStatus.SUCCESS,
+                }
+            ],
+        },
     },
     (VerifyIllegalLACP, "success-ignored-interface"): {
         "eos_data": [
@@ -979,7 +1658,7 @@ DATA: AntaUnitTestData = {
                                 "markersTxCount": 0,
                                 "markerResponseRxCount": 0,
                                 "markerResponseTxCount": 0,
-                                "illegalRxCount": 66,
+                                "illegalRxCount": 0,
                             },
                             "Ethernet6": {
                                 "actorPortStatus": "bundled",
@@ -1013,8 +1692,16 @@ DATA: AntaUnitTestData = {
                 "orphanPorts": {},
             }
         ],
-        "inputs": {"ignored_interfaces": ["Port-Channel1", "Port-Channel5"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "inputs": {"ignored_interfaces": ["Port-Channel5"]},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel1",
+                    "result": AntaTestStatus.SUCCESS,
+                }
+            ],
+        },
     },
     (VerifyIllegalLACP, "success-specific-interface"): {
         "eos_data": [
@@ -1079,7 +1766,15 @@ DATA: AntaUnitTestData = {
             }
         ],
         "inputs": {"interfaces": ["Port-Channel42"]},
-        "expected": {"result": AntaTestStatus.SUCCESS},
+        "expected": {
+            "result": AntaTestStatus.SUCCESS,
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel42",
+                    "result": AntaTestStatus.SUCCESS,
+                }
+            ],
+        },
     },
     (VerifyIllegalLACP, "success-specific-interface-not-found"): {
         "eos_data": [
@@ -1146,7 +1841,19 @@ DATA: AntaUnitTestData = {
         "inputs": {"interfaces": ["Port-Channel4", "Port-Channel5"]},
         "expected": {
             "result": AntaTestStatus.FAILURE,
-            "messages": ["Interface: Port-Channel4 - Not found", "Port-Channel5 Interface: Ethernet4 - Illegal LACP packets found"],
+            "messages": ["Interface: Port-Channel4 - Not found", "Interface: Port-Channel5 - Illegal LACP packets detected on member interface Ethernet4"],
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel4",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Not found"],
+                },
+                {
+                    "description": "Interface: Port-Channel5",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Illegal LACP packets detected on member interface Ethernet4"],
+                },
+            ],
         },
     },
     (VerifyIllegalLACP, "failure"): {
@@ -1156,22 +1863,30 @@ DATA: AntaUnitTestData = {
                     "Port-Channel42": {
                         "interfaces": {
                             "Ethernet8": {
-                                "actorPortStatus": "noAgg",
+                                "actorPortStatus": "bundled",
                                 "illegalRxCount": 666,
-                                "markerResponseTxCount": 0,
-                                "markerResponseRxCount": 0,
-                                "lacpdusRxCount": 0,
-                                "lacpdusTxCount": 454,
-                                "markersTxCount": 0,
-                                "markersRxCount": 0,
-                            }
+                            },
+                            "Ethernet6": {"actorPortStatus": "bundled", "illegalRxCount": 666},
                         }
                     }
                 },
                 "orphanPorts": {},
             }
         ],
-        "expected": {"result": AntaTestStatus.FAILURE, "messages": ["Port-Channel42 Interface: Ethernet8 - Illegal LACP packets found"]},
+        "expected": {
+            "result": AntaTestStatus.FAILURE,
+            "messages": [
+                "Interface: Port-Channel42 - Illegal LACP packets detected on member interface Ethernet8",
+                "Interface: Port-Channel42 - Illegal LACP packets detected on member interface Ethernet6",
+            ],
+            "atomic_results": [
+                {
+                    "description": "Interface: Port-Channel42",
+                    "result": AntaTestStatus.FAILURE,
+                    "messages": ["Illegal LACP packets detected on member interface Ethernet8", "Illegal LACP packets detected on member interface Ethernet6"],
+                }
+            ],
+        },
     },
     (VerifyLoopbackCount, "success"): {
         "eos_data": [

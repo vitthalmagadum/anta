@@ -345,8 +345,18 @@ anta.tests.interfaces:
         - Loopback0
   - VerifyInterfaceErrDisabled:
       # Verifies there are no interfaces in the errdisabled state.
+      interfaces:
+        - Ethernet1/1
+      ignored_interfaces:
+        - Ethernet1/5
+        - Ethernet1/6
   - VerifyInterfaceErrors:
       # Verifies that the interfaces error counters are equal to zero.
+      interfaces:
+        - Ethernet1/1
+      ignored_interfaces:
+        - Ethernet1/5
+        - Ethernet1/6
   - VerifyInterfaceIPv4:
       # Verifies the interface IPv4 addresses.
       interfaces:
@@ -968,6 +978,24 @@ anta.tests.routing.generic:
             nexthops:
               - 10.100.0.8
               - 10.100.0.10
+  - VerifyIPv4RoutePresencePerPrefix:
+      # Verifies that the provided IPv4 prefixes are present in the routing table.
+      route_entries:
+        - prefix: 10.10.0.1/32
+          vrf: default
+        - prefix: 10.100.0.12/31
+          vrf: MGMT
+        - prefix: 10.100.1.5/32
+          vrf: data
+  - VerifyIPv4RoutePresencePerVRF:
+      # Verifies that the provided IPv4 prefixes are present in the routing table.
+      route_entries:
+        - prefix: 10.10.0.1/32
+          vrf: default
+        - prefix: 10.100.0.12/31
+          vrf: MGMT
+        - prefix: 10.100.1.5/32
+          vrf: data
   - VerifyIPv4RouteType:
       # Verifies the route-type of the IPv4 prefixes.
       routes_entries:
@@ -988,7 +1016,7 @@ anta.tests.routing.generic:
       ipv4_unicast: True
       ipv6_unicast: True
   - VerifyRoutingTableEntry:
-      # Verifies that the provided routes are present in the routing table of a specified VRF.
+      # (Deprecated) Verifies that the provided routes are present in the routing table of a specified VRF.
       vrf: default
       routes:
         - 10.1.0.1
@@ -1120,13 +1148,14 @@ anta.tests.security:
           key_size: 4096
   - VerifyBannerLogin:
       # Verifies the login banner of a device.
-      login_banner: |
+      login_banner: |2+
         # Copyright (c) 2023-2024 Arista Networks, Inc.
         # Use of this source code is governed by the Apache License 2.0
         # that can be found in the LICENSE file.
+
   - VerifyBannerMotd:
       # Verifies the motd banner of a device.
-      motd_banner: |
+      motd_banner: |2+
         # Copyright (c) 2023-2024 Arista Networks, Inc.
         # Use of this source code is governed by the Apache License 2.0
         # that can be found in the LICENSE file.
@@ -1151,6 +1180,8 @@ anta.tests.security:
               action: permit icmp any any
             - sequence: 20
               action: permit tcp any any range 5900 5910
+  - VerifySSHFIPSRestrictions:
+      # Verifies that FIPS restrictions are enabled in management SSH.
   - VerifySSHIPv4Acl:
       # Verifies if the SSHD agent has IPv4 ACL(s) configured.
       number: 3
@@ -1303,8 +1334,8 @@ anta.tests.stp:
         - Ethernet10
         - Ethernet12
       ignored_interfaces:
-         - Vxlan1
-         - Loopback0
+        - Vxlan1
+        - Loopback0
   - VerifySTPDisabledVlans:
       # Verifies the STP disabled VLAN(s).
       vlans:

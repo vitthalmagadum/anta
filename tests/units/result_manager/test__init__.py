@@ -1,4 +1,4 @@
-# Copyright (c) 2023-2025 Arista Networks, Inc.
+# Copyright (c) 2023-2026 Arista Networks, Inc.
 # Use of this source code is governed by the Apache License 2.0
 # that can be found in the LICENSE file.
 """Test anta.result_manager.__init__.py."""
@@ -471,7 +471,7 @@ class TestResultManager:
         # Add another result - should mark stats as unsynced
         test3 = test_result_factory()
         test3.name = "device3"
-        test3.result = "error"
+        test3.result = AntaTestStatus.ERROR
         result_manager.add(test3)
         assert result_manager._stats_in_sync is False
 
@@ -582,12 +582,9 @@ class TestResultManager:
         result_manager = ResultManager()
         expected_match = (
             r"Invalid sort_by fields: ['bad_field']. Accepted fields are: "
-            r"['name', 'test', 'categories', 'description', 'result', 'messages', 'custom_field']"
+            r"['name', 'test', 'categories', 'description', 'result', 'messages', 'atomic_results', 'custom_field']"
         )
-        with pytest.raises(
-            ValueError,
-            match=re.escape(expected_match),
-        ):
+        with pytest.raises(ValueError, match=re.escape(expected_match)):
             _ = result_manager.sort(["bad_field"])
 
     def test_sort_is_chainable(self) -> None:
