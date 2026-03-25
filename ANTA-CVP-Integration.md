@@ -95,6 +95,10 @@ anta nrfu --test-source cvp --cvp-host cvp.example.com \
 
 ---
 
+#### How the Device class has been initialized as per the input test-source method(eAPI/CVP)
+
+<img width="662" height="511" alt="Screenshot 2026-03-25 at 2 54 23 PM" src="https://github.com/user-attachments/assets/662bfafa-6940-4659-a870-a6d13b08b5a2" />
+
 ### New File: `anta/cvp_device.py` — `CVPDevice`
 
 A new `AntaDevice` subclass that slots into ANTA's existing test framework:
