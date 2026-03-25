@@ -95,6 +95,26 @@ anta nrfu --test-source cvp --cvp-host cvp.example.com \
 
 ---
 
+### New File: `anta/cvp_device.py` — `CVPDevice`
+
+A new `AntaDevice` subclass that slots into ANTA's existing test framework:
+
+```python
+class CVPDevice(AntaDevice):
+    def __init__(self, cvp_host, token_file, crt_file, name, test_source):
+        self.cvp_client = CvpClient(host=cvp_host, token_file=token_file, ca_file=crt_file)
+        super().__init__(name=name, test_source=test_source)
+
+    async def _collect(self, command, ...):
+        method_name = self.cvp_client.cvp_eapi_mapping.get(command.command)
+        method = getattr(self.cvp_client, method_name)
+        command.output = method(hostname=self.name)
+```
+
+Because `CVPDevice` extends `AntaDevice` and populates `command.output` in the same format as eAPI, **all existing ANTA tests work without modification**.
+
+---
+
 ## What Was Built
 
 ### New Package: `cvp/`
@@ -124,26 +144,6 @@ device_type()  ─── checks Sysdb/hardware/entmib
     ├── "modular"  → get_intf_status_chassis()  (iterates over linecards)
     └── "fixed"    → get_intf_status_fixed()    (reads slice/1 directly)
 ```
-
-### New File: `anta/cvp_device.py` — `CVPDevice`
-
-A new `AntaDevice` subclass that slots into ANTA's existing test framework:
-
-```python
-class CVPDevice(AntaDevice):
-    def __init__(self, cvp_host, token_file, crt_file, name, test_source):
-        self.cvp_client = CvpClient(host=cvp_host, token_file=token_file, ca_file=crt_file)
-        super().__init__(name=name, test_source=test_source)
-
-    async def _collect(self, command, ...):
-        method_name = self.cvp_client.cvp_eapi_mapping.get(command.command)
-        method = getattr(self.cvp_client, method_name)
-        command.output = method(hostname=self.name)
-```
-
-Because `CVPDevice` extends `AntaDevice` and populates `command.output` in the same format as eAPI, **all existing ANTA tests work without modification**.
-
----
 
 ## Modified Files
 
