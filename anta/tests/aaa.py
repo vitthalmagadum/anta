@@ -13,6 +13,8 @@ from typing import TYPE_CHECKING, ClassVar, Literal
 from anta.custom_types import AAAAuthMethod
 from anta.models import AntaCommand, AntaTest
 from anta.tools import get_value
+from anta.input_models import AAAAuthentication
+from pydantic import Field
 
 if TYPE_CHECKING:
     from anta.models import AntaTemplate
@@ -396,3 +398,69 @@ class VerifyAcctConsoleMethods(AntaTest):
             self.result.is_success()
         else:
             self.result.is_failure(f"AAA accounting console methods {', '.join(self.inputs.methods)} are not matching for {', '.join(not_matching)}")
+
+
+class VerifyAuthenMethodLists(AntaTest):
+    """Verifies AAA authentication methods for specific method lists.
+
+    Expected Results
+    ----------------
+    * Success: The test passes when every specified method list is configured with the expected methods in the expected order.
+    * Failure: The test fails when any specified method list is missing or its configured methods do not match.
+
+    Examples
+    --------
+    ```yaml
+    anta.tests.aaa:
+      - VerifyAuthenMethodLists:
+          authentication:
+            - auth_type: login
+              method_lists:
+                - name: default
+                  methods:
+                    - group tacacs+
+                    - local
+                - name: console
+                  methods:
+                    - local
+            - auth_type: enable
+              method_lists:
+                - name: default
+                  methods:
+                    - local
+            - auth_type: dot1x
+              method_lists:
+                - name: default
+                  methods:
+                    - group radius
+    ```
+    """
+
+    categories: ClassVar[list[str]] = ["aaa"]
+    commands: ClassVar[list[AntaCommand | AntaTemplate]] = [AntaCommand(command="show aaa methods authentication", revision=1)]
+
+    class Input(AntaTest.Input):
+        """Input model for the VerifyAuthenMethodLists test."""
+
+        authentication: list[AAAAuthentication] = Field(min_length=1)
+        """Authentication types and their expected method lists."""
+
+    @AntaTest.anta_test
+    def test(self) -> None:
+        """Main test function for VerifyAuthenMethodLists."""
+        self.result.is_success()
+        command_output = self.instance_commands[0].json_output
+
+        for authentication in self.inputs.authentication:
+            auth_type = authentication.auth_type
+            configured_lists = command_output.get(f"{auth_type}AuthenMethods", {})
+            for expected_list in authentication.method_lists:
+                if not (actual_methods := get_value(configured_lists, f"{expected_list.name}..methods", separator="..")):
+                    self.result.is_failure(f"AAA authentication method list {auth_type}/{expected_list.name} - Not configured")
+                    continue
+
+                if actual_methods != expected_list.methods:
+                    self.result.is_failure(
+                        f"AAA authentication method list {auth_type}/{expected_list.name} - Methods mismatch "
+                        f"- Expected: {', '.join(expected_list.methods)} Actual: {', '.join(actual_methods)}"
+                    )
