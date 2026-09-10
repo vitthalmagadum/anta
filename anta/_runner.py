@@ -394,13 +394,13 @@ class AntaRunner:
                     # The device does not have any selected tag, skipping
                     # This should not never happen because the device will already be filtered by `_setup_inventory`
                     continue
-                ctx.selected_tests[device].update(ctx.catalog.get_tests_by_tags(matching_tags))
+                ctx.selected_tests[device].update(ctx.catalog.get_tests_by_tags(matching_tags, available_tags=device.tags))
             else:
                 # If there is no CLI tags, execute all tests that do not have any tags
                 ctx.selected_tests[device].update(ctx.catalog.tag_to_tests[None])
 
                 # Then add the tests with matching tags from device tags
-                ctx.selected_tests[device].update(ctx.catalog.get_tests_by_tags(device.tags))
+                ctx.selected_tests[device].update(ctx.catalog.get_tests_by_tags(device.tags, available_tags=device.tags))
 
         if ctx.total_tests_scheduled == 0:
             msg_parts = ["No tests scheduled to run after filtering by tags/tests."]

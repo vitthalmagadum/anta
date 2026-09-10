@@ -432,16 +432,19 @@ class AntaTest(ABC):
             custom_field: str | None = None
 
         class Filters(BaseModel):
-            """Runtime filters to map tests with list of tags or devices.
+            """Runtime filters mapping tests to devices using tags.
 
             Attributes
             ----------
             tags
                 Tag of devices on which to run the test.
+            tags_match_mode
+                Match devices having any configured tag (default) or require all configured tags.
             """
 
             model_config = ConfigDict(extra="forbid")
             tags: set[str] | None = None
+            tags_match_mode: Literal["any", "all"] = "any"
 
             # Using check_fields as we plan to use this in the child classes
             @field_serializer("tags", when_used="json", check_fields=False)

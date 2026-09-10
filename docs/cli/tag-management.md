@@ -107,6 +107,16 @@ anta.tests.interfaces:
 
     - **Use different input values for a specific test**: Leverage tags to define different input values for a specific test. See the `VerifyUptime` example above.
 
+By default, a test with multiple tags runs when a device matches any of them. Set `tags_match_mode: all` to require the device to have every tag configured on that test:
+
+```yaml
+anta.tests.system:
+  - VerifyReloadCause:
+      filters:
+        tags: [leaf, dc1]
+        tags_match_mode: all
+```
+
 ## Using tags
 
 | Command | Description |

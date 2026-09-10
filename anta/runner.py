@@ -165,13 +165,13 @@ def prepare_tests(
             if not (matching_tags := tags.intersection(device.tags)):
                 # The device does not have any selected tag, skipping
                 continue
-            device_to_tests[device].update(catalog.get_tests_by_tags(matching_tags))
+            device_to_tests[device].update(catalog.get_tests_by_tags(matching_tags, available_tags=device.tags))
         else:
             # If there is no CLI tags, execute all tests that do not have any tags
             device_to_tests[device].update(catalog.tag_to_tests[None])
 
             # Then add the tests with matching tags from device tags
-            device_to_tests[device].update(catalog.get_tests_by_tags(device.tags))
+            device_to_tests[device].update(catalog.get_tests_by_tags(device.tags, available_tags=device.tags))
 
         total_test_count += len(device_to_tests[device])
 

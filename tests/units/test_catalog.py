@@ -292,6 +292,18 @@ class TestAntaCatalog:
         tests = catalog.get_tests_by_tags(tags={"leaf", "spine"}, strict=True)
         assert len(tests) == 1
 
+    def test_get_tests_by_tags_dynamic_match_mode(self) -> None:
+        """Test per-test any/all tag matching without changing the default behavior."""
+        any_test = AntaTestDefinition(test=VerifyReloadCause, inputs={"filters": {"tags": ["a", "b"]}})
+        all_test = AntaTestDefinition(test=VerifyUptime, inputs={"minimum": 10, "filters": {"tags": ["a", "b"], "tags_match_mode": "all"}})
+        catalog = AntaCatalog(tests=[any_test, all_test])
+        catalog.build_indexes()
+
+        assert any_test.inputs.filters is not None
+        assert any_test.inputs.filters.tags_match_mode == "any"
+        assert catalog.get_tests_by_tags({"a"}, available_tags={"a"}) == {any_test}
+        assert catalog.get_tests_by_tags({"a"}, available_tags={"a", "b"}) == {any_test, all_test}
+
     def test_merge_catalogs(self) -> None:
         """Test the merge_catalogs function."""
         # Load catalogs of different sizes

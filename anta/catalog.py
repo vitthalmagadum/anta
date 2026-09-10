@@ -508,7 +508,7 @@ class AntaCatalog:
         """Clear this AntaCatalog instance indexes."""
         self._init_indexes()
 
-    def get_tests_by_tags(self, tags: set[str], *, strict: bool = False) -> set[AntaTestDefinition]:
+    def get_tests_by_tags(self, tags: set[str], *, strict: bool = False, available_tags: set[str] | None = None) -> set[AntaTestDefinition]:
         """Return all tests that match a given set of tags, according to the specified strictness.
 
         Parameters
@@ -518,6 +518,9 @@ class AntaCatalog:
         strict
             If True, returns only tests that contain all specified tags (intersection).
             If False, returns tests that contain any of the specified tags (union).
+        available_tags
+            Full set of tags available on the device. This is used to enforce
+            ``filters.tags_match_mode: all``. If omitted, ``tags`` is used.
 
         Returns
         -------
@@ -539,6 +542,13 @@ class AntaCatalog:
         if not filtered_sets:
             return set()
 
-        if strict:
-            return set.intersection(*filtered_sets)
-        return set.union(*filtered_sets)
+        matching_tests = set.intersection(*filtered_sets) if strict else set.union(*filtered_sets)
+        device_tags = tags if available_tags is None else available_tags
+        return {
+            test
+            for test in matching_tests
+            if not test.inputs.filters
+            or test.inputs.filters.tags_match_mode == "any"
+            or not test.inputs.filters.tags
+            or test.inputs.filters.tags.issubset(device_tags)
+        }
