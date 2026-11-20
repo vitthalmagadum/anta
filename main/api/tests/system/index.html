@@ -15,6 +15,7 @@
         <link rel="canonical" href="https://anta.arista.com/stable/api/tests/system/">
       
       
+      
         <link rel="prev" href="../software/">
       
       
@@ -25,7 +26,7 @@
       
       
       <link rel="icon" href="../../../imgs/favicon.ico">
-      <meta name="generator" content="zensical-0.0.62">
+      <meta name="generator" content="zensical-0.1.1">
     
     
       
@@ -36,12 +37,12 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.ce62732f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.ebb7f775.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.812a03bb.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -83,14 +84,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#tests" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -110,7 +108,7 @@
   
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../..",location),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -128,9 +126,10 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M248 88h80v48h-80zm-8-56c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h16v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h192v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320v-32h16c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm208 344h8v48h-80v-48zm-256 0h8v48h-80v-48z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -182,9 +181,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -417,18 +417,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   ANTA CLI
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -452,10 +453,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -479,10 +480,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -506,10 +507,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -533,10 +534,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -560,10 +561,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -587,10 +588,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -614,10 +615,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -641,10 +642,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -668,10 +669,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -695,10 +696,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -754,20 +756,21 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Reports
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+              
+                
+                  
   
   
   
@@ -791,10 +794,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -899,18 +903,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests Documentation
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -934,10 +939,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -961,10 +966,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -988,10 +993,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1015,10 +1020,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1042,10 +1047,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1069,10 +1074,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1096,10 +1101,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1123,10 +1128,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1150,10 +1155,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1177,10 +1182,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1204,10 +1209,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1231,10 +1236,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1258,10 +1263,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1285,10 +1290,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1312,10 +1317,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1339,10 +1344,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1366,10 +1371,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1393,10 +1398,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1420,10 +1425,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1447,10 +1452,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1494,18 +1499,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_21_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_21">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_21_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7_21">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Routing
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1529,10 +1535,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1556,10 +1562,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1583,10 +1589,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1610,18 +1616,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1645,10 +1652,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1672,10 +1679,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1699,10 +1706,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1726,10 +1733,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1753,10 +1760,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1780,10 +1787,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -2202,10 +2209,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2229,10 +2236,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2256,10 +2263,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2310,18 +2318,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Security Advisory
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2345,10 +2354,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2372,10 +2381,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2415,18 +2424,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2450,10 +2460,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2477,18 +2487,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2512,10 +2523,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2566,18 +2578,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Advanced Usages
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2601,10 +2614,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2628,10 +2641,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2655,10 +2668,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2682,10 +2695,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2748,18 +2762,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   API Documentation
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2783,10 +2798,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2810,10 +2825,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2837,10 +2852,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2864,10 +2879,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2891,10 +2906,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2936,18 +2951,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2971,10 +2987,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2998,10 +3014,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3025,18 +3041,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3060,10 +3077,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3107,18 +3124,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10_8">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10_8">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Reporter API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -3142,10 +3160,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3169,10 +3187,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3196,10 +3214,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3223,18 +3241,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3258,10 +3277,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3285,10 +3304,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -3891,13 +3911,15 @@
 
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
+
   
   
 
 
-  <h1 id="__skip">System</h1>
+  <h1>System</h1>
 
 <!--
   ~ Copyright (c) 2023-2026 Arista Networks, Inc.
@@ -3993,9 +4015,13 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">165</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
 <span class="normal">166</span>
 <span class="normal">167</span>
 <span class="normal">168</span>
@@ -4019,11 +4045,7 @@
 <span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAgentLogs</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAgentLogs</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies there are no agent crash reports.</span>
 
 <span class="sd">    Expected Results</span>
@@ -4171,9 +4193,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">196</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
 <span class="normal">197</span>
 <span class="normal">198</span>
 <span class="normal">199</span>
@@ -4233,11 +4259,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">253</span>
 <span class="normal">254</span>
 <span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyCPUUtilization</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">256</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyCPUUtilization</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies that the CPU utilization of the device is within the configured threshold.</span>
 
 <span class="sd">    !!! tip</span>
@@ -4374,9 +4396,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">129</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
 <span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
@@ -4405,11 +4431,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyCoredump</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyCoredump</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies there are no core dump files.</span>
 
 <span class="sd">    Expected Results</span>
@@ -4555,9 +4577,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">619</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span>
 <span class="normal">620</span>
 <span class="normal">621</span>
 <span class="normal">622</span>
@@ -4605,11 +4631,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">664</span>
 <span class="normal">665</span>
 <span class="normal">666</span>
-<span class="normal">667</span>
-<span class="normal">668</span>
-<span class="normal">669</span>
-<span class="normal">670</span>
-<span class="normal">671</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyFilePresence</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">667</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyFilePresence</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the presence of files on the device flash memory.</span>
 
 <span class="sd">    Expected Results</span>
@@ -4727,9 +4749,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">292</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
 <span class="normal">293</span>
 <span class="normal">294</span>
 <span class="normal">295</span>
@@ -4751,11 +4777,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">311</span>
 <span class="normal">312</span>
 <span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span>
-<span class="normal">317</span>
-<span class="normal">318</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyFileSystemUtilization</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">314</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyFileSystemUtilization</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies that no partition is utilizing more than 75% of its disk space.</span>
 
 <span class="sd">    Expected Results</span>
@@ -4859,12 +4881,12 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
               <tr>
                 <td><code>max_utilization</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;Percent&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            Percent
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.Percent">Percent</a></code>
+  
+      module-attribute
+   (anta.custom_types.Percent)" href="../types/#anta.custom_types.Percent">Percent</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -4898,9 +4920,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">543</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
 <span class="normal">544</span>
 <span class="normal">545</span>
 <span class="normal">546</span>
@@ -4969,11 +4995,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">609</span>
 <span class="normal">610</span>
 <span class="normal">611</span>
-<span class="normal">612</span>
-<span class="normal">613</span>
-<span class="normal">614</span>
-<span class="normal">615</span>
-<span class="normal">616</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyFlashUtilization</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">612</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyFlashUtilization</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the free space on the flash drive is sufficient.</span>
 
 <span class="sd">    Expected Results</span>
@@ -5112,9 +5134,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">495</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
 <span class="normal">496</span>
 <span class="normal">497</span>
 <span class="normal">498</span>
@@ -5155,11 +5181,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">533</span>
 <span class="normal">534</span>
 <span class="normal">535</span>
-<span class="normal">536</span>
-<span class="normal">537</span>
-<span class="normal">538</span>
-<span class="normal">539</span>
-<span class="normal">540</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyMaintenance</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">536</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyMaintenance</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies that the device is not currently under or entering maintenance.</span>
 
 <span class="sd">    Expected Results</span>
@@ -5270,9 +5292,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">263</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
 <span class="normal">264</span>
 <span class="normal">265</span>
 <span class="normal">266</span>
@@ -5294,11 +5320,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">282</span>
 <span class="normal">283</span>
 <span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyMemoryUtilization</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">285</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyMemoryUtilization</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies whether the memory utilization is below 75%.</span>
 
 <span class="sd">    Expected Results</span>
@@ -5390,9 +5412,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">321</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
 <span class="normal">322</span>
 <span class="normal">323</span>
 <span class="normal">324</span>
@@ -5415,11 +5441,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">341</span>
 <span class="normal">342</span>
 <span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span>
-<span class="normal">346</span>
-<span class="normal">347</span>
-<span class="normal">348</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyNTP</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">344</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyNTP</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if NTP is synchronised.</span>
 
 <span class="sd">    Expected Results</span>
@@ -5549,7 +5571,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
               <tr>
                 <td><code>ntp_servers</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<span title="anta.tests.system.VerifyNTPAssociations.Input.NTPServer">NTPServer</span>] | None</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="NTPServer (anta.input_models.system.NTPServer)" href="./#anta.input_models.system.NTPServer">NTPServer</a>] | None</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -5563,7 +5585,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
               <tr>
                 <td><code>ntp_pool</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;NTPPool&lt;/span&gt;" href="./#anta.input_models.system.NTPPool">NTPPool</a> | None</code>
+                      <code><a class="autorefs autorefs-internal" title="NTPPool (anta.input_models.system.NTPPool)" href="./#anta.input_models.system.NTPPool">NTPPool</a> | None</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -5583,9 +5605,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">351</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
 <span class="normal">352</span>
 <span class="normal">353</span>
 <span class="normal">354</span>
@@ -5722,11 +5748,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">485</span>
 <span class="normal">486</span>
 <span class="normal">487</span>
-<span class="normal">488</span>
-<span class="normal">489</span>
-<span class="normal">490</span>
-<span class="normal">491</span>
-<span class="normal">492</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyNTPAssociations</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">488</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyNTPAssociations</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the Network Time Protocol (NTP) associations.</span>
 
 <span class="sd">    This test performs the following checks:</span>
@@ -5771,7 +5793,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
     <span class="k">class</span><span class="w"> </span><span class="nc">Input</span><span class="p">(</span><span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Input model for the VerifyNTPAssociations test."""</span>
 
-        <span class="n">ntp_servers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">NTPServer</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">ntp_servers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">system_models</span><span class="o">.</span><span class="n">NTPServer</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">        </span><span class="sd">"""List of NTP servers."""</span>
         <span class="n">ntp_pool</span><span class="p">:</span> <span class="n">NTPPool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">        </span><span class="sd">"""NTP servers pool."""</span>
@@ -5976,12 +5998,12 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
               <tr>
                 <td><code>allowed_causes</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;ReloadCause&lt;/span&gt;
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="            ReloadCause
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.ReloadCause">ReloadCause</a>]</code>
+  
+      module-attribute
+   (anta.custom_types.ReloadCause)" href="../types/#anta.custom_types.ReloadCause">ReloadCause</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6001,9 +6023,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 71</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
 <span class="normal"> 72</span>
 <span class="normal"> 73</span>
 <span class="normal"> 74</span>
@@ -6054,11 +6080,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">119</span>
 <span class="normal">120</span>
 <span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyReloadCause</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyReloadCause</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the last reload cause of the device.</span>
 
 <span class="sd">    User Input to Reload Cause Mapping:</span>
@@ -6190,12 +6212,12 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
               <tr>
                 <td><code>minimum</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;PositiveInteger&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            PositiveInteger
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
+  
+      module-attribute
+   (anta.custom_types.PositiveInteger)" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6215,9 +6237,13 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/system.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
@@ -6245,11 +6271,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 <span class="normal">61</span>
 <span class="normal">62</span>
 <span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyUptime</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyUptime</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the device uptime.</span>
 
 <span class="sd">    Expected Results</span>
@@ -6376,12 +6398,12 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
               <tr>
                 <td><code>server_addresses</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;Hostname&lt;/span&gt;
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="            Hostname
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.Hostname">Hostname</a> | <a class="autorefs autorefs-external" title="ipaddress.IPv4Address" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address">IPv4Address</a>]</code>
+  
+      module-attribute
+   (anta.custom_types.Hostname)" href="../types/#anta.custom_types.Hostname">Hostname</a> | <a class="autorefs autorefs-external" title="ipaddress.IPv4Address" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address">IPv4Address</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6395,12 +6417,12 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
               <tr>
                 <td><code>preferred_stratum_range</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;NTPStratumLevel&lt;/span&gt;
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="            NTPStratumLevel
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.NTPStratumLevel">NTPStratumLevel</a>]</code>
+  
+      module-attribute
+   (anta.custom_types.NTPStratumLevel)" href="../types/#anta.custom_types.NTPStratumLevel">NTPStratumLevel</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6421,7 +6443,7 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/system.py</code></summary>
   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">34</span>
 <span class="normal">35</span>
@@ -6496,12 +6518,12 @@ Otherwise, the test checks instantaneous CPU utilization (100 - idle).
               <tr>
                 <td><code>server_address</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;Hostname&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            Hostname
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.Hostname">Hostname</a> | <a class="autorefs autorefs-external" title="ipaddress.IPv4Address" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address">IPv4Address</a></code>
+  
+      module-attribute
+   (anta.custom_types.Hostname)" href="../types/#anta.custom_types.Hostname">Hostname</a> | <a class="autorefs autorefs-external" title="ipaddress.IPv4Address" href="https://docs.python.org/3/library/ipaddress.html#ipaddress.IPv4Address">IPv4Address</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6531,12 +6553,12 @@ For example, &#39;ntp.example.com&#39; in the configuration might resolve to &#3
               <tr>
                 <td><code>stratum</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;NTPStratumLevel&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            NTPStratumLevel
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.NTPStratumLevel">NTPStratumLevel</a></code>
+  
+      module-attribute
+   (anta.custom_types.NTPStratumLevel)" href="../types/#anta.custom_types.NTPStratumLevel">NTPStratumLevel</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6558,7 +6580,7 @@ Values should be between 0 and 15 for valid synchronization and 16 represents an
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/system.py</code></summary>
   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
 <span class="normal">16</span>
@@ -6743,7 +6765,7 @@ Values should be between 0 and 15 for valid synchronization and 16 represents an
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -6755,10 +6777,10 @@ Values should be between 0 and 15 for valid synchronization and 16 represents an
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.path","navigation.top","content.code.copy","toc.follow","navigation.indexes","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["stable"],"provider":"mike"}}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.path","navigation.top","content.code.copy","toc.follow","navigation.indexes","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["stable"],"provider":"mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3cb411a8.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

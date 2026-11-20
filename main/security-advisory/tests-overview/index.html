@@ -15,6 +15,7 @@
         <link rel="canonical" href="https://anta.arista.com/stable/security-advisory/tests-overview/">
       
       
+      
         <link rel="prev" href="../reports/">
       
       
@@ -25,7 +26,7 @@
       
       
       <link rel="icon" href="../../imgs/favicon.ico">
-      <meta name="generator" content="zensical-0.0.62">
+      <meta name="generator" content="zensical-0.1.1">
     
     
       
@@ -36,12 +37,12 @@
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ce62732f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.ebb7f775.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.812a03bb.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -83,13 +84,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        <a href="#__skip" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +108,7 @@
   
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../..",location),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -127,9 +126,10 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M248 88h80v48h-80zm-8-56c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h16v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h192v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320v-32h16c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm208 344h8v48h-80v-48zm-256 0h8v48h-80v-48z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -181,9 +181,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -416,18 +417,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   ANTA CLI
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -451,10 +453,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -478,10 +480,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -505,10 +507,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -532,10 +534,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -559,10 +561,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -586,10 +588,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -613,10 +615,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -640,10 +642,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -667,10 +669,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -694,10 +696,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -753,20 +756,21 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Reports
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+              
+                
+                  
   
   
   
@@ -790,10 +794,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -896,18 +901,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests Documentation
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -931,10 +937,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -958,10 +964,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -985,10 +991,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1012,10 +1018,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1039,10 +1045,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1066,10 +1072,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1093,10 +1099,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1120,10 +1126,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1147,10 +1153,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1174,10 +1180,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1201,10 +1207,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1228,10 +1234,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1255,10 +1261,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1282,10 +1288,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1309,10 +1315,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1336,10 +1342,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1363,10 +1369,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1390,10 +1396,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1417,10 +1423,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1444,10 +1450,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1491,18 +1497,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_21_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_21">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_21_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7_21">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Routing
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1526,10 +1533,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1553,10 +1560,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1580,10 +1587,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1607,18 +1614,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1642,10 +1650,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1669,10 +1677,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1696,10 +1704,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1723,10 +1731,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1750,10 +1758,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1777,10 +1785,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1804,10 +1812,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1831,10 +1839,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1858,10 +1866,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -1914,18 +1923,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Security Advisory
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1949,10 +1959,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1976,10 +1986,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -2021,18 +2031,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_8_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
     
@@ -2064,10 +2075,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2091,18 +2102,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2126,10 +2138,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2180,18 +2193,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Advanced Usages
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2215,10 +2229,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2242,10 +2256,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2269,10 +2283,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2296,10 +2310,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2362,18 +2377,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   API Documentation
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2397,10 +2413,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2424,10 +2440,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2451,10 +2467,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2478,10 +2494,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2505,10 +2521,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2550,18 +2566,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2585,10 +2602,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2612,10 +2629,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2639,18 +2656,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2674,10 +2692,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2721,18 +2739,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10_8">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10_8">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Reporter API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2756,10 +2775,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2783,10 +2802,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2810,10 +2829,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2837,18 +2856,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2872,10 +2892,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2899,10 +2919,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -3116,13 +3137,15 @@
 
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
+
   
   
 
 
-  <h1 id="__skip">Overview</h1>
+  <h1>Overview</h1>
 
 <!--
   ~ Copyright (c) 2026 Arista Networks, Inc.
@@ -3134,6 +3157,9 @@
 Published advisories are available on the
 <a href="https://www.arista.com/en/support/advisories-notices/securityadvisory">Arista Security Advisories</a>
 page.</p>
+<p><strong>Introduced in ANTA</strong> identifies the first release containing the advisory test.
+When a later advisory revision requires a behavioral change, <strong>Last updated in
+ANTA</strong> identifies the first release aligned with that revision.</p>
 <div class="admonition note">
 <p class="admonition-title">Detailed security advisory tests</p>
 <p>To view the implementation details and inputs for each available test, see
@@ -3146,45 +3172,367 @@ page.</p>
 <tr>
 <th>Security advisory</th>
 <th>Last updated</th>
-<th>Supported in ANTA version</th>
+<th>Introduced in ANTA</th>
+<th>Last updated in ANTA</th>
 <th>Comment</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>Security Advisory 0227</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Wi-Fi Access Points; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0226</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision Appliance, DMF and AGNI server hardware; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0225</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0224</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0223</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0222</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0221</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0220</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0219</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0218</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0217</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0216</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0215</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0214</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0213</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0212</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0211</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0210</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0209</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0208</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0207</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0206</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0205</td>
+<td>2026-11-10</td>
+<td>v1.11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0204</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Advance Notice</td>
+</tr>
+<tr>
+<td>Security Advisory 0203</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Arista NDR; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0202</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>VeloCloud; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0201</td>
+<td>2026-11-13</td>
+<td>v1.11</td>
+<td>v1.12</td>
+<td></td>
+</tr>
+<tr>
+<td>Security Advisory 0200</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>PHP in Arista cloud services; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0199</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>VeloCloud; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0198</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Wi-Fi Access Points; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0197</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Wi-Fi Access Points; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0196</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Wi-Fi Access Points; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0195</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Wi-Fi Access Points; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0194</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Wi-Fi Access Points; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0193</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Wi-Fi Access Points; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0192</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision CUE; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0191</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision CUE; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0190</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision CUE; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0189</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision Portal; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0188</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision Portal and CloudVision Sensor; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0187</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision Portal; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0186</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision Portal; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0185</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>CloudVision Portal; not covered by ANTA</td>
+</tr>
+<tr>
+<td>Security Advisory 0184</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>Advance Notice</td>
+</tr>
+<tr>
+<td>Security Advisory 0183</td>
+<td></td>
+<td>N/A</td>
+<td></td>
+<td>VeloCloud; not covered by ANTA</td>
+</tr>
+<tr>
 <td>Security Advisory 0182</td>
 <td></td>
 <td>N/A</td>
+<td></td>
 <td>VeloCloud; not covered by ANTA</td>
 </tr>
 <tr>
 <td>Security Advisory 0181</td>
 <td></td>
 <td>N/A</td>
+<td></td>
 <td>VeloCloud; not covered by ANTA</td>
 </tr>
 <tr>
 <td>Security Advisory 0180</td>
 <td></td>
 <td>N/A</td>
+<td></td>
 <td>VeloCloud; not covered by ANTA</td>
 </tr>
 <tr>
 <td>Security Advisory 0179</td>
 <td></td>
 <td>N/A</td>
+<td></td>
 <td>VeloCloud; not covered by ANTA</td>
 </tr>
 <tr>
 <td>Security Advisory 0178</td>
-<td>2026-09-09</td>
+<td>2026-10-28</td>
 <td>v1.10</td>
+<td>v1.11</td>
 <td></td>
 </tr>
 <tr>
 <td>Security Advisory 0177</td>
 <td>2026-09-17</td>
 <td>v1.10</td>
+<td>v1.11</td>
 <td></td>
 </tr>
 <tr>
@@ -3192,11 +3540,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0175</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3204,11 +3554,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0173</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3216,11 +3568,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0171</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3228,11 +3582,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0169</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3240,11 +3596,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0167</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3252,11 +3610,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0165</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3264,11 +3624,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0163</td>
-<td>2026-09-09</td>
+<td>2026-09-22</td>
 <td>v1.10</td>
+<td>v1.11</td>
 <td></td>
 </tr>
 <tr>
@@ -3276,11 +3638,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0161</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3288,11 +3652,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0159</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3300,11 +3666,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0157</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3312,11 +3680,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0155</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3324,11 +3694,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0153</td>
-<td>2026-09-09</td>
+<td>2026-09-22</td>
 <td>v1.10</td>
+<td>v1.11</td>
 <td></td>
 </tr>
 <tr>
@@ -3336,11 +3708,13 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0151</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3348,23 +3722,27 @@ page.</p>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0149</td>
 <td>2026-09-09</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0148</td>
 <td></td>
 <td>N/A</td>
+<td></td>
 <td>Advance Notice</td>
 </tr>
 <tr>
 <td>Security Advisory 0147</td>
-<td>2026-08-31</td>
+<td>2026-10-16</td>
 <td>v1.10</td>
+<td>v1.12</td>
 <td></td>
 </tr>
 <tr>
@@ -3372,11 +3750,13 @@ page.</p>
 <td>2026-08-19</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisories 0145–0143</td>
 <td></td>
 <td>TBD</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3384,11 +3764,13 @@ page.</p>
 <td>2026-08-10</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0141</td>
 <td></td>
 <td>TBD</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3396,11 +3778,13 @@ page.</p>
 <td>2026-06-03</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisories 0139–0118</td>
 <td></td>
 <td>TBD</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -3408,23 +3792,27 @@ page.</p>
 <td>2025-05-20</td>
 <td>v1.10</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisories 0116–0061</td>
 <td></td>
 <td>TBD</td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Security Advisory 0060</td>
 <td></td>
 <td>N/A</td>
+<td></td>
 <td>Not Published</td>
 </tr>
 <tr>
 <td>Security Advisories 0059–0001</td>
 <td></td>
 <td>TBD</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -3471,7 +3859,7 @@ page.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    September 17, 2026
+    November 18, 2026
   </span>
 
     
@@ -3565,7 +3953,7 @@ page.</p>
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -3577,10 +3965,10 @@ page.</p>
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.path","navigation.top","content.code.copy","toc.follow","navigation.indexes","content.tabs.link"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["stable"],"provider":"mike"}}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.instant","navigation.path","navigation.top","content.code.copy","toc.follow","navigation.indexes","content.tabs.link"],"redirect":null,"search":"../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["stable"],"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.3cb411a8.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

@@ -15,6 +15,7 @@
         <link rel="canonical" href="https://anta.arista.com/stable/api/tests/security/">
       
       
+      
         <link rel="prev" href="../routing.isis/">
       
       
@@ -25,7 +26,7 @@
       
       
       <link rel="icon" href="../../../imgs/favicon.ico">
-      <meta name="generator" content="zensical-0.0.62">
+      <meta name="generator" content="zensical-0.1.1">
     
     
       
@@ -36,12 +37,12 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.ce62732f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.ebb7f775.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.812a03bb.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -83,14 +84,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#tests" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -110,7 +108,7 @@
   
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../..",location),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -128,9 +126,10 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M248 88h80v48h-80zm-8-56c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h16v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h192v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320v-32h16c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm208 344h8v48h-80v-48zm-256 0h8v48h-80v-48z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -182,9 +181,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -417,18 +417,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   ANTA CLI
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -452,10 +453,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -479,10 +480,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -506,10 +507,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -533,10 +534,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -560,10 +561,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -587,10 +588,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -614,10 +615,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -641,10 +642,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -668,10 +669,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -695,10 +696,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -754,20 +756,21 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Reports
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+              
+                
+                  
   
   
   
@@ -791,10 +794,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -899,18 +903,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests Documentation
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -934,10 +939,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -961,10 +966,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -988,10 +993,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1015,10 +1020,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1042,10 +1047,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1069,10 +1074,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1096,10 +1101,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1123,10 +1128,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1150,10 +1155,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1177,10 +1182,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1204,10 +1209,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1231,10 +1236,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1258,10 +1263,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1285,10 +1290,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1312,10 +1317,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1339,10 +1344,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1366,10 +1371,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1393,10 +1398,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1420,10 +1425,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1447,10 +1452,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1494,18 +1499,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_21_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_21">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_21_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7_21">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Routing
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1529,10 +1535,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1556,10 +1562,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1583,10 +1589,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1610,18 +1616,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -2266,10 +2273,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2293,10 +2300,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2320,10 +2327,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2347,10 +2354,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2374,10 +2381,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2401,10 +2408,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2428,10 +2435,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2455,10 +2462,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2482,10 +2489,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2536,18 +2544,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Security Advisory
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2571,10 +2580,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2598,10 +2607,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2641,18 +2650,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2676,10 +2686,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2703,18 +2713,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2738,10 +2749,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2792,18 +2804,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Advanced Usages
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2827,10 +2840,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2854,10 +2867,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2881,10 +2894,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2908,10 +2921,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2974,18 +2988,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   API Documentation
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -3009,10 +3024,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3036,10 +3051,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3063,10 +3078,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3090,10 +3105,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3117,10 +3132,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3162,18 +3177,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -3197,10 +3213,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3224,10 +3240,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3251,18 +3267,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3286,10 +3303,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3333,18 +3350,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10_8">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10_8">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Reporter API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -3368,10 +3386,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3395,10 +3413,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3422,10 +3440,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3449,18 +3467,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3484,10 +3503,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3511,10 +3530,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -4343,13 +4363,15 @@
 
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
+
   
   
 
 
-  <h1 id="__skip">Security</h1>
+  <h1>Security</h1>
 
 <!--
   ~ Copyright (c) 2023-2026 Arista Networks, Inc.
@@ -4445,10 +4467,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">180</span>
-<span class="normal">181</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">181</span>
 <span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
@@ -4473,7 +4494,8 @@
 <span class="normal">203</span>
 <span class="normal">204</span>
 <span class="normal">205</span>
-<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPIHttpStatus</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">206</span>
+<span class="normal">207</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPIHttpStatus</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if eAPI HTTP server is disabled globally.</span>
 
 <span class="sd">    Expected Results</span>
@@ -4596,10 +4618,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">209</span>
-<span class="normal">210</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">210</span>
 <span class="normal">211</span>
 <span class="normal">212</span>
 <span class="normal">213</span>
@@ -4635,7 +4656,8 @@
 <span class="normal">243</span>
 <span class="normal">244</span>
 <span class="normal">245</span>
-<span class="normal">246</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPIHttpsSSL</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">246</span>
+<span class="normal">247</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPIHttpsSSL</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if the eAPI has a valid SSL profile.</span>
 
 <span class="sd">    Expected Results</span>
@@ -4750,12 +4772,12 @@
               <tr>
                 <td><code>number</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;PositiveInteger&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            PositiveInteger
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
+  
+      module-attribute
+   (anta.custom_types.PositiveInteger)" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -4789,10 +4811,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">249</span>
-<span class="normal">250</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">250</span>
 <span class="normal">251</span>
 <span class="normal">252</span>
 <span class="normal">253</span>
@@ -4835,7 +4856,8 @@
 <span class="normal">290</span>
 <span class="normal">291</span>
 <span class="normal">292</span>
-<span class="normal">293</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPIIPv4Acl</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">293</span>
+<span class="normal">294</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPIIPv4Acl</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if eAPI has the right number IPv4 ACL(s) configured for a specified VRF.</span>
 
 <span class="sd">    Expected Results</span>
@@ -4958,12 +4980,12 @@
               <tr>
                 <td><code>number</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;PositiveInteger&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            PositiveInteger
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
+  
+      module-attribute
+   (anta.custom_types.PositiveInteger)" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -4997,10 +5019,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">296</span>
-<span class="normal">297</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">297</span>
 <span class="normal">298</span>
 <span class="normal">299</span>
 <span class="normal">300</span>
@@ -5044,7 +5065,8 @@
 <span class="normal">338</span>
 <span class="normal">339</span>
 <span class="normal">340</span>
-<span class="normal">341</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPIIPv6Acl</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">341</span>
+<span class="normal">342</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPIIPv6Acl</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if eAPI has the right number IPv6 ACL(s) configured for a specified VRF.</span>
 
 <span class="sd">    Expected Results</span>
@@ -5195,7 +5217,7 @@
               <tr>
                 <td><code>certificates</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<span title="anta.tests.security.VerifyAPISSLCertificate.Input.APISSLCertificate">APISSLCertificate</span>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="APISSLCertificate (anta.input_models.security.APISSLCertificate)" href="./#anta.input_models.security.APISSLCertificate">APISSLCertificate</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -5215,10 +5237,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">344</span>
-<span class="normal">345</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">345</span>
 <span class="normal">346</span>
 <span class="normal">347</span>
 <span class="normal">348</span>
@@ -5314,7 +5335,8 @@
 <span class="normal">438</span>
 <span class="normal">439</span>
 <span class="normal">440</span>
-<span class="normal">441</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPISSLCertificate</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">441</span>
+<span class="normal">442</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyAPISSLCertificate</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the eAPI SSL certificate expiry, common subject name, encryption algorithm and key size.</span>
 
 <span class="sd">    This test performs the following checks for each certificate:</span>
@@ -5365,7 +5387,7 @@
     <span class="k">class</span><span class="w"> </span><span class="nc">Input</span><span class="p">(</span><span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Input parameters for the VerifyAPISSLCertificate test."""</span>
 
-        <span class="n">certificates</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">APISSLCertificate</span><span class="p">]</span>
+        <span class="n">certificates</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">security_models</span><span class="o">.</span><span class="n">APISSLCertificate</span><span class="p">]</span>
 <span class="w">        </span><span class="sd">"""List of API SSL certificates."""</span>
         <span class="n">APISSLCertificate</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">APISSLCertificate</span><span class="p">]]</span> <span class="o">=</span> <span class="n">APISSLCertificate</span>
 
@@ -5389,7 +5411,7 @@
                 <span class="k">continue</span>
 
             <span class="n">expiry_time</span> <span class="o">=</span> <span class="n">certificate_data</span><span class="p">[</span><span class="s2">"notAfter"</span><span class="p">]</span>
-            <span class="n">day_difference</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">expiry_time</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">current_timestamp</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">))</span><span class="o">.</span><span class="n">days</span>
+            <span class="n">day_difference</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">expiry_time</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">UTC</span><span class="p">)</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">current_timestamp</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="n">UTC</span><span class="p">))</span><span class="o">.</span><span class="n">days</span>
 
             <span class="c1"># Verify certificate expiry</span>
             <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">day_difference</span> <span class="o">&lt;</span> <span class="n">certificate</span><span class="o">.</span><span class="n">expiry_threshold</span><span class="p">:</span>
@@ -5513,10 +5535,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">444</span>
-<span class="normal">445</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">445</span>
 <span class="normal">446</span>
 <span class="normal">447</span>
 <span class="normal">448</span>
@@ -5557,7 +5578,8 @@
 <span class="normal">483</span>
 <span class="normal">484</span>
 <span class="normal">485</span>
-<span class="normal">486</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyBannerLogin</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">486</span>
+<span class="normal">487</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyBannerLogin</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the login banner of a device.</span>
 
 <span class="sd">    PyYAML does not preserve leading spaces so the recommendation is to use the following syntax:</span>
@@ -5701,10 +5723,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">489</span>
-<span class="normal">490</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">490</span>
 <span class="normal">491</span>
 <span class="normal">492</span>
 <span class="normal">493</span>
@@ -5745,7 +5766,8 @@
 <span class="normal">528</span>
 <span class="normal">529</span>
 <span class="normal">530</span>
-<span class="normal">531</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyBannerMotd</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">531</span>
+<span class="normal">532</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyBannerMotd</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the motd banner of a device.</span>
 
 <span class="sd">    PyYAML does not preserve leading spaces so the recommendation is to use the following syntax:</span>
@@ -5853,10 +5875,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">779</span>
-<span class="normal">780</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">780</span>
 <span class="normal">781</span>
 <span class="normal">782</span>
 <span class="normal">783</span>
@@ -5883,7 +5904,8 @@
 <span class="normal">804</span>
 <span class="normal">805</span>
 <span class="normal">806</span>
-<span class="normal">807</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyHardwareEntropy</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">807</span>
+<span class="normal">808</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyHardwareEntropy</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies hardware entropy generation is enabled on device.</span>
 
 <span class="sd">    Expected Results</span>
@@ -5977,10 +5999,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">609</span>
-<span class="normal">610</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">610</span>
 <span class="normal">611</span>
 <span class="normal">612</span>
 <span class="normal">613</span>
@@ -6016,7 +6037,8 @@
 <span class="normal">643</span>
 <span class="normal">644</span>
 <span class="normal">645</span>
-<span class="normal">646</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyIPSecConnHealth</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">646</span>
+<span class="normal">647</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyIPSecConnHealth</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies all IPv4 security connections.</span>
 
 <span class="sd">    Expected Results</span>
@@ -6158,7 +6180,7 @@
               <tr>
                 <td><code>ipv4_access_lists</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;ACL&lt;/span&gt;" href="./#anta.input_models.security.ACL">ACL</a>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="ACL (anta.input_models.security.ACL)" href="./#anta.input_models.security.ACL">ACL</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6172,7 +6194,7 @@
               <tr>
                 <td><code>IPv4ACL</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;ACL&lt;/span&gt;" href="./#anta.input_models.security.ACL">ACL</a>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="ACL (anta.input_models.security.ACL)" href="./#anta.input_models.security.ACL">ACL</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6180,7 +6202,7 @@
                   </div>
                 </td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;ACL&lt;/span&gt;" href="./#anta.input_models.security.ACL">ACL</a></code>
+                      <code><a class="autorefs autorefs-internal" title="ACL (anta.input_models.security.ACL)" href="./#anta.input_models.security.ACL">ACL</a></code>
                 </td>
               </tr>
           </tbody>
@@ -6192,10 +6214,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">534</span>
-<span class="normal">535</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">535</span>
 <span class="normal">536</span>
 <span class="normal">537</span>
 <span class="normal">538</span>
@@ -6266,7 +6287,8 @@
 <span class="normal">603</span>
 <span class="normal">604</span>
 <span class="normal">605</span>
-<span class="normal">606</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyIPv4ACL</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">606</span>
+<span class="normal">607</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyIPv4ACL</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the configuration of IPv4 ACLs.</span>
 
 <span class="sd">    This test performs the following checks for each IPv4 ACL:</span>
@@ -6404,10 +6426,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">747</span>
-<span class="normal">748</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">748</span>
 <span class="normal">749</span>
 <span class="normal">750</span>
 <span class="normal">751</span>
@@ -6435,7 +6456,8 @@
 <span class="normal">773</span>
 <span class="normal">774</span>
 <span class="normal">775</span>
-<span class="normal">776</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySSHFIPSRestrictions</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">776</span>
+<span class="normal">777</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySSHFIPSRestrictions</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies that FIPS restrictions are enabled in management SSH.</span>
 
 <span class="sd">    Expected Results</span>
@@ -6542,12 +6564,12 @@
               <tr>
                 <td><code>number</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;PositiveInteger&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            PositiveInteger
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
+  
+      module-attribute
+   (anta.custom_types.PositiveInteger)" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6581,10 +6603,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 57</span>
-<span class="normal"> 58</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 58</span>
 <span class="normal"> 59</span>
 <span class="normal"> 60</span>
 <span class="normal"> 61</span>
@@ -6627,7 +6648,8 @@
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
-<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySSHIPv4Acl</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">101</span>
+<span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySSHIPv4Acl</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if the SSHD agent has the right number IPv4 ACL(s) configured for a specified VRF.</span>
 
 <span class="sd">    Expected Results</span>
@@ -6749,12 +6771,12 @@
               <tr>
                 <td><code>number</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;PositiveInteger&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            PositiveInteger
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
+  
+      module-attribute
+   (anta.custom_types.PositiveInteger)" href="../types/#anta.custom_types.PositiveInteger">PositiveInteger</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -6788,10 +6810,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">104</span>
-<span class="normal">105</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
@@ -6834,7 +6855,8 @@
 <span class="normal">145</span>
 <span class="normal">146</span>
 <span class="normal">147</span>
-<span class="normal">148</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySSHIPv6Acl</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">148</span>
+<span class="normal">149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySSHIPv6Acl</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if the SSHD agent has the right number IPv6 ACL(s) configured for a specified VRF.</span>
 
 <span class="sd">    Expected Results</span>
@@ -6944,10 +6966,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
-<span class="normal">21</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
@@ -6980,7 +7001,8 @@
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
-<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySSHStatus</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySSHStatus</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if the SSHD agent is disabled in the default VRF.</span>
 
 <span class="sd">    Expected Results</span>
@@ -7114,7 +7136,7 @@
               <tr>
                 <td><code>ip_security_connections</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;IPSecPeer&lt;/span&gt;" href="./#anta.input_models.security.IPSecPeer">IPSecPeer</a>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="IPSecPeer (anta.input_models.security.IPSecPeer)" href="./#anta.input_models.security.IPSecPeer">IPSecPeer</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -7148,10 +7170,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">649</span>
-<span class="normal">650</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">650</span>
 <span class="normal">651</span>
 <span class="normal">652</span>
 <span class="normal">653</span>
@@ -7245,7 +7266,8 @@
 <span class="normal">741</span>
 <span class="normal">742</span>
 <span class="normal">743</span>
-<span class="normal">744</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySpecificIPSecConn</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">744</span>
+<span class="normal">745</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifySpecificIPSecConn</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies the IPv4 security connections.</span>
 
 <span class="sd">    This test performs the following checks for each peer:</span>
@@ -7406,10 +7428,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">151</span>
-<span class="normal">152</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">152</span>
 <span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
@@ -7434,7 +7455,8 @@
 <span class="normal">174</span>
 <span class="normal">175</span>
 <span class="normal">176</span>
-<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyTelnetStatus</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">177</span>
+<span class="normal">178</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyTelnetStatus</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies if Telnet is disabled in the default VRF.</span>
 
 <span class="sd">    Expected Results</span>
@@ -7569,7 +7591,7 @@
               <tr>
                 <td><code>entries</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;ACLEntry&lt;/span&gt;" href="./#anta.input_models.security.ACLEntry">ACLEntry</a>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="ACLEntry (anta.input_models.security.ACLEntry)" href="./#anta.input_models.security.ACLEntry">ACLEntry</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -7583,7 +7605,7 @@
               <tr>
                 <td><code>IPv4ACLEntry</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;ACLEntry&lt;/span&gt;" href="./#anta.input_models.security.ACLEntry">ACLEntry</a>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#type">type</a>[<a class="autorefs autorefs-internal" title="ACLEntry (anta.input_models.security.ACLEntry)" href="./#anta.input_models.security.ACLEntry">ACLEntry</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -7591,7 +7613,7 @@
                   </div>
                 </td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;ACLEntry&lt;/span&gt;" href="./#anta.input_models.security.ACLEntry">ACLEntry</a></code>
+                      <code><a class="autorefs autorefs-internal" title="ACLEntry (anta.input_models.security.ACLEntry)" href="./#anta.input_models.security.ACLEntry">ACLEntry</a></code>
                 </td>
               </tr>
           </tbody>
@@ -7604,9 +7626,14 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
 <span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
@@ -7619,12 +7646,7 @@
 <span class="normal">140</span>
 <span class="normal">141</span>
 <span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ACL</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">143</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ACL</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Model for an Access Control List (ACL)."""</span>
 
     <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
@@ -7736,9 +7758,14 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
@@ -7749,12 +7776,7 @@
 <span class="normal">119</span>
 <span class="normal">120</span>
 <span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ACLEntry</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">122</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ACLEntry</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Model for an Access Control List (ACL) entry."""</span>
 
     <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
@@ -7871,12 +7893,12 @@
               <tr>
                 <td><code>encryption_algorithm</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;EncryptionAlgorithm&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            EncryptionAlgorithm
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.EncryptionAlgorithm">EncryptionAlgorithm</a></code>
+  
+      module-attribute
+   (anta.custom_types.EncryptionAlgorithm)" href="../types/#anta.custom_types.EncryptionAlgorithm">EncryptionAlgorithm</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -7890,17 +7912,17 @@
               <tr>
                 <td><code>key_size</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;RsaKeySize&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            RsaKeySize
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.RsaKeySize">RsaKeySize</a> | <a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;EcdsaKeySize&lt;/span&gt;
+  
+      module-attribute
+   (anta.custom_types.RsaKeySize)" href="../types/#anta.custom_types.RsaKeySize">RsaKeySize</a> | <a class="autorefs autorefs-internal" title="            EcdsaKeySize
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.EcdsaKeySize">EcdsaKeySize</a></code>
+  
+      module-attribute
+   (anta.custom_types.EcdsaKeySize)" href="../types/#anta.custom_types.EcdsaKeySize">EcdsaKeySize</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -7926,7 +7948,7 @@
 
 
 <a href="#anta.input_models.security.APISSLCertificate.validate_inputs" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">validate_inputs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="typing_extensions.Self">Self</span></span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">validate_inputs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Self" href="https://docs.python.org/3/library/typing.html#typing.Self">Self</a></span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
@@ -7938,7 +7960,12 @@
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>anta/input_models/security.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
 <span class="normal"> 93</span>
 <span class="normal"> 94</span>
 <span class="normal"> 95</span>
@@ -7949,12 +7976,7 @@
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"after"</span><span class="p">)</span>
+<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"after"</span><span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">validate_inputs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Validate the key size provided to the APISSLCertificates class.</span>
 
@@ -7980,9 +8002,14 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 68</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
 <span class="normal"> 69</span>
 <span class="normal"> 70</span>
 <span class="normal"> 71</span>
@@ -8017,12 +8044,7 @@
 <span class="normal">100</span>
 <span class="normal">101</span>
 <span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">APISSLCertificate</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">103</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">APISSLCertificate</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Model for an API SSL certificate."""</span>
 
     <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
@@ -8156,9 +8178,14 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">49</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
@@ -8169,12 +8196,7 @@
 <span class="normal">57</span>
 <span class="normal">58</span>
 <span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IPSecConn</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">60</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IPSecConn</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Details of an IPv4 security connection for a peer."""</span>
 
     <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
@@ -8291,7 +8313,7 @@
               <tr>
                 <td><code>connections</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;IPSecConn&lt;/span&gt;" href="./#anta.input_models.security.IPSecConn">IPSecConn</a>] | None</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="IPSecConn (anta.input_models.security.IPSecConn)" href="./#anta.input_models.security.IPSecConn">IPSecConn</a>] | None</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -8312,9 +8334,14 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">25</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
@@ -8330,12 +8357,7 @@
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IPSecPeer</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IPSecPeer</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""IPSec (Internet Protocol Security) model represents the details of an IPv4 security peer."""</span>
 
     <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">"forbid"</span><span class="p">)</span>
@@ -8408,9 +8430,14 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
@@ -8420,12 +8447,7 @@
 <span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IPSecPeers</span><span class="p">(</span><span class="n">IPSecPeer</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="normal">179</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IPSecPeers</span><span class="p">(</span><span class="n">IPSecPeer</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
 <span class="w">    </span><span class="sd">"""Alias for the IPSecPeers model to maintain backward compatibility.</span>
 
 <span class="sd">    When initialized, it will emit a deprecation warning and call the IPSecPeer model.</span>
@@ -8492,9 +8514,14 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/security.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">151</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
 <span class="normal">152</span>
 <span class="normal">153</span>
 <span class="normal">154</span>
@@ -8504,12 +8531,7 @@
 <span class="normal">158</span>
 <span class="normal">159</span>
 <span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IPv4ACL</span><span class="p">(</span><span class="n">ACL</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="normal">161</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IPv4ACL</span><span class="p">(</span><span class="n">ACL</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
 <span class="w">    </span><span class="sd">"""Alias for the ACL model to maintain backward compatibility.</span>
 
 <span class="sd">    When initialized, it will emit a deprecation warning and call the ACL model.</span>
@@ -8682,7 +8704,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -8694,10 +8716,10 @@
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.path","navigation.top","content.code.copy","toc.follow","navigation.indexes","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["stable"],"provider":"mike"}}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.path","navigation.top","content.code.copy","toc.follow","navigation.indexes","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["stable"],"provider":"mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3cb411a8.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       

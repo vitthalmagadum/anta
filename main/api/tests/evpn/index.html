@@ -15,6 +15,7 @@
         <link rel="canonical" href="https://anta.arista.com/stable/api/tests/evpn/">
       
       
+      
         <link rel="prev" href="../cvx/">
       
       
@@ -25,7 +26,7 @@
       
       
       <link rel="icon" href="../../../imgs/favicon.ico">
-      <meta name="generator" content="zensical-0.0.62">
+      <meta name="generator" content="zensical-0.1.1">
     
     
       
@@ -36,12 +37,12 @@
       
         
       
-      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.ce62732f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.ebb7f775.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.812a03bb.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.b60ce83d.min.css">
       
       
 
@@ -83,14 +84,11 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <label class="md-overlay" for="__drawer" aria-hidden="true"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#tests" class="md-skip">
-          Skip to content
-        </a>
-      
+      <a href="#__skip" class="md-skip">
+        Skip to content
+      </a>
     </div>
     <div data-md-component="announce">
       
@@ -110,7 +108,7 @@
   
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../..",location),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -128,9 +126,10 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M248 88h80v48h-80zm-8-56c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h16v32H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h96v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h192v32h-16c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48v-64c0-26.5-21.5-48-48-48h-16v-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H320v-32h16c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm208 344h8v48h-80v-48zm-256 0h8v48h-80v-48z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -182,9 +181,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -417,18 +417,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   ANTA CLI
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -452,10 +453,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -479,10 +480,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -506,10 +507,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -533,10 +534,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -560,10 +561,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -587,10 +588,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -614,10 +615,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -641,10 +642,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -668,10 +669,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -695,10 +696,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -754,20 +756,21 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Reports
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+              
+                
+                  
   
   
   
@@ -791,10 +794,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -899,18 +903,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_7">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests Documentation
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -934,10 +939,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -961,10 +966,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -988,10 +993,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1015,10 +1020,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1042,10 +1047,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1069,10 +1074,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1096,10 +1101,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
     
@@ -1171,6 +1176,40 @@
     
       <nav class="md-nav" aria-label="Tests">
         <ul class="md-nav__list">
+          
+          
+            <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
+<li class="md-nav__item">
+    <a href="#anta.tests.evpn.VerifyEVPNSanity" class="md-nav__link">
+      <span class="md-ellipsis">
+        VerifyEVPNSanity
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+      <nav class="md-nav" aria-label="VerifyEVPNSanity">
+        <ul class="md-nav__list">
+          
+          
+            <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
+<li class="md-nav__item">
+    <a href="#anta.tests.evpn.VerifyEVPNSanity-attributes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Inputs
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+  </li>
+          
+          
+        </ul>
+      </nav>
+    
+  </li>
+          
           
           
             <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
@@ -1278,10 +1317,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1305,10 +1344,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1332,10 +1371,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1359,10 +1398,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1386,10 +1425,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1413,10 +1452,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1440,10 +1479,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1467,10 +1506,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1494,10 +1533,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1521,10 +1560,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1548,10 +1587,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1575,10 +1614,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1602,10 +1641,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1649,18 +1688,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_21_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_21">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_21_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_7_21">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Routing
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -1684,10 +1724,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1711,10 +1751,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1738,10 +1778,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1765,18 +1805,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1800,10 +1841,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1827,10 +1868,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1854,10 +1895,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1881,10 +1922,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1908,10 +1949,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1935,10 +1976,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1962,10 +2003,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -1989,10 +2030,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2016,10 +2057,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2070,18 +2112,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Security Advisory
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2105,10 +2148,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2132,10 +2175,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2175,18 +2218,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_3">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_8_3">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2210,10 +2254,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2237,18 +2281,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2272,10 +2317,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2326,18 +2372,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_9">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Advanced Usages
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2361,10 +2408,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2388,10 +2435,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2415,10 +2462,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2442,10 +2489,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -2508,18 +2556,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   API Documentation
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2543,10 +2592,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2570,10 +2619,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2597,10 +2646,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2624,10 +2673,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2651,10 +2700,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2696,18 +2745,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10_6">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10_6">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Tests
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2731,10 +2781,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2758,10 +2808,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2785,18 +2835,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2820,10 +2871,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2867,18 +2918,19 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10_8">
-            <span class="md-nav__icon md-icon"></span>
-            
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_8_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_10_8">
+              <span class="md-nav__icon md-icon"></span>
+              
   
   Reporter API
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
               
                 
+                  
   
   
   
@@ -2902,10 +2954,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2929,10 +2981,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2956,10 +3008,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -2983,18 +3035,19 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3018,10 +3071,10 @@
     </li>
   
 
-              
-            
+                
               
                 
+                  
   
   
   
@@ -3045,10 +3098,11 @@
     </li>
   
 
+                
               
-            
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        
       
     </li>
   
@@ -3182,6 +3236,40 @@
     
       <nav class="md-nav" aria-label="Tests">
         <ul class="md-nav__list">
+          
+          
+            <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
+<li class="md-nav__item">
+    <a href="#anta.tests.evpn.VerifyEVPNSanity" class="md-nav__link">
+      <span class="md-ellipsis">
+        VerifyEVPNSanity
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+      <nav class="md-nav" aria-label="VerifyEVPNSanity">
+        <ul class="md-nav__list">
+          
+          
+            <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
+<li class="md-nav__item">
+    <a href="#anta.tests.evpn.VerifyEVPNSanity-attributes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Inputs
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+  </li>
+          
+          
+        </ul>
+      </nav>
+    
+  </li>
+          
           
           
             <!-- Courtesy of https://github.com/squidfunk/mkdocs-material/issues/4827#issuecomment-1869812019 -->
@@ -3411,13 +3499,15 @@
 
               
               <article class="md-content__inner md-typeset">
+                <a id="__skip" tabindex="-1"></a>
                 
                   
+
   
   
 
 
-  <h1 id="__skip">EVPN</h1>
+  <h1>EVPN</h1>
 
 <!--
   ~ Copyright (c) 2023-2026 Arista Networks, Inc.
@@ -3453,6 +3543,220 @@
 
 
 
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="anta.tests.evpn.VerifyEVPNSanity" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">VerifyEVPNSanity</span>
+
+
+<a href="#anta.tests.evpn.VerifyEVPNSanity" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+<img alt="Atomic support badge" src="https://img.shields.io/badge/Atomic%20result%20support-brightgreen?style=flat&logoSize=auto">
+
+
+
+        <p>Verifies there are no EVPN sanity-check inconsistencies.</p>
+
+
+<details class="expected-results" open>
+  <summary>Expected Results</summary>
+  <ul>
+<li>Success: The test will pass if all EVPN sanity checks report <code>ok</code>.
+  When <code>warning_as_failure: false</code> (default), checks reporting <code>warn</code> also pass,
+  with their details included as messages.</li>
+<li>Failure: The test will fail if any EVPN sanity check reports a status other than <code>ok</code> or <code>warn</code>,
+  or reports <code>warn</code> when <code>warning_as_failure: true</code>.</li>
+<li>Skipped: The test will be skipped if no EVPN sanity checks are detected.</li>
+</ul>
+</details>
+
+
+<details class="example" open>
+  <summary>Examples</summary>
+        <div class="highlight"><pre><span></span><code><span class="nt">anta.tests.evpn</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VerifyEVPNSanity</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">warning_as_failure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+<h4 id="anta.tests.evpn.VerifyEVPNSanity-attributes">Inputs<a href="#anta.tests.evpn.VerifyEVPNSanity-attributes" class="headerlink" title="Permanent link">&para;</a></h4>  
+
+  <div class="doc doc-children">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Default</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td><code>warning_as_failure</code></td>
+                <td>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></code>
+                </td>
+                <td>
+                  <div class="doc-md-description">
+                    Treat checks reporting `warn` as failures. By default, these checks pass with warning messages.
+                  </div>
+                </td>
+                <td>
+                      <code>False</code>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+  </div>
+
+
+
+
+
+  </div>
+  <details class="quote mkdocstrings-source">
+  <summary>Source code in <code>anta/tests/evpn.py</code></summary>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyEVPNSanity</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Verifies there are no EVPN sanity-check inconsistencies.</span>
+
+<span class="sd">    Expected Results</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    * Success: The test will pass if all EVPN sanity checks report `ok`.</span>
+<span class="sd">      When `warning_as_failure: false` (default), checks reporting `warn` also pass,</span>
+<span class="sd">      with their details included as messages.</span>
+<span class="sd">    * Failure: The test will fail if any EVPN sanity check reports a status other than `ok` or `warn`,</span>
+<span class="sd">      or reports `warn` when `warning_as_failure: true`.</span>
+<span class="sd">    * Skipped: The test will be skipped if no EVPN sanity checks are detected.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    ```yaml</span>
+<span class="sd">    anta.tests.evpn:</span>
+<span class="sd">      - VerifyEVPNSanity:</span>
+<span class="sd">          warning_as_failure: true</span>
+<span class="sd">    ```</span>
+<span class="sd">    """</span>
+
+    <span class="n">categories</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"bgp"</span><span class="p">]</span>
+    <span class="n">commands</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">AntaCommand</span> <span class="o">|</span> <span class="n">AntaTemplate</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="n">AntaCommand</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="s2">"show bgp evpn sanity detail"</span><span class="p">,</span> <span class="n">revision</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">_atomic_support</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">class</span><span class="w"> </span><span class="nc">Input</span><span class="p">(</span><span class="n">AntaTest</span><span class="o">.</span><span class="n">Input</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Input model for the VerifyEVPNSanity test."""</span>
+
+        <span class="n">warning_as_failure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="w">        </span><span class="sd">"""Treat checks reporting `warn` as failures. By default, these checks pass with warning messages."""</span>
+
+    <span class="nd">@AntaTest</span><span class="o">.</span><span class="n">anta_test</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Main test function for VerifyEVPNSanity."""</span>
+        <span class="n">command_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">instance_commands</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">json_output</span>
+
+        <span class="k">for</span> <span class="n">category_name</span><span class="p">,</span> <span class="n">category_data</span> <span class="ow">in</span> <span class="n">command_output</span><span class="p">[</span><span class="s2">"categories"</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">category_data</span><span class="p">[</span><span class="s2">"items"</span><span class="p">]:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Category: </span><span class="si">{</span><span class="n">category_name</span><span class="si">}</span><span class="s2"> Item: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">AntaTestStatus</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_verify_check</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">atomic_results</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">is_skipped</span><span class="p">(</span><span class="s2">"No EVPN sanity checks detected"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_verify_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">result</span><span class="p">:</span> <span class="n">AtomicTestResult</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Evaluate one EVPN sanity check and update its atomic result."""</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">"status"</span><span class="p">]</span>
+        <span class="n">reason</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">" - </span><span class="si">{</span><span class="n">details</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="p">(</span><span class="n">details</span> <span class="o">:=</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"reasonNotOk"</span><span class="p">))</span> <span class="k">else</span> <span class="s2">""</span>
+        <span class="k">match</span> <span class="n">status</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">warning_as_failure</span><span class="p">:</span>
+            <span class="k">case</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span> <span class="k">_</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">case</span> <span class="s2">"warn"</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">is_success</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Status: warn</span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="n">expected</span> <span class="o">=</span> <span class="s2">"ok"</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">warning_as_failure</span> <span class="k">else</span> <span class="s2">"ok, warn"</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">is_failure</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Invalid status - Expected: </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s2"> Actual: </span><span class="si">{</span><span class="n">status</span><span class="si">}{</span><span class="n">reason</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+  </details>
+    </div>
+
+</div>
 
 <div class="doc doc-object doc-class">
 
@@ -3580,7 +3884,7 @@
               <tr>
                 <td><code>prefixes</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;EVPNType5Prefix&lt;/span&gt;" href="./#anta.input_models.evpn.EVPNType5Prefix">EVPNType5Prefix</a>]</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="EVPNType5Prefix (anta.input_models.evpn.EVPNType5Prefix)" href="./#anta.input_models.evpn.EVPNType5Prefix">EVPNType5Prefix</a>]</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -3600,13 +3904,9 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/tests/evpn.py</code></summary>
-  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 16</span>
-<span class="normal"> 17</span>
-<span class="normal"> 18</span>
-<span class="normal"> 19</span>
-<span class="normal"> 20</span>
+  <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 20</span>
 <span class="normal"> 21</span>
 <span class="normal"> 22</span>
 <span class="normal"> 23</span>
@@ -3772,7 +4072,11 @@
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
-<span class="normal">186</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyEVPNType5Routes</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">VerifyEVPNType5Routes</span><span class="p">(</span><span class="n">AntaTest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Verifies EVPN Type-5 routes for given IP prefixes and VNIs.</span>
 
 <span class="sd">    It supports multiple levels of verification based on the provided input:</span>
@@ -4072,7 +4376,7 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/evpn.py</code></summary>
   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
 <span class="normal">52</span>
@@ -4189,7 +4493,7 @@
               <tr>
                 <td><code>paths</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;EVPNPath&lt;/span&gt;" href="./#anta.input_models.evpn.EVPNPath">EVPNPath</a>] | None</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="EVPNPath (anta.input_models.evpn.EVPNPath)" href="./#anta.input_models.evpn.EVPNPath">EVPNPath</a>] | None</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -4210,7 +4514,7 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/evpn.py</code></summary>
   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">32</span>
 <span class="normal">33</span>
@@ -4317,12 +4621,12 @@
               <tr>
                 <td><code>vni</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;Vni&lt;/span&gt;
+                      <code><a class="autorefs autorefs-internal" title="            Vni
 
 
-  &lt;span class=&quot;doc doc-labels&quot;&gt;
-      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
-  &lt;/span&gt;" href="../types/#anta.custom_types.Vni">Vni</a></code>
+  
+      module-attribute
+   (anta.custom_types.Vni)" href="../types/#anta.custom_types.Vni">Vni</a></code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -4336,7 +4640,7 @@
               <tr>
                 <td><code>routes</code></td>
                 <td>
-                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;EVPNRoute&lt;/span&gt;" href="./#anta.input_models.evpn.EVPNRoute">EVPNRoute</a>] | None</code>
+                      <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="EVPNRoute (anta.input_models.evpn.EVPNRoute)" href="./#anta.input_models.evpn.EVPNRoute">EVPNRoute</a>] | None</code>
                 </td>
                 <td>
                   <div class="doc-md-description">
@@ -4357,7 +4661,7 @@
 
 
   </div>
-  <details class="quote">
+  <details class="quote mkdocstrings-source">
   <summary>Source code in <code>anta/input_models/evpn.py</code></summary>
   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
 <span class="normal">17</span>
@@ -4543,7 +4847,7 @@
 </footer>
       
     </div>
-    <div class="md-dialog" data-md-component="dialog">
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
@@ -4555,10 +4859,10 @@
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.path","navigation.top","content.code.copy","toc.follow","navigation.indexes","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["stable"],"provider":"mike"}}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["navigation.instant","navigation.path","navigation.top","content.code.copy","toc.follow","navigation.indexes","content.tabs.link"],"redirect":null,"search":"../../../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"default":["stable"],"provider":"mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.3cb411a8.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
